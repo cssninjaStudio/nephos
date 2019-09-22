@@ -46,6 +46,9 @@ node_modules/
 ### Package lock ###
 package-lock.json
 
+### Edito files ###
+.editorconfig
+
 ### Custom Files ###
 dist/
 accessibility-reports/

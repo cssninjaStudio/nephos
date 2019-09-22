@@ -7,7 +7,6 @@ const colors = require('ansi-colors');
 const browserSync = require('browser-sync').create();
 const sass = require('gulp-sass');
 const bourbon = require('node-bourbon').includePaths;
-const cssmin = require('gulp-cssmin');
 const rename = require('gulp-rename');
 const concat = require('gulp-concat');
 const del = require('del');
@@ -26,7 +25,8 @@ const newer = require('gulp-newer');
 const autoprefixer = require('gulp-autoprefixer');
 const accessibility = require('gulp-accessibility');
 const babel = require('gulp-babel');
-const ghPages = require('gulp-gh-pages');
+const nodepath = 'node_modules/';
+const assetspath = 'assets/';
 
 // File paths
 const files = {
@@ -34,14 +34,43 @@ const files = {
   jsPath: 'app/js/**/*.js'
 }
 
+// ------------ SETUP TASKS -------------
+// Copy Bulma filed into Bulma development folder
+function setupBulma() {
+  console.log('---------------COPYING BULMA FILES---------------');
+  return src([nodepath + 'bulma/*.sass', nodepath + 'bulma/**/*.sass'])
+    .pipe(dest('src/assets/sass/'));
+}
+
+function getJsPlugins() {
+  console.log('---------------COPYING JS FROM PLUGINS---------------');
+  return src([nodepath + 'bulma/*.sass', nodepath + 'bulma/**/*.sass'])
+    .pipe(dest('src/assets/sass/'));
+}
+
 // ------------ DEVELOPMENT TASKS -------------
+
+// COMPILE BULMA SASS INTO CSS
+function compileSASS() {
+  console.log('---------------COMPILING BULMA SASS---------------');
+  return src(['src/assets/sass/bulma.sass'])
+    .pipe(sass({
+      outputStyle: 'compressed',
+      sourceComments: 'map',
+      sourceMap: 'sass',
+      includePaths: bourbon
+    }).on('error', sass.logError))
+    .pipe(autoprefixer('last 2 versions'))
+    .pipe(dest('dist/assets/css'))
+    .pipe(browserSync.stream());
+}
 
 // COMPILE SCSS INTO CSS
 function compileSCSS() {
   console.log('---------------COMPILING SCSS---------------');
-  return src(['src/assets/scss/main.scss', 'src/assets/scss/rtl.scss'])
+  return src(['src/assets/scss/main.scss'])
     .pipe(sass({
-      outputStyle: 'expanded',
+      outputStyle: 'compressed',
       sourceComments: 'map',
       sourceMap: 'scss',
       includePaths: bourbon
@@ -139,16 +168,6 @@ function browserSyncInit(done) {
     server: './dist'
   });
   return done();
-}
-
-// DEPLOY TO GIT
-function deploy() {
-  return src('/*')
-    .pipe(ghPages({
-      remoteUrl: 'https://github.com/johndavemanuel/bootstrap4-gulp-starter-template.git',
-      branch: 'master',
-      message: 'Automated push of contents via gulp'
-    }));
 }
 
 // ------------ OPTIMIZATION TASKS -------------
@@ -251,13 +270,13 @@ function renameSources() {
     .pipe(dest('dist/'));
 }
 
-// CONCATINATE JS SCRIPTS
+// CONCATENATE JS SCRIPTS
 function concatScripts() {
-  console.log('---------------CONCATINATE SCRIPTS---------------');
+  console.log('---------------CONCATENATE SCRIPTS---------------');
   return src([
       'src/assets/vendor/js/jquery.js',
-      'src/assets/vendor/js/popper.js',
-      'src/assets/vendor/js/bootstrap.js',
+      //'src/assets/vendor/js/popper.js',
+      //'src/assets/vendor/js/bootstrap.js',
       'src/assets/js/*'
     ])
     .pipe(sourcemaps.init())
@@ -290,7 +309,6 @@ function minifyCss() {
     .pipe(sourcemaps.init())
     .pipe(concat('main.css'))
     .pipe(sourcemaps.write('./'))
-    .pipe(cssmin())
     .pipe(rename('main.min.css'))
     .pipe(dest('dist/assets/css'));
 }
@@ -301,8 +319,11 @@ exports.linters = series(htmlLint, scssLint, jsLint);
 // RUN ACCESSIILITY CHECK
 exports.accessibility = HTMLAccessibility;
 
+//SETUP
+exports.setup = series(setupBulma);
+
 // DEV
-exports.dev = series(cleanDist, copyFont, jsVendor, cssVendor, copyImages, compileHTML, compileJS, resetPages, prettyHTML, compileSCSS, browserSyncInit, watchFiles);
+exports.dev = series(cleanDist, copyFont, jsVendor, cssVendor, copyImages, compileHTML, compileJS, resetPages, prettyHTML, compileSASS, compileSCSS, browserSyncInit, watchFiles);
 
 // PROD
-exports.prod = series(cleanDist, compileSCSS, copyFont, copyImages, compileHTML, concatScripts, minifyScripts, minifyCss, renameSources, prettyHTML, generateDocs, browserSyncInit);
+exports.prod = series(cleanDist, compileSASS, compileSCSS, copyFont, copyImages, compileHTML, concatScripts, minifyScripts, minifyCss, renameSources, prettyHTML, generateDocs, browserSyncInit);
