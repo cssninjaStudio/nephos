@@ -28,7 +28,7 @@ To use this template, your computer needs:
 
 ### Installing:
 
-- Install all node packages: `npm install`
+- Install all node packages: `npm ci` (because npm install will generate security vulnerabilities)
 - Run `gulp dev`
 - Your site is now viewable at this URL: http://localhost:3000
 - To create compressed, production-ready assets run `gulp prod`. This will delete everything in the dist folder and recreate all of your complied files. Never make updates directly into the dist folder as these files get overridden each time. Note: The dist folder is not kept in source control.

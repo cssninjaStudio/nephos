@@ -43,9 +43,6 @@ Temporary Items
 ### Node modules ###
 node_modules/
 
-### Package lock ###
-package-lock.json
-
 ### Edito files ###
 .editorconfig
 
