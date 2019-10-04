@@ -1,0 +1,164 @@
+---
+layout: default
+title: Modern Bulma Ecommerce App and Dashboard
+---
+
+{{> pageloader}}
+
+{{> mobile-navbar-user}}
+
+<!-- Main Sidebar-->
+<div class="main-sidebar">
+    <div class="sidebar-brand">
+        <a href="home.html"><img src="assets/img/logo/nephos.svg" alt=""></a>
+    </div>
+    <div class="sidebar-inner">
+        <ul class="icon-menu">
+            <!-- Shop sidebar trigger -->
+            {{> sidebar-item-home}}
+            <!-- Cart sidebar trigger -->
+            {{> sidebar-item-cart}}
+            <!-- Search trigger -->
+            {{> sidebar-item-search}}
+            <!-- Mobile mode trigger -->
+            {{> sidebar-item-mode}}
+        </ul>
+
+        <!-- User account -->
+        <ul class="bottom-menu is-hidden-mobile">
+            {{> sidebar-item-guest}}
+        </ul>
+    </div>
+</div>
+<!-- /Main Sidebar-->
+
+<!-- FAB -->
+{{> flying-button}}
+<!-- /FAB -->
+
+<!-- Categories Right quickview -->
+{{> quickview-categories}}
+
+<!-- Shop quickview -->
+{{> quickview-main-guest}}
+
+<!-- Cart quickview -->
+{{> quickview-cart-empty}}
+
+<!-- Main wrapper -->
+<div class="shop-wrapper">
+
+    {{> search-overlay}}
+
+    <!-- Main section -->
+    <div class="section">
+        <!-- Container -->
+        <div class="container">
+
+            <!-- Authentication Layout -->
+            <div class="columns account-header is-auth">
+                <div class="column is-10 is-offset-1 is-tablet-landscape-padded">
+                    <!-- Title -->
+                    <div class="auth-title">
+                        <h2>LOGIN</h2>
+                        <a href="index.html" class="button feather-button is-small primary-button upper-button raised is-hidden-mobile">
+                            <span>Home</span>
+                        </a>
+                        <img class="brand-filigrane" src="assets/img/logo/nephos-greyscale.svg" alt="">
+                    </div>
+                    <!-- Card -->
+                    <div class="flat-card is-auto is-auth-form">
+                        <div class="columns is-gapless is-flex-mobile">
+                            <!-- Image Columns -->
+                            <div class="column is-6 has-text-centered image-column is-padded">
+                                <div class="store-wrapper">
+                                    <img src="assets/img/logo/nephos-white.svg" alt="">
+                                    <div class="title">
+                                        Nephos
+                                    </div>
+                                    <div class="subtitle">An unforgetable Customer Experience</div>
+                                </div>
+                                <div class="nephos-overlay"></div>
+                            </div>
+                            <!-- Login/Register form -->
+                            <div class="column is-6 is-mobile-padded">
+
+                                <div class="tabs-wrapper animated-tabs">
+                                    <!-- Tabs -->
+                                    <div class="tabs is-form-tabs">
+                                        <ul>
+                                            <li class="is-active" data-tab="login"><a>Login</a></li>
+                                            <li data-tab="register"><a>Register</a></li>
+                                        </ul>
+                                    </div>
+                                    <!-- Login form -->
+                                    <div id="login" class="navtab-content is-active">
+                                        <form>
+                                            <!-- Form Control -->
+                                            <div class="control">
+                                                <label class="auth-label">Email*</label>
+                                                <input type="email" class="input" placeholder="">
+                                            </div>
+                                            <!-- Form Control -->
+                                            <div class="control">
+                                                <label class="auth-label">Password*</label>
+                                                <input type="password" class="input" placeholder="">
+                                            </div>
+                                            <!-- Form Control -->
+                                            <div class="control">
+                                                <label class="checkbox-wrap is-small">
+                                                    <input id="house" type="checkbox" class="d-checkbox" checked>
+                                                    <span></span>
+                                                    <small>Remember me?</small>
+                                                </label>
+                                            </div>
+                                            <!-- Form Submit -->
+                                            <div class="button-wrapper">
+                                                <button type="submit" class="button feather-button is-small primary-button upper-button raised">
+                                                    <span>Login</span>
+                                                </button>
+                                                <a class="forgotten">Forgot Password ?</a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <!-- Register form -->
+                                    <div id="register" class="navtab-content">
+                                        <form>
+                                            <!-- Form Control -->
+                                            <div class="control">
+                                                <label class="auth-label">Email*</label>
+                                                <input type="email" class="input" placeholder="">
+                                            </div>
+                                            <!-- Form Control -->
+                                            <div class="control">
+                                                <label class="auth-label">Password*</label>
+                                                <input type="password" class="input" placeholder="">
+                                            </div>
+                                            <!-- Form Control -->
+                                            <div class="control">
+                                                <label class="auth-label">Confirm Password*</label>
+                                                <input type="password" class="input" placeholder="">
+                                            </div>
+                                            <!-- Form Submit -->
+                                            <div class="button-wrapper">
+                                                <button type="submit" class="button feather-button is-small primary-button upper-button raised">
+                                                    <span>Register</span>
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Login/Register form -->
+                        </div>
+                    </div>
+                    <!-- Card -->
+                </div>
+            </div>
+            <!-- Authentication Layout -->
+        </div>
+        <!-- /Container -->
+    </div>
+    <!-- /Main section -->
+</div>
+<!-- /Main wrapper -->

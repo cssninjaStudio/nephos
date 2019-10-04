@@ -1,0 +1,169 @@
+/*! _auth.scss | Nephos | CSS Ninja */
+
+/* ==========================================================================
+Login / Register page styles
+========================================================================== */
+
+/***
+TABLE OF CONTENTS
+=============================================================================
+0. Authentication header
+1. Authentication card
+=============================================================================
+***/
+
+/* ==========================================================================
+0. Authentication header
+========================================================================== */
+
+.auth-title {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+    h2 {
+        font-family: 'Raleway', sans-serif;
+        font-size: 1.6rem;
+        font-weight: 400 !important;
+        text-transform: uppercase;
+    }
+    h3 {
+        font-weight: 500;
+        color: $primary;
+    }
+    &.is-centered {
+        justify-content: center;
+    }
+    .brand-filigrane {
+        position: absolute;
+        top: -15px;
+        left: -25px;
+        height: 68px;
+        opacity: 0.4;
+    }
+}
+
+/* ==========================================================================
+1. Authentication card
+========================================================================== */
+
+//Card
+.flat-card {
+    //Form modifier
+    &.is-auth-form {
+        min-height: 445px !important;
+        .form-title h3 {
+            font-size: 1.2rem;
+            font-weight: 300 !important;
+            text-transform: uppercase;
+            padding-bottom: 20px;
+        }
+        //Modifiers
+        .column {
+            &.is-padded {
+                padding: 40px !important;
+            }
+            &.is-mobile-padded {
+                padding: 40px;
+            }
+            &.is-light-padded {
+                padding: 15px 40px !important;
+            }
+            &.image-column {
+                position: relative;
+                background-image: url('http://via.placeholder.com/1600x1200');
+                background-size: cover;
+                background-repeat: no-repeat;
+                .nephos-overlay {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                    background-color: rgba(43, 56, 76, 0.95);
+                    z-index: 0;
+                }
+            }
+        }
+        //Wrapper
+        .store-wrapper {
+            padding: 120px 0;
+            position: relative;
+            z-index: 2;
+            //Title
+            .title {
+                font-size: 1.6rem;
+                letter-spacing: 3px;
+                color: $white;
+                padding-top: 10px;
+                text-transform: uppercase;
+                font-weight: 300;
+            }
+            //Subtitle
+            .subtitle {
+                font-size: .75rem;
+                color: $white;
+                padding: 10px 0;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+            }
+            //Helios Logo
+            img {
+                height: 75px;
+                width: 75px;
+                &.logo {
+                    border-radius: 0;
+                    height: 75px;
+                    width: auto;
+                }
+            }
+        }
+        //Tabs
+        .is-form-tabs {
+            margin-bottom: 20px;
+            li {
+                a {
+                    color: $placeholder;
+                    font-family: 'Raleway', sans-serif;
+                    text-transform: uppercase;
+                    font-size: 85%;
+                }
+                &.is-active {
+                    a {
+                        color: $primary;
+                    }
+                }
+            }
+        }
+        //Label
+        .auth-label {
+            font-weight: 500;
+            color: $dark-text;
+            font-size: 90%;
+            margin: 5px 0;
+            display: block;
+        }
+        //Input
+        .input {
+            box-shadow: none !important;
+        }
+        //Form control
+        .control {
+            margin-bottom: 10px;
+        }
+        //Checkbox
+        .checkbox-wrap {
+            padding: 0 !important;
+            display: flex;
+            align-items: center;
+            small {
+                font-size: .8rem !important;
+            }
+        }
+        //Forgot password Link
+        .forgotten {
+            font-size: .85rem;
+        }
+    }
+}

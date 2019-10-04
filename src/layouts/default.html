@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <!-- Required meta tags always come first -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{title}} - BULMA GULP 4 STARTER TEMPLATE</title>
-    <!-- build:css -->
-    <link rel="stylesheet" href="{{root}}assets/vendor/css/font-awesome5.css">
-    <link rel="stylesheet" href="{{root}}assets/css/bulma.css">
-    <link rel="stylesheet" href="{{root}}assets/css/main.css">
-    <!-- endbuild -->
-</head>
+        <title> Nephos :: {{title}}</title>
+        <link rel="icon" type="image/png" href="assets/img/favicon.png" />
 
-<body>
-    {{> navigation}}
-    {{> body}}
-    {{> footer}}
-</body>
+        <!--Core CSS -->
+        <link rel="stylesheet" href="{{root}}assets/css/app.css">
+        <link rel="stylesheet" href="{{root}}assets/css/bulma.css">
+        <link rel="stylesheet" href="{{root}}assets/css/main.css">
 
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:100,400" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500" rel="stylesheet">
+
+    </head>
+    <body>
+        {{> body}}
+        {{> shop-scripts}}
+    </body>
 </html>

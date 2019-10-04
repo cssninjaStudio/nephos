@@ -1,29 +1,56 @@
-@charset 'UTF-8';
+/*! core.scss | Nephos | CSS Ninja */
 
-// 0. Import Boubon
-@import 'bourbon';
+/* ==========================================================================
+Nephos core
+========================================================================== */
 
-// 1. Configuration and helpers
-@import
-  'abstracts/variables';
+/***
+TABLE OF CONTENTS
+=============================================================================
+0. CSS Imports
+1. Resets and base setup
+=============================================================================
+***/
 
-// 3. Base stuff
-@import
-  'base/base',
-  'base/fonts',
-  'base/typography',
-  'base/helpers';
+/* ==========================================================================
+0. CSS Imports
+========================================================================== */
 
-// 4. Layout-related sections
-@import
-  'layout/header',
-  'layout/footer';
+@import "base/theme-default";
+@import "base/colors";
+@import "base/fonts";
+@import "layout/sidebar";
+@import "components/quickview";
+@import "components/cards";
+@import "layout/layout";
+@import "pages/categories";
+@import "pages/account";
+@import "pages/cart";
+@import "pages/orders";
+@import "pages/product";
+@import "pages/checkout";
+@import "pages/auth";
+@import "components/buttons";
+@import "pages/search";
+@import "layout/filters";
+@import "components/checkboxes";
+@import "components/forms";
+@import "pages/invoice";
+@import "components/pageloader";
+@import "pages/elements";
+@import "base/utils";
+@import "layout/responsive";
 
-// 5. Components
-@import
-  'components/button';
+$slick-font-path: "/assets/fonts/";
+$slick-loader-path: "/assets/fonts/";
 
-// 6. Page-specific styles
-@import
-  'pages/home';
+@import "../../../node_modules/slick-carousel/slick/slick.scss";
+@import "../../../node_modules/slick-carousel/slick/slick-theme.scss";
 
+/* ==========================================================================
+1. Resets and base setup
+========================================================================== */
+
+a {
+    color: $primary;
+}

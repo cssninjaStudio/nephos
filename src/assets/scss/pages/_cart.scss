@@ -1,0 +1,234 @@
+/*! _cart.scss | Nephos | CSS Ninja */
+
+/* ==========================================================================
+Cart page styles
+========================================================================== */
+
+/***
+TABLE OF CONTENTS
+=============================================================================
+0. Cart Summary
+1. Cart Card
+2. Empty Cart Card
+=============================================================================
+***/
+
+/* ==========================================================================
+0. Cart Summary
+========================================================================== */
+
+.cart-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    //Total amount
+    .cart-total {
+        font-size: 1.6rem;
+        font-weight: 500;
+        &:before {
+            content: '$';
+            font-size: 60%;
+            position: relative;
+            left: 8px;
+        }
+        small {
+            display: block;
+            font-size: .8rem;
+            color: $primary;
+            text-align: right;
+            span {
+                text-transform: uppercase;
+                font-weight: 600;
+                font-family: 'Raleway', sans-serif;
+                font-size: .7rem;
+            }
+        }
+    }
+}
+
+/* ==========================================================================
+1. Cart Card
+========================================================================== */
+
+.cart-card {
+    padding: 40px;
+    //Cart content
+    .cart-content {
+        //Cart item
+        li {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            img {
+                display: block;
+                height: 80px;
+            }
+            span {
+                display: block;
+            }
+            //Product meta
+            .product-info {
+                padding: 0 30px;
+                width: 220px;
+                span {
+                    &:first-child {
+                        color: $dark-text;
+                        font-family: 'Raleway', sans-serif;
+                        font-weight: 600;
+                        font-size: .9rem;
+                    }
+                    &:nth-child(2) {
+                        font-size: 80%;
+                        text-transform: uppercase;
+                        color: $muted-grey-bold;
+                        font-weight: 500;
+                    }
+                }
+            }
+            //Product price
+            .product-price {
+                span {
+                    margin-left: 30px;
+                    &:first-child {
+                        font-weight: 600;
+                        font-size: .75rem;
+                        text-transform: uppercase;
+                        color: $dark-text;
+                    }
+                    &:nth-child(2) {
+                        font-size: 1.2rem;
+                        font-weight: 500;
+                        color: $primary;
+
+                        width: 100px;
+                        &:before {
+                            content: '$';
+                            font-size: 70%;
+                        }
+                    }
+                }
+            }
+            //Quantity
+            .product-quantity {
+                margin: 0 30px;
+                span {
+                    font-weight: 600;
+                    font-size: .75rem;
+                    text-transform: uppercase;
+                    color: $dark-text;
+                }
+                .control {
+                    max-width: 70px;
+                    input {
+                        max-height: 28px;
+                    }
+                }
+            }
+            //Actions
+            .action {
+                margin-left: auto;
+                .action-link {
+                    position: relative;
+                    height: 36px;
+                    width: 36px;
+                    max-height: 36px;
+                    margin: 0 2px;
+                    display: inline-block;
+                    svg {
+                        transition: all .3s;
+                        transform: rotate(0);
+                        stroke-width: 1.2px;
+                    }
+                    a {
+                        color: grey;
+                        height: 36px;
+                        width: 36px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        border: 1.6px dashed $muted-grey;
+                        border-radius: 50%;
+                        max-height: 36px;
+                        transition: all .3s;
+                        span {
+                            font-size: 90% !important;
+                            padding-left: 5px;
+                        }
+                        svg {
+                            height: 18px;
+                            width: 18px;
+                            transition: all .3s;
+                        }
+                        &:hover {
+                            border: 1.8px solid $primary;
+                            svg {
+                                stroke: $primary;
+                            }
+                        }
+                    }
+                    &.is-like:hover, &.is-like.is-active {
+                        a {
+                            border: 1.8px solid $red;
+                        }
+                        svg {
+                            stroke: $red;
+                            fill: $red;
+                        }
+                    }
+                    &.is-remove:hover {
+                        a {
+                            border: 1.8px solid $orange;
+                        }
+                        svg {
+                            stroke: $orange;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* ==========================================================================
+2. Empty Cart Card
+========================================================================== */
+
+.empty-cart-card {
+    padding: 40px;
+    border-radius: 6px;
+    .empty-cart {
+        h3, img {
+            display: block;
+        }
+        h3 {
+            font-family: 'Raleway', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            padding-bottom: 40px;
+            color: $muted-grey;
+        }
+        img {
+            max-height: 90px;
+            max-width: 90px;
+            margin: 0 auto;
+        }
+        a {
+            margin-top: 20px;
+            color: $primary;
+            border: 1.4px solid $primary;
+            transition: all .4s;
+            &:hover {
+                //opacity: 0.4;
+                color: rgba(0, 35, 255, 0.4);
+                border-color: rgba(0, 35, 255, 0.4);
+            }
+        }
+        small {
+            display: block;
+            color: $muted-grey;
+            font-size: 80%;
+            margin-top: 10px;
+        }
+    }
+}

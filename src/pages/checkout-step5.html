@@ -1,0 +1,87 @@
+---
+layout: default
+title: Modern Bulma Ecommerce App and Dashboard
+---
+
+{{> pageloader}}
+
+<!-- Main Sidebar-->
+<div class="main-sidebar">
+    <div class="sidebar-brand">
+        <a href="home.html"><img src="assets/img/logo/nephos.svg" alt=""></a>
+    </div>
+    <div class="sidebar-inner">
+        <ul class="icon-menu">
+            <!-- Shop sidebar trigger -->
+            {{> sidebar-item-home}}
+            <!-- Cart sidebar trigger -->
+            {{> sidebar-item-cart}}
+            <!-- Search trigger -->
+            {{> sidebar-item-search}}
+            <!-- Mobile mode trigger -->
+            {{> sidebar-item-mode}}
+        </ul>
+
+        <!-- User account -->
+        <ul class="bottom-menu is-hidden-mobile">
+            {{> sidebar-item-logout}}
+        </ul>
+    </div>
+</div>
+<!-- /Main Sidebar-->
+
+<!-- Shop quickview -->
+{{> quickview-main-user}}
+
+<!-- Cart quickview -->
+{{> quickview-cart-empty}}
+
+
+<!-- Action Bar -->
+<div class="action-bar is-centered">
+    <div class="steps-wrapper">
+        <ol class="step-list">
+            <li class="active"></li>
+            <li class="active"></li>
+            <li class="active"></li>
+            <li class="active"></li>
+        </ol>
+    </div>
+</div>
+
+
+<!-- Main wrapper -->
+<div class="shop-wrapper">
+
+    {{> search-overlay}}
+
+    <!-- Main section -->
+    <div class="section">
+        <!-- Container -->
+        <div class="container">
+
+            <!-- Checkout step 5 -->
+            <div class="columns account-header">
+                <div class="column is-8 is-offset-2 checkout-wrapper has-text-centered is-invoice-landscape-padded">
+                    <!-- Title -->
+                    <div class="checkout-title is-centered">
+                        <h2>CHECKOUT COMPLETE</h2>
+                        <img class="brand-filigrane is-centered" src="assets/img/logo/nephos-greyscale.svg" alt="">
+                    </div>
+                    <!-- Card -->
+                    <div class="flat-card is-auto thanks-card">
+                        <img src="assets/img/icons/order.svg" alt="">
+                        <div class="card-heading">Order Placed !</div>
+                        <p>You are done ordering your products. We are very happy to count you amongst our customers. Use our tracking tools to manage your order</p>
+                        <div class="button-wrap">
+                            <a href="orders.html" class="button feather-button secondary-button is-bold raised rounded">Track Order</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Container -->
+    </div>
+    <!-- /Main section -->
+</div>
+<!-- /Main wrapper -->

@@ -42,12 +42,6 @@ function setupBulma() {
     .pipe(dest('src/assets/sass/'));
 }
 
-function getJsPlugins() {
-  console.log('---------------COPYING JS FROM PLUGINS---------------');
-  return src([nodepath + 'bulma/*.sass', nodepath + 'bulma/**/*.sass'])
-    .pipe(dest('src/assets/sass/'));
-}
-
 // ------------ DEVELOPMENT TASKS -------------
 
 // COMPILE BULMA SASS INTO CSS
@@ -68,7 +62,7 @@ function compileSASS() {
 // COMPILE SCSS INTO CSS
 function compileSCSS() {
   console.log('---------------COMPILING SCSS---------------');
-  return src(['src/assets/scss/main.scss'])
+  return src(['src/assets/scss/main.scss', 'src/assets/scss/demo.scss'])
     .pipe(sass({
       outputStyle: 'compressed',
       sourceComments: 'map',
@@ -103,7 +97,12 @@ function compileHTML() {
 // COPY CUSTOM JS
 function compileJS() {
   console.log('---------------COMPILE CUSTOM.JS---------------');
-  return src(['src/assets/js/custom.js'])
+  return src([
+      'src/assets/js/custom.js',
+      'src/assets/js/nephos.js',
+      'src/assets/js/demo.js',
+      'src/assets/js/elements.js',
+    ])
     .pipe(babel())
     .pipe(dest('dist/assets/js/'))
     .pipe(browserSync.stream());
@@ -177,10 +176,11 @@ function copyImages() {
   console.log('---------------OPTIMIZING IMAGES---------------');
   return src('src/assets/img/**/*.+(png|jpg|jpeg|gif|svg)')
     .pipe(newer('dist/assets/img/'))
-    .pipe(imagemin())
+    //.pipe(imagemin())
     .pipe(dest('dist/assets/img/'))
     .pipe(browserSync.stream());
 }
+
 
 // PLACES FONT FILES IN THE DIST FOLDER
 function copyFont() {
@@ -189,6 +189,52 @@ function copyFont() {
       'src/assets/font/*',
     ])
     .pipe(dest('dist/assets/fonts'))
+    .pipe(browserSync.stream());
+}
+
+// CONCATENATE JS PLUGINS
+function concatPlugins() {
+  console.log('---------------CONCATENATE JS PLUGINS---------------');
+  return src([
+    nodepath + 'jquery/dist/jquery.min.js',
+    nodepath + 'feather-icons/dist/feather.min.js',
+    nodepath + 'typed.js/lib/typed.min.js',
+    nodepath + 'scrollreveal/dist/scrollreveal.min.js',
+    nodepath + 'ocanvas/build/dist/latest/ocanvas.min.js',
+    nodepath + 'slick-carousel/slick/slick.min.js',
+    nodepath + '@fengyuanchen/datepicker/dist/datepicker.min.js',
+    nodepath + 'chosen-js/chosen.jquery.min.js',
+    nodepath + 'izitoast/dist/js/iziToast.min.js',
+    nodepath + 'webui-popover/dist/jquery.webui-popover.min.js',
+    nodepath + 'zoom-vanilla.js/dist/zoom-vanilla.min.js',
+    nodepath + 'scrollreveal/dist/scrollreveal.min.js',
+    nodepath + 'card/dist/jquery.card.js',
+    'src/assets/vendor/js/*',
+  ])
+    .pipe(sourcemaps.init())
+    .pipe(concat('app.js'))
+    .pipe(sourcemaps.write('./'))
+    .pipe(dest('dist/assets/js'))
+    .pipe(browserSync.stream());
+}
+
+// CONCATENATE CSS PLUGINS
+function concatCssPlugins() {
+  console.log('---------------CONCATENATE CSS PLUGINS---------------');
+  return src([
+    nodepath + 'webui-popover/dist/jquery.webui-popover.min.css',
+    nodepath + 'easy-autocomplete/dist/easy-autocomplete.min.css',
+    //nodepath + 'slick-carousel/slick/slick.css',
+    //nodepath + 'slick-carousel/slick/slick-theme.css',
+    nodepath + 'izitoast/dist/css/iziToast.min.css',
+    nodepath + 'zoom-vanilla.js/css/zoom.css',
+    nodepath + 'card/dist/card.css',
+    'src/assets/vendor/css/*',
+  ])
+    .pipe(sourcemaps.init())
+    .pipe(concat('app.css'))
+    .pipe(sourcemaps.write('./'))
+    .pipe(dest('dist/assets/css'))
     .pipe(browserSync.stream());
 }
 
@@ -207,6 +253,7 @@ function cssVendor() {
   console.log('---------------COPY CSS VENDOR FILES INTO DIST---------------');
   return src([
       'src/assets/vendor/css/*',
+
     ])
     .pipe(dest('dist/assets/vendor/css'))
     .pipe(browserSync.stream());
@@ -323,7 +370,7 @@ exports.accessibility = HTMLAccessibility;
 exports.setup = series(setupBulma);
 
 // DEV
-exports.dev = series(cleanDist, copyFont, jsVendor, cssVendor, copyImages, compileHTML, compileJS, resetPages, prettyHTML, compileSASS, compileSCSS, browserSyncInit, watchFiles);
+exports.dev = series(cleanDist, copyFont, jsVendor, cssVendor, copyImages, compileHTML, concatPlugins, concatCssPlugins, compileJS, resetPages, prettyHTML, compileSASS, compileSCSS, browserSyncInit, watchFiles);
 
 // PROD
 exports.prod = series(cleanDist, compileSASS, compileSCSS, copyFont, copyImages, compileHTML, concatScripts, minifyScripts, minifyCss, renameSources, prettyHTML, generateDocs, browserSyncInit);

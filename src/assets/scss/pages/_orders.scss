@@ -1,0 +1,384 @@
+/*! _orders.scss | Nephos | CSS Ninja */
+
+/* ==========================================================================
+Orders pages styles
+========================================================================== */
+
+/***
+TABLE OF CONTENTS
+=============================================================================
+0. Order Cards
+1. Order List Cards
+=============================================================================
+***/
+
+/* ==========================================================================
+0. Order Cards
+========================================================================== */
+
+.order-card {
+    position: relative;
+    padding: 20px;
+    overflow: visible;
+    //Meta info
+    .order-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 20px;
+        span {
+            display: block;
+            a {
+                color: $dark-text;
+                font-size: 90%;
+                font-weight: 500;
+                &:hover {
+                    color: $primary;
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+    //Circle Progress
+    .circle-chart-wrapper {
+        text-align: center;
+    }
+    .circle-chart-circle {
+        animation: circle-chart-fill 2s reverse;
+        transform: rotate(-90deg);
+        transform-origin: center;
+    }
+    //Icon
+    .chart-icon {
+        position: absolute;
+        top: 45%;
+        left: 0;
+        width: 100%;
+        height: 40px;
+        svg {
+            position: relative;
+            width: 30px;
+            height: 30px;
+            stroke: $muted-grey
+        }
+    }
+    //Ring label
+    .ring-title span {
+        font-size: 1rem;
+        color: $title-grey;
+    }
+    //Tags
+    .tag {
+        position: relative;
+        display: flex !important;
+        &.is-primary {
+            background: $primary !important;
+            color: $white !important;
+        }
+        &.is-success {
+            background: $green !important;
+            color: $white !important;
+        }
+        &.is-warning {
+            background: $orange !important;
+            color: $white !important;
+        }
+        &.is-danger {
+            background: $red !important;
+            color: $white !important;
+        }
+    }
+    //circle chart animation
+    @keyframes circle-chart-fill {
+        to { stroke-dasharray: 0 100; }
+    }
+}
+
+/* ==========================================================================
+1. Order List Cards
+========================================================================== */
+
+.list-card {
+    .list-card-header {
+        font-family: 'Raleway', sans-serif;
+        font-weight: 500;
+        padding: 15px 20px;
+        background: $smoke-white;
+        border-bottom: 1px solid $fade-grey;
+        color: $muted-grey-bold;
+    }
+    //List
+    ul {
+        //List Item
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            color: $muted-grey;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border-top: 1px solid $fade-grey;
+            &:first-child {
+                border-top: none;
+            }
+            &:hover {
+                background: $light-grey;
+                color: $dark-text;
+                .order-indicator {
+                    opacity: 0.8;
+                }
+            }
+            //Active State
+            &.is-active {
+                color: $primary;
+                .order-indicator {
+                    opacity: 1;
+                }
+            }
+            //Indicator
+            .order-indicator {
+                height: 8px;
+                width: 8px;
+                border-radius: 50%;
+                opacity: 0;
+                &.is-progress {
+                    background: $primary;
+                }
+                &.is-preparing {
+                    background: $green;
+                }
+                &.is-warning {
+                    background: $orange;
+                }
+                &.is-issue {
+                    background: $red;
+                }
+            }
+        }
+    }
+}
+
+//List Card
+.order-list-card {
+    padding: 40px;
+    //Progress block
+    .progress-block {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        h3 {
+            font-size: .85rem;
+            font-weight: 500;
+        }
+        //Progress bar
+        progress {
+            max-width: 120px;
+            //Color Modifiers
+            &.primary-progress {
+                &::-webkit-progress-value {
+                    background-color: $primary;
+                }
+                &::-moz-progress-bar {
+                    background-color: $primary;
+                }
+                &::-ms-fill {
+                    background-color: $primary;
+                }
+            }
+            &.success-progress {
+                &::-webkit-progress-value {
+                    background-color: $green;
+                }
+                &::-moz-progress-bar {
+                    background-color: $green;
+                }
+                &::-ms-fill {
+                    background-color: $green;
+                }
+            }
+            &.warning-progress {
+                &::-webkit-progress-value {
+                    background-color: $orange;
+                }
+                &::-moz-progress-bar {
+                    background-color: $orange;
+                }
+                &::-ms-fill {
+                    background-color: $orange;
+                }
+            }
+            &.danger-progress {
+                &::-webkit-progress-value {
+                    background-color: $red;
+                }
+                &::-moz-progress-bar {
+                    background-color: $red;
+                }
+                &::-ms-fill {
+                    background-color: $red;
+                }
+            }
+        }
+    }
+    //Order block layout
+    .order-block {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 10px 0;
+        img {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+        }
+        //handled by
+        .handled-by, .status, .date, .total {
+            margin: 0 10px;
+            div:first-child {
+                font-size: .65rem;
+                text-transform: uppercase;
+                font-weight: 600;
+            }
+            div:nth-child(2) {
+                color: $muted-grey-bold;
+                &.is-date {
+                    font-size: .85rem;
+                    font-weight: 500;
+                }
+                &.is-price {
+                    font-size: 1rem;
+                    font-weight: 500;
+                    color: $primary;
+                    &:before {
+                        content: '$';
+                        font-size: 80%;
+                        position: relative;
+                        top: -3px;
+                    }
+                }
+            }
+        }
+        //Total
+        .total {
+            .tag {
+                margin: 0 5px;
+                font-weight: 400;
+            }
+        }
+        //Icon
+        .order-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 40px;
+            width: 40px;
+            svg {
+                stroke: $muted-grey;
+                stroke-width: 1.4px;
+                height: 20px;
+                width: 20px;
+            }
+        }
+        //Tag
+        .tag {
+            &.primary-tag {
+                background: $primary;
+                color: $white;
+            }
+            &.success-tag {
+                background: $green;
+                color: $white;
+            }
+            &.warning-tag {
+                background: $orange;
+                color: $white;
+            }
+            &.danger-tag {
+                background: $red;
+                color: $white;
+            }
+        }
+    }
+    //Table
+    .table-block {
+        margin-top: 20px;
+        table {
+            border-collapse: collapse;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            table-layout: fixed;
+            th {
+                font-size: .65rem !important;
+                font-weight: 700;
+                color: $dark-text;
+            }
+            td {
+                font-size: .75rem;
+                font-weight: 600;
+                color: $muted-grey-bold;
+                padding: .825rem .625em !important;
+            }
+        }
+        table tr {
+            background: $smoke-white;
+            border-bottom: 1px solid $fade-grey;
+            padding: .35em;
+        }
+        table th,
+        table td {
+            padding: .625em;
+            text-align: center;
+        }
+        table th {
+            font-size: .85em;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+        //responsive settings
+        @media screen and (max-width: 600px) {
+            table {
+                border: 0;
+            }
+            table caption {
+                font-size: 1.3em;
+            }
+            table thead {
+                border: none;
+                clip: rect(0 0 0 0);
+                height: 1px;
+                margin: -1px;
+                overflow: hidden;
+                padding: 0;
+                position: absolute;
+                width: 1px;
+            }
+            table tr {
+                border-bottom: 3px solid #ddd;
+                display: block;
+                margin-bottom: .625em;
+            }
+            table td {
+                border-bottom: 1px solid #ddd;
+                display: block;
+                font-size: .8em;
+                text-align: right;
+            }
+            table td:before {
+                content: attr(data-label);
+                float: left;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+            table td:last-child {
+                border-bottom: 0;
+            }
+        }
+    }
+    .button-block {
+        margin-top: 20px;
+    }
+}

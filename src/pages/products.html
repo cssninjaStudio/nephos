@@ -1,0 +1,1020 @@
+---
+layout: default
+title: Modern Bulma Ecommerce App and Dashboard
+---
+
+{{> pageloader}}
+
+{{> mobile-navbar-user}}
+
+<!-- Main Sidebar-->
+<div class="main-sidebar">
+    <div class="sidebar-brand">
+        <a href="home.html"><img src="assets/img/logo/nephos.svg" alt=""></a>
+    </div>
+    <div class="sidebar-inner">
+        <ul class="icon-menu">
+            <!-- Shop sidebar trigger -->
+            {{> sidebar-item-home}}
+            <!-- Cart sidebar trigger -->
+            {{> sidebar-item-cart-active}}
+            <!-- Search trigger -->
+            {{> sidebar-item-search}}
+            <!-- Shop Filters -->
+            {{> sidebar-item-filters}}
+            <!-- Mobile mode trigger -->
+            {{> sidebar-item-mode}}
+        </ul>
+
+        <!-- User account -->
+        <ul class="bottom-menu is-hidden-mobile">
+            {{> sidebar-item-logout}}
+        </ul>
+    </div>
+</div>
+<!-- /Main Sidebar-->
+
+<!-- FAB -->
+{{> flying-button}}
+<!-- /FAB -->
+
+<!-- Categories Right quickview -->
+{{> quickview-categories}}
+
+<!-- Shop quickview -->
+{{> quickview-main-user}}
+
+<!-- Cart quickview -->
+{{> quickview-cart-full}}
+
+<!-- Filters quickview -->
+{{> quickview-filters}}
+
+
+<!-- Main wrapper -->
+<div class="shop-wrapper">
+
+    {{> search-overlay}}
+
+    <!-- Main section -->
+    <div class="section">
+        <!-- Container -->
+        <div class="container">
+
+            <!-- House products -->
+            <div class="columns category-header">
+                <div class="column is-10 is-offset-1 is-tablet-landscape-padded">
+                    <!-- Title -->
+                    <div class="category-title is-product-category">
+                        <h2>HOUSE</h2>
+                        <div class="category-icon is-hidden-mobile">
+                            {{> house}}
+                        </div>
+                    </div>
+
+                    <!-- Controls -->
+                    <div class="listing-controls">
+                        <div class="layout-controls">
+                            <a href="products.html"><span class="is-active"><i data-feather="grid"></i></span></a>
+                            <a href="products-list.html"><span><i data-feather="list"></i></span></a>
+                        </div>
+                        <!-- Sort -->
+                        <div class="sort-box">
+                            <div class="sort-box-select">
+                                <select data-placeholder="Default order" class="chosen-select-no-single">
+                                    <option>Default Sort</option>	
+                                    <option>Best Sellers</option>
+                                    <option>Highest Rated</option>
+                                    <option>Best Deals</option>
+                                    <option>Newest Products</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Controls -->
+
+                    <!-- Product grid -->
+                    <div class="columns is-product-grid is-multiline">
+                        <!-- Product -->
+                        <div class="column is-3">
+                            <div class="flat-card">
+                                <!-- Product zoomable image -->
+                                <div class="image">
+                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                </div>
+                                <!-- Product meta -->
+                                <div class="product-info has-text-centered">
+                                    <a href="product.html"><h3 class="product-name">Red seat</h3></a>
+                                    <p class="product-description">Lorem ipsum sit dolor amet</p>
+                                    <p class="product-price">
+                                        45,00
+                                    </p>
+                                </div>
+                                <!-- Product actions -->
+                                <div class="actions">
+                                    <div class="add"><i data-feather="shopping-cart" class="has-simple-popover" data-content="Add to Cart" data-placement="top"></i></div>
+                                    <div class="like"><i data-feather="heart" class="has-simple-popover" data-content="Add to Wishlist" data-placement="top"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Product -->
+                        <div class="column is-9">
+                            <div class="flat-card is-long">
+                                <div class="left-image is-md">
+                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                </div>
+                                <div class="product-info">
+                                    <a href="product.html"><h3 class="product-name featured">White table</h3></a>
+                                    <p class="product-description">Lorem ipsum sit dolor amet</p>
+                                    <p class="product-price">
+                                        350,49
+                                    </p>
+                                </div>
+
+                                <div class="actions">
+                                    <div class="add"><i data-feather="shopping-cart" class="has-simple-popover" data-content="Add to Cart" data-placement="top"></i></div>
+                                    <div class="like"><i data-feather="heart" class="has-simple-popover" data-content="Add to Wishlist" data-placement="top"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Product -->
+                        <div class="column is-3">
+                            <div class="flat-card">
+                                <div class="image">
+                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                </div>
+                                <div class="product-info has-text-centered">
+                                    <a href="product.html"><h3 class="product-name">Blue seat</h3></a>
+                                    <p class="product-description">Lorem ipsum sit dolor amet</p>
+                                    <p class="product-price">
+                                        35,00
+                                    </p>
+                                </div>
+
+                                <div class="actions">
+                                    <div class="add"><i data-feather="shopping-cart" class="has-simple-popover" data-content="Add to Cart" data-placement="top"></i></div>
+                                    <div class="like"><i data-feather="heart" class="has-simple-popover" data-content="Add to Wishlist" data-placement="top"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Product -->
+                        <div class="column">
+                            <div class="flat-card is-long">
+                                <div class="left-image is-md">
+                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                </div>
+                                <div class="product-info">
+                                    <a href="product.html"><h3 class="product-name featured-md">Modern bed</h3></a>
+                                    <p class="product-description">Lorem ipsum sit dolor amet</p>
+                                    <p class="product-price is-on-sale">
+                                        <span>120,99</span>
+                                        <span class="sale-price">299,99</span>
+                                    </p>
+                                </div>
+
+                                <div class="actions">
+                                    <div class="add"><i data-feather="shopping-cart" class="has-simple-popover" data-content="Add to Cart" data-placement="top"></i></div>
+                                    <div class="like"><i data-feather="heart" class="has-simple-popover" data-content="Add to Wishlist" data-placement="top"></i></div>
+                                </div>
+
+                                <!-- Sale indicator -->
+                                <div class="on-sale">
+                                    <i data-feather="dollar-sign" class="has-simple-popover" data-content="This product is on sale" data-placement="top"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Product -->
+                        <div class="column is-3">
+                            <div class="flat-card">
+                                <div class="image">
+                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                </div>
+                                <div class="product-info has-text-centered">
+                                    <a href="product.html"><h3 class="product-name">Dark seat</h3></a>
+                                    <p class="product-description">Lorem ipsum sit dolor amet</p>
+                                    <p class="product-price is-on-sale">
+                                        <span>50,25</span>
+                                        <span class="sale-price">79,25</span>
+                                    </p>
+                                </div>
+
+                                <div class="actions">
+                                    <div class="add"><i data-feather="shopping-cart" class="has-simple-popover" data-content="Add to Cart" data-placement="top"></i></div>
+                                    <div class="like"><i data-feather="heart" class="has-simple-popover" data-content="Add to Wishlist" data-placement="top"></i></div>
+                                </div>
+
+                                <div class="on-sale">
+                                    <i data-feather="dollar-sign" class="has-simple-popover" data-content="This product is on sale" data-placement="top"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Product -->
+                        <div class="column is-6">
+                            <div class="flat-card is-long">
+                                <div class="left-image is-md">
+                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                </div>
+                                <div class="product-info">
+                                    <a href="product.html"><h3 class="product-name featured-md">TV furniture</h3></a>
+                                    <p class="product-description">Lorem ipsum sit dolor amet</p>
+                                    <p class="product-price">
+                                        430,00
+                                    </p>
+                                </div>
+
+                                <div class="actions">
+                                    <div class="add"><i data-feather="shopping-cart" class="has-simple-popover" data-content="Add to Cart" data-placement="top"></i></div>
+                                    <div class="like"><i data-feather="heart" class="has-simple-popover" data-content="Add to Wishlist" data-placement="top"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Product -->
+                        <div class="column is-6">
+                            <div class="flat-card is-long">
+                                <div class="left-image is-md">
+                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                </div>
+                                <div class="product-info">
+                                    <a href="product.html"><h3 class="product-name featured-md">Cabinet</h3></a>
+                                    <p class="product-description">Lorem ipsum sit dolor amet</p>
+                                    <p class="product-price">
+                                        240,00
+                                    </p>
+                                </div>
+
+                                <div class="actions">
+                                    <div class="add"><i data-feather="shopping-cart" class="has-simple-popover" data-content="Add to Cart" data-placement="top"></i></div>
+                                    <div class="like"><i data-feather="heart" class="has-simple-popover" data-content="Add to Wishlist" data-placement="top"></i></div>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                    <!-- /Product grid -->
+
+                    <div class="show-more"><a href="#">Show more products</a></div>
+
+                </div>
+            </div> 
+            <!-- /House products -->
+
+            <!-- Office products -->
+            <div class="columns category-header">
+                <div class="column is-10 is-offset-1 is-tablet-landscape-padded">
+                    <!-- Title -->
+                    <div class="category-title is-product-category">
+                        <h2>OFFICE</h2>
+                        <div class="category-icon is-hidden-mobile">
+                            {{> office}}
+                        </div>
+                    </div>
+
+                    <!-- Controls -->
+                    <div class="listing-controls">
+                        <div class="layout-controls">
+                            <a href="products.html"><span class="is-active"><i data-feather="grid"></i></span></a>
+                            <a href="products-list.html"><span><i data-feather="list"></i></span></a>
+                        </div>
+                        <!-- Sort -->
+                        <div class="sort-box">
+                            <div class="sort-box-select">
+                                <select data-placeholder="Default order" class="chosen-select-no-single">
+                                    <option>Default Sort</option>	
+                                    <option>Best Sellers</option>
+                                    <option>Highest Rated</option>
+                                    <option>Best Deals</option>
+                                    <option>Newest Products</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Controls -->
+
+                    <!-- Product grid -->
+                    <div class="columns is-product-grid is-multiline">
+                        <!-- Product -->
+                        <div class="column is-9">
+                            <div class="flat-card is-long">
+                                <div class="left-image is-md">
+                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                </div>
+                                <div class="product-info">
+                                    <a href="product.html"><h3 class="product-name featured">Imperator</h3></a>
+                                    <p class="product-description">Lorem ipsum sit dolor amet</p>
+                                    <p class="product-price is-on-sale">
+                                        <span>490,00</span>
+                                        <span class="sale-price">699,99</span>
+                                    </p>
+                                </div>
+
+                                <div class="actions">
+                                    <div class="add"><i data-feather="shopping-cart" class="has-simple-popover" data-content="Add to Cart" data-placement="top"></i></div>
+                                    <div class="like"><i data-feather="heart" class="has-simple-popover" data-content="Add to Wishlist" data-placement="top"></i></div>
+                                </div>
+
+                                <!-- Sale indicator -->
+                                <div class="on-sale">
+                                    <i data-feather="dollar-sign" class="has-simple-popover" data-content="This product is on sale" data-placement="top"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Product -->
+                        <div class="column is-3">
+                            <div class="flat-card">
+                                <div class="image">
+                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                </div>
+                                <div class="product-info has-text-centered">
+                                    <a href="product.html"><h3 class="product-name">Roller</h3></a>
+                                    <p class="product-description">Lorem ipsum sit dolor amet</p>
+                                    <p class="product-price">
+                                        75,00
+                                    </p>
+                                </div>
+
+                                <div class="actions">
+                                    <div class="add"><i data-feather="shopping-cart" class="has-simple-popover" data-content="Add to Cart" data-placement="top"></i></div>
+                                    <div class="like"><i data-feather="heart" class="has-simple-popover" data-content="Add to Wishlist" data-placement="top"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Product -->
+                        <div class="column is-3">
+                            <div class="flat-card">
+                                <div class="image">
+                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                </div>
+                                <div class="product-info has-text-centered">
+                                    <a href="product.html"><h3 class="product-name">Executive</h3></a>
+                                    <p class="product-description">Lorem ipsum sit dolor amet</p>
+                                    <p class="product-price">
+                                        125,00
+                                    </p>
+                                </div>
+
+                                <div class="actions">
+                                    <div class="add"><i data-feather="shopping-cart" class="has-simple-popover" data-content="Add to Cart" data-placement="top"></i></div>
+                                    <div class="like"><i data-feather="heart" class="has-simple-popover" data-content="Add to Wishlist" data-placement="top"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Product -->
+                        <div class="column is-3">
+                            <div class="flat-card">
+                                <div class="image">
+                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                </div>
+                                <div class="product-info has-text-centered">
+                                    <a href="product.html"><h3 class="product-name">Cosy chair</h3></a>
+                                    <p class="product-description">Lorem ipsum sit dolor amet</p>
+                                    <p class="product-price is-on-sale">
+                                        <span>88,49</span>
+                                        <span class="sale-price">119,99</span>
+                                    </p>
+                                </div>
+
+                                <div class="actions">
+                                    <div class="add"><i data-feather="shopping-cart" class="has-simple-popover" data-content="Add to Cart" data-placement="top"></i></div>
+                                    <div class="like"><i data-feather="heart" class="has-simple-popover" data-content="Add to Wishlist" data-placement="top"></i></div>
+                                </div>
+
+                                <!-- Sale indicator -->
+                                <div class="on-sale">
+                                    <i data-feather="dollar-sign" class="has-simple-popover" data-content="This product is on sale" data-placement="top"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Product -->
+                        <div class="column">
+                            <div class="flat-card is-long">
+                                <div class="left-image is-md">
+                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                </div>
+                                <div class="product-info">
+                                    <a href="product.html"><h3 class="product-name featured-md">Ambassador</h3></a>
+                                    <p class="product-description">Lorem ipsum sit dolor amet</p>
+                                    <p class="product-price">
+                                        480,00
+                                    </p>
+                                </div>
+
+                                <div class="actions">
+                                    <div class="add"><i data-feather="shopping-cart" class="has-simple-popover" data-content="Add to Cart" data-placement="top"></i></div>
+                                    <div class="like"><i data-feather="heart" class="has-simple-popover" data-content="Add to Wishlist" data-placement="top"></i></div>
+                                </div>
+                            </div>
+                        </div> 
+                        <!-- Product -->
+                        <div class="column is-6">
+                            <div class="flat-card is-long">
+                                <div class="left-image is-md">
+                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                </div>
+                                <div class="product-info">
+                                    <a href="product.html"><h3 class="product-name featured-md">Conqueror</h3></a>
+                                    <p class="product-description">Lorem ipsum sit dolor amet</p>
+                                    <p class="product-price">
+                                        590,00
+                                    </p>
+                                </div>
+
+                                <div class="actions">
+                                    <div class="add"><i data-feather="shopping-cart" class="has-simple-popover" data-content="Add to Cart" data-placement="top"></i></div>
+                                    <div class="like"><i data-feather="heart" class="has-simple-popover" data-content="Add to Wishlist" data-placement="top"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Product -->
+                        <div class="column is-6">
+                            <div class="flat-card is-long">
+                                <div class="left-image is-md">
+                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                </div>
+                                <div class="product-info">
+                                    <a href="product.html"><h3 class="product-name featured-md">Gentleman</h3></a>
+                                    <p class="product-description">Lorem ipsum sit dolor amet</p>
+                                    <p class="product-price">
+                                        375,00
+                                    </p>
+                                </div>
+
+                                <div class="actions">
+                                    <div class="add"><i data-feather="shopping-cart" class="has-simple-popover" data-content="Add to Cart" data-placement="top"></i></div>
+                                    <div class="like"><i data-feather="heart" class="has-simple-popover" data-content="Add to Wishlist" data-placement="top"></i></div>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                    <!-- /Product grid -->
+
+                    <div class="show-more"><a href="#">Show more products</a></div>
+
+                </div>
+            </div> 
+            <!-- /Office products -->
+
+            <!-- Kids products -->
+            <div class="columns category-header">
+                <div class="column is-10 is-offset-1 is-tablet-landscape-padded">
+                    <!-- Title -->
+                    <div class="category-title is-product-category">
+                        <h2>FOR KIDS</h2>
+                        <div class="category-icon is-hidden-mobile">
+                            {{> kids}}
+                        </div>
+                    </div>
+
+                    <!-- Controls -->
+                    <div class="listing-controls">
+                        <div class="layout-controls">
+                            <a href="products.html"><span class="is-active"><i data-feather="grid"></i></span></a>
+                            <a href="products-list.html"><span><i data-feather="list"></i></span></a>
+                        </div>
+                        <!-- Sort -->
+                        <div class="sort-box">
+                            <div class="sort-box-select">
+                                <select data-placeholder="Default order" class="chosen-select-no-single">
+                                    <option>Default Sort</option>	
+                                    <option>Best Sellers</option>
+                                    <option>Highest Rated</option>
+                                    <option>Best Deals</option>
+                                    <option>Newest Products</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Controls -->
+
+                    <!-- Product grid -->
+                    <div class="columns is-product-grid is-multiline">
+                        <!-- Product -->
+                        <div class="column is-3">
+                            <div class="flat-card">
+                                <div class="image">
+                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                </div>
+                                <div class="product-info has-text-centered">
+                                    <a href="product.html"><h3 class="product-name">Tabouret</h3></a>
+                                    <p class="product-description">Lorem ipsum sit dolor amet</p>
+                                    <p class="product-price">
+                                        22,00
+                                    </p>
+                                </div>
+
+                                <div class="actions">
+                                    <div class="add"><i data-feather="shopping-cart" class="has-simple-popover" data-content="Add to Cart" data-placement="top"></i></div>
+                                    <div class="like"><i data-feather="heart" class="has-simple-popover" data-content="Add to Wishlist" data-placement="top"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Product -->
+                        <div class="column is-3">
+                            <div class="flat-card">
+                                <div class="image">
+                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                </div>
+                                <div class="product-info has-text-centered">
+                                    <a href="product.html"><h3 class="product-name">Rabbit lamp</h3></a>
+                                    <p class="product-description">Lorem ipsum sit dolor amet</p>
+                                    <p class="product-price">
+                                        14,49
+                                    </p>
+                                </div>
+
+                                <div class="actions">
+                                    <div class="add"><i data-feather="shopping-cart" class="has-simple-popover" data-content="Add to Cart" data-placement="top"></i></div>
+                                    <div class="like"><i data-feather="heart" class="has-simple-popover" data-content="Add to Wishlist" data-placement="top"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Product -->
+                        <div class="column is-6">
+                            <div class="flat-card is-long">
+                                <div class="left-image is-md">
+                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                </div>
+                                <div class="product-info">
+                                    <a href="product.html"><h3 class="product-name featured">White bed</h3></a>
+                                    <p class="product-description">Lorem ipsum sit dolor amet</p>
+                                    <p class="product-price">
+                                        375,00
+                                    </p>
+                                </div>
+
+                                <div class="actions">
+                                    <div class="add"><i data-feather="shopping-cart" class="has-simple-popover" data-content="Add to Cart" data-placement="top"></i></div>
+                                    <div class="like"><i data-feather="heart" class="has-simple-popover" data-content="Add to Wishlist" data-placement="top"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Product -->
+                        <div class="column is-9">
+                            <div class="flat-card is-long">
+                                <div class="left-image is-md">
+                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                </div>
+                                <div class="product-info">
+                                    <a href="product.html"><h3 class="product-name featured-md">Toy boxes</h3></a>
+                                    <p class="product-description">Lorem ipsum sit dolor amet</p>
+                                    <p class="product-price">
+                                        45,99
+                                    </p>
+                                </div>
+
+                                <div class="actions">
+                                    <div class="add"><i data-feather="shopping-cart" class="has-simple-popover" data-content="Add to Cart" data-placement="top"></i></div>
+                                    <div class="like"><i data-feather="heart" class="has-simple-popover" data-content="Add to Wishlist" data-placement="top"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Product -->
+                        <div class="column is-3">
+                            <div class="flat-card">
+                                <div class="image">
+                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                </div>
+                                <div class="product-info has-text-centered">
+                                    <a href="product.html"><h3 class="product-name">Baby chest</h3></a>
+                                    <p class="product-description">Lorem ipsum sit dolor amet</p>
+                                    <p class="product-price">
+                                        <span>185,00</span>
+                                        <span class="sale-price">215,00</span>
+                                    </p>
+                                </div>
+
+                                <div class="actions">
+                                    <div class="add"><i data-feather="shopping-cart" class="has-simple-popover" data-content="Add to Cart" data-placement="top"></i></div>
+                                    <div class="like"><i data-feather="heart" class="has-simple-popover" data-content="Add to Wishlist" data-placement="top"></i></div>
+                                </div>
+
+                                <!-- Sale indicator -->
+                                <div class="on-sale">
+                                    <i data-feather="dollar-sign" class="has-simple-popover" data-content="This product is on sale" data-placement="top"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Product -->
+                        <div class="column is-6">
+                            <div class="flat-card is-long">
+                                <div class="left-image is-md">
+                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                </div>
+                                <div class="product-info">
+                                    <a href="product.html"><h3 class="product-name featured-md">Small desk</h3></a>
+                                    <p class="product-description">Lorem ipsum sit dolor amet</p>
+                                    <p class="product-price">
+                                        190,00
+                                    </p>
+                                </div>
+
+                                <div class="actions">
+                                    <div class="add"><i data-feather="shopping-cart" class="has-simple-popover" data-content="Add to Cart" data-placement="top"></i></div>
+                                    <div class="like"><i data-feather="heart" class="has-simple-popover" data-content="Add to Wishlist" data-placement="top"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Product -->
+                        <div class="column is-3">
+                            <div class="flat-card">
+                                <div class="image">
+                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                </div>
+                                <div class="product-info has-text-centered">
+                                    <a href="product.html"><h3 class="product-name featured">Animals set</h3></a>
+                                    <p class="product-description">Lorem ipsum sit dolor amet</p>
+                                    <p class="product-price">
+                                        23,49
+                                    </p>
+                                </div>
+
+                                <div class="actions">
+                                    <div class="add"><i data-feather="shopping-cart" class="has-simple-popover" data-content="Add to Cart" data-placement="top"></i></div>
+                                    <div class="like"><i data-feather="heart" class="has-simple-popover" data-content="Add to Wishlist" data-placement="top"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Product -->
+                        <div class="column is-3">
+                            <div class="flat-card">
+                                <div class="image">
+                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                </div>
+                                <div class="product-info has-text-centered">
+                                    <a href="product.html"><h3 class="product-name featured">Wood elephant</h3></a>
+                                    <p class="product-description">Lorem ipsum sit dolor amet</p>
+                                    <p class="product-price">
+                                        57,99
+                                    </p>
+                                </div>
+
+                                <div class="actions">
+                                    <div class="add"><i data-feather="shopping-cart" class="has-simple-popover" data-content="Add to Cart" data-placement="top"></i></div>
+                                    <div class="like"><i data-feather="heart" class="has-simple-popover" data-content="Add to Wishlist" data-placement="top"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Product grid -->
+
+                    <div class="show-more"><a href="#">Show more products</a></div>
+
+                </div>
+            </div> 
+            <!-- /Kids products -->
+
+            <!-- Kitchen products -->
+            <div class="columns category-header">
+                <div class="column is-10 is-offset-1 is-tablet-landscape-padded">
+                    <!-- Title -->
+                    <div class="category-title is-product-category">
+                        <h2>KITCHEN</h2>
+                        <div class="category-icon is-hidden-mobile">
+                            {{> kitchen}}
+                        </div>
+                    </div>
+
+                    <!-- Controls -->
+                    <div class="listing-controls">
+                        <div class="layout-controls">
+                            <a href="products.html"><span class="is-active"><i data-feather="grid"></i></span></a>
+                            <a href="products-list.html"><span><i data-feather="list"></i></span></a>
+                        </div>
+                        <!-- Sort -->
+                        <div class="sort-box">
+                            <div class="sort-box-select">
+                                <select data-placeholder="Default order" class="chosen-select-no-single">
+                                    <option>Default Sort</option>	
+                                    <option>Best Sellers</option>
+                                    <option>Highest Rated</option>
+                                    <option>Best Deals</option>
+                                    <option>Newest Products</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Controls -->
+
+                    <!-- Product grid -->
+                    <div class="columns is-product-grid is-multiline">
+                        <!-- Product -->
+                        <div class="column is-3">
+                            <div class="flat-card">
+                                <div class="image">
+                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                </div>
+                                <div class="product-info has-text-centered">
+                                    <a href="product.html"><h3 class="product-name">Chromed sink</h3></a>
+                                    <p class="product-description">Lorem ipsum sit dolor amet</p>
+                                    <p class="product-price">
+                                        142,00
+                                    </p>
+                                </div>
+
+                                <div class="actions">
+                                    <div class="add"><i data-feather="shopping-cart" class="has-simple-popover" data-content="Add to Cart" data-placement="top"></i></div>
+                                    <div class="like"><i data-feather="heart" class="has-simple-popover" data-content="Add to Wishlist" data-placement="top"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Product -->
+                        <div class="column is-9">
+                            <div class="flat-card is-long">
+                                <div class="left-image is-md">
+                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                </div>
+                                <div class="product-info">
+                                    <a href="product.html"><h3 class="product-name featured">Mini kitchen</h3></a>
+                                    <p class="product-description">Lorem ipsum sit dolor amet</p>
+                                    <p class="product-price">
+                                        425,00
+                                    </p>
+                                </div>
+
+                                <div class="actions">
+                                    <div class="add"><i data-feather="shopping-cart" class="has-simple-popover" data-content="Add to Cart" data-placement="top"></i></div>
+                                    <div class="like"><i data-feather="heart" class="has-simple-popover" data-content="Add to Wishlist" data-placement="top"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Product -->
+                        <div class="column is-3">
+                            <div class="flat-card">
+                                <div class="image">
+                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                </div>
+                                <div class="product-info has-text-centered">
+                                    <a href="product.html"><h3 class="product-name">Auto toaster</h3></a>
+                                    <p class="product-description">Lorem ipsum sit dolor amet</p>
+                                    <p class="product-price">
+                                        63,00
+                                    </p>
+                                </div>
+
+                                <div class="actions">
+                                    <div class="add"><i data-feather="shopping-cart" class="has-simple-popover" data-content="Add to Cart" data-placement="top"></i></div>
+                                    <div class="like"><i data-feather="heart" class="has-simple-popover" data-content="Add to Wishlist" data-placement="top"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Product -->
+                        <div class="column">
+                            <div class="flat-card is-long">
+                                <div class="left-image is-md">
+                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                </div>
+                                <div class="product-info">
+                                    <a href="product.html"><h3 class="product-name featured-md">Modern fridge</h3></a>
+                                    <p class="product-description">Lorem ipsum sit dolor amet</p>
+                                    <p class="product-price">
+                                        675,00
+                                    </p>
+                                </div>
+
+                                <div class="actions">
+                                    <div class="add"><i data-feather="shopping-cart" class="has-simple-popover" data-content="Add to Cart" data-placement="top"></i></div>
+                                    <div class="like"><i data-feather="heart" class="has-simple-popover" data-content="Add to Wishlist" data-placement="top"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Product -->
+                        <div class="column is-3">
+                            <div class="flat-card">
+                                <div class="image">
+                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                </div>
+                                <div class="product-info has-text-centered">
+                                    <a href="product.html"><h3 class="product-name">Coffee Machine</h3></a>
+                                    <p class="product-description">Lorem ipsum sit dolor amet</p>
+                                    <p class="product-price">
+                                        178,00
+                                    </p>
+                                </div>
+
+                                <div class="actions">
+                                    <div class="add"><i data-feather="shopping-cart" class="has-simple-popover" data-content="Add to Cart" data-placement="top"></i></div>
+                                    <div class="like"><i data-feather="heart" class="has-simple-popover" data-content="Add to Wishlist" data-placement="top"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product grid -->
+
+                    <div class="show-more"><a href="#">Show more products</a></div>
+
+                </div>
+            </div> 
+            <!-- /Kitchen products -->
+
+            <!-- Accessories products -->
+            <div class="columns category-header">
+                <div class="column is-10 is-offset-1 is-tablet-landscape-padded">
+                    <!-- Title -->
+                    <div class="category-title is-product-category">
+                        <h2>ACCESSORIES</h2>
+                        <div class="category-icon is-hidden-mobile">
+                            {{> accessories}}
+                        </div>
+                    </div>
+
+                    <!-- Controls -->
+                    <div class="listing-controls">
+                        <div class="layout-controls">
+                            <a href="products.html"><span class="is-active"><i data-feather="grid"></i></span></a>
+                            <a href="products-list.html"><span><i data-feather="list"></i></span></a>
+                        </div>
+                        <!-- Sort -->
+                        <div class="sort-box">
+                            <div class="sort-box-select">
+                                <select data-placeholder="Default order" class="chosen-select-no-single">
+                                    <option>Default Sort</option>	
+                                    <option>Best Sellers</option>
+                                    <option>Highest Rated</option>
+                                    <option>Best Deals</option>
+                                    <option>Newest Products</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Controls -->
+
+                    <!-- Product grid -->
+                    <div class="columns is-product-grid is-multiline">
+                        <!-- Product -->
+                        <div class="column is-3">
+                            <div class="flat-card">
+                                <div class="image">
+                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                </div>
+                                <div class="product-info has-text-centered">
+                                    <a href="product.html"><h3 class="product-name">Styled lamp</h3></a>
+                                    <p class="product-description">Lorem ipsum sit dolor amet</p>
+                                    <p class="product-price">
+                                        75,00
+                                    </p>
+                                </div>
+
+                                <div class="actions">
+                                    <div class="add"><i data-feather="shopping-cart" class="has-simple-popover" data-content="Add to Cart" data-placement="top"></i></div>
+                                    <div class="like"><i data-feather="heart" class="has-simple-popover" data-content="Add to Wishlist" data-placement="top"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Product -->
+                        <div class="column is-3">
+                            <div class="flat-card">
+                                <div class="image">
+                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                </div>
+                                <div class="product-info has-text-centered">
+                                    <a href="product.html"><h3 class="product-name">Golden lamp</h3></a>
+                                    <p class="product-description">Lorem ipsum sit dolor amet</p>
+                                    <p class="product-price">
+                                        52,00
+                                    </p>
+                                </div>
+
+                                <div class="actions">
+                                    <div class="add"><i data-feather="shopping-cart" class="has-simple-popover" data-content="Add to Cart" data-placement="top"></i></div>
+                                    <div class="like"><i data-feather="heart" class="has-simple-popover" data-content="Add to Wishlist" data-placement="top"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Product -->
+                        <div class="column is-6">
+                            <div class="flat-card is-long">
+                                <div class="left-image is-md">
+                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                </div>
+                                <div class="product-info">
+                                    <a href="product.html"><h3 class="product-name featured">Aquarium</h3></a>
+                                    <p class="product-description">Lorem ipsum sit dolor amet</p>
+                                    <p class="product-price">
+                                        235,00
+                                    </p>
+                                </div>
+
+                                <div class="actions">
+                                    <div class="add"><i data-feather="shopping-cart" class="has-simple-popover" data-content="Add to Cart" data-placement="top"></i></div>
+                                    <div class="like"><i data-feather="heart" class="has-simple-popover" data-content="Add to Wishlist" data-placement="top"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Product -->
+                        <div class="column is-9">
+                            <div class="flat-card is-long">
+                                <div class="left-image is-md">
+                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                </div>
+                                <div class="product-info">
+                                    <a href="product.html"><h3 class="product-name featured-md">Modern shelf</h3></a>
+                                    <p class="product-description">Lorem ipsum sit dolor amet</p>
+                                    <p class="product-price">
+                                        <span>510</span>
+                                        <span class="sale-price">629,00</span>
+                                    </p>
+                                </div>
+
+                                <div class="actions">
+                                    <div class="add"><i data-feather="shopping-cart" class="has-simple-popover" data-content="Add to Cart" data-placement="top"></i></div>
+                                    <div class="like"><i data-feather="heart" class="has-simple-popover" data-content="Add to Wishlist" data-placement="top"></i></div>
+                                </div>
+
+                                <!-- Sale indicator -->
+                                <div class="on-sale">
+                                    <i data-feather="dollar-sign" class="has-simple-popover" data-content="This product is on sale" data-placement="top"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Product -->
+                        <div class="column is-3">
+                            <div class="flat-card">
+                                <div class="image">
+                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                </div>
+                                <div class="product-info has-text-centered">
+                                    <a href="product.html"><h3 class="product-name">Ground shelf</h3></a>
+                                    <p class="product-description">Lorem ipsum sit dolor amet</p>
+                                    <p class="product-price">
+                                        80,00
+                                    </p>
+                                </div>
+
+                                <div class="actions">
+                                    <div class="add"><i data-feather="shopping-cart" class="has-simple-popover" data-content="Add to Cart" data-placement="top"></i></div>
+                                    <div class="like"><i data-feather="heart" class="has-simple-popover" data-content="Add to Wishlist" data-placement="top"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Product -->
+                        <div class="column is-6">
+                            <div class="flat-card is-long">
+                                <div class="left-image is-md">
+                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                </div>
+                                <div class="product-info">
+                                    <a href="product.html"><h3 class="product-name featured-md">Modern cabinet</h3></a>
+                                    <p class="product-description">Lorem ipsum sit dolor amet</p>
+                                    <p class="product-price">
+                                        265,00
+                                    </p>
+                                </div>
+
+                                <div class="actions">
+                                    <div class="add"><i data-feather="shopping-cart" class="has-simple-popover" data-content="Add to Cart" data-placement="top"></i></div>
+                                    <div class="like"><i data-feather="heart" class="has-simple-popover" data-content="Add to Wishlist" data-placement="top"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Product -->
+                        <div class="column is-3">
+                            <div class="flat-card">
+                                <div class="image">
+                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                </div>
+                                <div class="product-info has-text-centered">
+                                    <a href="product.html"><h3 class="product-name featured">Ground speakers</h3></a>
+                                    <p class="product-description">Lorem ipsum sit dolor amet</p>
+                                    <p class="product-price">
+                                        99,00
+                                    </p>
+                                </div>
+
+                                <div class="actions">
+                                    <div class="add"><i data-feather="shopping-cart" class="has-simple-popover" data-content="Add to Cart" data-placement="top"></i></div>
+                                    <div class="like"><i data-feather="heart" class="has-simple-popover" data-content="Add to Wishlist" data-placement="top"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Product -->
+                        <div class="column is-3">
+                            <div class="flat-card">
+                                <div class="image">
+                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                </div>
+                                <div class="product-info has-text-centered">
+                                    <a href="product.html"><h3 class="product-name featured">Modern speakers</h3></a>
+                                    <p class="product-description">Lorem ipsum sit dolor amet</p>
+                                    <p class="product-price">
+                                        175,00
+                                    </p>
+                                </div>
+
+                                <div class="actions">
+                                    <div class="add"><i data-feather="shopping-cart" class="has-simple-popover" data-content="Add to Cart" data-placement="top"></i></div>
+                                    <div class="like"><i data-feather="heart" class="has-simple-popover" data-content="Add to Wishlist" data-placement="top"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product grid -->
+
+                    <div class="show-more"><a href="#">Show more products</a></div>
+
+                </div>
+            </div> 
+            <!-- /Accessories products -->
+        </div>
+        <!-- /Container -->
+    </div>
+    <!-- /Main section -->
+</div>
+<!-- /Main wrapper -->

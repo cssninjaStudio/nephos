@@ -1,0 +1,67 @@
+---
+layout: default
+title: Modern Bulma Ecommerce App and Dashboard
+---
+
+{{> pageloader}}
+
+{{> mobile-navbar-guest}}
+
+<!-- Main Sidebar-->
+<div class="main-sidebar">
+    <div class="sidebar-brand">
+        <a href="index.html"><img src="assets/img/logo/nephos.svg" alt=""></a>
+    </div>
+    <div class="sidebar-inner">
+        <ul class="icon-menu">
+            <!-- Shop sidebar trigger -->
+            {{> sidebar-item-home}}
+            <!-- Cart sidebar trigger -->
+            {{> sidebar-item-cart}}
+            <!-- Search trigger -->
+            {{> sidebar-item-search}}
+            <!-- Mobile mode trigger -->
+            {{> sidebar-item-mode}}
+        </ul>
+
+        <!-- User account -->
+        <ul class="bottom-menu is-hidden-mobile">
+            {{> sidebar-item-guest}}
+        </ul>
+    </div>
+</div>
+<!-- /Main Sidebar-->
+
+<!-- FAB -->
+{{> flying-button}}
+<!-- /FAB -->
+
+<!-- Categories Right quickview -->
+{{> quickview-categories}}
+
+<!-- Shop quickview -->
+{{> quickview-main-guest}}
+
+<!-- Cart quickview -->
+{{> quickview-cart-empty}}
+
+
+<!-- Content Wrapper -->
+<div class="shop-wrapper has-background-image" data-background="http://via.placeholder.com/1920x1080" data-demo-background="assets/img/bg/main-bg.jpg">
+
+    {{> search-overlay}}
+
+    <!-- Background Caption -->
+    <div class="background-caption">
+        <h1>NEPHOS</h1>
+    </div>
+
+    <!-- Hero Caption -->
+    <div class="hero-caption">
+        <h1>NEPHOS</h1>
+        <h2>MODERN SHOP TEMPLATE</h2>
+        <a href="shop.html" class="button big-button primary-button upper-button rounded raised">Start shopping</a>
+    </div>
+
+</div>
+<!-- /Content Wrapper -->
