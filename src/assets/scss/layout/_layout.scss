@@ -139,5 +139,19 @@ body {
             opacity: 0.04;
         }
     }
+
+    //Section
+    .nephos-section {
+        padding: 1.5rem;
+    }
+
+    .columns {
+        .column {
+            &.main-column {
+                max-width: 1140px;
+                margin: 0 auto;
+            }
+        }
+    }
 }
 

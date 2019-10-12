@@ -8,11 +8,13 @@ Account pages styles
 TABLE OF CONTENTS
 =============================================================================
 0. Account Header
-1. Wishlist styles
-2. Profile Card
-3. Details Card
-4. Wishlists
-5. Avatar Upload
+1. Tabs
+2. Placeholder
+3. Wishlist styles
+4. Profile Card
+5. Details Card
+6. Wishlists
+7. Avatar Upload
 =============================================================================
 ***/
 
@@ -28,15 +30,18 @@ TABLE OF CONTENTS
         font-weight: 400 !important;
         text-transform: uppercase;
     }
+
     .account-title {
         position: relative;
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin-top: 20px;
+
         h2 {
             width: 100%;
         }
+
         //icon
         .account-icon {
             width: 100%;
@@ -44,12 +49,14 @@ TABLE OF CONTENTS
             display: flex;
             align-items: center;
             justify-content: flex-end;
+
             img {
                 height: 40px;
                 width: 40px;
                 border-radius: 50%;
                 display: block;
             }
+
             span {
                 text-transform: uppercase;
                 font-size: 80%;
@@ -57,6 +64,7 @@ TABLE OF CONTENTS
                 display: block;
             }
         }
+
         //Filigrane Logo
         .brand-filigrane {
             position: absolute;
@@ -74,16 +82,19 @@ TABLE OF CONTENTS
 
 .account-tabs {
     margin-top: 1.5rem;
+
     li {
         a {
             color: $muted-grey;
             border-width: 2px;
             padding-bottom: 15px;
+
             &:hover {
                 color: $muted-grey;
                 border-color: $muted-grey;
             }
         }
+
         &.is-active {
             a {
                 color: $primary;
@@ -91,23 +102,109 @@ TABLE OF CONTENTS
             }
         }
     }
+
     //Suppressing margins when there are controls
     &.has-controls {
         margin-bottom: 0 !important;
     }
 }
 
+.is-account-grid {
+    position: relative;
+    min-height: 480px;
+
+    .account-loader {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #f0f0f0;
+        opacity: 0;
+        pointer-events: none;
+        transition: all .3s;
+        z-index: 10;
+
+        &.is-active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .loader {
+            height: 5rem;
+            width: 5rem;
+        }
+    }
+}
+
 /* ==========================================================================
-2. Profile Card
+2. Placeholder
+========================================================================== */
+
+.main-placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 450px;
+
+    .placeholder-content {
+        width: 100%;
+        max-width: 340px;
+        margin: 0 auto;
+        text-align: center;
+
+        img {
+            display: block;
+            max-width: 230px;
+            margin: 0 auto 20px auto;
+        }
+
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: $dark-text;
+        }
+
+        p {
+            color: $muted-grey;
+        }
+
+        .button-wrap {
+            margin: 20px 0;
+
+            .button {
+                min-width: 200px;
+            }
+        }
+
+        > a {
+            font-size: .9rem;
+            color: $muted-grey;
+
+            &:hover {
+                color: $primary;
+            }
+        }
+    }
+}
+
+/* ==========================================================================
+3. Profile Card
 ========================================================================== */
 
 .profile-card {
     border: none;
     margin-bottom: 20px;
+
     //Body
     .card-body {
         padding: 20px 40px;
     }
+
     //Avatar
     .profile-image {
         img {
@@ -118,25 +215,31 @@ TABLE OF CONTENTS
             margin: 0 auto;
         }
     }
+
     //User Meta
     .username {
         padding-top: 10px;
+
         span, small {
             display: block;
         }
+
         span {
             color: $dark-text;
             font-weight: 500;
         }
+
         small {
             font-size: 0.85rem;
             color: $muted-grey;
         }
     }
+
     //Achievment footers
     .profile-footer {
         padding: 20px 40px;
         background: #fcfcfc;
+
         .achievement-title {
             font-family: 'Raleway', sans-serif;
             text-transform: uppercase;
@@ -144,6 +247,7 @@ TABLE OF CONTENTS
             font-size: .75rem;
             color: $muted-grey;
         }
+
         .count {
             font-size: 1.5rem;
             font-weight: 700;
@@ -153,13 +257,14 @@ TABLE OF CONTENTS
 }
 
 /* ==========================================================================
-3. Details Card
+4. Details Card
 ========================================================================== */
 
 //Cards that display information
 .profile-info-card, .menu-card {
     margin-bottom: 20px;
     position: relative;
+
     //Title
     .card-title {
         position: relative;
@@ -167,13 +272,15 @@ TABLE OF CONTENTS
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border-bottom: 1px solid rgba(0,0,0,0.1);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         background: $smoke-white;
         z-index: 2;
+
         h3 {
             font-weight: 500;
             color: $muted-grey-bold;
         }
+
         //Edit button
         .edit-account {
             position: relative;
@@ -184,8 +291,11 @@ TABLE OF CONTENTS
             svg {
                 transition: all .3s;
                 transform: rotate(0);
-                stroke-width: 1.2px;
+                height: 18px;
+                width: 18px;
+                stroke-width: 1.6px;
             }
+
             a {
                 color: grey;
                 height: 40px;
@@ -197,12 +307,15 @@ TABLE OF CONTENTS
                 border-radius: 50%;
                 max-height: 40px;
                 transition: all .3s;
+
                 span {
                     font-size: 90% !important;
                     padding-left: 5px;
                 }
+
                 &:hover {
                     border: 1.8px solid $primary;
+
                     svg {
                         stroke: $primary;
                         transform: rotate(90deg);
@@ -210,6 +323,7 @@ TABLE OF CONTENTS
                 }
             }
         }
+
         //Confirm button
         .confirm-button {
             position: relative;
@@ -222,6 +336,7 @@ TABLE OF CONTENTS
                 transform: rotate(0);
                 stroke-width: 1.2px;
             }
+
             a {
                 color: grey;
                 height: 40px;
@@ -233,12 +348,15 @@ TABLE OF CONTENTS
                 border-radius: 50%;
                 max-height: 40px;
                 transition: all .5s;
+
                 span {
                     font-size: 90% !important;
                     padding-left: 5px;
                 }
+
                 &:hover {
                     border: 1.8px solid $green;
+
                     svg {
                         stroke: $green;
                         transform: rotate(360deg);
@@ -247,23 +365,29 @@ TABLE OF CONTENTS
             }
         }
     }
+
     //Body
     .card-body {
         padding: 20px;
+
         .info-block {
             margin-bottom: 20px;
+
             span {
                 display: block;
+
                 &.label-text {
                     color: $dark-text;
                     font-weight: 500;
                     font-size: 0.85rem;
                 }
+
                 &.label-value {
                     color: $muted-grey-bold;
                 }
             }
         }
+
         .main-address {
             position: relative;
             top: 1px;
@@ -271,10 +395,12 @@ TABLE OF CONTENTS
             color: $muted-grey-bold;
         }
     }
+
     //Dark background cards
     &.is-dark {
         background: $sidebar;
         color: $white;
+
         //Achievement card
         &.is-achievement {
             //Body
@@ -282,27 +408,34 @@ TABLE OF CONTENTS
                 display: flex;
                 justify-content: flex-start;
                 align-items: center;
+
                 img {
                     height: 45px;
                 }
+
                 //Title
                 .achievement-name {
                     padding: 0 10px;
+
                     span {
                         display: block;
                         font-family: 'Raleway', sans-serif;
                         font-weight: 500;
+
                         &:first-child {
                             text-transform: uppercase;
                             font-size: 0.8rem;
                             font-family: 'Raleway', sans-serif;
                         }
+
                         &.is-gold {
                             color: #ffd700;
                         }
+
                         &.is-green {
                             color: $green;
                         }
+
                         &:nth-child(2) {
                             font-size: .75rem;
                         }
@@ -311,12 +444,15 @@ TABLE OF CONTENTS
             }
         }
     }
+
     //Overflow modifier
     &.has-overflow {
         overflow: visible !important;
+
         //Chosen Select
         .chosen-single {
             max-height: 36px;
+
             span {
                 max-height: 36px;
                 display: block;
@@ -325,6 +461,7 @@ TABLE OF CONTENTS
                 left: -8px;
             }
         }
+
         //js Switch
         .switch-wrapper {
             height: 40px;
@@ -333,6 +470,7 @@ TABLE OF CONTENTS
             align-items: center;
         }
     }
+
     //Card background icon
     .card-bg {
         position: absolute;
@@ -344,7 +482,7 @@ TABLE OF CONTENTS
 }
 
 /* ==========================================================================
-4. Wishlists
+5. Wishlists
 ========================================================================== */
 
 //Wishlists menu
@@ -352,26 +490,82 @@ TABLE OF CONTENTS
     //Menu List
     .wishlists {
         li {
-            padding: 5px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
             border-top: 1px solid $fade-grey;
+            cursor: pointer;
+
             a {
                 padding: 10px 0;
-                display: block;
                 color: $muted-grey;
+                font-size: .8rem;
+                text-transform: uppercase;
             }
+
             //Active State
             &.is-active {
+                background: darken($smoke-white, 1%);
+
                 a {
-                    color: $primary !important;
+                    color: $dark-text !important;
+                    font-weight: 500;
+                }
+
+                .action-block {
+                    display: flex;
                 }
             }
+
             &:first-child {
-                border-top: none !important
+                border-top: none !important;
             }
+
             &:hover {
                 background: $smoke-white;
+
                 a {
                     color: $muted-grey-bold;
+                }
+            }
+
+            .action-block {
+                display: none;
+                align-items: center;
+                justify-content: flex-end;
+
+                span {
+                    display: block;
+                    color: $muted-grey;
+                    font-size: .9rem;
+                }
+
+                .remove-button {
+                    height: 36px;
+                    width: 36px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-left: 6px;
+                    background: none;
+                    border: none;
+                    outline: none !important;
+                    cursor: pointer;
+
+                    &:hover {
+                        svg {
+                            stroke: $primary;
+                        }
+                    }
+
+                    svg {
+                        height: 18px;
+                        width: 18px;
+                        stroke-width: 1.4px;
+                        stroke: $placeholder;
+                        transition: stroke .3s;
+                    }
                 }
             }
         }
@@ -381,16 +575,51 @@ TABLE OF CONTENTS
 //List of wishlist items
 .wishlist-card {
     overflow: visible;
+
     .wishlist {
+        .placeholder-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 450px;
+
+            .placeholder-content {
+                width: 100%;
+                max-width: 340px;
+                margin: 0 auto;
+                text-align: center;
+
+                img {
+                    display: block;
+                    max-width: 230px;
+                    margin: 0 auto 20px auto;
+                }
+
+                h3 {
+                    font-family: 'Montserrat', sans-serif;
+                    font-size: 1.1rem;
+                    font-weight: 600;
+                    color: $dark-text;
+                }
+
+                p {
+                    color: $muted-grey;
+                }
+            }
+        }
+
         //item
         .wishlist-item {
             border-top: 1px solid $fade-grey;
+
             &:first-child {
-                border-top: none !important
+                border-top: none !important;
             }
+
             span {
                 display: block;
             }
+
             //Wrapper
             .item-wrapper {
                 position: relative;
@@ -398,35 +627,79 @@ TABLE OF CONTENTS
                 justify-content: flex-start;
                 align-items: center;
                 padding: 10px 40px;
+
                 &:hover {
                     .on-sale {
                         display: flex;
                         justify-content: center;
-                        align-items: center; 
+                        align-items: center;
                     }
                 }
+
                 //Image
                 img {
                     height: 80px;
-                    //margin-right: 20px;
                 }
+
                 //Product meta
-                .product-info span {
+                .product-info span, .product-info a {
                     &:first-child {
                         font-family: 'Raleway', sans-serif;
                         font-weight: 600;
                         font-size: .9rem;
                     }
-                    &:last-child {
+
+                    &:nth-child(2) {
                         font-size: 70%;
                         font-weight: 500;
                         text-transform: uppercase;
                         color: $muted-grey-bold;
                     }
                 }
+
                 //Actions
                 .action {
                     margin-left: auto;
+                    display: flex;
+
+                    .add-button, .remove-button {
+                        position: relative;
+
+                        .add-button-inner, .remove-button-inner {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            position: relative;
+                            color: $muted-grey;
+                            border: 1.6px dashed transparent;
+                            height: 40px;
+                            width: 40px;
+                            max-height: 40px;
+                            border-radius: 50%;
+                            background: $white;
+                            z-index: 1;
+                            transition: all .3s;
+
+                            svg {
+                                width: 18px;
+                                height: 18px;
+                                transition: all .3s;
+                                transform: rotate(0);
+                                stroke-width: 1.2px;
+                            }
+                        }
+
+                        &:hover {
+                            .add-button-inner, .remove-button-inner {
+                                border: 1.8px solid $primary;
+
+                                svg {
+                                    stroke: $primary;
+                                }
+                            }
+                        }
+                    }
+
                     //Dropdown
                     .dropdown-button {
                         position: relative;
@@ -441,6 +714,7 @@ TABLE OF CONTENTS
                             transform: rotate(0);
                             stroke-width: 1.2px;
                         }
+
                         a {
                             color: grey;
                             height: 40px;
@@ -452,34 +726,41 @@ TABLE OF CONTENTS
                             border-radius: 50%;
                             max-height: 40px;
                             transition: all .3s;
+
                             span {
                                 font-size: 90% !important;
                                 padding-left: 5px;
                             }
+
                             &:hover {
                                 border: 1.8px solid $primary;
+
                                 svg {
                                     stroke: $primary;
                                 }
                             }
                         }
                     }
+
                     //Dropdown list item
                     .dropdown-item {
                         display: flex;
                         justify-content: flex-start;
                         align-items: center;
+
                         span {
                             display: block;
                             margin-left: 15px;
                             color: $dark-text;
                         }
+
                         svg {
                             height: 18px;
                             width: 18px;
                             stroke-width: 1.2px;
                             stroke: $placeholder;
                         }
+
                         &:hover {
                             svg {
                                 stroke: $primary;
@@ -487,6 +768,7 @@ TABLE OF CONTENTS
                         }
                     }
                 }
+
                 //Sales indicator
                 .on-sale {
                     position: absolute;
@@ -499,12 +781,13 @@ TABLE OF CONTENTS
                     display: none;
                     transform: rotate(0);
                     transition: opacity .3s;
+
                     svg {
                         height: 12px;
                         width: 12px;
                         stroke: $white;
                         stroke-width: 3px !important;
-                        transform: rotate(0) translate(5px,5px);
+                        transform: rotate(0) translate(5px, 5px);
                     }
                 }
             }
@@ -518,6 +801,7 @@ TABLE OF CONTENTS
     justify-content: center;
     align-items: center;
     padding: 30px 0;
+
     //list
     ul {
         //Pagination Item
@@ -526,6 +810,7 @@ TABLE OF CONTENTS
             margin: 0 5px;
             transition: all .3s;
             cursor: pointer;
+
             span {
                 display: flex;
                 justify-content: center;
@@ -538,18 +823,21 @@ TABLE OF CONTENTS
                 color: $white;
                 transition: inherit;
             }
+
             //Active state
             &.is-active {
                 span {
                     background: $primary;
                     font-weight: 500;
-                    box-shadow:  0px 5px 43px rgba(0, 0, 0, 0.18) !important;
+                    box-shadow: 0px 5px 43px rgba(0, 0, 0, 0.18) !important;
                 }
             }
+
             &:hover {
                 opacity: 0.7;
+
                 span {
-                    box-shadow:  0px 5px 43px rgba(0, 0, 0, 0.18) !important;
+                    box-shadow: 0px 5px 43px rgba(0, 0, 0, 0.18) !important;
                 }
             }
         }
@@ -557,7 +845,7 @@ TABLE OF CONTENTS
 }
 
 //Edit Account
-.avatar-wrapper{
+.avatar-wrapper {
     position: relative;
     height: 100px;
     width: 100px;
@@ -566,51 +854,62 @@ TABLE OF CONTENTS
     overflow: hidden;
     box-shadow: 1px 1px 15px -5px black;
     transition: all .3s ease;
-    &:hover{
+
+    &:hover {
         //transform: scale(1.05);
         cursor: pointer;
     }
-    &:hover .profile-pic{
+
+    &:hover .profile-pic {
         opacity: .5;
     }
+
     .profile-pic {
         height: 100%;
         width: 100%;
         transition: all .3s ease;
-        &:after{
+
+        &:after {
             font-family: FontAwesome;
+
             //content: "\f083";
-            top: 0; left: 0;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             position: absolute;
             font-size: 60px;
+
             //background: #ecf0f1;
 
             color: #34495e;
             text-align: center;
-            display:flex;
+            display: flex;
             justify-content: center;
             align-items: center;
         }
     }
+
     .upload-button {
         position: absolute;
-        top: 0; left: 0;
+        top: 0;
+        left: 0;
         height: 100%;
         width: 100%;
+
         .upload-icon {
             position: absolute;
             width: 30px;
             height: 30px;
             top: 50%;
             left: 50%;
-            transform: translate(-50%,-50%);
+            transform: translate(-50%, -50%);
             text-align: center;
             opacity: 0;
             transition: all .3s ease;
             stroke: $primary;
         }
+
         &:hover .upload-icon {
             opacity: .9;
         }
@@ -618,18 +917,21 @@ TABLE OF CONTENTS
 }
 
 /* ==========================================================================
-5. Avatar Upload
+6. Avatar Upload
 ========================================================================== */
 
 //Card
 .upload-card {
     padding: 40px 20px;
+
     //user
     .username {
         padding: 10px 0;
         font-weight: 500;
+
         span {
             display: block;
+
             &:nth-child(2) {
                 font-size: 90%;
                 font-weight: 400;
@@ -637,6 +939,7 @@ TABLE OF CONTENTS
             }
         }
     }
+
     //Button
     .button {
         font-weight: 500 !important;

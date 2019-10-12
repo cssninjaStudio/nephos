@@ -8,42 +8,19 @@ title: Modern Bulma Ecommerce App and Dashboard
 {{> mobile-navbar-user}}
 
 <!-- Main Sidebar-->
-<div class="main-sidebar">
-    <div class="sidebar-brand">
-        <a href="home.html"><img src="assets/img/logo/nephos.svg" alt=""></a>
-    </div>
-    <div class="sidebar-inner">
-        <ul class="icon-menu">
-            <!-- Shop sidebar trigger -->
-            {{> sidebar-item-home}}
-            <!-- Cart sidebar trigger -->
-            {{> sidebar-item-cart-active}}
-            <!-- Search trigger -->
-            {{> sidebar-item-search}}
-            <!-- Mobile mode trigger -->
-            {{> sidebar-item-mode}}
-        </ul>
-
-        <!-- User account -->
-        <ul class="bottom-menu is-hidden-mobile">
-            {{> sidebar-item-logout}}
-        </ul>
-    </div>
-</div>
-<!-- /Main Sidebar-->
+{{> shop-sidebar}}
 
 <!-- FAB -->
 {{> flying-button}}
-<!-- /FAB -->
 
 <!-- Categories Right quickview -->
 {{> quickview-categories}}
 
 <!-- Shop quickview -->
-{{> quickview-main-user}}
+{{> quickview-main}}
 
 <!-- Cart quickview -->
-{{> quickview-cart-full}}
+{{> quickview-cart}}
 
 <!-- Main wrapper -->
 <div class="shop-wrapper">
@@ -81,7 +58,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                                 <div class="card-body">
                                     <!-- Avatar form -->
                                     <div id="avatar-upload" class="avatar-wrapper has-simple-popover" data-content="Change profile picture" data-placement="top">
-                                        <img class="profile-pic" src="http://via.placeholder.com/250x250" alt="">
+                                        <img class="profile-pic" src="http://via.placeholder.com/250x250" data-demo-src="assets/img/avatars/elie.jpg" alt="">
                                         <div class="upload-button">
                                             <i class="upload-icon" data-feather="plus" aria-hidden="true"></i>
                                         </div>

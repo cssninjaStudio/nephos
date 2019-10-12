@@ -8,42 +8,19 @@ title: Modern Bulma Ecommerce App and Dashboard
 {{> mobile-navbar-user}}
 
 <!-- Main Sidebar-->
-<div class="main-sidebar">
-    <div class="sidebar-brand">
-        <a href="home.html"><img src="assets/img/logo/nephos.svg" alt=""></a>
-    </div>
-    <div class="sidebar-inner">
-        <ul class="icon-menu">
-            <!-- Shop sidebar trigger -->
-            {{> sidebar-item-home}}
-            <!-- Cart sidebar trigger -->
-            {{> sidebar-item-cart-active}}
-            <!-- Search trigger -->
-            {{> sidebar-item-search}}
-            <!-- Mobile mode trigger -->
-            {{> sidebar-item-mode}}
-        </ul>
-
-        <!-- User account -->
-        <ul class="bottom-menu is-hidden-mobile">
-            {{> sidebar-item-logout}}
-        </ul>
-    </div>
-</div>
-<!-- /Main Sidebar-->
+{{> shop-sidebar}}
 
 <!-- FAB -->
 {{> flying-button}}
-<!-- /FAB -->
 
 <!-- Categories Right quickview -->
 {{> quickview-categories}}
 
 <!-- Shop quickview -->
-{{> quickview-main-user}}
+{{> quickview-main}}
 
 <!-- Cart quickview -->
-{{> quickview-cart-full-alt}}
+{{> quickview-cart}}
 
 <!-- Main wrapper -->
 <div class="shop-wrapper">
@@ -51,13 +28,13 @@ title: Modern Bulma Ecommerce App and Dashboard
     {{> search-overlay}}
 
     <!-- Main section -->
-    <div class="section">
+    <div id="shop-wishlist" class="section">
         <!-- Container -->
         <div class="container">
 
             <!-- Wishlists Layout -->
             <div class="columns account-header">
-                <div class="column is-10 is-offset-1 is-tablet-landscape-padded">
+                <div class="column main-column is-tablet-landscape-padded">
                     <!-- title -->
                     <div class="account-title">
                         <h2>WISHLIST</h2>
@@ -75,8 +52,24 @@ title: Modern Bulma Ecommerce App and Dashboard
                         </ul>
                     </div>
 
+                    <div id="wishlist-main-placeholder" class="main-placeholder is-hidden">
+                        <div class="placeholder-content">
+                            <img src="assets/img/illustrations/add-to-cart.svg" alt="">
+                            <h3>Welcome, Guest</h3>
+                            <p>Please login to your account, or create a new one to be able to use wishlists.</p>
+                            <div class="button-wrap">
+                                <a class="button big-button primary-button rounded raised">Log In</a>
+                            </div>
+                            <a>Don't have an account?</a>
+                        </div>
+                    </div>
+
                     <!-- Row -->
-                    <div class="columns is-account-grid is-multiline">
+                    <div id="wishlist-main" class="columns is-account-grid is-multiline">
+                        <!--Loader-->
+                        <div class="account-loader is-active">
+                            <div class="loader is-loading"></div>
+                        </div>
                         <!-- Wishlists -->
                         <div class="column is-4">
                             <!-- List of Wishlists -->
@@ -89,15 +82,48 @@ title: Modern Bulma Ecommerce App and Dashboard
                                     </div>
                                 </div>
                                 <ul class="wishlists">
-                                    <li class="is-active"><a>Main List</a></li>
-                                    <li><a>Couches</a></li>
-                                    <li><a>Tables</a></li>
-                                    <li><a>Accessories</a></li>
+                                    <li class="is-active">
+                                        <a>Main List</a>
+                                        <div class="action-block">
+                                            <span>5 items</span>
+                                            <button class="remove-button">
+                                                <i data-feather="trash-2"></i>
+                                            </button>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a>Couches</a>
+                                        <div class="action-block">
+                                            <span>5 items</span>
+                                            <button class="remove-button">
+                                                <i data-feather="trash-2"></i>
+                                            </button>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a>Tables</a>
+                                        <div class="action-block">
+                                            <span>5 items</span>
+                                            <button class="remove-button">
+                                                <i data-feather="trash-2"></i>
+                                            </button>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a>Accessories</a>
+                                        <div class="action-block">
+                                            <span>5 items</span>
+                                            <button class="remove-button">
+                                                <i data-feather="trash-2"></i>
+                                            </button>
+                                        </div>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
 
-                        <div class="column is-8">
+                        <div id="wishlists-container" class="column is-8">
+
                             <div class="flat-card wishlist-card is-auto">
                                 <!-- List of Wishlist Items -->
                                 <ul class="wishlist">
@@ -106,43 +132,20 @@ title: Modern Bulma Ecommerce App and Dashboard
                                     <li class="wishlist-item" onclick="return true">
                                         <div class="item-wrapper">
                                             <!-- Product Image -->
-                                            <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                            <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/office6.png" alt="">
                                             <!-- Product meta -->
                                             <span class="product-info">
-                                                <span>The Conqueror</span>
+                                                <a>The Conqueror</a>
                                                 <span>Office</span>
                                             </span>
                                             <div class="action">
-                                                <!-- Dropdown button -->
-                                                <div class="dropdown is-right">
-                                                    <span class="dropdown-trigger">
-                                                        <span class="dropdown-button">
-                                                            <a href="javascript:void(0);"><i class="feather-icons" data-feather="chevron-down"></i></a>
-                                                        </span>
-                                                    </span>
-                                                    <!-- Dropdown menu-->
-                                                    <div class="dropdown-menu" role="menu">
-                                                        <div class="dropdown-content">
-                                                            <!-- Dropdown item -->
-                                                            <a href="#" class="dropdown-item">
-                                                                <i class="feather-icons" data-feather="list"></i> <span>Move to List</span>
-                                                            </a>
-                                                            <!-- Dropdown item -->
-                                                            <a class="dropdown-item">
-                                                                <i class="feather-icons" data-feather="eye"></i> <span>View Product</span>
-                                                            </a>
-                                                            <!-- Dropdown item -->
-                                                            <a href="#" class="dropdown-item">
-                                                                <i class="feather-icons" data-feather="shopping-cart"></i> <span>Add to Cart</span>
-                                                            </a>
-                                                            <hr class="dropdown-divider">
-                                                            <!-- Dropdown item -->
-                                                            <a href="#" class="dropdown-item">
-                                                                <i class="feather-icons" data-feather="x"></i> <span>Remove</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                <!-- actions -->
+                                                <a class="add-button">
+                                                    <i data-feather="shopping-cart"></i>
+                                                </a>
+                                                <a class="remove-button">
+                                                    <i data-feather="trash-2"></i>
+                                                </a>
                                             </div>
                                         </div>
                                     </li>
@@ -150,36 +153,19 @@ title: Modern Bulma Ecommerce App and Dashboard
                                     <!-- Wishlist Item -->
                                     <li class="wishlist-item" onclick="return true">
                                         <div class="item-wrapper">
-                                            <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                            <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/office7.gif" alt="">
                                             <span class="product-info">
-                                                <span>The Gentleman</span>
+                                                <a>The Gentleman</a>
                                                 <span>Office</span>
                                             </span>
                                             <div class="action">
-                                                <div class="dropdown is-right">
-                                                    <span class="dropdown-trigger">
-                                                        <span class="dropdown-button">
-                                                            <a href="javascript:void(0);"><i class="feather-icons" data-feather="chevron-down"></i></a>
-                                                        </span>
-                                                    </span>
-                                                    <div class="dropdown-menu" role="menu">
-                                                        <div class="dropdown-content">
-                                                            <a href="#" class="dropdown-item">
-                                                                <i class="feather-icons" data-feather="list"></i> <span>Move to List</span>
-                                                            </a>
-                                                            <a class="dropdown-item">
-                                                                <i class="feather-icons" data-feather="eye"></i> <span>View Product</span>
-                                                            </a>
-                                                            <a href="#" class="dropdown-item">
-                                                                <i class="feather-icons" data-feather="shopping-cart"></i> <span>Add to Cart</span>
-                                                            </a>
-                                                            <hr class="dropdown-divider">
-                                                            <a href="#" class="dropdown-item">
-                                                                <i class="feather-icons" data-feather="x"></i> <span>Remove</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                <!-- actions -->
+                                                <a class="add-button">
+                                                    <i data-feather="shopping-cart"></i>
+                                                </a>
+                                                <a class="remove-button">
+                                                    <i data-feather="trash-2"></i>
+                                                </a>
                                             </div>
                                         </div>
                                     </li>
@@ -187,36 +173,19 @@ title: Modern Bulma Ecommerce App and Dashboard
                                     <!-- Wishlist Item -->
                                     <li class="wishlist-item" onclick="return true">
                                         <div class="item-wrapper">
-                                            <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                            <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/access1.jpg" alt="">
                                             <span class="product-info">
-                                                <span>Styled Lamp</span>
+                                                <a>Styled Lamp</a>
                                                 <span>Accessories</span>
                                             </span>
                                             <div class="action">
-                                                <div class="dropdown is-right">
-                                                    <span class="dropdown-trigger">
-                                                        <span class="dropdown-button">
-                                                            <a href="javascript:void(0);"><i class="feather-icons" data-feather="chevron-down"></i></a>
-                                                        </span>
-                                                    </span>
-                                                    <div class="dropdown-menu" role="menu">
-                                                        <div class="dropdown-content">
-                                                            <a href="#" class="dropdown-item">
-                                                                <i class="feather-icons" data-feather="list"></i> <span>Move to List</span>
-                                                            </a>
-                                                            <a class="dropdown-item">
-                                                                <i class="feather-icons" data-feather="eye"></i> <span>View Product</span>
-                                                            </a>
-                                                            <a href="#" class="dropdown-item">
-                                                                <i class="feather-icons" data-feather="shopping-cart"></i> <span>Add to Cart</span>
-                                                            </a>
-                                                            <hr class="dropdown-divider">
-                                                            <a href="#" class="dropdown-item">
-                                                                <i class="feather-icons" data-feather="x"></i> <span>Remove</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                <!-- actions -->
+                                                <a class="add-button">
+                                                    <i data-feather="shopping-cart"></i>
+                                                </a>
+                                                <a class="remove-button">
+                                                    <i data-feather="trash-2"></i>
+                                                </a>
                                             </div>
                                         </div>
                                     </li>
@@ -224,36 +193,19 @@ title: Modern Bulma Ecommerce App and Dashboard
                                     <!-- Wishlist Item -->
                                     <li class="wishlist-item" onclick="return true">
                                         <div class="item-wrapper">
-                                            <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                            <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/kids5.jpg" alt="">
                                             <span class="product-info">
-                                                <span>Treasure Chest</span>
+                                                <a>Treasure Chest</a>
                                                 <span>For Kids</span>
                                             </span>
                                             <div class="action">
-                                                <div class="dropdown is-right">
-                                                    <span class="dropdown-trigger">
-                                                        <span class="dropdown-button">
-                                                            <a href="javascript:void(0);"><i class="feather-icons" data-feather="chevron-down"></i></a>
-                                                        </span>
-                                                    </span>
-                                                    <div class="dropdown-menu" role="menu">
-                                                        <div class="dropdown-content">
-                                                            <a href="#" class="dropdown-item">
-                                                                <i class="feather-icons" data-feather="list"></i> <span>Move to List</span>
-                                                            </a>
-                                                            <a class="dropdown-item">
-                                                                <i class="feather-icons" data-feather="eye"></i> <span>View Product</span>
-                                                            </a>
-                                                            <a href="#" class="dropdown-item">
-                                                                <i class="feather-icons" data-feather="shopping-cart"></i> <span>Add to Cart</span>
-                                                            </a>
-                                                            <hr class="dropdown-divider">
-                                                            <a href="#" class="dropdown-item">
-                                                                <i class="feather-icons" data-feather="x"></i> <span>Remove</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                <!-- actions -->
+                                                <a class="add-button">
+                                                    <i data-feather="shopping-cart"></i>
+                                                </a>
+                                                <a class="remove-button">
+                                                    <i data-feather="trash-2"></i>
+                                                </a>
                                             </div>
                                         </div>
                                     </li>
@@ -261,36 +213,19 @@ title: Modern Bulma Ecommerce App and Dashboard
                                     <!-- Wishlist Item -->
                                     <li class="wishlist-item" onclick="return true">
                                         <div class="item-wrapper">
-                                            <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                            <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/modern-bed.jpg" alt="">
                                             <span class="product-info">
-                                                <span>Modern Bed</span>
+                                                <a>Modern Bed</a>
                                                 <span>House</span>
                                             </span>
                                             <div class="action">
-                                                <div class="dropdown is-right">
-                                                    <span class="dropdown-trigger">
-                                                        <span class="dropdown-button">
-                                                            <a href="javascript:void(0);"><i class="feather-icons" data-feather="chevron-down"></i></a>
-                                                        </span>
-                                                    </span>
-                                                    <div class="dropdown-menu" role="menu">
-                                                        <div class="dropdown-content">
-                                                            <a href="#" class="dropdown-item">
-                                                                <i class="feather-icons" data-feather="list"></i> <span>Move to List</span>
-                                                            </a>
-                                                            <a class="dropdown-item">
-                                                                <i class="feather-icons" data-feather="eye"></i> <span>View Product</span>
-                                                            </a>
-                                                            <a href="#" class="dropdown-item">
-                                                                <i class="feather-icons" data-feather="shopping-cart"></i> <span>Add to Cart</span>
-                                                            </a>
-                                                            <hr class="dropdown-divider">
-                                                            <a href="#" class="dropdown-item">
-                                                                <i class="feather-icons" data-feather="x"></i> <span>Remove</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                <!-- actions -->
+                                                <a class="add-button">
+                                                    <i data-feather="shopping-cart"></i>
+                                                </a>
+                                                <a class="remove-button">
+                                                    <i data-feather="trash-2"></i>
+                                                </a>
                                             </div>
                                         </div>
                                     </li>
@@ -298,14 +233,14 @@ title: Modern Bulma Ecommerce App and Dashboard
                             </div>
 
                             <!-- List Pagination -->
-                            <div class="wishlist-pagination">
+                            <!--div class="wishlist-pagination">
                                 <ul>
                                     <li class="is-active"><span>1</span></li>
                                     <li><span>2</span></li>
                                     <li><span>3</span></li>
                                     <li><span>4</span></li>
                                 </ul>
-                            </div>
+                            </div-->
                             <!-- /List Pagination -->
                         </div>
                     </div>
@@ -320,7 +255,7 @@ title: Modern Bulma Ecommerce App and Dashboard
 <!-- /Main wrapper -->
 
 <!-- Add Wishlist Modal -->
-<div id="new-wishlist" class="modal review-modal">
+<div id="new-wishlist" class="modal wishlist-modal">
     <div class="modal-background"></div>
     <div class="modal-content">
         <div class="box">
@@ -330,14 +265,17 @@ title: Modern Bulma Ecommerce App and Dashboard
                 <div class="modal-delete"><i data-feather="x"></i></div>
             </div>
             <div class="box-body">
-                <p>Add a new sub list to classify your wishlist items. You can then manage them and find them more easily.</p>
-                <div class="control control-medium is-input-wrapper">
-                    <input type="text" class="input is-minimal" placeholder="Wishlist name">
-                </div>
-                <div class="has-text-right">
-                    <button type="submit" class="button feather-button is-bold primary-button raised">
-                        Create
-                    </button>
+                <img src="assets/img/illustrations/wishlist.svg" alt="">
+                <div class="inner-content">
+                    <p>Add a new sub list to classify your wishlist items. You can then manage them and find them more easily.</p>
+                    <div class="control">
+                        <input id="new-wishlist-input" type="text" class="input is-minimal" placeholder="Wishlist name">
+                    </div>
+                    <div class="button-wrap">
+                        <button type="submit" class="button add-wishlist-action is-fullwidth feather-button is-bold primary-button raised">
+                            Create
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

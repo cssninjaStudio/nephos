@@ -1,0 +1,434 @@
+.modal {
+    .modal-background {
+        background: rgba($primary, 0.3);
+    }
+}
+
+/* ==========================================================================
+2. Review Modal
+========================================================================== */
+
+.review-modal {
+    //Content
+    .modal-content {
+        max-width: 480px;
+
+        //Close modal button
+        .modal-delete {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: auto;
+
+            svg {
+                width: 20px;
+                height: 20px;
+                stroke: $muted-grey;
+                cursor: pointer;
+
+                &:hover {
+                    stroke: $primary;
+                }
+            }
+        }
+
+        //Inner box
+        .box {
+            padding: 0;
+            overflow: hidden;
+            transition: all .4s;
+            transform: scale(0);
+
+            //Header
+            .box-header {
+                width: 100%;
+                background: $fade-grey;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                padding: 10px 20px;
+
+                img {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                }
+
+                span {
+                    display: block;
+                    padding-left: 10px;
+                    color: $dark-text;
+                }
+
+                .delete {
+                    margin-left: auto;
+                }
+            }
+
+            .box-body {
+                padding: 20px;
+            }
+
+            p {
+                font-size: 85%;
+                color: $muted-grey;
+            }
+        }
+
+        //Labels
+        fieldset, label {
+            margin: 0;
+            padding: 0;
+            position: relative;
+            z-index: 99;
+        }
+
+        //ratings
+        .rating {
+            border: none;
+            float: left;
+        }
+
+        .rating > input {
+            display: none;
+        }
+
+        .rating > label:before {
+            margin: 5px;
+            font-size: 1.25em;
+            font-family: FontAwesome;
+            display: inline-block;
+            content: "\f005";
+        }
+
+        .rating > .half:before {
+            content: "\f089";
+            position: absolute;
+        }
+
+        .rating > label {
+            color: #ddd;
+            float: right;
+        }
+
+        //Highlight Stars on Hover
+        .rating > input:checked ~ label,
+        .rating:not(:checked) > label:hover,
+        .rating:not(:checked) > label:hover ~ label {
+            color: #FFD700 !important;
+        } //hover previous stars in list
+
+        .rating > input:checked + label:hover,
+        .rating > input:checked ~ label:hover,
+        .rating > label:hover ~ input:checked ~ label,
+        .rating > input:checked ~ label:hover ~ label {
+            color: #FFED85 !important;
+        }
+    }
+
+    //Active state
+    &.is-active {
+        .box {
+            transform: scale(1);
+        }
+    }
+}
+
+/* ==========================================================================
+2. Wishlist Modal
+========================================================================== */
+
+.wishlist-modal {
+    //Content
+    .modal-content {
+        max-width: 480px;
+
+        //Close modal button
+        .modal-delete {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: auto;
+
+            svg {
+                width: 20px;
+                height: 20px;
+                stroke: $muted-grey;
+                cursor: pointer;
+
+                &:hover {
+                    stroke: $primary;
+                }
+            }
+        }
+
+        //Inner box
+        .box {
+            padding: 0;
+            overflow: hidden;
+            transition: all .4s;
+            transform: scale(0);
+
+            //Header
+            .box-header {
+                width: 100%;
+                background: $fade-grey;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                padding: 10px 20px;
+
+                img {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                }
+
+                span {
+                    display: block;
+                    padding-left: 10px;
+                    color: $dark-text;
+                }
+
+                .delete {
+                    margin-left: auto;
+                }
+            }
+
+            .box-body {
+                padding: 20px;
+
+                img {
+                    display: block;
+                    max-width: 190px;
+                    margin: 20px auto;
+                }
+
+                .inner-content {
+                    text-align: center;
+                    max-width: 320px;
+                    margin: 0 auto;
+
+                    .input {
+                        margin-bottom: 10px;
+                    }
+
+                    .button-wrap {
+                        margin-bottom: 20px;
+                    }
+                }
+            }
+
+            p {
+                font-size: 85%;
+                color: $muted-grey;
+                margin-bottom: 10px;
+            }
+        }
+
+        //Labels
+        fieldset, label {
+            margin: 0;
+            padding: 0;
+            position: relative;
+            z-index: 99;
+        }
+    }
+
+    //Active state
+    &.is-active {
+        .box {
+            transform: scale(1);
+        }
+    }
+}
+
+/* ==========================================================================
+3. Add to wishlist modal
+========================================================================== */
+
+.add-to-wishlist-modal {
+    //Content
+    .modal-content {
+        max-width: 480px;
+
+        //Close modal button
+        .modal-delete {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: auto;
+
+            svg {
+                width: 20px;
+                height: 20px;
+                stroke: $muted-grey;
+                cursor: pointer;
+
+                &:hover {
+                    stroke: $primary;
+                }
+            }
+        }
+
+        //Inner box
+        .box {
+            padding: 0;
+            overflow: hidden;
+            transition: all .4s;
+            transform: scale(0);
+
+            //Header
+            .box-header {
+                width: 100%;
+                background: $fade-grey;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                padding: 10px 20px;
+
+                img {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                }
+
+                span {
+                    display: block;
+                    padding-left: 10px;
+                    color: $dark-text;
+                }
+
+                .delete {
+                    margin-left: auto;
+                }
+            }
+
+            .box-body {
+                padding: 20px;
+
+                img {
+                    display: block;
+                    max-width: 190px;
+                    margin: 20px auto;
+                }
+
+                .inner-content {
+                    max-width: 320px;
+                    margin: 0 auto;
+
+                    .message {
+                        .message-body {
+                            padding: 12px;
+                            font-size: .9rem;
+                            color: lighten($primary, 6%);
+                            border: 1px solid lighten($primary, 6%);
+                        }
+                    }
+
+                    .wishlist-modal-list {
+                        margin: 10px 0 20px 0;
+
+                        ul {
+                            border: 1px solid $fade-grey;
+                            border-radius: 8px;
+
+                            li {
+                                display: flex;
+                                align-items: center;
+                                justify-content: space-between;
+                                cursor: pointer;
+
+                                &.is-active {
+                                    background: transparent;
+
+                                    .meta {
+                                        span {
+                                            &.name {
+                                                color: $primary;
+                                            }
+                                        }
+                                    }
+
+                                    .selected-indicator {
+                                        background: $primary;
+                                        border-color: $primary;
+                                        box-shadow: $primary-box-shadow;
+                                        transform: scale(1);
+
+                                        svg {
+                                            opacity: 1;
+                                        }
+                                    }
+                                }
+
+                                .meta {
+                                    text-align: left;
+
+                                    span {
+                                        display: block;
+
+                                        &.name {
+                                            font-weight: 500;
+                                        }
+
+                                        &.count {
+                                            color: $muted-grey;
+                                            font-size: .9rem;
+                                        }
+                                    }
+                                }
+
+                                .selected-indicator {
+                                    height: 34px;
+                                    width: 34px;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    border-radius: 50%;
+                                    border: 1px solid $fade-grey;
+                                    transform: scale(0.6);
+                                    transition: all .3s;
+
+                                    svg {
+                                        opacity: 0;
+                                        stroke: $white;
+                                        height: 16px;
+                                        width: 16px;
+                                        stroke-width: 3px;
+                                        transition: all .3s;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .button-wrap {
+                        margin-bottom: 20px;
+                    }
+                }
+            }
+
+            p {
+                font-size: 85%;
+                color: $muted-grey;
+                margin: 10px 0;
+            }
+        }
+
+        //Labels
+        fieldset, label {
+            margin: 0;
+            padding: 0;
+            position: relative;
+            z-index: 99;
+        }
+    }
+
+    //Active state
+    &.is-active {
+        .box {
+            transform: scale(1);
+        }
+    }
+}

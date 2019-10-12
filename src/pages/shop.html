@@ -8,42 +8,19 @@ title: Modern Bulma Ecommerce App and Dashboard
 {{> mobile-navbar-user}}
 
 <!-- Main Sidebar-->
-<div class="main-sidebar">
-    <div class="sidebar-brand">
-        <a href="home.html"><img src="assets/img/logo/nephos.svg" alt=""></a>
-    </div>
-    <div class="sidebar-inner">
-        <ul class="icon-menu">
-            <!-- Shop sidebar trigger -->
-            {{> sidebar-item-home}}
-            <!-- Cart sidebar trigger -->
-            {{> sidebar-item-cart}}
-            <!-- Search trigger -->
-            {{> sidebar-item-search}}
-            <!-- Mobile mode trigger -->
-            {{> sidebar-item-mode}}
-        </ul>
-
-        <!-- User account -->
-        <ul class="bottom-menu is-hidden-mobile">
-            {{> sidebar-item-guest}}
-        </ul>
-    </div>
-</div>
-<!-- /Main Sidebar-->
+{{> shop-sidebar}}
 
 <!-- FAB -->
 {{> flying-button}}
-<!-- /FAB -->
 
 <!-- Categories Right quickview -->
 {{> quickview-categories}}
 
 <!-- Shop quickview -->
-{{> quickview-main-guest}}
+{{> quickview-main}}
 
 <!-- Cart quickview -->
-{{> quickview-cart-empty}}
+{{> quickview-cart}}
 
 <!-- Main wrapper -->
 <div class="shop-wrapper">
@@ -57,7 +34,7 @@ title: Modern Bulma Ecommerce App and Dashboard
 
             <!-- Product Categories Grid -->
             <div class="columns category-header">
-                <div class="column is-10 is-offset-1 is-tablet-landscape-padded">
+                <div class="column main-column is-tablet-landscape-padded">
                     <!-- Title -->
                     <div class="category-title no-border is-padded">
                         <h2>SHOP</h2>
@@ -71,7 +48,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                                 <div class="tile">
                                     <div class="tile is-parent is-vertical">
                                         <!-- Accessories Tile -->
-                                        <article class="tile is-child has-background-image" data-background="http://via.placeholder.com/1280x853" onClick="return true">
+                                        <article class="tile is-child has-background-image" data-background="http://via.placeholder.com/1280x853"             data-demo-background="assets/img/bg/accessories.jpeg" onClick="return true">
                                             <div class="tile-content is-small">
                                                 <!-- Category name -->
                                                 <h2 class="shop-category is-small">Accessories</h2>
@@ -87,7 +64,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                                                 </div>
                                                 <!-- View category link -->
                                                 <a href="products.html" class="action">
-                                                    <span>Discover</span> 
+                                                    <span>Discover</span>
                                                     <i data-feather="chevron-right"></i>
                                                 </a>
                                             </div>
@@ -95,7 +72,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                                             <div class="tile-overlay"></div>
                                         </article>
                                         <!-- Kitchen Tile -->
-                                        <article class="tile is-child has-background-image" data-background="http://via.placeholder.com/1280x853" onClick="return true">
+                                        <article class="tile is-child has-background-image" data-background="http://via.placeholder.com/1280x853" data-demo-background="assets/img/bg/kitchen.jpeg" onClick="return true">
                                             <div class="tile-content is-small">
                                                 <h2 class="shop-category is-small">Kitchen</h2>
                                                 <div class="divider"></div>
@@ -105,7 +82,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                                                     187 <span>Products</span>
                                                 </div>
                                                 <a href="products.html" class="action">
-                                                    <span>Discover</span> 
+                                                    <span>Discover</span>
                                                     <i data-feather="chevron-right"></i>
                                                 </a>
                                             </div>
@@ -115,7 +92,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                                     </div>
                                     <!-- House Tile -->
                                     <div class="tile is-parent">
-                                        <article class="tile is-child has-min-height has-background-image" data-background="http://via.placeholder.com/1280x853" onClick="return true">
+                                        <article class="tile is-child has-min-height has-background-image" data-background="http://via.placeholder.com/1280x853" data-demo-background="assets/img/bg/house.jpeg" onClick="return true">
                                             <div class="tile-content">
                                                 <h2 class="shop-category">House</h2>
                                                 <div class="divider"></div>
@@ -125,7 +102,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                                                     268 <span>Products</span>
                                                 </div>
                                                 <a href="products.html" class="action">
-                                                    <span>Discover</span> 
+                                                    <span>Discover</span>
                                                     <i data-feather="chevron-right"></i>
                                                 </a>
                                             </div>
@@ -136,7 +113,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                                 </div>
                                 <!-- Kids Tile -->
                                 <div class="tile is-parent">
-                                    <article class="tile is-child is-danger has-min-height has-background-image" data-background="http://via.placeholder.com/1280x853" onClick="return true">
+                                    <article class="tile is-child is-danger has-min-height has-background-image" data-background="http://via.placeholder.com/1280x853" data-demo-background="assets/img/bg/kids.jpeg" onClick="return true">
                                         <div class="tile-content">
                                             <h2 class="shop-category">For kids</h2>
                                             <div class="divider"></div>
@@ -146,7 +123,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                                                 376 <span>Products</span>
                                             </div>
                                             <a href="products.html" class="action">
-                                                <span>Discover</span> 
+                                                <span>Discover</span>
                                                 <i data-feather="chevron-right"></i>
                                             </a>
                                         </div>
@@ -157,7 +134,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                             </div>
                             <!-- Office Tile -->
                             <div class="tile is-parent">
-                                <article class="tile is-child has-background-image" data-background="http://via.placeholder.com/1280x853" onClick="return true">
+                                <article class="tile is-child has-background-image" data-background="http://via.placeholder.com/1280x853" data-demo-background="assets/img/bg/office.jpeg" onClick="return true">
                                     <div class="tile-content">
                                         <h2 class="shop-category">Office</h2>
                                         <div class="divider"></div>
@@ -167,7 +144,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                                             391 <span>Products</span>
                                         </div>
                                         <a href="products.html" class="action">
-                                            <span>Discover</span> 
+                                            <span>Discover</span>
                                             <i data-feather="chevron-right"></i>
                                         </a>
                                     </div>
@@ -179,7 +156,7 @@ title: Modern Bulma Ecommerce App and Dashboard
 
 
                 </div>
-            </div> 
+            </div>
             <!-- /House products -->
 
         </div>

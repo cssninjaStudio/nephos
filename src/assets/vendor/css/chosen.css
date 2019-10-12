@@ -121,15 +121,16 @@ TABLE OF CONTENTS
 }
 
 .chosen-container-single .chosen-single div:after {
-    content: "\f107";
-    font-family: "FontAwesome";
+    content: "\f078";
+    font-family: 'Font Awesome 5 Pro';
     font-size: 18px;
     margin: 0;
     right: 20px;
     position: relative;
     width: auto;
     height: auto;
-    display: inline-block;
+
+    /*display: inline-block;*/
     color: #c0c0c0;
     float: right;
     font-weight: normal;
@@ -155,9 +156,9 @@ TABLE OF CONTENTS
     width: 100%;
     height: 40px;
     outline: 0;
-    margin-bottom: 10px!important;
-    border: 1px solid #ddd!important;
-    background-color: #fbfbfb!important;
+    margin-bottom: 10px !important;
+    border: 1px solid #ddd !important;
+    background-color: #fbfbfb !important;
     display: block;
     position: relative;
     z-index: 9;
@@ -305,8 +306,8 @@ TABLE OF CONTENTS
     padding: 0;
     height: 49px;
     outline: 0;
-    border: 0!important;
-    background: transparent!important;
+    border: 0 !important;
+    background: transparent !important;
     color: #888;
     line-height: normal;
     font-weight: 500;
@@ -398,7 +399,7 @@ TABLE OF CONTENTS
 }
 
 .chosen-container-active .chosen-choices li.search-field input[type="text"] {
-    color: #888!important;
+    color: #888 !important;
 }
 
 .chosen-drop::-webkit-scrollbar {
@@ -424,6 +425,7 @@ TABLE OF CONTENTS
     border: none !important;
     outline: none !important;
     display: none !important;
+
     &:active, &:focus {
         border: none !important;
         outline: none !important;

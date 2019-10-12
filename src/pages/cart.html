@@ -8,42 +8,19 @@ title: Modern Bulma Ecommerce App and Dashboard
 {{> mobile-navbar-user}}
 
 <!-- Main Sidebar-->
-<div class="main-sidebar">
-    <div class="sidebar-brand">
-        <a href="home.html"><img src="assets/img/logo/nephos.svg" alt=""></a>
-    </div>
-    <div class="sidebar-inner">
-        <ul class="icon-menu">
-            <!-- Shop sidebar trigger -->
-            {{> sidebar-item-home}}
-            <!-- Cart sidebar trigger -->
-            {{> sidebar-item-cart-active}}
-            <!-- Search trigger -->
-            {{> sidebar-item-search}}
-            <!-- Mobile mode trigger -->
-            {{> sidebar-item-mode}}
-        </ul>
-
-        <!-- User account -->
-        <ul class="bottom-menu is-hidden-mobile">
-            {{> sidebar-item-logout}}
-        </ul>
-    </div>
-</div>
-<!-- /Main Sidebar-->
+{{> shop-sidebar}}
 
 <!-- FAB -->
 {{> flying-button}}
-<!-- /FAB -->
 
 <!-- Categories Right quickview -->
 {{> quickview-categories}}
 
 <!-- Shop quickview -->
-{{> quickview-main-user}}
+{{> quickview-main}}
 
 <!-- Cart quickview -->
-{{> quickview-cart-full-alt}}
+{{> quickview-cart}}
 
 
 <!-- Main wrapper -->
@@ -92,14 +69,14 @@ title: Modern Bulma Ecommerce App and Dashboard
                             <div class="flat-card is-auto cart-card">
                                 <ul class="cart-content">
                                     <li>
-                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/office6.png" alt="">
                                         <span class="product-info">
                                             <span>The Conqueror</span>
                                             <span>Office</span>
                                         </span>
                                         <span class="product-price">
                                             <span>Price</span>
-                                            <span>385,00</span>
+                                            <span>385.00</span>
                                         </span>
 
                                         <span class="product-quantity">
@@ -124,14 +101,14 @@ title: Modern Bulma Ecommerce App and Dashboard
                             <div class="flat-card is-auto cart-card">
                                 <ul class="cart-content">
                                     <li>
-                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/office7.gif" alt="">
                                         <span class="product-info">
                                             <span>The Gentleman</span>
                                             <span>Office</span>
                                         </span>
                                         <span class="product-price">
                                             <span>Price</span>
-                                            <span>329,00</span>
+                                            <span>329.00</span>
                                         </span>
 
                                         <span class="product-quantity">
@@ -156,14 +133,14 @@ title: Modern Bulma Ecommerce App and Dashboard
                             <div class="flat-card is-auto cart-card">
                                 <ul class="cart-content">
                                     <li>
-                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/kids7.jpg" alt="">
                                         <span class="product-info">
                                             <span>Child Desk</span>
                                             <span>Kids</span>
                                         </span>
                                         <span class="product-price">
                                             <span>Price</span>
-                                            <span>278,00</span>
+                                            <span>278.00</span>
                                         </span>
 
                                         <span class="product-quantity">
@@ -188,7 +165,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                             <div class="flat-card is-auto cart-card">
                                 <ul class="cart-content">
                                     <li>
-                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/access4.jpg" alt="">
                                         <span class="product-info">
                                             <span>Design Shelf</span>
                                             <span>House</span>
@@ -238,13 +215,13 @@ title: Modern Bulma Ecommerce App and Dashboard
                         <div class="column is-9">
                             <div class="flat-card is-long">
                                 <div class="left-image is-md">
-                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/red-seat.jpg" alt="">
                                 </div>
                                 <div class="product-info">
                                     <a href="#"><h3 class="product-name featured">Red Alcove</h3></a>
                                     <p class="product-description">Lorem ipsum sit dolor amet</p>
                                     <p class="product-price">
-                                        90,00
+                                        90.00
                                     </p>
                                 </div>
 
@@ -258,7 +235,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                         <div class="column is-3">
                             <div class="flat-card">
                                 <div class="image">
-                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/red-seat.png" alt="">
                                 </div>
                                 <div class="product-info has-text-centered">
                                     <a href="#"><h3 class="product-name">Red Seat</h3></a>
@@ -278,13 +255,13 @@ title: Modern Bulma Ecommerce App and Dashboard
                         <div class="column is-3">
                             <div class="flat-card">
                                 <div class="image">
-                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/office4.jpg" alt="">
                                 </div>
                                 <div class="product-info has-text-centered">
                                     <a href="#"><h3 class="product-name">Executive</h3></a>
                                     <p class="product-description">Lorem ipsum sit dolor amet</p>
                                     <p class="product-price">
-                                        125,00
+                                        125.00
                                     </p>
                                 </div>
 
@@ -298,13 +275,13 @@ title: Modern Bulma Ecommerce App and Dashboard
                         <div class="column is-3">
                             <div class="flat-card">
                                 <div class="image">
-                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/office5.jpg" alt="">
                                 </div>
                                 <div class="product-info has-text-centered">
                                     <a href="#"><h3 class="product-name">Cosy chair</h3></a>
                                     <p class="product-description">Lorem ipsum sit dolor amet</p>
                                     <p class="product-price">
-                                        88,00
+                                        88.00
                                     </p>
                                 </div>
 
@@ -318,7 +295,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                         <div class="column">
                             <div class="flat-card is-long">
                                 <div class="left-image is-md">
-                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/office9.png" alt="">
                                 </div>
                                 <div class="product-info">
                                     <a href="#"><h3 class="product-name featured-md">Ambassador</h3></a>
@@ -333,18 +310,18 @@ title: Modern Bulma Ecommerce App and Dashboard
                                     <div class="like"><i data-feather="heart"></i></div>
                                 </div>
                             </div>
-                        </div> 
+                        </div>
                         <!-- Product -->
                         <div class="column is-6">
                             <div class="flat-card is-long">
                                 <div class="left-image is-md">
-                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/office6.png" alt="">
                                 </div>
                                 <div class="product-info">
                                     <a href="#"><h3 class="product-name featured-md">Conqueror</h3></a>
                                     <p class="product-description">Lorem ipsum sit dolor amet</p>
                                     <p class="product-price">
-                                        590,00
+                                        590.00
                                     </p>
                                 </div>
 
@@ -358,13 +335,13 @@ title: Modern Bulma Ecommerce App and Dashboard
                         <div class="column is-6">
                             <div class="flat-card is-long">
                                 <div class="left-image is-md">
-                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                    <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/office7.gif" alt="">
                                 </div>
                                 <div class="product-info">
                                     <a href="#"><h3 class="product-name featured-md">Gentleman</h3></a>
                                     <p class="product-description">Lorem ipsum sit dolor amet</p>
                                     <p class="product-price">
-                                        375,00
+                                        375.00
                                     </p>
                                 </div>
 
@@ -373,14 +350,14 @@ title: Modern Bulma Ecommerce App and Dashboard
                                     <div class="like"><i data-feather="heart"></i></div>
                                 </div>
                             </div>
-                        </div> 
+                        </div>
                     </div>
                     <!-- /Product grid -->
 
                     <div class="show-more"><a href="#">Show more products</a></div>
 
                 </div>
-            </div> 
+            </div>
             <!-- /Recently Viewed -->
         </div>
         <!-- /Container -->

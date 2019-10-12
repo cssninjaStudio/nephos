@@ -1,0 +1,22 @@
+<div class="main-sidebar">
+    <div class="sidebar-brand">
+        <a href="home.html"><img src="assets/img/logo/nephos.svg" alt=""></a>
+    </div>
+    <div class="sidebar-inner">
+        <ul class="icon-menu">
+            <!-- Shop sidebar trigger -->
+            {{> sidebar-item-home}}
+            <!-- Cart sidebar trigger -->
+            {{> sidebar-item-cart-active}}
+            <!-- Search trigger -->
+            {{> sidebar-item-search}}
+            <!-- Shop Filters -->
+            {{> sidebar-item-filters}}
+        </ul>
+
+        <!-- User account -->
+        <ul class="bottom-menu is-hidden-mobile">
+            {{> sidebar-item-auth}}
+        </ul>
+    </div>
+</div>

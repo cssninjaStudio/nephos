@@ -17,8 +17,10 @@ TABLE OF CONTENTS
 ========================================================================== */
 
 @import "base/theme-default";
+@import "base/base";
 @import "base/colors";
 @import "base/fonts";
+@import "base/helpers";
 @import "layout/sidebar";
 @import "components/quickview";
 @import "components/cards";
@@ -31,6 +33,8 @@ TABLE OF CONTENTS
 @import "pages/checkout";
 @import "pages/auth";
 @import "components/buttons";
+@import "components/modals";
+@import "components/alert";
 @import "pages/search";
 @import "layout/filters";
 @import "components/checkboxes";

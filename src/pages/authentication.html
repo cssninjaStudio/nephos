@@ -8,42 +8,19 @@ title: Modern Bulma Ecommerce App and Dashboard
 {{> mobile-navbar-user}}
 
 <!-- Main Sidebar-->
-<div class="main-sidebar">
-    <div class="sidebar-brand">
-        <a href="home.html"><img src="assets/img/logo/nephos.svg" alt=""></a>
-    </div>
-    <div class="sidebar-inner">
-        <ul class="icon-menu">
-            <!-- Shop sidebar trigger -->
-            {{> sidebar-item-home}}
-            <!-- Cart sidebar trigger -->
-            {{> sidebar-item-cart}}
-            <!-- Search trigger -->
-            {{> sidebar-item-search}}
-            <!-- Mobile mode trigger -->
-            {{> sidebar-item-mode}}
-        </ul>
-
-        <!-- User account -->
-        <ul class="bottom-menu is-hidden-mobile">
-            {{> sidebar-item-guest}}
-        </ul>
-    </div>
-</div>
-<!-- /Main Sidebar-->
+{{> shop-sidebar}}
 
 <!-- FAB -->
 {{> flying-button}}
-<!-- /FAB -->
 
 <!-- Categories Right quickview -->
 {{> quickview-categories}}
 
 <!-- Shop quickview -->
-{{> quickview-main-guest}}
+{{> quickview-main}}
 
 <!-- Cart quickview -->
-{{> quickview-cart-empty}}
+{{> quickview-cart}}
 
 <!-- Main wrapper -->
 <div class="shop-wrapper">
@@ -51,108 +28,193 @@ title: Modern Bulma Ecommerce App and Dashboard
     {{> search-overlay}}
 
     <!-- Main section -->
-    <div class="section">
+    <div id="shop-authentication" class="section">
         <!-- Container -->
         <div class="container">
 
             <!-- Authentication Layout -->
             <div class="columns account-header is-auth">
-                <div class="column is-10 is-offset-1 is-tablet-landscape-padded">
+                <div class="column main-column is-tablet-landscape-padded">
                     <!-- Title -->
                     <div class="auth-title">
-                        <h2>LOGIN</h2>
-                        <a href="index.html" class="button feather-button is-small primary-button upper-button raised is-hidden-mobile">
-                            <span>Home</span>
-                        </a>
+                        <h2 id="auth-main-title">LOGIN</h2>
                         <img class="brand-filigrane" src="assets/img/logo/nephos-greyscale.svg" alt="">
                     </div>
-                    <!-- Card -->
-                    <div class="flat-card is-auto is-auth-form">
-                        <div class="columns is-gapless is-flex-mobile">
-                            <!-- Image Columns -->
-                            <div class="column is-6 has-text-centered image-column is-padded">
-                                <div class="store-wrapper">
-                                    <img src="assets/img/logo/nephos-white.svg" alt="">
-                                    <div class="title">
-                                        Nephos
-                                    </div>
-                                    <div class="subtitle">An unforgetable Customer Experience</div>
-                                </div>
-                                <div class="nephos-overlay"></div>
-                            </div>
-                            <!-- Login/Register form -->
-                            <div class="column is-6 is-mobile-padded">
-
-                                <div class="tabs-wrapper animated-tabs">
-                                    <!-- Tabs -->
-                                    <div class="tabs is-form-tabs">
-                                        <ul>
-                                            <li class="is-active" data-tab="login"><a>Login</a></li>
-                                            <li data-tab="register"><a>Register</a></li>
-                                        </ul>
-                                    </div>
-                                    <!-- Login form -->
-                                    <div id="login" class="navtab-content is-active">
-                                        <form>
-                                            <!-- Form Control -->
-                                            <div class="control">
-                                                <label class="auth-label">Email*</label>
-                                                <input type="email" class="input" placeholder="">
-                                            </div>
-                                            <!-- Form Control -->
-                                            <div class="control">
-                                                <label class="auth-label">Password*</label>
-                                                <input type="password" class="input" placeholder="">
-                                            </div>
-                                            <!-- Form Control -->
-                                            <div class="control">
-                                                <label class="checkbox-wrap is-small">
-                                                    <input id="house" type="checkbox" class="d-checkbox" checked>
-                                                    <span></span>
-                                                    <small>Remember me?</small>
-                                                </label>
-                                            </div>
-                                            <!-- Form Submit -->
-                                            <div class="button-wrapper">
-                                                <button type="submit" class="button feather-button is-small primary-button upper-button raised">
-                                                    <span>Login</span>
-                                                </button>
-                                                <a class="forgotten">Forgot Password ?</a>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <!-- Register form -->
-                                    <div id="register" class="navtab-content">
-                                        <form>
-                                            <!-- Form Control -->
-                                            <div class="control">
-                                                <label class="auth-label">Email*</label>
-                                                <input type="email" class="input" placeholder="">
-                                            </div>
-                                            <!-- Form Control -->
-                                            <div class="control">
-                                                <label class="auth-label">Password*</label>
-                                                <input type="password" class="input" placeholder="">
-                                            </div>
-                                            <!-- Form Control -->
-                                            <div class="control">
-                                                <label class="auth-label">Confirm Password*</label>
-                                                <input type="password" class="input" placeholder="">
-                                            </div>
-                                            <!-- Form Submit -->
-                                            <div class="button-wrapper">
-                                                <button type="submit" class="button feather-button is-small primary-button upper-button raised">
-                                                    <span>Register</span>
-                                                </button>
-                                            </div>
-                                        </form>
-                                    </div>
+                    <!--Toggler-->
+                    <div class="auth-toggler">
+                        <input type="checkbox">
+                        <div class="toggler-track">
+                            <div class="hexagon-wrap">
+                                <div class="hexagon">
+                                    <i class="login-icon" data-feather="user"></i>
+                                    <i class="register-icon" data-feather="layers"></i>
                                 </div>
                             </div>
-                            <!-- /Login/Register form -->
                         </div>
                     </div>
-                    <!-- Card -->
+                    <!--New Login-->
+                    <div class="main-auth-wrapper">
+                        <!--Login wrapper-->
+                        <div class="login-form-wrapper">
+                            <!--Login form-->
+                            <div class="login-form">
+                                <form id="login-form">
+                                    <!--Field-->
+                                    <div class="field has-flex-label has-validation">
+                                        <label>
+                                            <span>Email</span>
+                                            <span class="error">Please enter a valid email</span>
+                                        </label>
+                                        <div class="control is-bigger has-icon">
+                                            <input id="login-email" type="text" class="input">
+                                            <div class="form-icon">
+                                                <i data-feather="mail"></i>
+                                            </div>
+                                            <div class="error-icon">
+                                                <i data-feather="x"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Field-->
+                                    <div class="field has-flex-label has-validation">
+                                        <label>
+                                            <span>Password</span>
+                                            <span class="error">Minimum 8 characters</span>
+                                        </label>
+                                        <div class="control is-bigger has-icon">
+                                            <input id="login-password" type="password" class="input">
+                                            <div class="form-icon">
+                                                <i data-feather="lock"></i>
+                                            </div>
+                                            <div class="error-icon">
+                                                <i data-feather="x"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Field-->
+                                    <div class="flex-field">
+                                        <label class="special-toggle">
+                                            <input type="checkbox">
+                                            <span class="toggler">
+                                                <span class="active">
+                                                    <i data-feather="check"></i>
+                                                </span>
+                                                <span class="inactive">
+                                                    <i data-feather="circle"></i>
+                                                </span>
+                                            </span>
+                                        </label>
+                                        <div class="muted-text">Remember me?</div>
+                                    </div>
+                                    <!--Submit-->
+                                    <div class="button-wrap">
+                                        <button id="login-submit" type="button" class="button primary-button upper-button raised is-fullwidth is-rounded">Login</button>
+                                    </div>
+                                    <!--Forgot-->
+                                    <div class="forgot-link has-text-centered">
+                                        <a>Forgot Password?</a>
+                                    </div>
+                                </form>
+                            </div>
+                            <!--Reset form-->
+                            <div class="reset-form is-hidden">
+                                <form>
+                                    <p class="form-description">Enter your email to be able to reset your password. We'll send you an email with the instructions to follow.</p>
+                                    <!--Field-->
+                                    <div class="field">
+                                        <label>Email</label>
+                                        <div class="control is-bigger has-icon">
+                                            <input type="text" class="input">
+                                            <div class="form-icon">
+                                                <i data-feather="mail"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Submit-->
+                                    <div class="button-wrap">
+                                        <button type="button" class="button primary-button upper-button raised is-fullwidth is-rounded">Reset Password</button>
+                                    </div>
+                                    <!--Back-->
+                                    <div class="back-link has-text-centered">
+                                        <a>Back To Login</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!--Registration wrapper-->
+                        <div class="registration-form-wrapper is-hidden">
+                            <!--Registration form-->
+                            <div class="registration-form">
+                                <form>
+                                    <!--Field-->
+                                    <div class="field has-flex-label has-validation">
+                                        <label>
+                                            <span>Email</span>
+                                            <span class="error">Please enter a valid email</span>
+                                        </label>
+                                        <div class="control is-bigger has-icon">
+                                            <input type="text" class="input">
+                                            <div class="form-icon">
+                                                <i data-feather="mail"></i>
+                                            </div>
+                                            <div class="error-icon">
+                                                <i data-feather="x"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Field-->
+                                    <div class="field">
+                                        <label>First Name</label>
+                                        <div class="control is-bigger has-icon">
+                                            <input type="text" class="input">
+                                            <div class="form-icon">
+                                                <i data-feather="user"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Field-->
+                                    <div class="field">
+                                        <label>Last Name</label>
+                                        <div class="control is-bigger has-icon">
+                                            <input type="text" class="input">
+                                            <div class="form-icon">
+                                                <i data-feather="user"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Field-->
+                                    <div class="field">
+                                        <label>Password</label>
+                                        <div class="control is-bigger has-icon">
+                                            <input type="password" class="input">
+                                            <div class="form-icon">
+                                                <i data-feather="lock"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Field-->
+                                    <div class="flex-field">
+                                        <label class="special-toggle">
+                                            <input type="checkbox">
+                                            <span class="toggler">
+                                                <span class="active">
+                                                    <i data-feather="check"></i>
+                                                </span>
+                                                <span class="inactive">
+                                                    <i data-feather="circle"></i>
+                                                </span>
+                                            </span>
+                                        </label>
+                                        <div class="muted-text">Subscribe to Newsletter?</div>
+                                    </div>
+                                    <!--Submit-->
+                                    <div class="button-wrap">
+                                        <button type="button" class="button primary-button upper-button raised is-fullwidth is-rounded">Register</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- Authentication Layout -->

@@ -1,32 +1,32 @@
-[  
-   {  
-      "name":"Red Seat",
-      "category":"House",
-      "pic":"assets/img/products/cosy-red-seat.png",
-      "sku":"SKU-877"
+[
+   {
+      "name": "Red Seat",
+      "category": "House",
+      "pic": "assets/img/products/cosy-red-seat.png",
+      "sku": "SKU-877"
    },
-   {  
-      "name":"Blue Seat",
-      "category":"House",
-      "pic":"assets/img/products/blue-seat.png",
-      "sku":"SKU-423"
+   {
+      "name": "Blue Seat",
+      "category": "House",
+      "pic": "assets/img/products/blue-seat.png",
+      "sku": "SKU-423"
    },
-   {  
-      "name":"Dark Seat",
-      "category":"House",
-      "pic":"assets/img/products/dark-seat.png",
-      "sku":"SKU-112"
+   {
+      "name": "Dark Seat",
+      "category": "House",
+      "pic": "assets/img/products/dark-seat.png",
+      "sku": "SKU-112"
    },
-   {  
-      "name":"Red Alcove",
-      "category":"Office",
-      "pic":"assets/img/products/red-seat.jpg",
-      "sku":"SKU-219"
+   {
+      "name": "Red Alcove",
+      "category": "Office",
+      "pic": "assets/img/products/red-seat.jpg",
+      "sku": "SKU-219"
    },
-   {  
-      "name":"Ambassador",
-      "category":"Office",
-      "pic":"assets/img/products/office3.jpg",
-      "sku":"SKU-073"
+   {
+      "name": "Ambassador",
+      "category": "Office",
+      "pic": "assets/img/products/office3.jpg",
+      "sku": "SKU-073"
    }
 ]

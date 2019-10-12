@@ -94,7 +94,7 @@ TABLE OF CONTENTS
     }
     //adds a box shadow to the card on hover
     &:hover {
-        box-shadow:  0px 5px 43px rgba(0, 0, 0, 0.18) !important;
+        box-shadow:  0px 5px 43px rgba(0, 0, 0, 0.11) !important;
     }
     //long card modifier
     &.is-long {
@@ -227,10 +227,11 @@ TABLE OF CONTENTS
         //Star Rating
         .rating {
             i {
+                font-size: 12px;
                 color: #FFD700;
                 &.is-empty {
                     color: $placeholder;
-                } 
+                }
             }
             small {
                 padding: 0 5px;

@@ -48,6 +48,7 @@
   },
   "dependencies": {
     "bulma": "^0.7.5",
+    "alertifyjs": "^1.11.2",
     "clean-css": "^4.1.11",
     "feather-icons": "^4.24.0",
     "jquery": "^3.4.1",

@@ -8,44 +8,19 @@ title: Modern Bulma Ecommerce App and Dashboard
 {{> mobile-navbar-user}}
 
 <!-- Main Sidebar-->
-<div class="main-sidebar">
-    <div class="sidebar-brand">
-        <a href="home.html"><img src="assets/img/logo/nephos.svg" alt=""></a>
-    </div>
-    <div class="sidebar-inner">
-        <ul class="icon-menu">
-            <!-- Shop sidebar trigger -->
-            {{> sidebar-item-home}}
-            <!-- Cart sidebar trigger -->
-            {{> sidebar-item-cart-active}}
-            <!-- Search trigger -->
-            {{> sidebar-item-search}}
-            <!-- Shop Filters -->
-            {{> sidebar-item-filters}}
-            <!-- Mobile mode trigger -->
-            {{> sidebar-item-mode}}
-        </ul>
-
-        <!-- User account -->
-        <ul class="bottom-menu is-hidden-mobile">
-            {{> sidebar-item-logout}}
-        </ul>
-    </div>
-</div>
-<!-- /Main Sidebar-->
+{{> shop-sidebar}}
 
 <!-- FAB -->
 {{> flying-button}}
-<!-- /FAB -->
 
 <!-- Categories Right quickview -->
 {{> quickview-categories}}
 
 <!-- Shop quickview -->
-{{> quickview-main-user}}
+{{> quickview-main}}
 
 <!-- Cart quickview -->
-{{> quickview-cart-full}}
+{{> quickview-cart}}
 
 <!-- Filters quickview -->
 {{> quickview-filters}}
@@ -57,13 +32,13 @@ title: Modern Bulma Ecommerce App and Dashboard
     {{> search-overlay}}
 
     <!-- Main section -->
-    <div class="section">
+    <div id="shop-list" class="section">
         <!-- Container -->
         <div class="container">
 
             <!-- House products -->
             <div class="columns category-header">
-                <div class="column is-10 is-offset-1 is-tablet-landscape-padded">
+                <div class="column main-column is-tablet-landscape-padded">
                     <!-- Title -->
                     <div class="category-title is-product-category">
                         <h2>HOUSE</h2>
@@ -82,7 +57,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                         <div class="sort-box">
                             <div class="sort-box-select">
                                 <select data-placeholder="Default order" class="chosen-select-no-single">
-                                    <option>Default Sort</option>	
+                                    <option>Default Sort</option>
                                     <option>Best Sellers</option>
                                     <option>Highest Rated</option>
                                     <option>Best Deals</option>
@@ -98,27 +73,27 @@ title: Modern Bulma Ecommerce App and Dashboard
                         <div class="column is-12">
                             <ul>
                                 <!-- Product -->
-                                <li class="flat-card is-auto is-list-item">
+                                <li class="flat-card product-container is-auto is-list-item" data-product-id="1">
                                     <!-- Product image -->
                                     <span class="image">
-                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/red-seat.png" alt="">
                                     </span>
                                     <!-- Product meta -->
                                     <span class="product-info">
                                         <!-- Rating -->
                                         <span class="rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
                                             <small class="is-hidden-mobile">47 Ratings</small>
                                         </span>
                                         <!-- Meta -->
                                         <a href="product.html"><span class="product-name">Red seat</span></a>
                                         <span class="product-description">Lorem ipsum sit dolor amet</span>
                                         <span class="product-price">
-                                            45,00
+                                            <span>45.00</span>
                                         </span>
                                     </span>
 
@@ -137,23 +112,23 @@ title: Modern Bulma Ecommerce App and Dashboard
                                     </span>
                                 </li>
                                 <!-- Product -->
-                                <li class="flat-card is-auto is-list-item">
+                                <li class="flat-card product-container is-auto is-list-item" data-product-id="3">
                                     <span class="image">
-                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/modern-table.png" alt="">
                                     </span>
                                     <span class="product-info">
                                         <span class="rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star is-empty"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star is-empty"></i>
                                             <small class="is-hidden-mobile">8 Ratings</small>
                                         </span>
                                         <a href="product.html"><span class="product-name">White Table</span></a>
                                         <span class="product-description">Lorem ipsum sit dolor amet</span>
                                         <span class="product-price">
-                                            350,49
+                                            350.49
                                         </span>
                                     </span>
 
@@ -170,17 +145,17 @@ title: Modern Bulma Ecommerce App and Dashboard
                                     </span>
                                 </li>
                                 <!-- Product -->
-                                <li class="flat-card is-auto is-list-item">
+                                <li class="flat-card product-container is-auto is-list-item" data-product-id="4">
                                     <span class="image">
-                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/blue-seat.png" alt="">
                                     </span>
                                     <span class="product-info">
                                         <span class="rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
                                             <small class="is-hidden-mobile">92 Ratings</small>
                                         </span>
                                         <a href="product.html"><span class="product-name">Blue Seat</span></a>
@@ -203,24 +178,24 @@ title: Modern Bulma Ecommerce App and Dashboard
                                     </span>
                                 </li>
                                 <!-- Product -->
-                                <li class="flat-card is-auto is-list-item">
+                                <li class="flat-card product-container is-auto is-list-item" data-product-id="5">
                                     <span class="image">
-                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/modern-bed.jpg" alt="">
                                     </span>
                                     <span class="product-info">
                                         <span class="rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
                                             <small class="is-hidden-mobile">179 Ratings</small>
                                         </span>
                                         <a href="product.html"><span class="product-name">Modern Bed</span></a>
                                         <span class="product-description">Lorem ipsum sit dolor amet</span>
                                         <span class="product-price">
-                                            <span>120,99</span>
-                                            <span class="sale-price">299,99</span>
+                                            <span>120.99</span>
+                                            <span class="sale-price">299.99</span>
                                         </span>
                                     </span>
 
@@ -241,9 +216,9 @@ title: Modern Bulma Ecommerce App and Dashboard
                                     </div>
                                 </li>
                                 <!-- Product -->
-                                <li class="flat-card is-auto is-list-item">
+                                <li class="flat-card product-container is-auto is-list-item" data-product-id="6">
                                     <span class="image">
-                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/dark-seat.jpg" alt="">
                                     </span>
                                     <span class="product-info">
                                         <span class="rating">
@@ -257,8 +232,8 @@ title: Modern Bulma Ecommerce App and Dashboard
                                         <a href="product.html"><span class="product-name">Dark Seat</span></a>
                                         <span class="product-description">Lorem ipsum sit dolor amet</span>
                                         <span class="product-price">
-                                            <span>50,25</span>
-                                            <span class="sale-price">79,25</span>
+                                            <span>50.25</span>
+                                            <span class="sale-price">79.25</span>
                                         </span>
                                     </span>
 
@@ -279,9 +254,9 @@ title: Modern Bulma Ecommerce App and Dashboard
                                     </div>
                                 </li>
                                 <!-- Product -->
-                                <li class="flat-card is-auto is-list-item">
+                                <li class="flat-card product-container is-auto is-list-item" data-product-id="7">
                                     <span class="image">
-                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/house1.png" alt="">
                                     </span>
                                     <span class="product-info">
                                         <span class="rating">
@@ -295,7 +270,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                                         <a href="product.html"><span class="product-name">TV Furniture</span></a>
                                         <span class="product-description">Lorem ipsum sit dolor amet</span>
                                         <span class="product-price">
-                                            430,00
+                                            430.00
                                         </span>
                                     </span>
 
@@ -312,9 +287,9 @@ title: Modern Bulma Ecommerce App and Dashboard
                                     </span>
                                 </li>
                                 <!-- Product -->
-                                <li class="flat-card is-auto is-list-item">
+                                <li class="flat-card product-container is-auto is-list-item" data-product-id="8">
                                     <span class="image">
-                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/house2.jpg" alt="">
                                     </span>
                                     <span class="product-info">
                                         <span class="rating">
@@ -328,7 +303,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                                         <a href="product.html"><span class="product-name">Cabinet</span></a>
                                         <span class="product-description">Lorem ipsum sit dolor amet</span>
                                         <span class="product-price">
-                                            240,00
+                                            240.00
                                         </span>
                                     </span>
 
@@ -354,12 +329,12 @@ title: Modern Bulma Ecommerce App and Dashboard
                     <div class="show-more"><a href="#">Show more products</a></div>
 
                 </div>
-            </div> 
+            </div>
             <!-- /House products -->
 
             <!-- Office products -->
             <div class="columns category-header">
-                <div class="column is-10 is-offset-1 is-tablet-landscape-padded">
+                <div class="column main-column is-tablet-landscape-padded">
                     <!-- Title -->
                     <div class="category-title is-product-category">
                         <h2>OFFICE</h2>
@@ -378,7 +353,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                         <div class="sort-box">
                             <div class="sort-box-select">
                                 <select data-placeholder="Default order" class="chosen-select-no-single">
-                                    <option>Default Sort</option>	
+                                    <option>Default Sort</option>
                                     <option>Best Sellers</option>
                                     <option>Highest Rated</option>
                                     <option>Best Deals</option>
@@ -394,9 +369,9 @@ title: Modern Bulma Ecommerce App and Dashboard
                         <div class="column is-12">
                             <ul>
                                 <!-- Product -->
-                                <li class="flat-card is-auto is-list-item">
+                                <li class="flat-card product-container is-auto is-list-item" data-product-id="9">
                                     <span class="image">
-                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/office3.jpg" alt="">
                                     </span>
                                     <span class="product-info">
                                         <span class="rating">
@@ -410,8 +385,8 @@ title: Modern Bulma Ecommerce App and Dashboard
                                         <a href="product.html"><span class="product-name">Imperator</span></a>
                                         <span class="product-description">Lorem ipsum sit dolor amet</span>
                                         <span class="product-price">
-                                            <span>490,00</span>
-                                            <span class="sale-price">699,99</span>
+                                            <span>490.00</span>
+                                            <span class="sale-price">699.99</span>
                                         </span>
                                     </span>
 
@@ -432,9 +407,9 @@ title: Modern Bulma Ecommerce App and Dashboard
                                     </div>
                                 </li>
                                 <!-- Product -->
-                                <li class="flat-card is-auto is-list-item">
+                                <li class="flat-card product-container is-auto is-list-item" data-product-id="10">
                                     <span class="image">
-                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/office1.jpg" alt="">
                                     </span>
                                     <span class="product-info">
                                         <span class="rating">
@@ -448,7 +423,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                                         <a href="product.html"><span class="product-name">Roller</span></a>
                                         <span class="product-description">Lorem ipsum sit dolor amet</span>
                                         <span class="product-price">
-                                            75,00
+                                            75.00
                                         </span>
                                     </span>
 
@@ -465,9 +440,9 @@ title: Modern Bulma Ecommerce App and Dashboard
                                     </span>
                                 </li>
                                 <!-- Product -->
-                                <li class="flat-card is-auto is-list-item">
+                                <li class="flat-card product-container is-auto is-list-item" data-product-id="11">
                                     <span class="image">
-                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/office4.jpg" alt="">
                                     </span>
                                     <span class="product-info">
                                         <span class="rating">
@@ -481,7 +456,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                                         <a href="product.html"><span class="product-name">Executive</span></a>
                                         <span class="product-description">Lorem ipsum sit dolor amet</span>
                                         <span class="product-price">
-                                            125,00
+                                            125.00
                                         </span>
                                     </span>
 
@@ -498,9 +473,9 @@ title: Modern Bulma Ecommerce App and Dashboard
                                     </span>
                                 </li>
                                 <!-- Product -->
-                                <li class="flat-card is-auto is-list-item">
+                                <li class="flat-card product-container is-auto is-list-item" data-product-id="12">
                                     <span class="image">
-                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/office5.jpg" alt="">
                                     </span>
                                     <span class="product-info">
                                         <span class="rating">
@@ -514,8 +489,8 @@ title: Modern Bulma Ecommerce App and Dashboard
                                         <a href="product.html"><span class="product-name">Cosy Chair</span></a>
                                         <span class="product-description">Lorem ipsum sit dolor amet</span>
                                         <span class="product-price">
-                                            <span>88,49</span>
-                                            <span class="sale-price">119,99</span>
+                                            <span>88.49</span>
+                                            <span class="sale-price">119.99</span>
                                         </span>
                                     </span>
 
@@ -536,9 +511,9 @@ title: Modern Bulma Ecommerce App and Dashboard
                                     </div>
                                 </li>
                                 <!-- Product -->
-                                <li class="flat-card is-auto is-list-item">
+                                <li class="flat-card product-container is-auto is-list-item" data-product-id="13">
                                     <span class="image">
-                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/office9.png" alt="">
                                     </span>
                                     <span class="product-info">
                                         <span class="rating">
@@ -552,7 +527,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                                         <a href="product.html"><span class="product-name">Ambassador</span></a>
                                         <span class="product-description">Lorem ipsum sit dolor amet</span>
                                         <span class="product-price">
-                                            480,00
+                                            480.00
                                         </span>
                                     </span>
 
@@ -569,9 +544,9 @@ title: Modern Bulma Ecommerce App and Dashboard
                                     </span>
                                 </li>
                                 <!-- Product -->
-                                <li class="flat-card is-auto is-list-item">
+                                <li class="flat-card product-container is-auto is-list-item" data-product-id="14">
                                     <span class="image">
-                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/office6.png" alt="">
                                     </span>
                                     <span class="product-info">
                                         <span class="rating">
@@ -585,7 +560,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                                         <a href="product.html"><span class="product-name">Conqueror</span></a>
                                         <span class="product-description">Lorem ipsum sit dolor amet</span>
                                         <span class="product-price">
-                                            590,00
+                                            590.00
                                         </span>
                                     </span>
 
@@ -602,9 +577,9 @@ title: Modern Bulma Ecommerce App and Dashboard
                                     </span>
                                 </li>
                                 <!-- Product -->
-                                <li class="flat-card is-auto is-list-item">
+                                <li class="flat-card product-container is-auto is-list-item" data-product-id="15">
                                     <span class="image">
-                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/office7.gif" alt="">
                                     </span>
                                     <span class="product-info">
                                         <span class="rating">
@@ -618,7 +593,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                                         <a href="product.html"><span class="product-name">Gentleman</span></a>
                                         <span class="product-description">Lorem ipsum sit dolor amet</span>
                                         <span class="product-price">
-                                            375,00
+                                            375.00
                                         </span>
                                     </span>
 
@@ -647,7 +622,7 @@ title: Modern Bulma Ecommerce App and Dashboard
 
             <!-- Kids products -->
             <div class="columns category-header">
-                <div class="column is-10 is-offset-1 is-tablet-landscape-padded">
+                <div class="column main-column is-tablet-landscape-padded">
                     <!-- Title -->
                     <div class="category-title is-product-category">
                         <h2>FOR KIDS</h2>
@@ -666,7 +641,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                         <div class="sort-box">
                             <div class="sort-box-select">
                                 <select data-placeholder="Default order" class="chosen-select-no-single">
-                                    <option>Default Sort</option>	
+                                    <option>Default Sort</option>
                                     <option>Best Sellers</option>
                                     <option>Highest Rated</option>
                                     <option>Best Deals</option>
@@ -682,9 +657,9 @@ title: Modern Bulma Ecommerce App and Dashboard
                         <div class="column is-12">
                             <ul>
                                 <!-- Product -->
-                                <li class="flat-card is-auto is-list-item">
+                                <li class="flat-card product-container is-auto is-list-item" data-product-id="16">
                                     <span class="image">
-                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/kids1.jpg"  alt="">
                                     </span>
                                     <span class="product-info">
                                         <span class="rating">
@@ -698,7 +673,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                                         <a href="product.html"><span class="product-name">Tabouret</span></a>
                                         <span class="product-description">Lorem ipsum sit dolor amet</span>
                                         <span class="product-price">
-                                            22,00
+                                            22.00
                                         </span>
                                     </span>
 
@@ -715,9 +690,9 @@ title: Modern Bulma Ecommerce App and Dashboard
                                     </span>
                                 </li>
                                 <!-- Product -->
-                                <li class="flat-card is-auto is-list-item">
+                                <li class="flat-card product-container is-auto is-list-item" data-product-id="17">
                                     <span class="image">
-                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/kids2.jpg"  alt="">
                                     </span>
                                     <span class="product-info">
                                         <span class="rating">
@@ -731,7 +706,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                                         <a href="product.html"><span class="product-name">Rabbit Lamp</span></a>
                                         <span class="product-description">Lorem ipsum sit dolor amet</span>
                                         <span class="product-price">
-                                            14,49
+                                            14.49
                                         </span>
                                     </span>
 
@@ -748,9 +723,9 @@ title: Modern Bulma Ecommerce App and Dashboard
                                     </span>
                                 </li>
                                 <!-- Product -->
-                                <li class="flat-card is-auto is-list-item">
+                                <li class="flat-card product-container is-auto is-list-item" data-product-id="18">
                                     <span class="image">
-                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/kids3.png"  alt="">
                                     </span>
                                     <span class="product-info">
                                         <span class="rating">
@@ -764,7 +739,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                                         <a href="product.html"><span class="product-name">White Bed</span></a>
                                         <span class="product-description">Lorem ipsum sit dolor amet</span>
                                         <span class="product-price">
-                                            375,00
+                                            <span>375.00</span>
                                         </span>
                                     </span>
 
@@ -781,9 +756,9 @@ title: Modern Bulma Ecommerce App and Dashboard
                                     </span>
                                 </li>
                                 <!-- Product -->
-                                <li class="flat-card is-auto is-list-item">
+                                <li class="flat-card product-container is-auto is-list-item" data-product-id="19">
                                     <span class="image">
-                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/kids4.jpg"  alt="">
                                     </span>
                                     <span class="product-info">
                                         <span class="rating">
@@ -797,7 +772,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                                         <a href="product.html"><span class="product-name">Toy Boxes</span></a>
                                         <span class="product-description">Lorem ipsum sit dolor amet</span>
                                         <span class="product-price">
-                                            45,99
+                                            45.99
                                         </span>
                                     </span>
 
@@ -814,9 +789,9 @@ title: Modern Bulma Ecommerce App and Dashboard
                                     </span>
                                 </li>
                                 <!-- Product -->
-                                <li class="flat-card is-auto is-list-item">
+                                <li class="flat-card product-container is-auto is-list-item" data-product-id="20">
                                     <span class="image">
-                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/kids5.jpg"  alt="">
                                     </span>
                                     <span class="product-info">
                                         <span class="rating">
@@ -830,8 +805,8 @@ title: Modern Bulma Ecommerce App and Dashboard
                                         <a href="product.html"><span class="product-name">Baby Chest</span></a>
                                         <span class="product-description">Lorem ipsum sit dolor amet</span>
                                         <span class="product-price">
-                                            <span>185,00</span>
-                                            <span class="sale-price">215,00</span>
+                                            <span>185.00</span>
+                                            <span class="sale-price">215.00</span>
                                         </span>
                                     </span>
 
@@ -852,9 +827,9 @@ title: Modern Bulma Ecommerce App and Dashboard
                                     </div>
                                 </li>
                                 <!-- Product -->
-                                <li class="flat-card is-auto is-list-item">
+                                <li class="flat-card product-container is-auto is-list-item" data-product-id="21">
                                     <span class="image">
-                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/kids7.jpg"  alt="">
                                     </span>
                                     <span class="product-info">
                                         <span class="rating">
@@ -868,7 +843,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                                         <a href="product.html"><span class="product-name">Small Desk</span></a>
                                         <span class="product-description">Lorem ipsum sit dolor amet</span>
                                         <span class="product-price">
-                                            190,00
+                                            190.00
                                         </span>
                                     </span>
 
@@ -885,9 +860,9 @@ title: Modern Bulma Ecommerce App and Dashboard
                                     </span>
                                 </li>
                                 <!-- Product -->
-                                <li class="flat-card is-auto is-list-item">
+                                <li class="flat-card product-container is-auto is-list-item" data-product-id="22">
                                     <span class="image">
-                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/kids6.jpg"  alt="">
                                     </span>
                                     <span class="product-info">
                                         <span class="rating">
@@ -901,7 +876,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                                         <a href="product.html"><span class="product-name">Animals Set</span></a>
                                         <span class="product-description">Lorem ipsum sit dolor amet</span>
                                         <span class="product-price">
-                                            23,49
+                                            23.49
                                         </span>
                                     </span>
 
@@ -918,9 +893,9 @@ title: Modern Bulma Ecommerce App and Dashboard
                                     </span>
                                 </li>
                                 <!-- Product -->
-                                <li class="flat-card is-auto is-list-item">
+                                <li class="flat-card product-container is-auto is-list-item" data-product-id="23">
                                     <span class="image">
-                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/kids8.jpg"  alt="">
                                     </span>
                                     <span class="product-info">
                                         <span class="rating">
@@ -934,7 +909,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                                         <a href="product.html"><span class="product-name">Wood Elephant</span></a>
                                         <span class="product-description">Lorem ipsum sit dolor amet</span>
                                         <span class="product-price">
-                                            57,99
+                                            57.99
                                         </span>
                                     </span>
 
@@ -963,7 +938,7 @@ title: Modern Bulma Ecommerce App and Dashboard
 
             <!-- Kitchen products -->
             <div class="columns category-header">
-                <div class="column is-10 is-offset-1 is-tablet-landscape-padded">
+                <div class="column main-column is-tablet-landscape-padded">
                     <div class="category-title is-product-category">
                         <!-- Title -->
                         <h2>KITCHEN</h2>
@@ -982,7 +957,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                         <div class="sort-box">
                             <div class="sort-box-select">
                                 <select data-placeholder="Default order" class="chosen-select-no-single">
-                                    <option>Default Sort</option>	
+                                    <option>Default Sort</option>
                                     <option>Best Sellers</option>
                                     <option>Highest Rated</option>
                                     <option>Best Deals</option>
@@ -998,9 +973,9 @@ title: Modern Bulma Ecommerce App and Dashboard
                         <div class="column is-12">
                             <ul>
                                 <!-- Product -->
-                                <li class="flat-card is-auto is-list-item">
+                                <li class="flat-card product-container is-auto is-list-item" data-product-id="24">
                                     <span class="image">
-                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/kitchen.png" alt="">
                                     </span>
                                     <span class="product-info">
                                         <span class="rating">
@@ -1014,7 +989,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                                         <a href="product.html"><span class="product-name">Chromed Sink</span></a>
                                         <span class="product-description">Lorem ipsum sit dolor amet</span>
                                         <span class="product-price">
-                                            142,00
+                                            142.00
                                         </span>
                                     </span>
 
@@ -1031,9 +1006,9 @@ title: Modern Bulma Ecommerce App and Dashboard
                                     </span>
                                 </li>
                                 <!-- Product -->
-                                <li class="flat-card is-auto is-list-item">
+                                <li class="flat-card product-container is-auto is-list-item" data-product-id="25">
                                     <span class="image">
-                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/kitchen3.png" alt="">
                                     </span>
                                     <span class="product-info">
                                         <span class="rating">
@@ -1047,7 +1022,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                                         <a href="product.html"><span class="product-name">Mini Kitchen</span></a>
                                         <span class="product-description">Lorem ipsum sit dolor amet</span>
                                         <span class="product-price">
-                                            425,00
+                                            425.00
                                         </span>
                                     </span>
 
@@ -1064,9 +1039,9 @@ title: Modern Bulma Ecommerce App and Dashboard
                                     </span>
                                 </li>
                                 <!-- Product -->
-                                <li class="flat-card is-auto is-list-item">
+                                <li class="flat-card product-container is-auto is-list-item" data-product-id="26">
                                     <span class="image">
-                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/kitchen2.jpg" alt="">
                                     </span>
                                     <span class="product-info">
                                         <span class="rating">
@@ -1080,7 +1055,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                                         <a href="product.html"><span class="product-name">Auto Toaster</span></a>
                                         <span class="product-description">Lorem ipsum sit dolor amet</span>
                                         <span class="product-price">
-                                            63,00
+                                            63.00
                                         </span>
                                     </span>
 
@@ -1097,9 +1072,9 @@ title: Modern Bulma Ecommerce App and Dashboard
                                     </span>
                                 </li>
                                 <!-- Product -->
-                                <li class="flat-card is-auto is-list-item">
+                                <li class="flat-card product-container is-auto is-list-item" data-product-id="27">
                                     <span class="image">
-                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/kitchen4.jpg" alt="">
                                     </span>
                                     <span class="product-info">
                                         <span class="rating">
@@ -1113,7 +1088,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                                         <a href="product.html"><span class="product-name">Modern Fridge</span></a>
                                         <span class="product-description">Lorem ipsum sit dolor amet</span>
                                         <span class="product-price">
-                                            675,00
+                                            675.00
                                         </span>
                                     </span>
 
@@ -1130,9 +1105,9 @@ title: Modern Bulma Ecommerce App and Dashboard
                                     </span>
                                 </li>
                                 <!-- Product -->
-                                <li class="flat-card is-auto is-list-item">
+                                <li class="flat-card product-container is-auto is-list-item" data-product-id="28">
                                     <span class="image">
-                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/kitchen5.jpg" alt="">
                                     </span>
                                     <span class="product-info">
                                         <span class="rating">
@@ -1146,7 +1121,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                                         <a href="product.html"><span class="product-name">Coffee Machine</span></a>
                                         <span class="product-description">Lorem ipsum sit dolor amet</span>
                                         <span class="product-price">
-                                            178,00
+                                            178.00
                                         </span>
                                     </span>
 
@@ -1175,7 +1150,7 @@ title: Modern Bulma Ecommerce App and Dashboard
 
             <!-- Accessories products -->
             <div class="columns category-header">
-                <div class="column is-10 is-offset-1 is-tablet-landscape-padded">
+                <div class="column main-column is-tablet-landscape-padded">
                     <!-- Title -->
                     <div class="category-title is-product-category">
                         <h2>ACCESSORIES</h2>
@@ -1194,7 +1169,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                         <div class="sort-box">
                             <div class="sort-box-select">
                                 <select data-placeholder="Default order" class="chosen-select-no-single">
-                                    <option>Default Sort</option>	
+                                    <option>Default Sort</option>
                                     <option>Best Sellers</option>
                                     <option>Highest Rated</option>
                                     <option>Best Deals</option>
@@ -1210,9 +1185,9 @@ title: Modern Bulma Ecommerce App and Dashboard
                         <div class="column is-12">
                             <ul>
                                 <!-- Product -->
-                                <li class="flat-card is-auto is-list-item">
+                                <li class="flat-card product-container is-auto is-list-item" data-product-id="29">
                                     <span class="image">
-                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/access1.jpg" alt="">
                                     </span>
                                     <span class="product-info">
                                         <span class="rating">
@@ -1226,7 +1201,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                                         <a href="product.html"><span class="product-name">Styled Lamp</span></a>
                                         <span class="product-description">Lorem ipsum sit dolor amet</span>
                                         <span class="product-price">
-                                            75,00
+                                            75.00
                                         </span>
                                     </span>
 
@@ -1243,9 +1218,9 @@ title: Modern Bulma Ecommerce App and Dashboard
                                     </span>
                                 </li>
                                 <!-- Product -->
-                                <li class="flat-card is-auto is-list-item">
+                                <li class="flat-card product-container is-auto is-list-item" data-product-id="30">
                                     <span class="image">
-                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/access2.jpg" alt="">
                                     </span>
                                     <span class="product-info">
                                         <span class="rating">
@@ -1259,7 +1234,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                                         <a href="product.html"><span class="product-name">Golden Lamp</span></a>
                                         <span class="product-description">Lorem ipsum sit dolor amet</span>
                                         <span class="product-price">
-                                            52,00
+                                            52.00
                                         </span>
                                     </span>
 
@@ -1276,9 +1251,9 @@ title: Modern Bulma Ecommerce App and Dashboard
                                     </span>
                                 </li>
                                 <!-- Product -->
-                                <li class="flat-card is-auto is-list-item">
+                                <li class="flat-card product-container is-auto is-list-item" data-product-id="31">
                                     <span class="image">
-                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/access3.jpg" alt="">
                                     </span>
                                     <span class="product-info">
                                         <span class="rating">
@@ -1292,7 +1267,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                                         <a href="product.html"><span class="product-name">Aquarium</span></a>
                                         <span class="product-description">Lorem ipsum sit dolor amet</span>
                                         <span class="product-price">
-                                            235,00
+                                            235.00
                                         </span>
                                     </span>
 
@@ -1309,9 +1284,9 @@ title: Modern Bulma Ecommerce App and Dashboard
                                     </span>
                                 </li>
                                 <!-- Product -->
-                                <li class="flat-card is-auto is-list-item">
+                                <li class="flat-card product-container is-auto is-list-item" data-product-id="32">
                                     <span class="image">
-                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/access4.jpg" alt="">
                                     </span>
                                     <span class="product-info">
                                         <span class="rating">
@@ -1325,8 +1300,8 @@ title: Modern Bulma Ecommerce App and Dashboard
                                         <a href="product.html"><span class="product-name">Modern Shelf</span></a>
                                         <span class="product-description">Lorem ipsum sit dolor amet</span>
                                         <span class="product-price">
-                                            <span>510,00</span>
-                                            <span class="sale-price">629,00</span>
+                                            <span>510.00</span>
+                                            <span class="sale-price">629.00</span>
                                         </span>
                                     </span>
 
@@ -1347,9 +1322,9 @@ title: Modern Bulma Ecommerce App and Dashboard
                                     </div>
                                 </li>
                                 <!-- Product -->
-                                <li class="flat-card is-auto is-list-item">
+                                <li class="flat-card product-container is-auto is-list-item" data-product-id="33">
                                     <span class="image">
-                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/access5.jpg" alt="">
                                     </span>
                                     <span class="product-info">
                                         <span class="rating">
@@ -1363,7 +1338,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                                         <a href="product.html"><span class="product-name">Ground Shelf</span></a>
                                         <span class="product-description">Lorem ipsum sit dolor amet</span>
                                         <span class="product-price">
-                                            80,00
+                                            80.00
                                         </span>
                                     </span>
 
@@ -1380,9 +1355,9 @@ title: Modern Bulma Ecommerce App and Dashboard
                                     </span>
                                 </li>
                                 <!-- Product -->
-                                <li class="flat-card is-auto is-list-item">
+                                <li class="flat-card product-container is-auto is-list-item" data-product-id="34">
                                     <span class="image">
-                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/access6.jpg" alt="">
                                     </span>
                                     <span class="product-info">
                                         <span class="rating">
@@ -1396,7 +1371,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                                         <a href="product.html"><span class="product-name">Modern Cabinet</span></a>
                                         <span class="product-description">Lorem ipsum sit dolor amet</span>
                                         <span class="product-price">
-                                            265,00
+                                            265.00
                                         </span>
                                     </span>
 
@@ -1413,9 +1388,9 @@ title: Modern Bulma Ecommerce App and Dashboard
                                     </span>
                                 </li>
                                 <!-- Product -->
-                                <li class="flat-card is-auto is-list-item">
+                                <li class="flat-card product-container is-auto is-list-item" data-product-id="35">
                                     <span class="image">
-                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/access8.jpg" alt="">
                                     </span>
                                     <span class="product-info">
                                         <span class="rating">
@@ -1429,7 +1404,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                                         <a href="product.html"><span class="product-name">Ground Speakers</span></a>
                                         <span class="product-description">Lorem ipsum sit dolor amet</span>
                                         <span class="product-price">
-                                            99,00
+                                            99.00
                                         </span>
                                     </span>
 
@@ -1446,9 +1421,9 @@ title: Modern Bulma Ecommerce App and Dashboard
                                     </span>
                                 </li>
                                 <!-- Product -->
-                                <li class="flat-card is-auto is-list-item">
+                                <li class="flat-card product-container is-auto is-list-item" data-product-id="36">
                                     <span class="image">
-                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" alt="">
+                                        <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/access7.jpg" alt="">
                                     </span>
                                     <span class="product-info">
                                         <span class="rating">
@@ -1462,7 +1437,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                                         <a href="product.html"><span class="product-name">Modern Speakers</span></a>
                                         <span class="product-description">Lorem ipsum sit dolor amet</span>
                                         <span class="product-price">
-                                            99,00
+                                            99.00
                                         </span>
                                     </span>
 

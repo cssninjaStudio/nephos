@@ -98,8 +98,16 @@ function compileHTML() {
 function compileJS() {
   console.log('---------------COMPILE CUSTOM.JS---------------');
   return src([
-      'src/assets/js/custom.js',
+      'src/assets/js/_data-wishlist.js',
+      'src/assets/js/functions.js',
       'src/assets/js/nephos.js',
+      'src/assets/js/authentication.js',
+      'src/assets/js/cart.js',
+      'src/assets/js/account.js',
+      'src/assets/js/wishlist.js',
+      'src/assets/js/product.js',
+      'src/assets/js/orders.js',
+      'src/assets/js/checkout.js',
       'src/assets/js/demo.js',
       'src/assets/js/elements.js',
     ])
@@ -154,7 +162,7 @@ function jsLint() {
 // WATCH FILES
 function watchFiles() {
   watch('src/**/*.html', compileHTML);
-  watch(['src/assets/scss/**/*.scss', 'src/assets/scss/*.scss'] , compileSCSS);
+  watch(['src/assets/scss/**/*', 'src/assets/scss/*'] , compileSCSS);
   watch('src/assets/js/*.js', compileJS);
   watch('src/assets/img/**/*', copyImages);
 }
@@ -192,6 +200,16 @@ function copyFont() {
     .pipe(browserSync.stream());
 }
 
+// PLACES DATA FILES IN THE DIST FOLDER
+function copyData() {
+  console.log('---------------COPYING DATA INTO DIST FOLDER---------------');
+  return src([
+    'src/data/**/*',
+  ])
+    .pipe(dest('dist/assets/data'))
+    .pipe(browserSync.stream());
+}
+
 // CONCATENATE JS PLUGINS
 function concatPlugins() {
   console.log('---------------CONCATENATE JS PLUGINS---------------');
@@ -199,6 +217,7 @@ function concatPlugins() {
     nodepath + 'jquery/dist/jquery.min.js',
     nodepath + 'feather-icons/dist/feather.min.js',
     nodepath + 'typed.js/lib/typed.min.js',
+    nodepath + 'alertifyjs/build/alertify.min.js',
     nodepath + 'scrollreveal/dist/scrollreveal.min.js',
     nodepath + 'ocanvas/build/dist/latest/ocanvas.min.js',
     nodepath + 'slick-carousel/slick/slick.min.js',
@@ -224,11 +243,11 @@ function concatCssPlugins() {
   return src([
     nodepath + 'webui-popover/dist/jquery.webui-popover.min.css',
     nodepath + 'easy-autocomplete/dist/easy-autocomplete.min.css',
-    //nodepath + 'slick-carousel/slick/slick.css',
-    //nodepath + 'slick-carousel/slick/slick-theme.css',
     nodepath + 'izitoast/dist/css/iziToast.min.css',
     nodepath + 'zoom-vanilla.js/css/zoom.css',
     nodepath + 'card/dist/card.css',
+    nodepath + 'alertifyjs/build/css/alertify.min.css',
+    nodepath + 'alertifyjs/build/css/themes/default.min.css',
     'src/assets/vendor/css/*',
   ])
     .pipe(sourcemaps.init())
@@ -370,7 +389,7 @@ exports.accessibility = HTMLAccessibility;
 exports.setup = series(setupBulma);
 
 // DEV
-exports.dev = series(cleanDist, copyFont, jsVendor, cssVendor, copyImages, compileHTML, concatPlugins, concatCssPlugins, compileJS, resetPages, prettyHTML, compileSASS, compileSCSS, browserSyncInit, watchFiles);
+exports.dev = series(cleanDist, copyFont, copyData, jsVendor, cssVendor, copyImages, compileHTML, concatPlugins, concatCssPlugins, compileJS, resetPages, prettyHTML, compileSASS, compileSCSS, browserSyncInit, watchFiles);
 
 // PROD
 exports.prod = series(cleanDist, compileSASS, compileSCSS, copyFont, copyImages, compileHTML, concatScripts, minifyScripts, minifyCss, renameSources, prettyHTML, generateDocs, browserSyncInit);

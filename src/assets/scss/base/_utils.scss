@@ -41,6 +41,7 @@ TABLE OF CONTENTS
     z-index: 2;
     box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.12);
     transition: all .3s;
+
     &.is-centered {
         justify-content: center !important;
     }
@@ -60,10 +61,12 @@ TABLE OF CONTENTS
     box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.12);
     transform: translateY(-100%);
     transition: all .3s;
+
     //Active State
     &.is-active {
         transform: translateY(0);
     }
+
     //Navbar item
     .navbar-item {
         //Icon modifier
@@ -73,19 +76,23 @@ TABLE OF CONTENTS
                 stroke: $primary;
             }
         }
+
         //Sidebar toggler
         &.is-sidebar-toggler {
             svg {
                 stroke: $muted-grey !important;
             }
         }
+
         //Flex shortcut
         &.is-flex {
             display: flex;
             justify-content: space-between;
             align-items: center;
+
             span {
                 display: block;
+
                 &.menu-badge {
                     color: $secondary;
                     width: 20px;
@@ -101,39 +108,48 @@ TABLE OF CONTENTS
             }
         }
     }
+
     //Menu Hamburger
     .navbar-burger:hover {
-        background-color: rgba(0,0,0,.02);
+        background-color: rgba(0, 0, 0, 0.02);
     }
+
     .navbar-burger span {
         background-color: $primary;
     }
+
     //Navbar Responsive menu
     .navbar-menu {
         background: $sidebar;
+
         .navbar-item, .navbar-link {
             color: $white;
         }
+
         //Link
         .navbar-link {
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            border-bottom: 1px solid  lighten($sidebar, 10%);
+            border-bottom: 1px solid lighten($sidebar, 10%);
+
             img {
                 height: 32px;
                 width: 32px;
                 max-height: 32px !important;
                 border-radius: 50%;
             }
+
             svg {
                 height: 20px;
                 width: 20px;
                 stroke-width: 1.2px;
                 stroke: $white;
             }
+
             span {
                 margin: 0 10px;
+
                 &.is-heading {
                     font-size: 11px;
                     letter-spacing: 1px;
@@ -141,10 +157,12 @@ TABLE OF CONTENTS
                 }
             }
         }
+
         //Mobile Dropdown
         .navbar-dropdown .navbar-item {
             font-size: 90%;
             padding: .75rem 1.5rem !important;
+
             &.is-atcive, &:hover {
                 background: lighten($sidebar, 10%);
             }
@@ -160,6 +178,7 @@ TABLE OF CONTENTS
     .tabs {
         overflow: hidden;
     }
+
     //faded tabs
     &.animated-tabs {
         .navtab-content {
@@ -167,6 +186,7 @@ TABLE OF CONTENTS
             animation-duration: 0.5s;
         }
     }
+
     //translated tabs
     &.translated-tabs {
         .navtab-content {
@@ -174,12 +194,14 @@ TABLE OF CONTENTS
             animation-duration: 0.5s;
         }
     }
+
     //navtab content
     .navtab-content {
         display: none;
         padding: 15px;
         min-height: 190px;
     }
+
     //active state
     .navtab-content.is-active {
         display: block;
@@ -215,7 +237,7 @@ TABLE OF CONTENTS
             height: 22px;
             background-color: $white;
             border-radius: 11px;
-            transform: translate3d(2px,2px,0) scale3d(1,1,1);
+            transform: translate3d(2px, 2px, 0) scale3d(1, 1, 1);
             transition: all 0.25s linear;
         }
 
@@ -227,8 +249,8 @@ TABLE OF CONTENTS
             height: 22px;
             background-color: $white;
             border-radius: 11px;
-            box-shadow: 0 2px 2px rgba(0,0,0,0.24);
-            transform: translate3d(2px,2px,0);
+            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.24);
+            transform: translate3d(2px, 2px, 0);
             transition: all 0.2s ease-in-out;
         }
     }
@@ -236,12 +258,12 @@ TABLE OF CONTENTS
     &:active {
         i::after {
             width: 28px;
-            transform: translate3d(2px,2px,0);
+            transform: translate3d(2px, 2px, 0);
         }
 
         input {
             &:checked + i::after {
-                transform: translate3d(16px,2px,0);
+                transform: translate3d(16px, 2px, 0);
             }
         }
     }
@@ -255,11 +277,11 @@ TABLE OF CONTENTS
             background-color: $primary;
 
             &::before {
-                transform: translate3d(18px,2px,0) scale3d(0,0,0);
+                transform: translate3d(18px, 2px, 0) scale3d(0, 0, 0);
             }
 
             &::after {
-                transform: translate3d(22px,2px,0);
+                transform: translate3d(22px, 2px, 0);
             }
         }
     }
@@ -275,61 +297,75 @@ TABLE OF CONTENTS
     color: $white !important;
     border: none !important;
     margin-top: -20px !important;
+
     &.top > .webui-arrow {
         border-top-color: transparent !important;
     }
+
     //Arrow
     .webui-arrow {
         border-top-color: transparent !important;
+
         &:after {
             border-top-color: $sidebar !important;
         }
     }
+
     //Title
     .webui-popover-title {
         background-color: $sidebar !important;
         border-bottom: none !important;
         font-weight: 500;
     }
+
     //content
     .webui-popover-content {
         font-size: .75rem !important;
+
         .popover-flex-block {
             display: flex;
             justify-content: flex-start;
             align-items: center;
             padding: 5px 0;
+
             .staff-avatar {
                 height: 38px;
                 width: 38px;
                 border-radius: 50%;
             }
+
             //Block
             .content-block {
                 margin-left: 10px;
+
                 label, span {
                     display: block;
                 }
+
                 label {
                     color: lighten($sidebar, 35%);
                     text-transform: uppercase;
                     font-size: 70%;
                 }
             }
+
             .fa.fa-star, .fa.fa-star-half {
                 color: #FFD700;
             }
+
             .icon-block {
                 height: 38px;
                 width: 38px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
+
                 svg {
                     height: 18px;
                     width: 18px;
                     stroke: $white;
                     stroke-width: 1.3px;
+
                     &.is-medium {
                         height: 26px;
                         width: 26px;
@@ -375,12 +411,45 @@ TABLE OF CONTENTS
 .ml-5 {
     margin-left: 5px !important;
 }
+
 .mr-5 {
     margin-right: 5px !important;
 }
 
 .light-text {
     color: $white !important;
+}
+
+/* ==========================================================================
+6. Fade in animation
+========================================================================== */
+
+//Keyframes
+@-webkit-keyframes fadeIn {
+    from {}
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {}
+
+    to {
+        opacity: 1;
+    }
+}
+
+//Settings
+.preFadeIn {
+    opacity: 0;
+}
+
+.fadeIn {
+    opacity: 0;
+    -webkit-animation-name: fadeInUp;
+    animation-name: fadeInUp;
 }
 
 /* ==========================================================================
@@ -400,23 +469,27 @@ TABLE OF CONTENTS
         -webkit-transform: translate3d(0, 20px, 0);
         transform: translate3d(0, 20px, 0);
     }
+
     to {
         -webkit-transform: translate3d(0, 0, 0);
         transform: translate3d(0, 0, 0);
         opacity: 1;
     }
 }
+
 @keyframes fadeInUp {
     from {
         -webkit-transform: translate3d(0, 20px, 0);
         transform: translate3d(0, 20px, 0);
     }
+
     to {
         -webkit-transform: translate3d(0, 0, 0);
         transform: translate3d(0, 0, 0);
         opacity: 1;
     }
 }
+
 //Settings
 .preFadeInUp {
     opacity: 0;
@@ -438,21 +511,25 @@ TABLE OF CONTENTS
         -webkit-transform: translate3d(100%, 0, 0);
         transform: translate3d(100%, 0, 0);
     }
+
     to {
         -webkit-transform: translate3d(0, 0, 0);
         transform: translate3d(0, 0, 0);
     }
 }
+
 @keyframes translateLeft {
     from {
         -webkit-transform: translate3d(100%, 0, 0);
         transform: translate3d(100%, 0, 0);
     }
+
     to {
         -webkit-transform: translate3d(0, 0, 0);
         transform: translate3d(0, 0, 0);
     }
 }
+
 //Settings
 .translateLeft {
     -webkit-animation-name: translateLeft;
@@ -460,7 +537,7 @@ TABLE OF CONTENTS
     -webkit-animation-duration: 0.3s;
     animation-duration: 0.3s;
     -webkit-transition: all 500ms cubic-bezier(0.755, 0.05, 0.855, 0.06);
-    transition:         all 500ms cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transition: all 500ms cubic-bezier(0.755, 0.05, 0.855, 0.06);
 }
 
 /* ==========================================================================
@@ -474,24 +551,28 @@ TABLE OF CONTENTS
         transform: translate3d(20px, 0, 0);
         opacity: 0;
     }
+
     to {
         -webkit-transform: translate3d(0, 0, 0);
         transform: translate3d(0, 0, 0);
         opacity: 1;
     }
 }
+
 @keyframes fadeInLeft {
     from {
         -webkit-transform: translate3d(20px, 0, 0);
         transform: translate3d(20px, 0, 0);
         opacity: 0;
     }
+
     to {
         -webkit-transform: translate3d(0, 0, 0);
         transform: translate3d(0, 0, 0);
         opacity: 1;
     }
 }
+
 //Settings
 .preFadeInLeft {
     opacity: 0;
@@ -500,7 +581,7 @@ TABLE OF CONTENTS
 .fadeInLeft {
     opacity: 0;
     -webkit-animation-name: fadeInLeft;
-    animation-name: fadeInLeft;    
+    animation-name: fadeInLeft;
 }
 
 /* ==========================================================================
@@ -508,17 +589,41 @@ TABLE OF CONTENTS
 ========================================================================== */
 
 @-webkit-keyframes gelatine {
-    from, to { -webkit-transform: scale(1, 1); }
-    25% { -webkit-transform: scale(0.9, 1.1); }
-    50% { -webkit-transform: scale(1.1, 0.9); }
-    75% { -webkit-transform: scale(0.95, 1.05); }
+    from, to {
+        -webkit-transform: scale(1, 1);
+    }
+
+    25% {
+        -webkit-transform: scale(0.9, 1.1);
+    }
+
+    50% {
+        -webkit-transform: scale(1.1, 0.9);
+    }
+
+    75% {
+        -webkit-transform: scale(0.95, 1.05);
+    }
 }
+
 @keyframes gelatine {
-    from, to { transform: scale(1, 1); }
-    25% { transform: scale(0.9, 1.1); }
-    50% { transform: scale(1.1, 0.9); }
-    75% { transform: scale(0.95, 1.05); }
+    from, to {
+        transform: scale(1, 1);
+    }
+
+    25% {
+        transform: scale(0.9, 1.1);
+    }
+
+    50% {
+        transform: scale(1.1, 0.9);
+    }
+
+    75% {
+        transform: scale(0.95, 1.05);
+    }
 }
+
 //Settings
 .gelatine {
     -webkit-animation: gelatine 0.6s;
@@ -535,20 +640,32 @@ TABLE OF CONTENTS
 
 //Keyframes
 @-webkit-keyframes scaleIn {
-    from { -webkit-transform: scale(0); }
-    to { -webkit-transform: scale(1); }
+    from {
+        -webkit-transform: scale(0);
+    }
+
+    to {
+        -webkit-transform: scale(1);
+    }
 }
+
 @keyframes scaleIn {
-    from { transform: scale(0); }
-    to { transform: scale(1); }
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
+    }
 }
+
 //Settings
 .scaleIn {
     /* ... */
     -webkit-animation: scaleIn 0.5s;
     animation: scaleIn 0.5s;
-    -webkit-animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1.000);
-    animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1.000);
+    -webkit-animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
 /* ==========================================================================
@@ -557,13 +674,25 @@ TABLE OF CONTENTS
 
 //Keyframes
 @-webkit-keyframes scaleOut {
-    from { -webkit-transform: scale(1); }
-    to { -webkit-transform: scale(0); }
+    from {
+        -webkit-transform: scale(1);
+    }
+
+    to {
+        -webkit-transform: scale(0);
+    }
 }
+
 @keyframes scaleOut {
-    from { transform: scale(1); }
-    to { transform: scale(0); }
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(0);
+    }
 }
+
 //Settings
 .scaleOut {
     -webkit-animation: scaleOut 0.6s;
@@ -578,24 +707,37 @@ TABLE OF CONTENTS
 @-webkit-keyframes levitate {
     from {
         -webkit-transform: translate(0, 0);
-        transform: translate(0, 0); }
+        transform: translate(0, 0);
+    }
+
     50% {
         -webkit-transform: translate(0, 10px);
-        transform: translate(0, 10px); }
+        transform: translate(0, 10px);
+    }
+
     to {
         -webkit-transform: translate(0, 0);
-        transform: translate(0, 0); } }
+        transform: translate(0, 0);
+    }
+}
 
 @keyframes levitate {
     from {
         -webkit-transform: translate(0, 0);
-        transform: translate(0, 0); }
+        transform: translate(0, 0);
+    }
+
     50% {
         -webkit-transform: translate(0, 10px);
-        transform: translate(0, 10px); }
+        transform: translate(0, 10px);
+    }
+
     to {
         -webkit-transform: translate(0, 0);
-        transform: translate(0, 0); } }
+        transform: translate(0, 0);
+    }
+}
+
 //Settings
 .levitate {
     -webkit-animation-name: levitate;
@@ -606,4 +748,24 @@ TABLE OF CONTENTS
     animation-iteration-count: infinite;
     -webkit-animation-timing-function: ease-in-out;
     animation-timing-function: ease-in-out;
+}
+
+.iziToast {
+    .iziToast-body {
+        //max-width: 80%;
+        max-width: 250px;
+
+        .iziToast-icon {
+            height: 24px;
+            width: 24px;
+            margin-right: 4px;
+            font-size: 1rem;
+        }
+
+        .iziToast-texts {
+            p, strong {
+                display: block !important;
+            }
+        }
+    }
 }

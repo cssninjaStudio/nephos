@@ -8,24 +8,54 @@
         <!-- Total and checkout -->
         <div class="cart-action">
             <span class="cart-total">
-                <small>$</small>176,47
+                0.00
             </span>
-            <a href="cart.html" class="button primary-button upper-button raised is-bold">
-                <span>Open Cart</span>
+            <a href="cart.html" class="button view-cart-button primary-button upper-button raised is-bold">
+                <span>View Cart</span>
+            </a>
+            <a class="button update-cart-button upper-button is-bold is-hidden">
+                <span>Update</span>
             </a>
         </div>
         <!-- Cart quickview body -->
         <div class="cart-body">
+
+            <!--Placeholder-->
+            <div class="empty-cart has-text-centered is-hidden">
+                <img src="assets/img/icons/line/bag.svg" alt="">
+                <h3>Your cart is empty</h3>
+                <p>Start by adding products to it</p>
+                <a href="shop.html" class="button big-button rounded">Continue Shopping</a>
+                <small>You can create your account later</small>
+            </div>
+
+            <!--Loader-->
+            <div class="cart-loader is-active">
+                <div class="loader is-loading"></div>
+            </div>
+
             <ul class="shopping-cart-items">
                 <!-- Item -->
                 <li class="clearfix">
-                    <img src="http://via.placeholder.com/250x250" alt="" />
+                    <img src="http://via.placeholder.com/250x250" data-demo-src="assets/img/products/office5.jpg"  alt="" />
                     <span class="item-meta">
                         <span class="item-name">Cosy Chair</span>
-                        <span class="item-price">$88,00</span>
+                        <span class="item-price">
+                            <var>88.00</var> x <span>1</span>
+                        </span>
                     </span>
                     <span class="quantity">
-                        <input class="input is-rounded" type="number" value="1">
+                        <div data-trigger="spinner" class="return-spinner">
+                            <input class="hidden-spinner" type="hidden" value="1" data-spin="spinner"
+                                data-rule="quantity" data-min="1" data-max="99">
+                            <a class="spinner-button is-remove" href="javascript:;" data-spin="down">
+                                <i data-feather="minus"></i>
+                            </a>
+                            <span class="spinner-value">1</span>
+                            <a class="spinner-button is-add" href="javascript:;" data-spin="up">
+                                <i data-feather="plus"></i>
+                            </a>
+                        </div>
                     </span>
 
                     <span class="remove-item">
@@ -34,13 +64,25 @@
                 </li>
                 <!-- Item -->
                 <li class="clearfix">
-                    <img src="http://via.placeholder.com/250x250" alt="" />
+                    <img src="http://via.placeholder.com/250x250" data-demo-src="assets/img/products/red-seat.png" alt="" />
                     <span class="item-meta">
                         <span class="item-name">Red Seat</span>
-                        <span class="item-price">$45,00</span>
+                        <span class="item-price">
+                            <var>45.00</var> x <span>1</span>
+                        </span>
                     </span>
                     <span class="quantity">
-                        <input class="input is-rounded" type="number" value="1">
+                        <div data-trigger="spinner" class="return-spinner">
+                            <input class="hidden-spinner" type="hidden" value="1" data-spin="spinner" data-rule="quantity" data-min="1"
+                                data-max="99">
+                            <a class="spinner-button is-remove" href="javascript:;" data-spin="down">
+                                <i data-feather="minus"></i>
+                            </a>
+                            <span class="spinner-value">1</span>
+                            <a class="spinner-button is-add" href="javascript:;" data-spin="up">
+                                <i data-feather="plus"></i>
+                            </a>
+                        </div>
                     </span>
 
                     <span class="remove-item">
@@ -49,13 +91,25 @@
                 </li>
                 <!-- Item -->
                 <li class="clearfix">
-                    <img src="http://via.placeholder.com/250x250" alt="" />
+                    <img src="http://via.placeholder.com/250x250" data-demo-src="assets/img/products/kids2.jpg" alt="" />
                     <span class="item-meta">
                         <span class="item-name">Rabbit Lamp</span>
-                        <span class="item-price">$43,47</span>
+                        <span class="item-price">
+                            <var>14.49</var> x <span>3</span>
+                        </span>
                     </span>
                     <span class="quantity">
-                        <input class="input is-rounded" type="number" value="3">
+                        <div data-trigger="spinner" class="return-spinner">
+                            <input class="hidden-spinner" type="hidden" value="3" data-spin="spinner" data-rule="quantity" data-min="1"
+                                data-max="99">
+                            <a class="spinner-button is-remove" href="javascript:;" data-spin="down">
+                                <i data-feather="minus"></i>
+                            </a>
+                            <span class="spinner-value">3</span>
+                            <a class="spinner-button is-add" href="javascript:;" data-spin="up">
+                                <i data-feather="plus"></i>
+                            </a>
+                        </div>
                     </span>
 
                     <span class="remove-item">
