@@ -21,6 +21,16 @@ function initSpinners(){
     });
 }
 
+function initCartSpinners() {
+    $('.main-cart-spinner').spinner('changing', function (e, newVal, oldVal) {
+        var $this = $(this);
+
+        $this.closest('li').find('.spinner-value').html(newVal);
+        $('#init-checkout').addClass('is-hidden');
+        $('#update-cart-page').removeClass('is-hidden');
+    });
+}
+
 function updateCartSidebar(){
     var cartObject = {};
     var productsCount = $('.cart-quickview .product-container').length;
@@ -57,12 +67,11 @@ function addToCart(trigger) {
     var $container = trigger.closest('.product-container');
     var productId = parseInt($container.attr('data-product-id'));
     var productName = $container.find('.product-name').text();
+    var productCategory = $container.attr('data-product-category');
     var productPrice = parseFloat($container.find('.product-price span:first-child').text());
     var productImage = $container.find('img').attr('src');
     var productQuantity = 1;
 
-    //const { length } = data.products;
-    //const id = length + 1;
     const found = data.products.some(el => el.id === productId);
     if (!found) {
         console.log('Product does not exist in cart');
@@ -71,6 +80,7 @@ function addToCart(trigger) {
             id: productId,
             name: productName,
             quantity: productQuantity,
+            category: productCategory,
             price: productPrice,
             images: [
                 {
@@ -196,6 +206,164 @@ function removeFromCart() {
     })
 }
 
+function disableCartSidebar() {
+    $('#open-cart').off();
+    $('#open-cart').on('click', function(){
+        toasts.service.error('', 'fas fa-comment-alt', 'Cart sidebar is disabled on cart page', 'bottomRight', 2500);
+    })
+}
+
+function getCartPage() {
+    const plusIcon = feather.icons.plus.toSvg();
+    const minusIcon = feather.icons.minus.toSvg();
+    const removeIcon = feather.icons['trash-2'].toSvg();
+    var data = JSON.parse(localStorage.getItem('cart'));
+
+    var cartSubtotal = 0.00;
+    var taxRate = 0.06; // 6% tax rate
+
+    //Populate cart page
+    $('.account-loader').addClass('is-active');
+
+    $('#cart-page-products').empty();
+
+    if (data.products.length > 0) {
+        $('#cart-main-placeholder').addClass('is-hidden');
+        $('.is-account-grid').removeClass('is-hidden');
+
+        for (var i = 0; i < data.products.length; i++) {
+            cartSubtotal = parseFloat(cartSubtotal) + (parseFloat(data.products[i].price) * parseInt(data.products[i].quantity));
+
+            var template = `
+                <div class="flat-card is-auto cart-card product-container" data-product-id="${data.products[i].id}">
+                    <ul class="cart-content">
+                        <li>
+                            <img src="http://via.placeholder.com/500x500/ffffff/999999"
+                                data-demo-src="${data.products[i].images[0].url}" alt="">
+                            <span class="product-info">
+                                <span>${data.products[i].name}</span>
+                                <span>${data.products[i].category}</span>
+                            </span>
+                            <span class="product-price">
+                                <span>Price</span>
+                                <span>${parseFloat(data.products[i].price).toFixed(2)}</span>
+                            </span>
+
+                            <div data-trigger="spinner" class="main-cart-spinner">
+                                <input class="hidden-spinner" type="hidden" value="${data.products[i].quantity}" data-spin="spinner" data-rule="quantity"
+                                    data-min="1" data-max="99">
+                                <a class="spinner-button is-remove" href="javascript:;" data-spin="down">
+                                    ${minusIcon}
+                                </a>
+                                <span class="spinner-value">${data.products[i].quantity}</span>
+                                <a class="spinner-button is-add" href="javascript:;" data-spin="up">
+                                    ${plusIcon}
+                                </a>
+                            </div>
+
+                            <span class="action">
+                                <span class="action-link is-remove remove-from-cartpage-action has-simple-popover" data-content="Remove from Cart"
+                                    data-placement="top">
+                                    <a href="#">${removeIcon}</a>
+                                </span>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            `
+
+            $('#cart-page-products').append(template);
+
+            if (i == data.products.length - 1) {
+                data.total = cartSubtotal;
+                $('#cart-page-count').html(data.items);
+                localStorage.setItem('cart', JSON.stringify(data));
+                $('#cart-summary-subtotal').html(parseFloat(cartSubtotal).toFixed(2));
+                $('#cart-summary-taxes').html(parseFloat(cartSubtotal * taxRate).toFixed(2));
+                $('#cart-summary-total').html(parseFloat((cartSubtotal * taxRate) + cartSubtotal).toFixed(2));
+                initCartSpinners();
+                changeDemoImages();
+                initPopovers();
+                opitimizePopovers();
+                removeFromCartPage();
+            }
+        }
+        $('#cart-dot').removeClass('is-hidden');
+        setTimeout(function () {
+            $('.cart-loader').removeClass('is-active');
+        }, 800);
+    } else {
+        $('.is-account-grid').addClass('is-hidden');
+        $('#cart-main-placeholder').removeClass('is-hidden');
+        cartSubtotal = 0.00;
+        data.total = cartSubtotal;
+        localStorage.setItem('cart', JSON.stringify(data));
+        $('#cart-page-count').html('0');
+        $('#cart-summary-subtotal').html(parseFloat(cartSubtotal).toFixed(2));
+        $('#cart-summary-taxes').html(parseFloat(cartSubtotal * taxRate).toFixed(2));
+        $('#cart-summary-total').html(parseFloat((cartSubtotal * taxRate) + cartSubtotal).toFixed(2));
+    }
+}
+
+function updateCartPage() {
+    var cartObject = {};
+    var productsCount = $('#cart-page-products .product-container').length;
+
+    cartObject.products = [];
+    cartObject.items = productsCount;
+    $('#cart-page-products .product-container').each(function () {
+        var $this = $(this);
+        var productId = $this.attr('data-product-id');
+        var productName = $this.find('.product-info span:first-child').text();
+        var productCategory = $this.find('.product-info span:nth-child(2)').text();
+        var productPrice = parseFloat($this.find('.product-price span:nth-child(2)').text());
+        var productQuantity = $this.find('.main-cart-spinner input').val();
+        var productImage = $this.find('img').attr('src');
+
+        cartObject.products.push({
+            id: productId,
+            name: productName,
+            category: productCategory,
+            quantity: productQuantity,
+            price: productPrice,
+            images: [
+                {
+                    url: productImage
+                }
+            ]
+        })
+    })
+    localStorage.setItem('cart', JSON.stringify(cartObject));
+    console.log(cartObject);
+}
+
+function removeFromCartPage() {
+    $('.remove-from-cartpage-action').on('click', function () {
+        var $this = $(this);
+        var productId = $this.closest('.product-container').attr('data-product-id');
+        var data = JSON.parse(localStorage.getItem('cart'));
+
+        $('.account-loader').addClass('is-active');
+
+        //Update cart Data
+        setTimeout(function () {
+            data.products = $.grep(data.products, function (e) {
+                return e.id != productId;
+            })
+            data.items = data.products.length;
+            localStorage.setItem('cart', JSON.stringify(data));
+            $('.webui-popover').removeClass('in').addClass('pop-out');
+            getCartPage();
+            getCart();
+        }, 300);
+        //Simulate loading
+        setTimeout(function () {
+            $('.account-loader').removeClass('is-active');
+            toasts.service.success('', 'fas fa-check', 'Product successfully removed from cart', 'bottomRight', 2500);
+        }, 800);
+    })
+}
+
 $(document).ready(function(){
 
     $('.update-cart-button').on('click', function(){
@@ -256,6 +424,52 @@ $(document).ready(function(){
                 if ($('.cart-quickview').hasClass('is-active')) {
                     $('.cart-loader').removeClass('is-active');
                 }
+                toasts.service.success('', 'fas fa-plus', 'Product successfully added to cart', 'bottomRight', 2500);
+            }, 800)
+        })
+
+    }
+
+    //If cart page
+    if ($('#cart-page').length) {
+
+        disableCartSidebar();
+        //initCartSpinners();
+        getCartPage();
+
+        setTimeout(function(){
+            $('.account-loader').removeClass('is-active');
+        }, 1200);
+
+        //Update cart page
+        $('#update-cart-page').on('click', function () {
+            var $this = $(this);
+            $this.addClass('is-loading');
+            $('.account-loader').addClass('is-active');
+            setTimeout(function () {
+                updateCartPage();
+                getCartPage();
+            }, 300)
+            setTimeout(function () {
+                $this.removeClass('is-loading').addClass('is-hidden');
+                $('#init-checkout').removeClass('is-hidden');
+                $('.account-loader').removeClass('is-active');
+                toasts.service.success('', 'fas fa-check', 'cart updated successfully', 'bottomRight', 2500);
+            }, 800)
+        })
+
+        //Add to cart from recently viewed
+        $('.product-container .actions .add').on('click', function () {
+            var $this = $(this);
+            $('.account-loader').addClass('is-active');
+            setTimeout(function () {
+                $.when(addToCart($this)).done(function () {
+                    getCartPage();
+                    getCart();
+                })
+            }, 300)
+            setTimeout(function () {
+                $('.account-loader').removeClass('is-active');
                 toasts.service.success('', 'fas fa-plus', 'Product successfully added to cart', 'bottomRight', 2500);
             }, 800)
         })

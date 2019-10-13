@@ -99,6 +99,7 @@ function compileJS() {
   console.log('---------------COMPILE CUSTOM.JS---------------');
   return src([
       'src/assets/js/_data-wishlist.js',
+      'src/assets/js/_data-addresses.js',
       'src/assets/js/functions.js',
       'src/assets/js/nephos.js',
       'src/assets/js/authentication.js',
@@ -221,6 +222,7 @@ function concatPlugins() {
     nodepath + 'scrollreveal/dist/scrollreveal.min.js',
     nodepath + 'ocanvas/build/dist/latest/ocanvas.min.js',
     nodepath + 'slick-carousel/slick/slick.min.js',
+    nodepath + 'croppie/croppie.min.js',
     nodepath + '@fengyuanchen/datepicker/dist/datepicker.min.js',
     nodepath + 'chosen-js/chosen.jquery.min.js',
     nodepath + 'izitoast/dist/js/iziToast.min.js',
@@ -243,6 +245,7 @@ function concatCssPlugins() {
   return src([
     nodepath + 'webui-popover/dist/jquery.webui-popover.min.css',
     nodepath + 'easy-autocomplete/dist/easy-autocomplete.min.css',
+    nodepath + 'croppie/croppie.css',
     nodepath + 'izitoast/dist/css/iziToast.min.css',
     nodepath + 'zoom-vanilla.js/css/zoom.css',
     nodepath + 'card/dist/card.css',

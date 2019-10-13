@@ -28,6 +28,8 @@ $(document).ready(function(){
 
     initModals();
 
+    initClosableMessage();
+
     initChosenSelects();
 
     initProductCarousel();

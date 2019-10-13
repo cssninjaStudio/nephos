@@ -17,7 +17,7 @@ var elie = {
     photoUrl: 'assets/img/avatars/elie.jpg',
     wishlists: elieWishlists,
     orders: 'assets/data/orders.json',
-    addresses: 'assets/data/addresses.json'
+    addresses: elieAddresses
 }
 
 if (JSON.parse(localStorage.getItem('user')) === null) {
@@ -28,6 +28,7 @@ function getUser(){
     var data = JSON.parse(localStorage.getItem('user'));
     //Populate user areas
     $('#quickview-avatar').attr('src', data.photoUrl);
+    $('#quickview-avatar').attr('data-demo-src', data.photoUrl);
     if (data.firstName !== null){
         $('#quickview-username').html(data.firstName + ' ' + data.lastName);
     } else {

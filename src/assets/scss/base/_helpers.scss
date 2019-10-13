@@ -5,3 +5,7 @@
 .muted-text {
     color: $muted-grey !important;
 }
+
+.no-click {
+    pointer-events: none !important;
+}

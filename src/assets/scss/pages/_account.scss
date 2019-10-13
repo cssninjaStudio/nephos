@@ -136,6 +136,16 @@ TABLE OF CONTENTS
         .loader {
             height: 5rem;
             width: 5rem;
+
+            &.is-pulled {
+                position: relative;
+                top: -10%;
+            }
+
+            &.is-pulled-lg {
+                position: relative;
+                top: -25%;
+            }
         }
     }
 }
@@ -237,7 +247,7 @@ TABLE OF CONTENTS
 
     //Achievment footers
     .profile-footer {
-        padding: 20px 40px;
+        padding: 16px;
         background: #fcfcfc;
 
         .achievement-title {
@@ -246,12 +256,14 @@ TABLE OF CONTENTS
             font-weight: 500;
             font-size: .75rem;
             color: $muted-grey;
+            display: block;
         }
 
         .count {
             font-size: 1.5rem;
             font-weight: 700;
             color: $dark-text;
+            line-height: 1;
         }
     }
 }
@@ -371,16 +383,22 @@ TABLE OF CONTENTS
         padding: 20px;
 
         .info-block {
-            margin-bottom: 20px;
+            margin-bottom: 16px;
+
+            label {
+                &.label-text {
+                    span {
+                        &:first-child {
+                            color: $dark-text;
+                            font-weight: 500;
+                            font-size: 0.85rem;
+                        }
+                    }
+                }
+            }
 
             span {
                 display: block;
-
-                &.label-text {
-                    color: $dark-text;
-                    font-weight: 500;
-                    font-size: 0.85rem;
-                }
 
                 &.label-value {
                     color: $muted-grey-bold;
@@ -852,7 +870,8 @@ TABLE OF CONTENTS
     margin: 0 auto;
     border-radius: 50%;
     overflow: hidden;
-    box-shadow: 1px 1px 15px -5px black;
+
+    //box-shadow: 1px 1px 15px -5px black;
     transition: all .3s ease;
 
     &:hover {
@@ -922,6 +941,7 @@ TABLE OF CONTENTS
 
 //Card
 .upload-card {
+    overflow: visible;
     padding: 40px 20px;
 
     //user
@@ -945,5 +965,6 @@ TABLE OF CONTENTS
         font-weight: 500 !important;
         text-transform: uppercase;
         margin: 0 auto !important;
+        min-width: 170px !important;
     }
 }

@@ -528,6 +528,13 @@ function initPopButtons() {
     })
 }
 
+//Closable message
+function initClosableMessage(){
+    $('.message .close-icon').on('click', function () {
+        $(this).closest('.message').addClass('is-hidden');
+    })
+}
+
 
 //Launch a confirm dialog
 function launchAlert(title, message, okLabel, cancelLabel, callback) {
@@ -602,4 +609,18 @@ toasts.service = {
             zindex: 99999,
         });
     }
+}
+
+
+function once(fn, context) {
+    var result;
+
+    return function () {
+        if (fn) {
+            result = fn.apply(context || this, arguments);
+            fn = null;
+        }
+
+        return result;
+    };
 }
