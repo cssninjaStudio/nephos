@@ -13,6 +13,15 @@ function changeDemoImages() {
     });
 }
 
+//Helper to get query string parameters from Url
+$.urlParam = function (name) {
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    if (results == null) {
+        return null;
+    }
+    return decodeURI(results[1]) || 0;
+}
+
 //Init pageloader
 function initPageloader() {
     if ($('.pageloader').length) {
@@ -74,6 +83,19 @@ function initShopSidebar(){
     //close shop sidebar
     $('#close-shop-sidebar').on('click', function () {
         $('.shop-quickview, #open-shop').toggleClass('is-active');
+    })
+}
+
+//Init product links (dyanmic product details rendering)
+function initProductDetailsLinks(){
+    $('.product-details-link').on('click', function (e) {
+        e.preventDefault();
+        var $this = $(this);
+        var productId = $this.closest('.product-container, .featured-product').attr('data-product-id');
+        var baseUrl = '/product.html';
+        var productUrl = baseUrl + `?productId=` + productId;
+        console.log(productUrl);
+        window.location.href = productUrl;
     })
 }
 
@@ -238,10 +260,10 @@ function initCardActions() {
         }
     })
 
-    $('.cart-button').on('click', function () {
-        $(this).toggleClass('is-active gelatine');
+    //$('.cart-button').on('click', function () {
+        //$(this).toggleClass('is-active gelatine');
         //Show success toast
-    })
+    //})
 }
 
 //Init JS injected background images

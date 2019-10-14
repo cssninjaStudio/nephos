@@ -122,8 +122,8 @@ TABLE OF CONTENTS
 
 .chosen-container-single .chosen-single div:after {
     content: "\f078";
-    font-family: 'Font Awesome 5 Pro';
-    font-size: 18px;
+    font-family: 'FontAwesome';
+    font-size: 10px;
     margin: 0;
     right: 20px;
     position: relative;

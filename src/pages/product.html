@@ -27,7 +27,7 @@ title: Modern Bulma Ecommerce App and Dashboard
 
 
 <!-- Main wrapper -->
-<div class="shop-wrapper">
+<div id="product-page" class="shop-wrapper product-container" data-product-id="">
 
     {{> search-overlay}}
 
@@ -37,13 +37,19 @@ title: Modern Bulma Ecommerce App and Dashboard
         <div class="panel-header">
             <div class="likes">
                 <span>263</span>
-                <i data-feather="heart"></i>
+                <i class="is-liked" data-feather="heart"></i>
             </div>
         </div>
 
         <!-- Product image -->
         <div id="product-view" class="product-image translateLeft">
-            <img src="http://via.placeholder.com/500x500/ffffff/999999" data-action="zoom" alt="">
+            <div class="is-carousel">
+                <!-- Product Image -->
+                <div>
+                    <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/red-seat.png" data-action="zoom" alt="">
+                </div>
+            </div>
+            <!--img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="assets/img/products/red-seat.png" data-action="zoom" alt=""-->
         </div>
 
         <!-- Product details -->
@@ -52,14 +58,19 @@ title: Modern Bulma Ecommerce App and Dashboard
             <div class="detailed-description">
                 <div class="meta-block">
                     <h3>Product name</h3>
-                    <p>Red Seat</p>
+                    <p id="panel-product-name">Red Seat</p>
                 </div>
                 <div class="meta-block">
                     <h3>Product SKU</h3>
-                    <p>W589</p>
+                    <p id="panel-product-sku">W589</p>
+                </div>
+                <!-- Product Vendor -->
+                <div class="meta-block">
+                    <h3>Vendor</h3>
+                    <p id="panel-product-vendor">Govo</p>
                 </div>
                 <!-- Product colors -->
-                <div class="meta-block">
+                <div class="meta-block is-hidden">
                     <h3>Colors</h3>
                     <div class="colored-dots">
                         <div class="dot-wrapper">
@@ -85,22 +96,22 @@ title: Modern Bulma Ecommerce App and Dashboard
                 <!-- Product Availability -->
                 <div class="meta-block">
                     <h3>Availability</h3>
-                    <p>Available</p>
+                    <p id="panel-product-availability">Available</p>
                 </div>
                 <!-- Product Dimensions -->
                 <div class="meta-block">
                     <h3>Dimensions</h3>
-                    <p>4” x 4” x 8"</p>
+                    <p id="panel-product-dimensions">4” x 4” x 8"</p>
                 </div>
                 <!-- Product Weight -->
                 <div class="meta-block">
                     <h3>Weight</h3>
-                    <p>6.77 Lbs</p>
+                    <p id="panel-product-weight">6.77 Lbs</p>
                 </div>
                 <!-- Product Shipping methods -->
                 <div class="meta-block">
-                    <h3>Shipping Methods</h3>
-                    <p>Delivery, UPS, Express</p>
+                    <h3>Shipping Delay</h3>
+                    <p id="panel-product-shipping-delay">2 weeks</p>
                 </div>
             </div>
         </div>
@@ -129,7 +140,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                     <div class="media">
                         <div class="media-left">
                             <figure class="image is-32x32">
-                                <img src="http://via.placeholder.com/250x250" alt="">
+                                <img src="http://via.placeholder.com/250x250" data-demo-src="assets/img/avatars/elie.jpg" alt="">
                             </figure>
                         </div>
                         <div class="media-content">
@@ -151,7 +162,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                     <div class="media">
                         <div class="media-left">
                             <figure class="image is-32x32">
-                                <img src="http://via.placeholder.com/250x250" alt="">
+                                <img src="http://via.placeholder.com/250x250" data-demo-src="assets/img/avatars/john.jpg" alt="">
                             </figure>
                         </div>
                         <div class="media-content">
@@ -173,7 +184,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                     <div class="media">
                         <div class="media-left">
                             <figure class="image is-32x32">
-                                <img src="http://via.placeholder.com/250x250" alt="">
+                                <img src="http://via.placeholder.com/250x250" data-demo-src="assets/img/avatars/marjory.jpg" alt="">
                             </figure>
                         </div>
                         <div class="media-content">
@@ -190,7 +201,118 @@ title: Modern Bulma Ecommerce App and Dashboard
                             </p>
                         </div>
                     </div>
-
+                    <!-- Product review -->
+                    <div class="media">
+                        <div class="media-left">
+                            <figure class="image is-32x32">
+                                <img src="http://via.placeholder.com/250x250" data-demo-src="assets/img/avatars/danny.png" alt="">
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                            <p>
+                                <span>Danny Welsh</span>
+                                <small>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </small>
+                                <br>
+                                <span class="rating-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit
+                                    amet massa fringilla egestas nullam.</span>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Product review -->
+                    <div class="media">
+                        <div class="media-left">
+                            <figure class="image is-32x32">
+                                <img src="http://via.placeholder.com/250x250" data-demo-src="assets/img/avatars/ron.jpg" alt="">
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                            <p>
+                                <span>Ron Sutherly</span>
+                                <small>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </small>
+                                <br>
+                                <span class="rating-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit
+                                    amet massa fringilla egestas nullam.</span>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Product review -->
+                    <div class="media">
+                        <div class="media-left">
+                            <figure class="image is-32x32">
+                                <img src="http://via.placeholder.com/250x250" data-demo-src="assets/img/avatars/samantha.jpg" alt="">
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                            <p>
+                                <span>Samantha Jackson</span>
+                                <small>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-half"></i>
+                                </small>
+                                <br>
+                                <span class="rating-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit
+                                    amet massa fringilla egestas. Nullam condimentum luctus turpis.</span>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Product review -->
+                    <div class="media">
+                        <div class="media-left">
+                            <figure class="image is-32x32">
+                                <img src="http://via.placeholder.com/250x250" data-demo-src="assets/img/avatars/eddie.jpg" alt="">
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                            <p>
+                                <span>Eddy Smith</span>
+                                <small>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-half"></i>
+                                </small>
+                                <br>
+                                <span class="rating-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit
+                                    amet massa fringilla egestas. Nullam condimentum luctus turpis.</span>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Product review -->
+                    <div class="media">
+                        <div class="media-left">
+                            <figure class="image is-32x32">
+                                <img src="http://via.placeholder.com/250x250" data-demo-src="assets/img/avatars/arthur.jpg" alt="">
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                            <p>
+                                <span>Arthur Baxter</span>
+                                <small>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-half"></i>
+                                </small>
+                                <br>
+                                <span class="rating-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit
+                                    amet massa fringilla egestas. Nullam condimentum luctus turpis.</span>
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -221,34 +343,62 @@ title: Modern Bulma Ecommerce App and Dashboard
             <div class="panel-header">
                 <!-- Title -->
                 <div class="category-title">
-                    {{> office}}
-                    <h2>Office</h2>
+                    <div id="house-icon" class="category-icon is-hidden">
+                        {{> house}}
+                    </div>
+                    <div id="office-icon" class="category-icon">
+                        {{> office}}
+                    </div>
+                    <div id="forkids-icon" class="category-icon is-hidden">
+                        {{> kids}}
+                    </div>
+                    <div id="kitchen-icon" class="category-icon is-hidden">
+                        {{> kitchen}}
+                    </div>
+                    <div id="accessories-icon" class="category-icon is-hidden">
+                        {{> accessories}}
+                    </div>
+                    <h2 id="product-category">Office</h2>
                 </div>
             </div>
             <!-- Panel body -->
             <div class="panel-body">
                 <!-- Product Meta -->
-                <h3 class="product-name">Red Seat <span>SKU-W589</span></h3>
-                <p class="product-description">This seat is nicely and will fit perfectly in your living room. Lorem ipsum sit dolor amet. Consecteture adipscing elit. Ut fermentum interdum malesuada. Sed ornare posuere lobortis. Lasis Ut fermentum interdum malesuada sed ornare</p>
+                <h3 class="product-name"><var id="product-details-name">Red Seat</var> <span id="product-details-sku">SKU-W589</span></h3>
+                <p id="product-details-shortDesc" class="product-description">This seat is nicely and will fit perfectly in your living room. Lorem ipsum sit dolor amet. Consecteture adipscing elit. Ut fermentum interdum malesuada. Sed ornare posuere lobortis. Lasis Ut fermentum interdum malesuada sed ornare</p>
 
                 <!-- Product controls -->
                 <div class="product-controls">
                     <!-- Price -->
                     <div class="product-price">
                         <div class="heading">Price</div>
-                        <div class="value">$65,00</div>
+                        <div class="value">
+                            <span id="new-price">65.00</span>
+                            <span id="old-price">90.00</span>
+                        </div>
                     </div>
                     <!-- Quantity -->
                     <div class="product-quantity">
                         <div class="heading">Quantity</div>
-                        <div class="control">
+                        <div data-trigger="spinner" class="details-spinner">
+                            <input class="hidden-spinner" type="hidden" value="1" data-spin="spinner" data-rule="quantity" data-min="1"
+                                data-max="99">
+                            <a class="spinner-button is-remove" href="javascript:;" data-spin="down">
+                                <i data-feather="minus"></i>
+                            </a>
+                            <span class="spinner-value">1</span>
+                            <a class="spinner-button is-add" href="javascript:;" data-spin="up">
+                                <i data-feather="plus"></i>
+                            </a>
+                        </div>
+                        <div class="control is-hidden">
                             <input class="input is-rounded" type="number" value="1">
                         </div>
                     </div>
                     <!-- Add to Cart -->
                     <div class="add-to-cart">
                         <div class="heading is-vhidden">Add to cart</div>
-                        <button class="button big-button cart-button primary-button upper-button rounded is-bold raised">Add to cart</button>
+                        <button id="details-add-to-cart" class="button big-button cart-button primary-button upper-button rounded is-bold raised">Add to cart</button>
                     </div>
                 </div>
             </div>
@@ -257,47 +407,47 @@ title: Modern Bulma Ecommerce App and Dashboard
                 <div class="footer-inner">
                     <div class="recommended">Recommended</div>
                     <!-- Recommended items -->
-                    <div class="columns has-text-centered">
-                        
+                    <div id="related-products" class="columns has-text-centered">
+
                         <div class="column"></div>
-                        
+
                         <!-- Item -->
                         <div class="column is-3">
-                            <div class="featured-product">
+                            <div id="related-product-0" class="featured-product">
                                 <div class="image">
-                                    <img src="http://via.placeholder.com/250x250" alt="">
+                                    <img src="http://via.placeholder.com/250x250" data-demo-src="assets/img/products/dark-seat.jpg" alt="">
                                 </div>
                                 <div class="product-info has-text-centered">
-                                    <a href="#"><h3 class="product-name">Dark seat</h3></a>
+                                    <a class="product-details-link" href="#"><h3 class="product-name">Dark seat</h3></a>
                                     <p class="product-description">Lorem ipsum sit dolor amet</p>
                                 </div>
                             </div>
                         </div>
                         <!-- Item -->
                         <div class="column is-3">
-                            <div class="featured-product">
+                            <div id="related-product-1" class="featured-product">
                                 <div class="image">
-                                    <img src="http://via.placeholder.com/250x250" alt="">
+                                    <img src="http://via.placeholder.com/250x250" data-demo-src="assets/img/products/blue-seat.png" alt="">
                                 </div>
                                 <div class="product-info has-text-centered">
-                                    <a href="#"><h3 class="product-name">Blue seat</h3></a>
+                                    <a class="product-details-link" href="#"><h3 class="product-name">Blue seat</h3></a>
                                     <p class="product-description">Lorem ipsum sit dolor amet</p>
                                 </div>
                             </div>
                         </div>
                         <!-- Item -->
                         <div class="column is-3">
-                            <div class="featured-product">
+                            <div id="related-product-2" class="featured-product">
                                 <div class="image">
-                                    <img src="http://via.placeholder.com/250x250" alt="">
+                                    <img src="http://via.placeholder.com/250x250" data-demo-src="assets/img/products/red-seat.png" alt="">
                                 </div>
                                 <div class="product-info has-text-centered">
-                                    <a href="#"><h3 class="product-name">Red seat</h3></a>
+                                    <a class="product-details-link" href="#"><h3 class="product-name">Red seat</h3></a>
                                     <p class="product-description">Lorem ipsum sit dolor amet</p>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="column"></div>
                     </div>
                 </div>
@@ -346,3 +496,7 @@ title: Modern Bulma Ecommerce App and Dashboard
     <!--button class="modal-close is-large" aria-label="close"></button-->
 </div>
 <!-- /Modal -->
+
+
+<!-- Add to Wishlist Modal -->
+{{> add-to-wishlist-modal}}

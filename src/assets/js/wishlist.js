@@ -245,13 +245,25 @@ function initWishlistSelect() {
 
     var onceWishlist = true;
 
-    $('.flat-card.product-container .actions .like').on('click', function(){
-        console.log('clicked')
-        var productId = $(this).closest('.product-container').attr('data-product-id');
+    $('.flat-card.product-container .actions .like, .sidebar-whishlist').on('click', function(){
+        if ($('#product-page').length) {
+            var productId = $('.product-container').attr('data-product-id');
+            var productName = $('#product-details-name').text();
+            var productPrice = $('#new-price').text();
+            var productImg = $('.is-carousel > div:first-child img').attr('src');
+            var productCategory = $('#product-category').text();
+        } else {
+            var productId = $(this).closest('.product-container').attr('data-product-id');
+            var productName = $(this).closest('.product-container').find('.product-name').text();
+            var productPrice = $(this).closest('.product-container').find('.product-price span:first-child').text();
+            var productImg = $(this).closest('.product-container').find('img').attr('src');
+            var productCategory = $(this).closest('.category-header').find('.category-title h2').text();
+        }
+        /*var productId = $(this).closest('.product-container').attr('data-product-id');
         var productName = $(this).closest('.product-container').find('.product-name').text();
         var productPrice = $(this).closest('.product-container').find('.product-price span:first-child').text();
         var productImg = $(this).closest('.product-container').find('img').attr('src');
-        var productCategory = $(this).closest('.category-header').find('.category-title h2').text();
+        var productCategory = $(this).closest('.category-header').find('.category-title h2').text();*/
         $('#add-to-wishlist-modal').attr('data-product-id', productId);
         $('#add-to-wishlist-modal').attr('data-product-name', productName);
         $('#add-to-wishlist-modal').attr('data-product-price', productPrice);

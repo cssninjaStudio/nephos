@@ -12,6 +12,8 @@ $(document).ready(function(){
 
     initShopSidebar();
 
+    initProductDetailsLinks();
+
     initCartSidebar();
 
     initGlobalSearch();
@@ -32,7 +34,7 @@ $(document).ready(function(){
 
     initChosenSelects();
 
-    initProductCarousel();
+    //initProductCarousel();
 
     initBackgroundImages();
 

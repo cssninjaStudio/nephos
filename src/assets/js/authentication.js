@@ -29,6 +29,8 @@ function getUser(){
     //Populate user areas
     $('#quickview-avatar').attr('src', data.photoUrl);
     $('#quickview-avatar').attr('data-demo-src', data.photoUrl);
+    $('#review-modal .box-header img').attr('src', data.photoUrl);
+    $('#review-modal .box-header img').attr('data-demo-src', data.photoUrl);
     if (data.firstName !== null){
         $('#quickview-username').html(data.firstName + ' ' + data.lastName);
     } else {

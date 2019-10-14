@@ -8,42 +8,19 @@ title: Modern Bulma Ecommerce App and Dashboard
 {{> mobile-navbar-user}}
 
 <!-- Main Sidebar-->
-<div class="main-sidebar">
-    <div class="sidebar-brand">
-        <a href="home.html"><img src="assets/img/logo/nephos.svg" alt=""></a>
-    </div>
-    <div class="sidebar-inner">
-        <ul class="icon-menu">
-            <!-- Shop sidebar trigger -->
-            {{> sidebar-item-home}}
-            <!-- Cart sidebar trigger -->
-            {{> sidebar-item-cart-active}}
-            <!-- Search trigger -->
-            {{> sidebar-item-search}}
-            <!-- Mobile mode trigger -->
-            {{> sidebar-item-mode}}
-        </ul>
-
-        <!-- User account -->
-        <ul class="bottom-menu is-hidden-mobile">
-            {{> sidebar-item-logout}}
-        </ul>
-    </div>
-</div>
-<!-- /Main Sidebar-->
+{{> shop-sidebar}}
 
 <!-- FAB -->
 {{> flying-button}}
-<!-- /FAB -->
 
 <!-- Categories Right quickview -->
 {{> quickview-categories}}
 
 <!-- Shop quickview -->
-{{> quickview-main-user}}
+{{> quickview-main}}
 
 <!-- Cart quickview -->
-{{> quickview-cart-full-alt}}
+{{> quickview-cart}}
 
 <!-- Main wrapper -->
 <div class="shop-wrapper">
@@ -51,7 +28,7 @@ title: Modern Bulma Ecommerce App and Dashboard
     {{> search-overlay}}
 
     <!-- Main section -->
-    <div class="section">
+    <div id="orders-grid" class="section">
         <!-- Container -->
         <div class="container">
 
@@ -234,7 +211,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                             <div class="flat-card order-card has-popover-top">
                                 <div class="order-info">
                                     <span><a href="invoice.html" class="is-disabled">ORDER-42135</a></span>
-                                    <span class="tag is-warning">Pending</span>
+                                    <span class="tag is-warning">Processing</span>
                                 </div>
                                 <!-- Progress Circle -->
                                 <div class="circle-chart-wrapper">
@@ -244,7 +221,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                                     </svg>
                                     <!-- Icon -->
                                     <div class="chart-icon">
-                                        <i data-feather="dollar-sign"></i>
+                                        <i data-feather="credit-card"></i>
                                     </div>
                                     <!-- Label -->
                                     <div class="ring-title has-text-centered">
@@ -301,7 +278,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                             <div class="flat-card order-card has-popover-top">
                                 <div class="order-info">
                                     <span><a href="invoice.html">ORDER-39456</a></span>
-                                    <span class="tag is-danger">Has issue</span>
+                                    <span class="tag is-danger">Blocked</span>
                                 </div>
                                 <!-- Progress Circle -->
                                 <div class="circle-chart-wrapper">
@@ -378,7 +355,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                                     </svg>
                                     <!-- Icon -->
                                     <div class="chart-icon">
-                                        <i data-feather="award"></i>
+                                        <i data-feather="check"></i>
                                     </div>
                                     <!-- Label -->
                                     <div class="ring-title has-text-centered">
