@@ -636,3 +636,119 @@
         }
     }
 }
+
+/* ==========================================================================
+4. Checkout blokcing modal
+========================================================================== */
+
+.checkout-blocked-modal, .checkout-unauth-modal {
+    .modal-background {
+        background: rgba(255, 255, 255, 0.9);
+    }
+
+    //Content
+    .modal-content {
+        max-width: 480px;
+
+        //Close modal button
+        .modal-delete {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: auto;
+
+            svg {
+                width: 20px;
+                height: 20px;
+                stroke: $muted-grey;
+                cursor: pointer;
+
+                &:hover {
+                    stroke: $primary;
+                }
+            }
+        }
+
+        //Inner box
+        .box {
+            padding: 0;
+            overflow: hidden;
+            transition: all .4s;
+            transform: scale(0);
+            border: 1px solid darken($fade-grey, 2%);
+            box-shadow: $light-box-shadow;
+
+            &.scaled {
+                transform: scale(1);
+            }
+
+            //Header
+            .box-header {
+                width: 100%;
+                background: $fade-grey;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                padding: 10px 20px;
+
+                img {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                }
+
+                span {
+                    display: block;
+                    padding-left: 10px;
+                    color: $dark-text;
+                }
+
+                .delete {
+                    margin-left: auto;
+                }
+            }
+
+            .box-body {
+                padding: 20px;
+
+                .modal-placeholder {
+                    .placeholder-content {
+                        width: 100%;
+                        max-width: 340px;
+                        margin: 0 auto;
+                        text-align: center;
+
+                        img {
+                            display: block;
+                            max-width: 170px;
+                            margin: 0 auto 20px auto;
+                        }
+
+                        h3 {
+                            font-family: 'Montserrat', sans-serif;
+                            font-size: 1rem;
+                            font-weight: 600;
+                            color: $dark-text;
+                        }
+
+                        p {
+                            margin: 0 0 10px 0;
+                            color: $muted-grey;
+                            font-size: .9rem;
+                        }
+
+                        .button-wrap {
+                            margin: 10px 0;
+
+                            .button {
+                                max-width: 180px;
+                                min-width: 180px;
+                                margin: 0 auto;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

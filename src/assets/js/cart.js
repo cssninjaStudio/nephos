@@ -39,10 +39,10 @@ function updateCartSidebar(){
     cartObject.items = productsCount;
     $('.cart-quickview .product-container').each(function(){
         var $this = $(this);
-        var productId = $this.attr('data-product-id');
+        var productId = parseInt($this.attr('data-product-id'));
         var productName = $this.find('.item-name').text();
         var productPrice = parseFloat($this.find('.item-price').text());
-        var productQuantity = $this.find('.quantity input').val();
+        var productQuantity = parseInt($this.find('.quantity input').val());
         var productImage = $this.find('img').attr('src');
 
         cartObject.products.push({
@@ -63,7 +63,6 @@ function updateCartSidebar(){
 
 function addToCart(trigger) {
     var data = JSON.parse(localStorage.getItem('cart'));
-    console.log(data);
     var $container = trigger.closest('.product-container');
     var productId = parseInt($container.attr('data-product-id'));
     var productName = $container.find('.product-name').text();
@@ -72,10 +71,10 @@ function addToCart(trigger) {
     var productImage = $container.find('img').attr('src');
     var productQuantity = 1;
 
-    const found = data.products.some(el => el.id === productId);
+    const found = data.products.some(el => parseInt(el.id) === productId);
     if (!found) {
         console.log('Product does not exist in cart');
-        data.items = data.items + 1;
+        data.items = parseInt(data.items) + 1;
         data.products.push({
             id: productId,
             name: productName,
@@ -89,16 +88,15 @@ function addToCart(trigger) {
             ]
         });
         localStorage.setItem('cart', JSON.stringify(data));
-        console.log(data);
     }
     else {
         console.log('Product exists in cart');
+
         for (var i = 0; i < data.products.length; i++) {
-            if (data.products[i].id == productId){
-                data.products[i].quantity = data.products[i].quantity + 1;
+            if (parseInt(data.products[i].id) === productId){
+                data.products[i].quantity = parseInt(data.products[i].quantity + 1);
+                localStorage.setItem('cart', JSON.stringify(data));
             }
-            localStorage.setItem('cart', JSON.stringify(data));
-            console.log(data);
         }
     }
 }
@@ -183,7 +181,7 @@ function getCart() {
 function removeFromCart() {
     $('.remove-from-cart-action').on('click', function(){
         var $this = $(this);
-        var productId = $this.closest('.product-container').attr('data-product-id');
+        var productId = parseInt($this.closest('.product-container').attr('data-product-id'));
         var data = JSON.parse(localStorage.getItem('cart'));
 
         $('.cart-loader').addClass('is-active');
@@ -209,7 +207,11 @@ function removeFromCart() {
 function disableCartSidebar() {
     $('#open-cart').off();
     $('#open-cart').on('click', function(){
-        toasts.service.error('', 'fas fa-comment-alt', 'Cart sidebar is disabled on cart page', 'bottomRight', 2500);
+        if ($('.checkout-wrapper').length){
+            toasts.service.error('', 'fas fa-comment-alt', 'Cart sidebar is disabled during checkout', 'bottomRight', 2500);
+        } else {
+            toasts.service.error('', 'fas fa-comment-alt', 'Cart sidebar is disabled on cart page', 'bottomRight', 2500);
+        }
     })
 }
 
@@ -313,11 +315,11 @@ function updateCartPage() {
     cartObject.items = productsCount;
     $('#cart-page-products .product-container').each(function () {
         var $this = $(this);
-        var productId = $this.attr('data-product-id');
+        var productId = parseInt($this.attr('data-product-id'));
         var productName = $this.find('.product-info span:first-child').text();
         var productCategory = $this.find('.product-info span:nth-child(2)').text();
         var productPrice = parseFloat($this.find('.product-price span:nth-child(2)').text());
-        var productQuantity = $this.find('.main-cart-spinner input').val();
+        var productQuantity = parseInt($this.find('.main-cart-spinner input').val());
         var productImage = $this.find('img').attr('src');
 
         cartObject.products.push({
@@ -340,7 +342,7 @@ function updateCartPage() {
 function removeFromCartPage() {
     $('.remove-from-cartpage-action').on('click', function () {
         var $this = $(this);
-        var productId = $this.closest('.product-container').attr('data-product-id');
+        var productId = parseInt($this.closest('.product-container').attr('data-product-id'));
         var data = JSON.parse(localStorage.getItem('cart'));
 
         $('.account-loader').addClass('is-active');
@@ -361,6 +363,43 @@ function removeFromCartPage() {
             $('.account-loader').removeClass('is-active');
             toasts.service.success('', 'fas fa-check', 'Product successfully removed from cart', 'bottomRight', 2500);
         }, 800);
+    })
+}
+
+function initCheckout() {
+    $('#init-checkout').on('click', function(){
+        if (JSON.parse(localStorage.getItem('cart')) !== null){
+            localStorage.removeItem('checkout');
+        }
+        var cartData = JSON.parse(localStorage.getItem('cart'));
+        var userData = JSON.parse(localStorage.getItem('user'));
+        var $this = $(this);
+        var checkoutObject = {};
+
+        $this.addClass('is-loading');
+
+        checkoutObject.items = cartData.products;
+        checkoutObject.count = cartData.items;
+        checkoutObject.subtotal = parseFloat($('#cart-summary-subtotal').text());
+        checkoutObject.taxes = parseFloat($('#cart-summary-taxes').text());
+        checkoutObject.shipping = 0.00;
+        checkoutObject.total = parseFloat($('#cart-summary-total').text());
+        checkoutObject.step = 1;
+        checkoutObject.username = userData.firstName + ' ' + userData.lastName;
+        checkoutObject.avatar = userData.photoUrl;
+        checkoutObject.orderNotes = '';
+
+        localStorage.setItem('checkout', JSON.stringify(checkoutObject));
+
+        if (!userData.isLoggedIn) {
+            setTimeout(function(){
+                window.location.href = '/authentication.html?origin=checkout';
+            }, 1200)
+        } else {
+            setTimeout(function () {
+                window.location.href = '/checkout-step1.html';
+            }, 1200)
+        }
     })
 }
 
@@ -386,14 +425,14 @@ $(document).ready(function(){
     if ($('#shop-grid').length) {
 
         //Add to cart
-        $('.product-container .actions .add').on('click', function(){
+        $('.product-container .actions .add').off().on('click', function(){
             var $this = $(this);
             if ($('.cart-quickview').hasClass('is-active')) {
                 $('.cart-loader').addClass('is-active');
             }
             setTimeout(function(){
                 $.when(addToCart($this)).done(function(){
-                    getCart()
+                    getCart();
                 })
             }, 300)
             setTimeout(function () {
@@ -434,12 +473,14 @@ $(document).ready(function(){
     if ($('#cart-page').length) {
 
         disableCartSidebar();
-        //initCartSpinners();
         getCartPage();
 
         setTimeout(function(){
             $('.account-loader').removeClass('is-active');
         }, 1200);
+
+        //Init checkout button
+        initCheckout();
 
         //Update cart page
         $('#update-cart-page').on('click', function () {

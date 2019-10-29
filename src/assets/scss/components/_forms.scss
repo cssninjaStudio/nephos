@@ -385,3 +385,129 @@ Special toggle
         }
     }
 }
+
+/* ==========================================================================
+Animated checkbox
+========================================================================== */
+
+$curve: cubic-bezier(0.65, 0, 0.45, 1);
+
+.animated-checkbox {
+    position: relative;
+    height: 32px;
+    width: 32px;
+
+    input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        cursor: pointer;
+        z-index: 1;
+    }
+
+    .checkmark-wrap {
+        position: relative;
+        height: 32px;
+        width: 32px;
+
+        .shadow-circle {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 32px;
+            width: 32px;
+            border-radius: 50%;
+            border: 1px solid $placeholder;
+            z-index: 0;
+            opacity: 1;
+            transition: all .2s;
+
+            &.is-opaque {
+                opacity: 0;
+            }
+        }
+
+        .checkmark-circle {
+            height: 32px;
+            width: 32px;
+            stroke-dasharray: 166;
+            stroke-dashoffset: 166;
+            stroke-width: 2;
+            stroke-miterlimit: 10;
+            stroke: $primary;
+            fill: none;
+            stroke: $primary;
+        }
+
+        //Checkmark
+        .checkmark {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: block;
+            stroke-width: 2;
+            stroke: $placeholder;
+            stroke-miterlimit: 10;
+            //margin: 10% auto;
+            box-shadow: inset 0px 0px 0px $primary;
+        }
+
+        //Check symbol
+        .checkmark-check {
+            transform-origin: 50% 50%;
+            stroke-dasharray: 48;
+            stroke-dashoffset: 48;
+            stroke: $primary;
+        }
+    }
+
+    &.is-checked {
+        .checkmark-circle {
+            animation: stroke 0.6s $curve both;
+        }
+
+        .checkmark-check {
+            animation: stroke 0.3s $curve 0.8s both;
+        }
+    }
+
+    &.is-unchecked {
+        .checkmark-circle {
+            animation: reverseCircle 0.6s $curve 0.2s both;
+        }
+
+        .checkmark-check {
+            animation: reverseCheck 0.3s $curve 0.1s both;
+        }
+    }
+
+    //Keyframes
+    @keyframes stroke {
+        100% {
+            stroke-dashoffset: 0;
+        }
+    }
+
+    @keyframes reverseCircle {
+        from {
+            stroke-dashoffset: 0;
+        }
+
+        to {
+            stroke-dashoffset: 166;
+        }
+    }
+
+    @keyframes reverseCheck {
+        from {
+            stroke-dashoffset: 0;
+        }
+
+        to {
+            stroke-dashoffset: 48;
+        }
+    }
+}

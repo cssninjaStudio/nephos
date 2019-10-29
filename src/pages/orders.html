@@ -34,7 +34,7 @@ title: Modern Bulma Ecommerce App and Dashboard
 
             <!-- Orders Grid -->
             <div class="columns account-header">
-                <div class="column is-10 is-offset-1 is-tablet-landscape-padded">
+                <div class="column main-column is-tablet-landscape-padded">
                     <div class="account-title">
                         <h2>MY ORDERS</h2>
                         <img class="brand-filigrane" src="assets/img/logo/nephos-greyscale.svg" alt="">
@@ -70,8 +70,35 @@ title: Modern Bulma Ecommerce App and Dashboard
                     </div>
                     <!-- /Controls -->
 
+                    <div id="orders-main-placeholder" class="main-placeholder is-hidden">
+                        <div class="placeholder-content">
+                            <img src="assets/img/illustrations/shop.svg" alt="">
+                            <h3>Welcome, Guest</h3>
+                            <p>Guest users don't have accounts. Please login or register to view your account.</p>
+                            <div class="button-wrap">
+                                <a href="/authentication.html" class="button big-button primary-button rounded raised">Log In</a>
+                            </div>
+                            <a>Don't have an account?</a>
+                        </div>
+                    </div>
+
+                    <div id="orders-empty-placeholder" class="main-placeholder is-hidden">
+                        <div class="placeholder-content">
+                            <img src="assets/img/illustrations/shop.svg" alt="">
+                            <h3>No Orders</h3>
+                            <p>You have no orders to show. Your order details will be stored here, once you checkout.</p>
+                            <div class="button-wrap">
+                                <a href="/products.html" class="button big-button primary-button rounded raised">Continue Shopping</a>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Orders grid -->
-                    <div class="columns is-account-grid is-multiline">
+                    <div id="orders-main" class="columns is-account-grid is-multiline">
+                        <!--Loader-->
+                        <div class="account-loader is-active">
+                            <div class="loader is-pulled is-loading"></div>
+                        </div>
                         <!-- Order card -->
                         <div class="column is-4">
                             <div class="flat-card order-card has-popover-top">

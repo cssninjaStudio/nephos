@@ -38,6 +38,22 @@ TABLE OF CONTENTS
         align-items: center;
         margin-top: 20px;
 
+        .title-back {
+            position: relative;
+            height: 43px;
+            width: 43px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+
+            svg {
+                height: 26px;
+                width: 26px;
+                stroke: $dark-text;
+            }
+        }
+
         h2 {
             width: 100%;
         }

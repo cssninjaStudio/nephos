@@ -5,94 +5,110 @@ var enableShippingAddress = false;
 function getAccountInfo() {
     var userData = JSON.parse(localStorage.getItem('user'));
 
-    //Photo
-    $('.profile-image').empty();
-    var avatar = `
+    //If not logged in, hide account
+    if (!userData.isLoggedIn) {
+        $('#account-main, #account-main-placeholder').toggleClass('is-hidden');
+    }
+
+    //Load account info
+    else {
+        //Photo
+        $('.profile-image').empty();
+        var avatar = `
         <img src="http://via.placeholder.com/250x250" data-demo-src="${userData.photoUrl}" alt="">
     `
-    $('.profile-image').append(avatar);
-    //User Info
-    $('#account-first-name').html(userData.firstName);
-    $('#account-last-name').html(userData.lastName);
-    $('#full-name').html(userData.firstName + ' ' + userData.lastName);
-    $('#account-email, #full-email').html(userData.email);
-    if (userData.phone !== null) {
-        $('#account-phone-number').html(userData.phone);
-    } else {
-        $('#account-phone-number').html('N/A');
-    }
-    //Billing address
-    $('#account-billing-address .address1').html(userData.addresses[0].address1);
-    $('#account-billing-address .address2').html(userData.addresses[0].address2);
-    $('#account-billing-address .city').html(userData.addresses[0].city);
-    $('#account-billing-address .postal-code').html(userData.addresses[0].postalCode);
-    $('#account-billing-address .state').html(userData.addresses[0].state);
-    $('#account-billing-address .country').html(userData.addresses[0].country);
+        $('.profile-image').append(avatar);
+        //User Info
+        $('#account-first-name').html(userData.firstName);
+        $('#account-last-name').html(userData.lastName);
+        $('#full-name').html(userData.firstName + ' ' + userData.lastName);
+        $('#account-email, #full-email').html(userData.email);
+        if (userData.phone !== null) {
+            $('#account-phone-number').html(userData.phone);
+        } else {
+            $('#account-phone-number').html('N/A');
+        }
+        //Billing address
+        $('#account-billing-address .address1').html(userData.addresses[0].address1);
+        $('#account-billing-address .address2').html(userData.addresses[0].address2);
+        $('#account-billing-address .city').html(userData.addresses[0].city);
+        $('#account-billing-address .postal-code').html(userData.addresses[0].postalCode);
+        $('#account-billing-address .state').html(userData.addresses[0].state);
+        $('#account-billing-address .country').html(userData.addresses[0].country);
 
-    //Shipping address (if enabled)
-    if (userData.addresses[1].disabled === false){
-        $('#account-shipping-address .address1').html(userData.addresses[1].address1);
-        $('#account-shipping-address .address2').html(userData.addresses[1].address2);
-        $('#account-shipping-address .city').html(userData.addresses[1].city);
-        $('#account-shipping-address .postal-code').html(userData.addresses[1].postalCode);
-        $('#account-shipping-address .state').html(userData.addresses[1].state);
-        $('#account-shipping-address .country').html(userData.addresses[1].country);
-        $('#account-shipping-address').removeClass('is-hidden');
-    }
+        //Shipping address (if enabled)
+        if (userData.addresses[1].disabled === false) {
+            $('#account-shipping-address .address1').html(userData.addresses[1].address1);
+            $('#account-shipping-address .address2').html(userData.addresses[1].address2);
+            $('#account-shipping-address .city').html(userData.addresses[1].city);
+            $('#account-shipping-address .postal-code').html(userData.addresses[1].postalCode);
+            $('#account-shipping-address .state').html(userData.addresses[1].state);
+            $('#account-shipping-address .country').html(userData.addresses[1].country);
+            $('#account-shipping-address').removeClass('is-hidden');
+        }
 
-    //DEMO
-    changeDemoImages();
-    //Hide Loader
-    $('.account-loader').addClass('is-hidden');
+        //DEMO
+        changeDemoImages();
+        //Hide Loader
+        $('.account-loader').addClass('is-hidden');
+    }
 }
 
 function getEditAccountInfo(){
     var userData = JSON.parse(localStorage.getItem('user'));
 
-    //Photo
-    $('.avatar-wrapper .profile-pic').remove();
-    var avatar = `
+    //If not logged in, hide account
+    if (!userData.isLoggedIn) {
+        $('#account-edit-main, #account-edit-main-placeholder').toggleClass('is-hidden');
+    }
+
+    //Load account edit info
+    else {
+        //Photo
+        $('.avatar-wrapper .profile-pic').remove();
+        var avatar = `
         <img class="profile-pic" src="http://via.placeholder.com/250x250" data-demo-src="${userData.photoUrl}" alt="">
     `
-    $('.avatar-wrapper').prepend(avatar);
-    //User Info
-    $('#edit-first-name').val(userData.firstName);
-    $('#edit-last-name').val(userData.lastName);
-    $('#edit-email').val(userData.email);
-    $('#full-name').html(userData.firstName + ' ' + userData.lastName);
-    $('#full-email').html(userData.email);
-    if (userData.phone !== null) {
-        $('#edit-phone-number').val(userData.phone);
-    } else {
-        $('#edit-phone-number').val('');
+        $('.avatar-wrapper').prepend(avatar);
+        //User Info
+        $('#edit-first-name').val(userData.firstName);
+        $('#edit-last-name').val(userData.lastName);
+        $('#edit-email').val(userData.email);
+        $('#full-name').html(userData.firstName + ' ' + userData.lastName);
+        $('#full-email').html(userData.email);
+        if (userData.phone !== null) {
+            $('#edit-phone-number').val(userData.phone);
+        } else {
+            $('#edit-phone-number').val('');
+        }
+
+        //Billing address
+        $('#billing-edit-address1').val(userData.addresses[0].address1);
+        $('#billing-edit-address2').val(userData.addresses[0].address2);
+        $('#billing-edit-city').val(userData.addresses[0].city);
+        $('#billing-edit-postal-code').val(userData.addresses[0].postalCode);
+        $('#billing-edit-state').val(userData.addresses[0].state);
+        $('#billing-edit-country').val(userData.addresses[0].country);
+
+        //Shipping address
+        $('#shipping-edit-address1').val(userData.addresses[1].address1);
+        $('#shipping-edit-address2').val(userData.addresses[1].address2);
+        $('#shipping-edit-city').val(userData.addresses[1].city);
+        $('#shipping-edit-postal-code').val(userData.addresses[1].postalCode);
+        $('#shipping-edit-state').val(userData.addresses[1].state);
+        $('#shipping-edit-country').val(userData.addresses[1].country);
+
+        if (userData.addresses[1].disabled === false) {
+            $('#shipping-switch').trigger('click');
+            enableShippingAddress = true;
+            $('.profile-info-card .card-body').removeClass('is-disabled');
+        }
+
+        //DEMO
+        changeDemoImages();
+        //Hide Loader
+        $('.account-loader').addClass('is-hidden');
     }
-
-    //Billing address
-    $('#billing-edit-address1').val(userData.addresses[0].address1);
-    $('#billing-edit-address2').val(userData.addresses[0].address2);
-    $('#billing-edit-city').val(userData.addresses[0].city);
-    $('#billing-edit-postal-code').val(userData.addresses[0].postalCode);
-    $('#billing-edit-state').val(userData.addresses[0].state);
-    $('#billing-edit-country').val(userData.addresses[0].country);
-
-    //Shipping address
-    $('#shipping-edit-address1').val(userData.addresses[1].address1);
-    $('#shipping-edit-address2').val(userData.addresses[1].address2);
-    $('#shipping-edit-city').val(userData.addresses[1].city);
-    $('#shipping-edit-postal-code').val(userData.addresses[1].postalCode);
-    $('#shipping-edit-state').val(userData.addresses[1].state);
-    $('#shipping-edit-country').val(userData.addresses[1].country);
-
-    if (userData.addresses[1].disabled === false) {
-        $('#shipping-switch').trigger('click');
-        enableShippingAddress = true;
-        $('.profile-info-card .card-body').removeClass('is-disabled');
-    }
-
-    //DEMO
-    changeDemoImages();
-    //Hide Loader
-    $('.account-loader').addClass('is-hidden');
 }
 
 function saveAccountInfo(){

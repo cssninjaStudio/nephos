@@ -16,7 +16,7 @@ var elie = {
     phone: null,
     photoUrl: 'assets/img/avatars/elie.jpg',
     wishlists: elieWishlists,
-    orders: 'assets/data/orders.json',
+    orders: elieOrders,
     addresses: elieAddresses
 }
 
@@ -113,6 +113,7 @@ function fakeLogin() {
     })
     //Login
     $('#login-submit').on('click', function(){
+        var redirectOrigin = $.urlParam('origin');
         var $this = $(this);
         var emailValue = $('#login-email').val();
         var passwordValue = $('#login-password').val();
@@ -127,7 +128,11 @@ function fakeLogin() {
                 toasts.service.success('', 'fas fa-check', 'Successfully logged in', 'bottomRight', 2000);
             }, 1200)
             setTimeout(function () {
-                window.location.href = '/shop.html';
+                if (redirectOrigin === 'checkout'){
+                    window.location.href = '/checkout-step1.html';
+                } else {
+                    window.location.href = '/shop.html';
+                }
             }, 3200)
         }
 

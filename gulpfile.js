@@ -100,6 +100,7 @@ function compileJS() {
   return src([
       'src/assets/js/_data-wishlist.js',
       'src/assets/js/_data-addresses.js',
+    'src/assets/js/_data-orders.js',
       'src/assets/js/functions.js',
       'src/assets/js/nephos.js',
       'src/assets/js/authentication.js',
@@ -108,6 +109,7 @@ function compileJS() {
       'src/assets/js/wishlist.js',
       'src/assets/js/product.js',
       'src/assets/js/orders.js',
+      'src/assets/js/order.js',
       'src/assets/js/checkout.js',
       'src/assets/js/demo.js',
       'src/assets/js/elements.js',

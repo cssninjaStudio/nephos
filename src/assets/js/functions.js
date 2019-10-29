@@ -86,7 +86,7 @@ function initShopSidebar(){
     })
 }
 
-//Init product links (dyanmic product details rendering)
+//Init product links (dynamic product details rendering)
 function initProductDetailsLinks(){
     $('.product-details-link').on('click', function (e) {
         e.preventDefault();
@@ -96,6 +96,19 @@ function initProductDetailsLinks(){
         var productUrl = baseUrl + `?productId=` + productId;
         console.log(productUrl);
         window.location.href = productUrl;
+    })
+}
+
+//Init order details links (dynamic order details rendering)
+function initOrderDetailsLinks() {
+    $('.order-details-link').on('click', function (e) {
+        e.preventDefault();
+        var $this = $(this);
+        var orderId = $this.closest('.order-card, .order-long-card').attr('data-order-id');
+        var baseUrl = '/order.html';
+        var orderUrl = baseUrl + `?orderId=` + orderId;
+        console.log(orderUrl);
+        window.location.href = orderUrl;
     })
 }
 
@@ -237,7 +250,7 @@ function initProductCarousel() {
 //Init various actions (to rework)
 function initCardActions() {
     //Whishlist actions
-    $('.flat-card .actions .like svg, .sidebar-whishlist svg').on('click', function () {
+   /* $('.flat-card .actions .like svg, .sidebar-whishlist svg').on('click', function () {
         $(this).toggleClass('is-active gelatine');
 
         if (!$(this).hasClass('is-active')) {
@@ -246,11 +259,11 @@ function initCardActions() {
         else {
             //Show success toast
         }
-    })
+    })*/
 
     //Add to cart
-    $('.flat-card .actions .add svg').on('click', function () {
-        $(this).toggleClass('is-active gelatine');
+    /*$('.flat-card .actions .add svg').on('click', function () {
+        $(this).toggleClass('gelatine');
 
         if (!$(this).hasClass('is-active')) {
             //Show success toast
@@ -258,7 +271,7 @@ function initCardActions() {
         else {
             //Show success toast
         }
-    })
+    })*/
 
     //$('.cart-button').on('click', function () {
         //$(this).toggleClass('is-active gelatine');
@@ -420,6 +433,26 @@ function initPopovers() {
             animation: 'pop'
         });
     }
+}
+
+//Init animated checkboxes
+function initAnimatedCheckboxes(){
+    $('.animated-checkbox input').on('change', function () {
+        var $this = $(this);
+        if ($this.closest('.animated-checkbox').hasClass('is-checked')) {
+            $this.closest('.animated-checkbox').addClass('is-unchecked').removeClass('is-checked');
+            setTimeout(function () {
+                $this.closest('.animated-checkbox').find('.shadow-circle').removeClass('is-opaque');
+            }, 600);
+        } else {
+            $this.closest('.animated-checkbox').find('.shadow-circle').addClass('is-opaque');
+            $this.closest('.animated-checkbox').addClass('is-checked');
+            setTimeout(function () {
+                $this.closest('.animated-checkbox').removeClass('is-unchecked');
+                //$this.closest('.animated-checkbox').find('.shadow-circle').removeClass('is-opaque');
+            }, 600);
+        }
+    })
 }
 
 //Optimize popovers based on screen width

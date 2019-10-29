@@ -14,6 +14,8 @@ $(document).ready(function(){
 
     initProductDetailsLinks();
 
+    initOrderDetailsLinks();
+
     initCartSidebar();
 
     initGlobalSearch();
@@ -45,6 +47,8 @@ $(document).ready(function(){
     opitimizePopovers();
 
     initCardActions();
+
+    initAnimatedCheckboxes();
 
     initMobileMode();
 

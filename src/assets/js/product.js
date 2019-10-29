@@ -108,7 +108,7 @@ function addToCartDetails(trigger) {
     var productCategory = $('#product-category').text();
     var productPrice = parseFloat($('#new-price').text());
     var productImage = $('.is-carousel > div:first-child img').attr('src');
-    var productQuantity = parseFloat($('.details-spinner input').val());
+    var productQuantity = parseInt($('.details-spinner input').val());
 
     const found = data.products.some(el => el.id === productId);
     if (!found) {
@@ -131,10 +131,10 @@ function addToCartDetails(trigger) {
     else {
         console.log('Product exists in cart');
         for (var i = 0; i < data.products.length; i++) {
-            if (data.products[i].id == productId) {
-                data.products[i].quantity = data.products[i].quantity + productQuantity;
+            if (parseInt(data.products[i].id) === productId) {
+                data.products[i].quantity = parseInt(data.products[i].quantity + productQuantity);
+                localStorage.setItem('cart', JSON.stringify(data));
             }
-            localStorage.setItem('cart', JSON.stringify(data));
         }
     }
 }

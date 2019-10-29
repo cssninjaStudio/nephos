@@ -32,11 +32,14 @@ TABLE OF CONTENTS
     top: 0;
     left: 0;
     margin-left: 80px;
+    height: 60px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding: 15px 20px;
-    width: calc(100% - 80px);
+    padding: 0 20px;
+
+    //width: calc(100% - 80px);
+    width: calc(100% - 500px);
     background: $white;
     z-index: 2;
     box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.12);
@@ -791,5 +794,131 @@ TABLE OF CONTENTS
                 }
             }
         }
+    }
+}
+
+/* ==========================================================================
+Success checkmark
+========================================================================== */
+
+$circle-length: 151px;
+$check-length: 36px;
+
+@keyframes scaleAnimation {
+    0% {
+        opacity: 0;
+        transform: scale(1.5);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes drawCircle {
+    0% {
+        stroke-dashoffset: $circle-length;
+    }
+
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes drawCheck {
+    0% {
+        stroke-dashoffset: $check-length;
+    }
+
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        -webkit-transform: translate3d(0, 10px, 0);
+        transform: translate3d(0, 10px, 0);
+        opacity: 0;
+    }
+
+    to {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+}
+
+.SuccessAnimation {
+    &.is-primary {
+        .SuccessAnimationCircle, .SuccessAnimationCheck {
+            stroke: $primary;
+        }
+
+        .SuccessAnimationResult {
+            fill: $primary;
+        }
+    }
+
+    &.is-success {
+        .SuccessAnimationCircle, .SuccessAnimationCheck {
+            stroke: $secondary;
+        }
+
+        .SuccessAnimationResult {
+            fill: $secondary;
+        }
+    }
+
+    .SuccessAnimationCircle {
+        stroke-dasharray: $circle-length $circle-length;
+        stroke: $accent;
+    }
+
+    .SuccessAnimationCheck {
+        stroke-dasharray: $check-length $check-length;
+        stroke: $accent;
+    }
+
+    .SuccessAnimationResult {
+        fill: $accent;
+        opacity: 0;
+    }
+}
+
+.SuccessAnimation.animated {
+    animation: 1s ease-out 0s 1 both scaleAnimation;
+
+    .SuccessAnimationCircle {
+        animation: 1s cubic-bezier(0.77, 0, 0.175, 1) 0s 1 both drawCircle, 0.3s linear 0.9s 1 both fadeOut;
+    }
+
+    .SuccessAnimationCheck {
+        animation: 1s cubic-bezier(0.77, 0, 0.175, 1) 0s 1 both drawCheck, 0.3s linear 0.9s 1 both fadeOut;
+    }
+
+    .SuccessAnimationResult {
+        animation: 0.3s linear 0.9s both fadeIn;
     }
 }
