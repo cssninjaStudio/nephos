@@ -307,6 +307,50 @@ TABLE OF CONTENTS
             }
         }
     }
+
+    .search-count {
+        color: $muted-grey;
+    }
+
+    .search-field {
+        .control {
+            position: relative;
+
+            .input {
+                padding-left: 39px;
+                box-shadow: none !important;
+
+                &:focus {
+                    border-color: $fade-grey;
+                    box-shadow: $light-box-shadow;
+
+                    + .search-icon {
+                        svg {
+                            stroke: $primary;
+                        }
+                    }
+                }
+            }
+
+            .search-icon {
+                position: absolute;
+                top: 0;
+                left: 3px;
+                height: 36px;
+                width: 36px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                svg {
+                    height: 18px;
+                    width: 18px;
+                    stroke: $placeholder;
+                    transition: stroke .3s;
+                }
+            }
+        }
+    }
 }
 
 //Chosen sortbox

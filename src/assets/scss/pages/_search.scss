@@ -216,6 +216,10 @@ TABLE OF CONTENTS
                 width: 50%;
                 border: none;
 
+                &.full-search {
+                    cursor: pointer;
+                }
+
                 &.selected {
                     background: $white !important;
 
@@ -245,6 +249,14 @@ TABLE OF CONTENTS
     align-items: center;
     padding: 30px;
 
+    &:hover {
+        .icon-wrapper {
+            svg {
+                stroke: $primary;
+            }
+        }
+    }
+
     //avatar
     .autocpl-product {
         display: block;
@@ -254,6 +266,22 @@ TABLE OF CONTENTS
         filter: grayscale(1);
         opacity: .6;
         transition: all .3s;
+    }
+
+    .icon-wrapper {
+        width: 65px !important;
+        height: 65px !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        svg {
+            height: 34px;
+            width: 34px;
+            stroke-width: 1.2px;
+            stroke: $muted-grey;
+            transition: stroke .3s;
+        }
     }
 
     //text
@@ -288,4 +316,75 @@ TABLE OF CONTENTS
             }
         }
     }
+}
+
+.filter-card {
+    width: 100%;
+    background: $white;
+    border-radius: 8px;
+    border: 1px solid darken($fade-grey, 4%);
+    padding: 20px;
+    margin-bottom: 20px;
+
+    .block-title {
+        font-family: 'Montserrat', sans-serif;
+        font-size: .7rem;
+        font-weight: 600;
+        color: $muted-grey;
+        text-transform: uppercase;
+        padding-bottom: 14px;
+    }
+
+    .filter-block {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+
+        .field {
+            margin-bottom: 0;
+
+            .control {
+                .checkbox-wrap {
+                    padding: 0;
+                }
+            }
+        }
+
+        > span {
+            display: block;
+        }
+
+        .checkbox-wrap {
+            position: relative;
+
+            .filter-label {
+                position: relative;
+                top: 1px;
+            }
+        }
+
+        .filter-count {
+            span {
+                padding: 0 10px;
+                min-height: 20px;
+                display: inline-flex;
+                border-radius: 100px;
+                font-size: .8rem;
+                background: $fade-grey;
+            }
+        }
+    }
+
+    .address {
+        font-size: .82rem;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        color: $dark-text;
+        line-height: 1.8;
+    }
+}
+
+.search-card {
+    border: 1px solid darken($fade-grey, 4%);
 }

@@ -157,31 +157,42 @@ $(document).ready(function() {
         fps: 60
     });
 
-    setInterval(function(){
+    var canvasInterval;
 
-        var rectangle = canvas.display.ellipse({
-            x: randomPlacement(windowXArray),
-            y: randomPlacement(windowYArray),
-            origin: { x: 'center', y: 'center' },
-            radius: 0,
-            fill: '#fcfcfc',
-            opacity: 1
-        });
+    function launchInterval(){
+        canvasInterval = setInterval(function () {
 
-        canvas.addChild(rectangle);
+            var rectangle = canvas.display.ellipse({
+                x: randomPlacement(windowXArray),
+                y: randomPlacement(windowYArray),
+                origin: { x: 'center', y: 'center' },
+                radius: 0,
+                fill: '#fcfcfc',
+                opacity: 1
+            });
 
-        rectangle.animate({
-            radius: 10,
-            opacity: 0
-        }, {
-            duration: '1000',
-            easing: 'linear',
-            callback: function () {
-                this.remove();
-            }
-        });
+            canvas.addChild(rectangle);
 
-    }, 250);
+            rectangle.animate({
+                radius: 10,
+                opacity: 0
+            }, {
+                duration: '1000',
+                easing: 'linear',
+                callback: function () {
+                    this.remove();
+                }
+            });
+
+        }, 250);
+    }
+
+    launchInterval();
+
+    setTimeout(function(){
+        clearInterval(canvasInterval);
+        launchInterval();
+    }, 25000)
 
     $(window).resize(function(){
         canvas.width = $(window).innerWidth();

@@ -84,11 +84,12 @@ function ValidateEmail(mail) {
 }
 
 function ValidateLength(value, length) {
-    if (value.length === length) {
+    if (value.length >= length) {
         return (true)
+    } else {
+        console.log("You didn't enter enough characters!")
+        return (false)
     }
-    console.log("You didn't enter enough characters!")
-    return (false)
 }
 
 function fakeLogin() {
