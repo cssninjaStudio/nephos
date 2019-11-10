@@ -165,6 +165,7 @@ function getCart() {
             }
         }
         $('#cart-dot').removeClass('is-hidden');
+        $('#mobile-cart-count').html(data.items);
         setTimeout(function () {
             $('.cart-loader').removeClass('is-active');
         }, 800);
@@ -173,6 +174,7 @@ function getCart() {
         $('.cart-quickview .empty-cart').removeClass('is-hidden');
         cartTotal = 0.00;
         data.total = cartTotal;
+        $('#mobile-cart-count').html('0');
         localStorage.setItem('cart', JSON.stringify(data));
         $('.cart-quickview .cart-total').html(parseFloat(cartTotal).toFixed(2));
     }
@@ -265,7 +267,7 @@ function getCartPage() {
 
                             <span class="action">
                                 <span class="action-link is-remove remove-from-cartpage-action has-simple-popover" data-content="Remove from Cart"
-                                    data-placement="top">
+                                    data-placement="top" onclick="return true">
                                     <a href="#">${removeIcon}</a>
                                 </span>
                             </span>

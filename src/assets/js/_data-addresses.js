@@ -3,10 +3,10 @@ var elieAddresses = [
         type: 'Billing Address',
         address1: '23, Block C2',
         address2: 'Church Street',
-        city: 'Los Angeles',
-        postalCode: '92166',
-        state: 'CA',
-        country: 'United States'
+        city: 'Sydney',
+        postalCode: '2037',
+        state: 'New South Wales',
+        country: 'Australia'
     },
     {
         type: '',

@@ -182,7 +182,7 @@ TABLE OF CONTENTS
     }
 
     &.is-pushed-mobile {
-        transform: translateX(-500px) !important;
+        transform: translateX(calc(-100% - 80px));
     }
 
     .inner {
@@ -272,7 +272,7 @@ TABLE OF CONTENTS
 .shop-quickview {
     position: fixed;
     top: 0;
-    left: 84px;
+    left: 80px;
     height: 100%;
     width: 280px;
     background-color: $sidebar;
@@ -280,19 +280,19 @@ TABLE OF CONTENTS
     background-position: bottom;
     box-shadow: -2px 0px -2px 0px rgba(0, 0, 0, 0.06);
     z-index: 3;
-    transform: translateX(-285px);
+    transform: translateX(-100%);
     transition: all .3s;
     overflow: hidden;
 
     //Pushed State
     &.is-pushed-mobile {
-        transform: translateX(-500px) !important;
+        transform: translateX(calc(-100% - 80px));
         left: 0 !important;
     }
 
     //Pushed state
     &.is-active {
-        transform: translateX(-5px);
+        transform: translateX(0);
     }
 
     .inner {
@@ -449,7 +449,7 @@ TABLE OF CONTENTS
 .filters-quickview {
     position: fixed;
     top: 0;
-    left: 84px;
+    left: 80px;
     height: 100%;
     width: 320px;
     background-color: $white;
@@ -457,17 +457,17 @@ TABLE OF CONTENTS
     background-position: bottom;
     box-shadow: 2px 0px 2px 0px rgba(0, 0, 0, 0.02);
     z-index: 3;
-    transform: translateX(-325px);
+    transform: translateX(-100%);
     transition: all .3s;
 
     //Mobile pushed state
     &.is-pushed-mobile {
-        transform: translateX(-500px) !important;
+        transform: translateX(calc(-100% - 80px));
     }
 
     //Pushed state
     &.is-active {
-        transform: translateX(-5px);
+        transform: translateX(0);
     }
 
     .inner {
@@ -567,7 +567,7 @@ TABLE OF CONTENTS
 .cart-quickview {
     position: fixed;
     top: 0;
-    left: 84px;
+    left: 80px;
     height: 100%;
     width: 340px;
     background-color: $white;
@@ -575,17 +575,17 @@ TABLE OF CONTENTS
     background-position: bottom;
     box-shadow: 2px 0px 2px 0px rgba(0, 0, 0, 0.02);
     z-index: 3;
-    transform: translateX(-345px);
+    transform: translateX(-100%);
     transition: all .3s;
 
     //Mobile pushed state
     &.is-pushed-mobile {
-        transform: translateX(-500px) !important;
+        transform: translateX(calc(-100% - 80px));
     }
 
     //Pushed state
     &.is-active {
-        transform: translateX(-5px);
+        transform: translateX(0);
     }
 
     .inner {

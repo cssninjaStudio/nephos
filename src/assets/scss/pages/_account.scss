@@ -293,6 +293,16 @@ TABLE OF CONTENTS
     margin-bottom: 20px;
     position: relative;
 
+    &.is-billing {
+        position: relative;
+        z-index: 2;
+    }
+
+    &.is-shipping {
+        position: relative;
+        z-index: 1;
+    }
+
     //Title
     .card-title {
         position: relative;

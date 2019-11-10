@@ -121,6 +121,10 @@ canvas {
                 &:hover {
                     color: $primary;
                 }
+
+                &.button {
+                    color: $white !important;
+                }
             }
         }
     }

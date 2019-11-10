@@ -379,6 +379,7 @@ TABLE OF CONTENTS
                 font-size: .9rem;
                 font-weight: 500;
                 padding-bottom: 6px;
+                width: calc(50% - 6px);
             }
         }
     }
@@ -842,6 +843,43 @@ TABLE OF CONTENTS
                 &:before {
                     content: '$';
                 }
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .is-account-grid {
+        .order-long-card {
+            flex-direction: column;
+
+            .left-side {
+                width: 100%;
+                padding: 20px 10px 0 20px;
+                padding-bottom: 0;
+
+                .order-header {
+                    flex-direction: column;
+                    position: relative;
+
+                    h3, span {
+                        margin-right: 0;
+                    }
+
+                    .tag {
+                        display: none;
+                    }
+
+                    .order-total {
+                        margin-left: 0;
+                    }
+                }
+            }
+
+            .right-side {
+                width: 100%;
+                min-height: 250px;
+                padding: 20px;
             }
         }
     }

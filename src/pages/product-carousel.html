@@ -5,38 +5,14 @@ title: Modern Bulma Ecommerce App and Dashboard
 
 {{> pageloader}}
 
-{{> mobile-navbar-user}}
+<!-- Mobile Navbar-->
+{{> mobile-navbar}}
 
 <!-- Main Sidebar-->
-<div class="main-sidebar">
-    <div class="sidebar-brand">
-        <a href="home.html"><img src="assets/img/logo/nephos.svg" alt=""></a>
-    </div>
-    <div class="sidebar-inner">
-        <ul class="icon-menu">
-            <!-- Shop sidebar trigger -->
-            {{> sidebar-item-home}}
-            <!-- Cart sidebar trigger -->
-            {{> sidebar-item-cart-active}}
-            <!-- Search trigger -->
-            {{> sidebar-item-search}}
-            <!-- Add to Wishlist -->
-            {{> sidebar-item-like}}
-            <!-- Mobile mode trigger -->
-            {{> sidebar-item-mode}}
-        </ul>
-
-        <!-- User account -->
-        <ul class="bottom-menu is-hidden-mobile">
-            {{> sidebar-item-logout}}
-        </ul>
-    </div>
-</div>
-<!-- /Main Sidebar-->
+{{> shop-sidebar}}
 
 <!-- FAB -->
 {{> flying-button}}
-<!-- /FAB -->
 
 <!-- Categories Right quickview -->
 {{> quickview-categories}}

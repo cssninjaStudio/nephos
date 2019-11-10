@@ -27,21 +27,25 @@ TABLE OF CONTENTS
     justify-content: center;
     align-items: center;
     padding: 20px 40px;
+
     //title
     .element-card-title {
         text-transform: uppercase;
         font-size: .75rem;
         font-weight: 500;
     }
+
     img {
         max-width: 120px;
         width: 120px;
         margin: 5px 0;
     }
+
     //button
     .view-element {
         font-family: 'Raleway', sans-serif;
         text-transform: uppercase;
+
         a {
             font-weight: 600;
         }
@@ -52,31 +56,39 @@ TABLE OF CONTENTS
 .is-element-details {
     border: none !important;
     margin-bottom: 20px;
+
     //overflow modifier
     &.has-overflow {
         overflow: visible !important;
     }
+
     .columns.is-gapless {
         background: $sidebar;
     }
+
     .is-component, .is-description {
         .inner {
             padding: 40px;
         }
     }
+
     //component side
     .is-component {
         background: $white;
+
         .control {
             margin-bottom: 20px;
         }
+
         &.is-grey {
             background: $smoke-white;
         }
     }
+
     //description side
     .is-description {
         color: $smoke-white !important;
+
         .divider {
             height: 1.6px;
             background: $smoke-white;
@@ -84,14 +96,17 @@ TABLE OF CONTENTS
             width: 60px;
             margin: 10px 0;
         }
+
         h2 {
             color: $smoke-white !important;
         }
+
         p {
             font-family: 'Raleway', sans-serif;
             font-size: .85rem;
             margin-bottom: 10px;
         }
+
         code {
             color: #ffcc00;
             background: transparent !important;
@@ -112,9 +127,11 @@ TABLE OF CONTENTS
 .control {
     &.required {
         position: relative;
+
         .input {
             padding-right: 36px;
         }
+
         //icon
         svg {
             position: absolute;
@@ -124,69 +141,85 @@ TABLE OF CONTENTS
             height: 16px;
             display: none;
             stroke-width: 2.4px;
+
             &.success-icon {
                 stroke: $green;
             }
+
             &.error-icon {
                 stroke: $red;
             }
+
             &.warning-icon {
                 stroke: $orange;
             }
         }
+
         //Status
         .status-text {
             span {
                 font-size: 60%;
                 font-family: 'Raleway', sans-serif;
                 display: none;
+
                 &.success-text {
                     color: $green;
                 }
+
                 &.warning-text {
                     color: $orange;
                 }
+
                 &.error-text {
                     color: $red;
                 }
             }
         }
+
         //success modifier
         &.has-success {
             .input {
                 border-color: $green !important;
             }
+
             .success-icon, .success-text {
                 display: block;
             }
         }
+
         //warning modifier
         &.has-warning {
             .input {
                 border-color: $orange !important;
             }
+
             .warning-icon, .warning-text {
                 display: block;
             }
         }
+
         //error modifier
         &.has-error {
             .input {
                 border-color: $red !important;
             }
+
             .error-icon, .error-text {
                 display: block;
             }
         }
     }
+
     //Addon modifier
     &.has-addon {
         position: relative;
+
         //Block modifier
         &.has-block {
             .input {
                 padding-right: 40px;
             }
+
             .input-block {
                 position: absolute;
                 top: 0;
@@ -200,11 +233,13 @@ TABLE OF CONTENTS
                 font-weight: 500;
             }
         }
+
         //Button modifier
         &.has-button {
             .input {
                 padding-right: 70px;
             }
+
             .input-button {
                 max-height: 30px;
                 background: $secondary;
@@ -218,22 +253,27 @@ TABLE OF CONTENTS
                 right: 3px;
                 transition: opacity .3s;
                 cursor: pointer;
+
                 &:hover {
                     opacity: 0.7;
                 }
             }
         }
+
         //Icon modifier
         &.has-icon {
             .input {
                 padding-left: 40px;
+
                 &:focus {
                     border-color: $primary;
+
                     + svg {
                         stroke: $primary;
                     }
                 }
             }
+
             svg {
                 height: 22px;
                 width: 22px;
@@ -255,6 +295,7 @@ TABLE OF CONTENTS
 .control {
     &.has-select-icon {
         position: relative;
+
         svg {
             position: absolute;
             top: 7px;
@@ -263,9 +304,11 @@ TABLE OF CONTENTS
             height: 18px;
             color: #ccc;
         }
+
         .styledSelect {
-            left: 36px !important
+            left: 36px !important;
         }
+
         &.is-loading::after {
             left: .625em !important;
             top: .49em !important;
@@ -275,8 +318,8 @@ TABLE OF CONTENTS
 
 //Hide native input
 .s-hidden {
-    visibility:hidden;
-    padding-right:10px;
+    visibility: hidden;
+    padding-right: 10px;
 }
 
 .select:not(.is-multiple) {
@@ -285,24 +328,25 @@ TABLE OF CONTENTS
 
 //Select styles
 .select {
-    cursor:pointer;
-    display:block;
-    position:relative;
-    font:normal 11px/22px Arial, Sans-Serif;
-    color:black;
-    border:1px solid #ccc; 
+    cursor: pointer;
+    display: block;
+    position: relative;
+    font: normal 11px/22px Arial, Sans-Serif;
+    color: black;
+    border: 1px solid #ccc;
 }
+
 .styledSelect {
-    position:absolute;
-    top:0;
-    right:0;
-    bottom:0;
-    left:0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     background-color: $white;
     color: $muted-grey;
-    padding:0 10px;
+    padding: 0 10px;
     font-family: 'Raleway', sans-serif;
-    font-weight:500;
+    font-weight: 500;
     display: flex;
     align-items: center;
 }
@@ -310,28 +354,31 @@ TABLE OF CONTENTS
 .styledSelect:active, .styledSelect.active {
     background-color: $smoke-white;
 }
+
 //Options styles
 .options {
-    display:none;
-    position:absolute;
-    top:100%;
-    right:0;
-    left:0;
-    z-index:999;
-    margin:0 0;
-    padding:0 0;
-    list-style:none;
-    border:1px solid #ccc;
-    background-color:white;
-    -webkit-box-shadow:0 1px 2px rgba(0, 0, 0, 0.2);
-    -moz-box-shadow:0 1px 2px rgba(0, 0, 0, 0.2);
-    box-shadow:0 1px 2px rgba(0, 0, 0, 0.2);
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    z-index: 999;
+    margin: 0 0;
+    padding: 0 0;
+    list-style: none;
+    border: 1px solid #ccc;
+    background-color: white;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
+
 .options li {
-    padding:5px 6px;
-    margin:0 0;
-    padding:5px 10px;
+    padding: 5px 6px;
+    margin: 0 0;
+    padding: 5px 10px;
 }
+
 .options li:hover {
     background-color: $primary;
     color: $white;
@@ -347,11 +394,13 @@ TABLE OF CONTENTS
         left: .625em !important;
         top: 0.8em !important;
     }
+
     &.native {
         &:after {
             top: 0.5em !important;
         }
     }
+
     .chosen-single {
         padding-left: 36px !important;
     }
@@ -382,10 +431,12 @@ TABLE OF CONTENTS
 //Base class
 .autocpl {
     box-shadow: none !important;
+
     //container
-    .easy-autocomplete-container  {
+    .easy-autocomplete-container {
         ul {
             padding: 10px !important;
+
             li {
                 margin: 0 10px;
             }
@@ -398,20 +449,38 @@ TABLE OF CONTENTS
     display: flex !important;
     justify-content: flex-start;
     align-items: center;
+
     //avatar
     .autocpl-avatar {
+        display: block;
         width: 36px !important;
         height: 36px !important;
         border-radius: 100px !important;
     }
+
+    .autocpl-country {
+        display: block;
+        width: 28px !important;
+        height: 28px !important;
+        border-radius: 100px !important;
+        object-fit: cover;
+    }
+
     .autocpl-product {
+        display: block;
         width: 36px !important;
         height: 36px !important;
-        border-radius: 2px !important;
+        border-radius: 6px !important;
     }
+
     //text
     .entry-text {
         margin-left: 15px;
+        max-width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+
         span {
             font-size: 0.8rem;
             color: $title-grey;
@@ -428,6 +497,7 @@ TABLE OF CONTENTS
     display: flex;
     justify-content: flex-start;
     align-items: center;
+
     //input
     input {
         height: 36px;
@@ -435,12 +505,14 @@ TABLE OF CONTENTS
         border-bottom: 1px solid #cecece;
         border-left: none !important;
         border-right: none !important;
+
         &:focus, &:active {
             border-top: 1px solid $smoke-white !important;
             border-bottom: 1px solid $smoke-white !important;
             outline: non !important;
         }
     }
+
     //button
     .spinner-button {
         width: 36px;
@@ -452,6 +524,7 @@ TABLE OF CONTENTS
         justify-content: center;
         align-items: center;
         transition: all .3s;
+
         //icon
         svg {
             width: 16px;
@@ -460,19 +533,23 @@ TABLE OF CONTENTS
             stroke: $muted-grey;
             transition: all .3s;
         }
+
         &:hover {
             opacity: 0.7;
+
             svg {
                 stroke: $primary;
             }
         }
     }
+
     //left button radius
     .input-group-prepend {
         .spinner-button {
             border-radius: 4px 0 0 4px;
         }
     }
+
     //right button radius
     .input-group-append {
         .spinner-button {
@@ -492,13 +569,15 @@ TABLE OF CONTENTS
             a {
                 color: $placeholder;
             }
+
             &.is-active {
                 a {
-                    color: $primary;  
+                    color: $primary;
                 }
             }
         }
     }
+
     .navtab-content {
         font-family: 'Raleway', sans-serif;
         font-size: .9rem;

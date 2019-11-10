@@ -29,19 +29,20 @@ function getUser(){
     //Populate user areas
     $('#quickview-avatar').attr('src', data.photoUrl);
     $('#quickview-avatar').attr('data-demo-src', data.photoUrl);
-    $('#review-modal .box-header img').attr('src', data.photoUrl);
-    $('#review-modal .box-header img').attr('data-demo-src', data.photoUrl);
+    $('#review-modal .box-header img, #mobile-avatar').attr('src', data.photoUrl);
+    $('#review-modal .box-header img, #mobile-avatar').attr('data-demo-src', data.photoUrl);
     if (data.firstName !== null){
-        $('#quickview-username').html(data.firstName + ' ' + data.lastName);
+        $('#quickview-username, #mobile-username').html(data.firstName + ' ' + data.lastName);
     } else {
         $('#quickview-username').html('Guest');
+        $('#mobile-username').html('Welcome, Guest');
     }
     if (!data.isLoggedIn) {
-        $('#logout-link').addClass('is-hidden');
-        $('#login-link').removeClass('is-hidden');
+        $('#logout-link, #mobile-logout-link').addClass('is-hidden');
+        $('#login-link, #mobile-login-link, #mobile-register-link').removeClass('is-hidden');
     } else {
-        $('#login-link').addClass('is-hidden');
-        $('#logout-link').removeClass('is-hidden');
+        $('#login-link, #mobile-login-link, #mobile-register-link').addClass('is-hidden');
+        $('#logout-link, #mobile-logout-link').removeClass('is-hidden');
     }
 }
 
@@ -146,7 +147,7 @@ function fakeLogin() {
 }
 
 function fakeLogout() {
-    $('#logout-link').on('click', function(){
+    $('#logout-link, #mobile-logout-link').on('click', function(){
         $('.small-auth-loader').addClass('is-active');
         localStorage.removeItem('user');
         setTimeout(function () {

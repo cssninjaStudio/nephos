@@ -100,7 +100,7 @@ function compileJS() {
   return src([
       'src/assets/js/_data-wishlist.js',
       'src/assets/js/_data-addresses.js',
-    'src/assets/js/_data-orders.js',
+      'src/assets/js/_data-orders.js',
       'src/assets/js/functions.js',
       'src/assets/js/nephos.js',
       'src/assets/js/authentication.js',
@@ -111,6 +111,7 @@ function compileJS() {
       'src/assets/js/orders.js',
       'src/assets/js/order.js',
       'src/assets/js/checkout.js',
+      'src/assets/js/search.js',
       'src/assets/js/demo.js',
       'src/assets/js/elements.js',
     ])
@@ -220,6 +221,7 @@ function concatPlugins() {
     nodepath + 'jquery/dist/jquery.min.js',
     nodepath + 'feather-icons/dist/feather.min.js',
     nodepath + 'typed.js/lib/typed.min.js',
+    nodepath + 'easy-autocomplete/dist/jquery.easy-autocomplete.min.js',
     nodepath + 'alertifyjs/build/alertify.min.js',
     nodepath + 'scrollreveal/dist/scrollreveal.min.js',
     nodepath + 'ocanvas/build/dist/latest/ocanvas.min.js',

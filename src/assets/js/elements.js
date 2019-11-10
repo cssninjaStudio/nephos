@@ -1,9 +1,9 @@
-$(document).ready(function(){
+$(document).ready(function () {
 
     "use strict";
 
     //Elements selection
-    $('.is-element-card .view-element a').on("click", function(){
+    $('.is-element-card .view-element a').on("click", function () {
         var scrollSpeed = 500;
 
         var element_id = $(this).attr('data-element');
@@ -20,7 +20,7 @@ $(document).ready(function(){
     })
 
     //Back to elements selection
-    $('.elements-back').on("click", function() {
+    $('.elements-back').on("click", function () {
         $(this).addClass('is-hidden');
         $('.is-element, .element-title').addClass('is-hidden');
         $('#elements-title, #elements-selection').removeClass('is-hidden');
@@ -32,7 +32,7 @@ $(document).ready(function(){
 
 
     //Validation inputs toggle
-    $('#toggle-validation').on('click', function() {
+    $('#toggle-validation').on('click', function () {
         $('#success-input').toggleClass('has-success');
         $('#warning-input').toggleClass('has-warning');
         $('#error-input').toggleClass('has-error');
@@ -106,8 +106,8 @@ $(document).ready(function(){
     //Basic autocomplete
     if ($('#basic-autocpl, #icon-autocpl').length) {
         var options = {
-            url: "assets/js/easyAutocomplete/data/persons.json",
-            getValue: function(element) {
+            url: "assets/data/persons.json",
+            getValue: function (element) {
                 return element.name;
             },
             highlightPhrase: false,
@@ -116,7 +116,7 @@ $(document).ready(function(){
                 showAnimation: {
                     type: "fade", //normal|slide|fade
                     time: 400,
-                    callback: function() {}
+                    callback: function () { }
                 },
                 match: {
                     enabled: true
@@ -130,8 +130,8 @@ $(document).ready(function(){
     //Description autocomplete
     if ($('#desc-autocpl').length) {
         var options = {
-            url: "assets/js/easyAutocomplete/data/persons.json",
-            getValue: function(element) {
+            url: "assets/data/persons.json",
+            getValue: function (element) {
                 return element.name;
             },
             template: {
@@ -146,7 +146,7 @@ $(document).ready(function(){
                 showAnimation: {
                     type: "fade", //normal|slide|fade
                     time: 400,
-                    callback: function() {}
+                    callback: function () { }
                 },
                 match: {
                     enabled: true
@@ -160,11 +160,11 @@ $(document).ready(function(){
     //Users autocomplete
     if ($('#users-autocpl').length) {
         var usersOptions = {
-            url: "assets/js/easyAutocomplete/data/persons.json",
+            url: "assets/data/persons.json",
             getValue: "name",
             template: {
                 type: "custom",
-                method: function(value, item) {
+                method: function (value, item) {
                     return "<div class=" + 'template-wrapper' + "><img class=" + 'autocpl-avatar' + " src='" + item.pic + "' /><div class=" + 'entry-text' + ">" + value + "<br><span>" + item.email + "</span></div></div> ";
                 }
             },
@@ -174,7 +174,7 @@ $(document).ready(function(){
                 showAnimation: {
                     type: "fade", //normal|slide|fade
                     time: 400,
-                    callback: function() {}
+                    callback: function () { }
                 },
                 match: {
                     enabled: true
@@ -188,11 +188,11 @@ $(document).ready(function(){
     //Products autocomplete
     if ($('#products-autocpl').length) {
         var productsOptions = {
-            url: "assets/js/easyAutocomplete/data/products.json",
+            url: "assets/data/products.json",
             getValue: "name",
             template: {
                 type: "custom",
-                method: function(value, item) {
+                method: function (value, item) {
                     return "<div class=" + 'template-wrapper' + "><img class=" + 'autocpl-product' + " src='" + item.pic + "' /><div class=" + 'entry-text' + ">" + value + "<br><span>" + item.sku + "</span></div></div> ";
                 }
             },
@@ -202,7 +202,7 @@ $(document).ready(function(){
                 showAnimation: {
                     type: "fade", //normal|slide|fade
                     time: 400,
-                    callback: function() {}
+                    callback: function () { }
                 },
                 match: {
                     enabled: true
@@ -216,12 +216,12 @@ $(document).ready(function(){
     //Orders autocomplete
     if ($('#orders-autocpl').length) {
         var ordersOptions = {
-            url: "assets/js/easyAutocomplete/data/orders.json",
-            getValue: "name",
+            url: "assets/data/orders.json",
+            getValue: "status",
             template: {
                 type: "custom",
-                method: function(value, item) {
-                    return "<div class=" + 'template-wrapper' + "><img class=" + 'autocpl-product' + " src='" + item.pic + "' /><div class=" + 'entry-text' + ">" + value + "<br><span>" + item.total + "</span></div></div> ";
+                method: function (value, item) {
+                    return "<div class=" + 'template-wrapper' + "><img class=" + 'autocpl-product' + " src='" + item.products[0].photoUrl + "' /><div class=" + 'entry-text' + ">" + value + "<br><span>ORDER-" + item.id + "</span></div></div> ";
                 }
             },
             highlightPhrase: false,
@@ -230,7 +230,7 @@ $(document).ready(function(){
                 showAnimation: {
                     type: "fade", //normal|slide|fade
                     time: 400,
-                    callback: function() {}
+                    callback: function () { }
                 },
                 match: {
                     enabled: true
@@ -245,8 +245,8 @@ $(document).ready(function(){
     $(".basic-spinner").InputSpinner({
 
         // button text/icons
-        decrementButton: "<i data-feather=" + 'minus-circle' + "></i>", 
-        incrementButton: "<i data-feather=" + 'plus-circle' + "></i>", 
+        decrementButton: "<i data-feather=" + 'minus-circle' + "></i>",
+        incrementButton: "<i data-feather=" + 'plus-circle' + "></i>",
 
         // class of input group
         groupClass: "spinner-control",
@@ -258,19 +258,19 @@ $(document).ready(function(){
         textAlign: "center",
 
         // delay in milliseconds
-        autoDelay: 500, 
+        autoDelay: 500,
 
         // interval in milliseconds
         autoInterval: 100,
 
         // boost after these steps
-        boostThreshold: 15, 
+        boostThreshold: 15,
 
         // boost multiplier
         boostMultiplier: 2,
 
         // detects the local from `navigator.language`, if null
-        locale: null 
+        locale: null
 
     });
 

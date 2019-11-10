@@ -5,32 +5,11 @@ title: Modern Bulma Ecommerce App and Dashboard
 
 {{> pageloader}}
 
-{{> mobile-navbar-user}}
+<!-- Mobile Navbar-->
+{{> mobile-navbar}}
 
 <!-- Main Sidebar-->
-<div class="main-sidebar">
-    <div class="sidebar-brand">
-        <a href="home.html"><img src="assets/img/logo/nephos.svg" alt=""></a>
-    </div>
-    <div class="sidebar-inner">
-        <ul class="icon-menu">
-            <!-- Shop sidebar trigger -->
-            {{> sidebar-item-home}}
-            <!-- Cart sidebar trigger -->
-            {{> sidebar-item-cart}}
-            <!-- Search trigger -->
-            {{> sidebar-item-search}}
-            <!-- Mobile mode trigger -->
-            {{> sidebar-item-mode}}
-        </ul>
-
-        <!-- User account -->
-        <ul class="bottom-menu is-hidden-mobile">
-            {{> sidebar-item-logout}}
-        </ul>
-    </div>
-</div>
-<!-- /Main Sidebar-->
+{{> shop-sidebar}}
 
 <!-- FAB -->
 {{> flying-button}}
@@ -40,10 +19,10 @@ title: Modern Bulma Ecommerce App and Dashboard
 {{> quickview-categories}}
 
 <!-- Shop quickview -->
-{{> quickview-main-user}}
+{{> quickview-main}}
 
 <!-- Cart quickview -->
-{{> quickview-cart-empty}}
+{{> quickview-cart}}
 
 <!-- Main wrapper -->
 <div class="shop-wrapper">

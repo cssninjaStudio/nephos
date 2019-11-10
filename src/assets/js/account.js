@@ -257,6 +257,33 @@ function uploadProfilePicture(){
     })
 }
 
+function initCountryAutocomplete(){
+    var accountCountriesOptions = {
+        url: "https://restcountries.eu/rest/v2/all",
+        getValue: "name",
+        template: {
+            type: "custom",
+            method: function (value, item) {
+                return "<div class=" + 'template-wrapper' + "><img class=" + 'autocpl-country' + " src='" + item.flag + "' /><div class=" + 'entry-text' + ">" + value + "<br><span>" + item.region + "</span></div></div> ";
+            }
+        },
+        highlightPhrase: false,
+        list: {
+            maxNumberOfElements: 3,
+            showAnimation: {
+                type: "fade", //normal|slide|fade
+                time: 400,
+                callback: function () { }
+            },
+            match: {
+                enabled: true
+            }
+        },
+    };
+
+    $(".country-autocpl").easyAutocomplete(accountCountriesOptions);
+}
+
 $(document).ready(function () {
 
     //If account page
@@ -270,14 +297,32 @@ $(document).ready(function () {
         initPopButtons();
         fakeValidation();
         uploadProfilePicture();
+        initCountryAutocomplete();
         saveAccountInfo();
-    }
 
-    //Address switch
-    $('#shipping-switch').on('change', function () {
-        $(this).closest('.flat-card').find('.card-body').toggleClass('is-disabled');
-        enableShippingAddress = !enableShippingAddress;
-        console.log(enableShippingAddress);
-    })
+        //Address switch
+        $('#shipping-switch').on('change', function () {
+            var userData = JSON.parse(localStorage.getItem('user'));
+            $(this).closest('.flat-card').find('.card-body').toggleClass('is-disabled');
+            enableShippingAddress = !enableShippingAddress;
+            console.log(enableShippingAddress);
+
+            if (enableShippingAddress) {
+                $('#shipping-edit-address1').val(userData.addresses[0].address1);
+                $('#shipping-edit-address2').val(userData.addresses[0].address2);
+                $('#shipping-edit-city').val(userData.addresses[0].city);
+                $('#shipping-edit-postal-code').val(userData.addresses[0].postalCode);
+                $('#shipping-edit-state').val(userData.addresses[0].state);
+                $('#shipping-edit-country').val(userData.addresses[0].country);
+            } else {
+                $('#shipping-edit-address1').val('');
+                $('#shipping-edit-address2').val('');
+                $('#shipping-edit-city').val('');
+                $('#shipping-edit-postal-code').val('');
+                $('#shipping-edit-state').val('');
+                $('#shipping-edit-country').val('');
+            }
+        })
+    }
 
 })

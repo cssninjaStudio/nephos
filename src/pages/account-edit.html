@@ -5,7 +5,8 @@ title: Modern Bulma Ecommerce App and Dashboard
 
 {{> pageloader}}
 
-{{> mobile-navbar-user}}
+<!-- Mobile Navbar-->
+{{> mobile-navbar}}
 
 <!-- Main Sidebar-->
 {{> shop-sidebar}}
@@ -167,7 +168,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                             <!-- /Edit contact Info -->
 
                             <!-- Edit Billing Address -->
-                            <div class="flat-card profile-info-card is-auto has-overflow">
+                            <div class="flat-card profile-info-card is-auto has-overflow is-billing">
                                 <!-- Title -->
                                 <div class="card-title">
                                     <h3>Billing Address</h3>
@@ -237,11 +238,11 @@ title: Modern Bulma Ecommerce App and Dashboard
                                             <!-- Form group -->
                                             <div class="field info-block has-flex-label has-validation">
                                                 <label class="label-text">
-                                                    <span>First Name</span>
+                                                    <span>Postal Code</span>
                                                     <span class="error">Minimum 2 characters</span>
                                                 </label>
                                                 <div class="control">
-                                                    <input id="billing-edit-postal-code" type="text" class="input is-default fake-validation" value="100065">
+                                                    <input id="billing-edit-postal-code" type="text" class="input is-default fake-validation" value="10065">
                                                     <div class="error-icon">
                                                         <i data-feather="x"></i>
                                                     </div>
@@ -253,8 +254,8 @@ title: Modern Bulma Ecommerce App and Dashboard
                                                     <span>Country</span>
                                                     <span class="error">Minimum 2 characters</span>
                                                 </label>
-                                                <div class="control">
-                                                    <input id="billing-edit-country" type="text" class="input is-default fake-validation" value="United States">
+                                                <div class="control has-rounded-autocpl">
+                                                    <input id="billing-edit-country" type="text" class="input country-autocpl is-default fake-validation" value="United States">
                                                     <div class="error-icon">
                                                         <i data-feather="x"></i>
                                                     </div>
@@ -267,7 +268,7 @@ title: Modern Bulma Ecommerce App and Dashboard
                             <!-- /Edit Billing Address -->
 
                             <!-- Edit Shipping Address -->
-                            <div class="flat-card profile-info-card is-auto has-overflow">
+                            <div class="flat-card profile-info-card is-auto has-overflow is-shipping">
                                 <div class="card-title">
                                     <h3>Shipping Address</h3>
 
@@ -355,8 +356,8 @@ title: Modern Bulma Ecommerce App and Dashboard
                                                     <span>Country</span>
                                                     <span class="error">Minimum 2 characters</span>
                                                 </label>
-                                                <div class="control">
-                                                    <input id="shipping-edit-country" type="text" class="input is-default fake-validation" value="">
+                                                <div class="control has-rounded-autocpl">
+                                                    <input id="shipping-edit-country" type="text" class="input country-autocpl is-default fake-validation" value="">
                                                     <div class="error-icon">
                                                         <i data-feather="x"></i>
                                                     </div>
