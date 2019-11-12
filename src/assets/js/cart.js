@@ -1,15 +1,19 @@
 "use strict";
 
+//Empty cart object initialization
 var cart = {};
 
+//Populate default cart object
 cart.items = 0;
 cart.total = 0.00;
 cart.products = [];
 
+//If user cart is null
 if (JSON.parse(localStorage.getItem('cart')) === null) {
     localStorage.setItem('cart', JSON.stringify(cart));
 }
 
+//Init cart sidebar spinners
 function initSpinners(){
     $('.sidebar-spinner').spinner('changing', function (e, newVal, oldVal) {
         var $this = $(this);
@@ -21,6 +25,7 @@ function initSpinners(){
     });
 }
 
+//Init cart page spinners
 function initCartSpinners() {
     $('.main-cart-spinner').spinner('changing', function (e, newVal, oldVal) {
         var $this = $(this);
@@ -31,6 +36,7 @@ function initCartSpinners() {
     });
 }
 
+//Update cart sidebar (when products are added, updated or removed)
 function updateCartSidebar(){
     var cartObject = {};
     var productsCount = $('.cart-quickview .product-container').length;
@@ -61,6 +67,7 @@ function updateCartSidebar(){
     console.log(cartObject);
 }
 
+//Reusable add to cart function
 function addToCart(trigger) {
     var data = JSON.parse(localStorage.getItem('cart'));
     var $container = trigger.closest('.product-container');
@@ -101,11 +108,11 @@ function addToCart(trigger) {
     }
 }
 
+//Get shopping cart sidebar
 function getCart() {
     const plusIcon = feather.icons.plus.toSvg();
     const minusIcon = feather.icons.minus.toSvg();
     const closeIcon = feather.icons.x.toSvg();
-    //const profileIcon = feather.icons['more-horizontal'].toSvg();
     var data = JSON.parse(localStorage.getItem('cart'));
 
     var cartTotal = 0.00;
@@ -180,6 +187,7 @@ function getCart() {
     }
 }
 
+//Reusable remove from cart function
 function removeFromCart() {
     $('.remove-from-cart-action').on('click', function(){
         var $this = $(this);
@@ -206,6 +214,7 @@ function removeFromCart() {
     })
 }
 
+//Disable cart sidebar (when on cart page or checkout)
 function disableCartSidebar() {
     $('#open-cart').off();
     $('#open-cart').on('click', function(){
@@ -217,6 +226,7 @@ function disableCartSidebar() {
     })
 }
 
+//Get cart data for cart page
 function getCartPage() {
     const plusIcon = feather.icons.plus.toSvg();
     const minusIcon = feather.icons.minus.toSvg();
@@ -309,6 +319,7 @@ function getCartPage() {
     }
 }
 
+//Update cart page when update button is clicked
 function updateCartPage() {
     var cartObject = {};
     var productsCount = $('#cart-page-products .product-container').length;
@@ -341,6 +352,7 @@ function updateCartPage() {
     console.log(cartObject);
 }
 
+//Remove product from cart page
 function removeFromCartPage() {
     $('.remove-from-cartpage-action').on('click', function () {
         var $this = $(this);
@@ -368,6 +380,7 @@ function removeFromCartPage() {
     })
 }
 
+//Build proto checkout object and pass it to checkout
 function initCheckout() {
     $('#init-checkout').on('click', function(){
         if (JSON.parse(localStorage.getItem('cart')) !== null){
@@ -407,6 +420,7 @@ function initCheckout() {
 
 $(document).ready(function(){
 
+    //Update cart button
     $('.update-cart-button').on('click', function(){
         var $this = $(this);
         $this.addClass('is-loading');

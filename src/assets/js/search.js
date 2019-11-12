@@ -1,5 +1,6 @@
 "use strict";
 
+//Init search results page filter input
 function initSearchFilter(){
     $('.nephos-search-filter')
         .focus(function (e) {
@@ -30,6 +31,7 @@ function initSearchFilter(){
         });
 }
 
+//Get and build search results page
 function getSearchResults(){
     const plusIcon = feather.icons.plus.toSvg();
     const minusIcon = feather.icons.minus.toSvg();
@@ -96,6 +98,7 @@ function getSearchResults(){
     })
 }
 
+//Add to cart from search results page
 function addToCartFromSearch(trigger) {
     var data = JSON.parse(localStorage.getItem('cart'));
     var $container = trigger.closest('.product-container');
@@ -136,8 +139,8 @@ function addToCartFromSearch(trigger) {
     }
 }
 
+//Add to cart user action
 function initAddFromSearchAction(){
-    //Add to cart
     $('.product-container .action .add-from-search-action').on('click', function () {
         var $this = $(this);
         if ($('.cart-quickview').hasClass('is-active')) {
@@ -159,11 +162,13 @@ function initAddFromSearchAction(){
 
 $(document).ready(function(){
 
+    //Search results page
     if ($('#search-results').length){
         getSearchResults();
         initSearchFilter();
     }
 
+    //Append link to search result in search overlay
     function initFullSearch() {
         $('#full-search').on('click', function () {
             $('#clear-search').removeClass('is-active');
@@ -174,6 +179,7 @@ $(document).ready(function(){
         })
     }
 
+    //Init search overlay autocomplete
     const searchIcon = feather.icons.search.toSvg();
 
     var searchOptions = {

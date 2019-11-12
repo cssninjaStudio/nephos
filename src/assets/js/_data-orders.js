@@ -1,4 +1,4 @@
-var elieOrders = [
+var myOrders = [
     {
         id: 46985,
         total: 200.37,

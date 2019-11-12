@@ -1,6 +1,25 @@
+"use strict";
+
+//Initialize demo modal
+function initInfoModal(){
+    if ((localStorage.getItem('update') === undefined) || (localStorage.getItem('update') === null)){
+        setTimeout(function () {
+            $('#info-modal').addClass('is-active');
+        }, 3000)
+    }
+
+    $('#info-modal .close-link').on('click', function(){
+        if ($('#info-modal-toggle').prop('checked') === true){
+            localStorage.setItem('update', true);
+        }
+        $(this).closest('#info-modal').removeClass('is-active');
+    })
+}
+
 $(document).ready(function() {
 
-    "use strict";
+    //Info modal
+    initInfoModal();
 
     //Page loader
     if ($('.pageloader').length) {
@@ -92,7 +111,6 @@ $(document).ready(function() {
 
     if ($('.is-title-reveal, .is-feature-reveal ').length) {
         //Scroll reveal definitions
-        // Declaring defaults
         window.sr = ScrollReveal();
 
         // Simple reveal
@@ -159,6 +177,7 @@ $(document).ready(function() {
 
     var canvasInterval;
 
+    //Changes to avoid memory leak and screen freeze
     function launchInterval(){
         canvasInterval = setInterval(function () {
 

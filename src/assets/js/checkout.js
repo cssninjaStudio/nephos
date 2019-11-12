@@ -1,5 +1,6 @@
 "use strict";
 
+//Get checkout summary for checkout sidebar
 function getCheckoutSidebar(){
     var userData = JSON.parse(localStorage.getItem('user'));
     var checkout = JSON.parse(localStorage.getItem('checkout'));
@@ -33,6 +34,7 @@ function getCheckoutSidebar(){
     $('#checkout-grandtotal-value').html(parseFloat(checkout.total).toFixed(2));
 }
 
+//Get step 1 info
 function getCheckoutStep1(){
     var checkout = JSON.parse(localStorage.getItem('checkout'));
 
@@ -68,6 +70,7 @@ function getCheckoutStep1(){
     }
 }
 
+//Get step 2 info
 function getCheckoutStep2(){
     var userData = JSON.parse(localStorage.getItem('user'));
 
@@ -77,6 +80,7 @@ function getCheckoutStep2(){
     }
 }
 
+//Get step 4 info
 function getCheckoutStep4() {
     var checkout = JSON.parse(localStorage.getItem('checkout'));
 
@@ -91,6 +95,7 @@ function getCheckoutStep4() {
     $('#summary-payment-description').html(checkout.paymentMethod.description);
 }
 
+//Finalize checkout and convert to order
 function convertCheckoutToOrder(){
     var userData = JSON.parse(localStorage.getItem('user'));
     var checkout = JSON.parse(localStorage.getItem('checkout'));
@@ -261,6 +266,7 @@ $(document).ready(function () {
         var $this = $(this);
         $this.addClass('is-loading');
 
+        //Handle step 1
         if ($('#checkout-1').length){
             checkout.step = parseInt(checkout.step) + 1;
             localStorage.setItem('checkout', JSON.stringify(checkout));
@@ -270,6 +276,7 @@ $(document).ready(function () {
             }, 1000)
         }
 
+        //Handle step 2
         else if ($('#checkout-2').length) {
             var shippingMethod = {};
 
@@ -297,6 +304,7 @@ $(document).ready(function () {
             }
         }
 
+        //Handle step 3
         else if ($('#checkout-3').length) {
             var paymentMethod = {};
 
@@ -322,6 +330,7 @@ $(document).ready(function () {
             }
         }
 
+        //Handle step 4
         else if ($('#checkout-4').length) {
             checkout.step = parseInt(checkout.step) + 1;
             localStorage.setItem('checkout', JSON.stringify(checkout));
@@ -348,6 +357,7 @@ $(document).ready(function () {
             checkout.step = parseInt(checkout.step) - 1;
             localStorage.setItem('checkout', JSON.stringify(checkout));
 
+            //Back from step 2 to step 1
             if ($('#checkout-2').length) {
                 setTimeout(function () {
                     window.location.href = '/checkout-step1.html';
@@ -355,6 +365,7 @@ $(document).ready(function () {
                 }, 1000)
             }
 
+            //Back from step 3 to step 2
             else if ($('#checkout-3').length) {
                 checkout.total = (parseFloat(checkout.total) - parseFloat(checkout.shipping)).toFixed(2);
                 checkout.shipping = (0.00).toFixed(2);
@@ -365,6 +376,7 @@ $(document).ready(function () {
                 }, 1000)
             }
 
+            //Back from step 4 to step 3
             else if ($('#checkout-4').length) {
                 setTimeout(function () {
                     window.location.href = '/checkout-step3.html';
@@ -384,28 +396,7 @@ $(document).ready(function () {
         }, 1200)
     })
 
-    //DEPRECATED
-
-    //Shipping methods checkout
-    $('.shipping-wrapper .mini-card').on('click', function () {
-        $('.shipping-wrapper .mini-card').removeClass('is-active');
-        $('.active-indicator').removeClass('gelatine')
-        $(this).addClass('is-active');
-        $(this).find('.active-indicator').addClass('gelatine');
-    })
-
-    //Data Payment
-    $('.payment-method').on("click", function () {
-        var category_id = $(this).attr('data-method');
-        $('#payment-header, #payment-methods').addClass('is-hidden');
-        $("#" + category_id).removeClass('is-hidden');
-    })
-
-    $('.back-to-methods').on("click", function () {
-        $('#paypal, #bank-transfer, #cash, #credit-card').addClass('is-hidden');
-        $('#payment-header, #payment-methods').removeClass('is-hidden');
-    })
-
+    //Credit card
     if ($('#credit-card').length) {
         var card = new Card({
             form: '.active form',
@@ -423,7 +414,6 @@ $(document).ready(function () {
             $('.main-sidebar, .shop-quickview, .cart-quickview, .filters-quickview').addClass('is-pushed-mobile');
             $('.pageloader, .infraloader').addClass('is-full');
         } else {
-            //$('.mobile-navbar').removeClass('is-active');
             $('.shop-wrapper').removeClass('is-mobile-mode');
             $('.main-sidebar, .shop-quickview, .cart-quickview, .filters-quickview').removeClass('is-pushed-mobile');
             $('.pageloader, .infraloader').removeClass('is-full');
@@ -437,7 +427,6 @@ $(document).ready(function () {
                 $('.main-sidebar, .shop-quickview, .cart-quickview, .filters-quickview').addClass('is-pushed-mobile');
                 $('.pageloader, .infraloader').addClass('is-full');
             } else {
-                //$('.mobile-navbar').removeClass('is-active');
                 $('.shop-wrapper').removeClass('is-mobile-mode');
                 $('.main-sidebar, .shop-quickview, .cart-quickview, .filters-quickview').removeClass('is-pushed-mobile');
                 $('.pageloader, .infraloader').removeClass('is-full');

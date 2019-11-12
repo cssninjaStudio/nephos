@@ -19,8 +19,6 @@ TABLE OF CONTENTS
 .auth-title {
     position: relative;
     display: flex;
-
-    //justify-content: space-between;
     justify-content: center;
     align-items: center;
     margin: 20px 0;
@@ -168,7 +166,6 @@ TABLE OF CONTENTS
 
 .main-auth-wrapper {
     .login-form-wrapper, .registration-form-wrapper {
-        //min-height: 440px;
         width: 100%;
         display: flex;
         justify-content: center;

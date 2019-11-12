@@ -1,3 +1,25 @@
+/*! _modals.scss | Nephos | CSS Ninja */
+
+/* ==========================================================================
+Modal styles
+========================================================================== */
+
+/***
+TABLE OF CONTENTS
+=============================================================================
+1. Global styles
+2. Review Modal
+3. Wishlist Modal
+4. Add to wishlist modal
+5. Profile picture modal
+6. Checkout blocking modal
+=============================================================================
+***/
+
+/* ==========================================================================
+1. Global styles
+========================================================================== */
+
 .modal {
     .modal-background {
         background: rgba($primary, 0.3);
@@ -135,7 +157,7 @@
 }
 
 /* ==========================================================================
-2. Wishlist Modal
+3. Wishlist Modal
 ========================================================================== */
 
 .wishlist-modal {
@@ -244,7 +266,7 @@
 }
 
 /* ==========================================================================
-3. Add to wishlist modal
+4. Add to wishlist modal
 ========================================================================== */
 
 .add-to-wishlist-modal {
@@ -470,7 +492,7 @@
 }
 
 /* ==========================================================================
-3. Profile picture modal
+5. Profile picture modal
 ========================================================================== */
 
 .upload-crop-modal {
@@ -603,21 +625,6 @@
                     justify-content: center;
                     align-items: center;
                     margin-top: 6px;
-
-                    /*.profile-reset {
-                        display: block;
-                        color: $muted-grey;
-                        padding: 4px 12px;
-                        border-radius: 4px;
-                        font-size: .9rem;
-                        background: $fade-grey;
-                        transition: all .3s;
-
-                        &:hover {
-                            background: lighten($fade-grey, 3%);
-                            color: $dark-text;
-                        }
-                    }*/
                 }
             }
 
@@ -638,7 +645,7 @@
 }
 
 /* ==========================================================================
-4. Checkout blokcing modal
+6. Checkout blocking modal
 ========================================================================== */
 
 .checkout-blocked-modal, .checkout-unauth-modal {

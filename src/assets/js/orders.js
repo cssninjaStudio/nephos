@@ -1,5 +1,6 @@
 "use strict";
 
+//Get and populate orders grid
 function getOrdersGrid() {
     var userData = JSON.parse(localStorage.getItem('user'));
     var primaryColor;
@@ -138,6 +139,7 @@ function getOrdersGrid() {
     }
 }
 
+//Get and populate orders List
 function getOrdersList() {
     var userData = JSON.parse(localStorage.getItem('user'));
     var primaryColor;
@@ -241,6 +243,7 @@ function getOrdersList() {
     }
 }
 
+//Populate inner product lists in order lists
 function loadOrdersListProducts() {
     var userData = JSON.parse(localStorage.getItem('user'));
 

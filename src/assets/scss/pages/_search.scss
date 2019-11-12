@@ -7,8 +7,10 @@ Global Search Styles
 /***
 TABLE OF CONTENTS
 =============================================================================
-0. Search Overlay
-1. Search Input
+1. Search Overlay
+2. Search Input
+3. Autocomplete template
+4. Filter card
 =============================================================================
 ***/
 
@@ -243,6 +245,10 @@ TABLE OF CONTENTS
     }
 }
 
+/* ==========================================================================
+3. Autocomplete template
+========================================================================== */
+
 .nephos-search-template {
     display: flex !important;
     justify-content: flex-start;
@@ -317,6 +323,10 @@ TABLE OF CONTENTS
         }
     }
 }
+
+/* ==========================================================================
+4. Filter card
+========================================================================== */
 
 .filter-card {
     width: 100%;

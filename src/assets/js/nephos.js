@@ -36,8 +36,6 @@ $(document).ready(function(){
 
     initChosenSelects();
 
-    //initProductCarousel();
-
     initBackgroundImages();
 
     initFileInputs();

@@ -259,34 +259,7 @@ function initProductCarousel() {
 
 //Init various actions (to rework)
 function initCardActions() {
-    //Whishlist actions
-   /* $('.flat-card .actions .like svg, .sidebar-whishlist svg').on('click', function () {
-        $(this).toggleClass('is-active gelatine');
 
-        if (!$(this).hasClass('is-active')) {
-            //Show success toast
-        }
-        else {
-            //Show success toast
-        }
-    })*/
-
-    //Add to cart
-    /*$('.flat-card .actions .add svg').on('click', function () {
-        $(this).toggleClass('gelatine');
-
-        if (!$(this).hasClass('is-active')) {
-            //Show success toast
-        }
-        else {
-            //Show success toast
-        }
-    })*/
-
-    //$('.cart-button').on('click', function () {
-        //$(this).toggleClass('is-active gelatine');
-        //Show success toast
-    //})
 }
 
 //Init JS injected background images

@@ -1,7 +1,9 @@
 "use strict";
 
+//Shipping address state global variable
 var enableShippingAddress = false;
 
+//Get account information
 function getAccountInfo() {
     var userData = JSON.parse(localStorage.getItem('user'));
 
@@ -54,6 +56,7 @@ function getAccountInfo() {
     }
 }
 
+//Get account edit data
 function getEditAccountInfo(){
     var userData = JSON.parse(localStorage.getItem('user'));
 
@@ -111,6 +114,7 @@ function getEditAccountInfo(){
     }
 }
 
+//Save user info
 function saveAccountInfo(){
     var userData = JSON.parse(localStorage.getItem('user'));
 
@@ -150,11 +154,11 @@ function saveAccountInfo(){
         }, 1500);
         setTimeout(function () {
             getUser();
-            //window.location.href = '/account.html';
         }, 4000);
     })
 }
 
+//Fake field validation
 function fakeValidation(){
     $('.fake-validation').on('change', function(){
         var $this = $(this);
@@ -179,6 +183,7 @@ function fakeValidation(){
     })
 }
 
+//Upload profile picture
 function uploadProfilePicture(){
     var imgSrc = ''
 
@@ -203,6 +208,7 @@ function uploadProfilePicture(){
         }
     }
 
+    //Use croppie plugin
     var $uploadCrop = $('#upload-profile').croppie({
         enableExif: true,
         url: 'assets/img/avatars/altvatar.png',
@@ -217,6 +223,7 @@ function uploadProfilePicture(){
         }
     });
 
+    //Show preview
     function popupResult(result) {
         var html;
         if (result.html) {
@@ -236,6 +243,7 @@ function uploadProfilePicture(){
         $('#submit-profile-picture').removeClass('is-disabled');
     });
 
+    //Submit
     $('#submit-profile-picture').on('click', function (ev) {
         var $this = $(this);
         $this.addClass('is-loading');
@@ -249,6 +257,7 @@ function uploadProfilePicture(){
         });
     });
 
+    //Reset
     $('#profile-upload-reset').on('click', function () {
         $(this).addClass('is-hidden');
         $('.profile-uploader-box, .upload-demo-wrap').toggleClass('is-hidden');
@@ -257,6 +266,7 @@ function uploadProfilePicture(){
     })
 }
 
+//Countries autocomplete
 function initCountryAutocomplete(){
     var accountCountriesOptions = {
         url: "https://restcountries.eu/rest/v2/all",

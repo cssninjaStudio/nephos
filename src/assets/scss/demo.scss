@@ -19,6 +19,7 @@ TABLE OF CONTENTS
 9. View demo links
 10. Mobile media queries
 11. Tablet portrait orientation media queries
+12. Info Modal
 =============================================================================
 ***/
 
@@ -26,13 +27,13 @@ TABLE OF CONTENTS
 0. CSS Imports
 ========================================================================== */
 
-@import 'base/theme-default';
-@import 'base/colors';
-@import 'components/buttons';
-@import 'components/pageloader';
-@import 'base/utils';
-
-
+@import "base/theme-default";
+@import "base/colors";
+@import "base/utils";
+@import "abstracts/animations";
+@import "components/buttons";
+@import "components/checkboxes";
+@import "components/pageloader";
 
 /* ==========================================================================
 1. Index Hero
@@ -51,24 +52,29 @@ canvas {
     &.is-demo {
         background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
     }
+
     //Navbar
     .navbar {
         position: relative;
         min-height: 3.75rem;
         transition: all .3s;
         z-index: 99;
+
         //Responsive menu icon
         .navbar-burger {
             width: 3.75rem;
             height: 3.75rem;
         }
+
         //Brand
         .navbar-brand {
             min-height: 3.75rem;
+
             img {
                 max-height: 36px !important;
                 height: 36px;
             }
+
             //brand text
             .brand-name {
                 font-family: 'Raleway', sans-serif;
@@ -78,17 +84,20 @@ canvas {
                 text-transform: uppercase;
                 letter-spacing: 3px;
             }
+
             &:hover {
                 .navbar-item {
                     background: transparent !important;
                 }
             }
         }
+
         .navbar-item {
             a {
                 font-family: 'Raleway', sans-serif;
             }
         }
+
         //Light navbar
         &.is-light {
             .navbar-brand {
@@ -96,14 +105,17 @@ canvas {
                     color: $white;
                 }
             }
+
             .navbar-item {
                 a {
                     color: $white;
                 }
             }
+
             .navbar-burger span {
                 background-color: $white !important;
             }
+
             //Responsive menu
             .navbar-menu {
                 &.is-active {
@@ -112,12 +124,15 @@ canvas {
                 }
             }
         }
+
         //Fixed navbar modifier
         &.is-fixed {
             background: $white;
             box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.12);
+
             a {
                 color: $dark-text;
+
                 &:hover {
                     color: $primary;
                 }
@@ -128,6 +143,7 @@ canvas {
             }
         }
     }
+
     //Cloned fixed navbar
     #navbar-clone {
         position: fixed;
@@ -136,13 +152,16 @@ canvas {
         width: 100%;
         transform: translateY(-100%);
         z-index: 100;
+
         &.is-active {
-            transform: translateY(0); 
+            transform: translateY(0);
         }
     }
+
     .hero-foot {
         padding: 20px 0;
     }
+
     .hero-logo {
         height: 50px;
     }
@@ -155,6 +174,7 @@ canvas {
 
 .section {
     outline: none !important;
+
     &:active, &:focus {
         outline: none !important;
     }
@@ -167,12 +187,15 @@ canvas {
 //Colors and font
 .title, .subtitle {
     font-family: 'Raleway', sans-serif;
+
     &.is-light {
         color: $white;
     }
+
     &.is-muted {
         color: $muted-grey;
     }
+
     &.no-mb {
         margin-bottom: 0 !important;
     }
@@ -183,6 +206,7 @@ canvas {
     max-width: 600px;
     margin: 0 auto;
     position: relative;
+
     .filigrane {
         height: 75px;
         width: 75px;
@@ -200,7 +224,7 @@ canvas {
 ========================================================================== */
 
 //Cursor animation
-.typed-cursor{
+.typed-cursor {
     opacity: 1;
     font-weight: 100;
     -webkit-animation: blink 0.7s infinite;
@@ -214,9 +238,11 @@ canvas {
     0% {
         opacity: 1;
     }
+
     50% {
         opacity: 0;
     }
+
     100% {
         opacity: 1;
     }
@@ -230,6 +256,7 @@ canvas {
         background-color: $primary !important;
         color: $white !important;
     }
+
     &.is-secondary {
         background-color: $secondary !important;
         color: $white !important;
@@ -270,6 +297,7 @@ canvas {
             height: 100px;
             width: 100px;
         }
+
         svg {
             width: 30px;
             height: 30px;
@@ -277,12 +305,14 @@ canvas {
             stroke: $primary;
         }
     }
+
     .box-content {
         .box-title {
             font-family: 'Raleway', sans-serif;
             font-weight: 600;
             font-size: 1rem;
         }
+
         .box-text {
             font-family: 'Raleway', sans-serif;
             font-size: .9rem;
@@ -313,13 +343,16 @@ canvas {
     &.is-grey {
         background: $section-grey;
     }
+
     &.is-relative {
         position: relative;
     }
+
     img {
         &.is-featured {
             max-height: 450px;
         }
+
         &.is-ui {
             position: absolute;
             right: 0;
@@ -328,14 +361,17 @@ canvas {
             z-index: 0;
         }
     }
+
     p {
         &.is-muted {
             color: $muted-grey;
         }
+
         &.has-padding-bottom {
             padding-bottom: 10px;
         }
     }
+
     //divider
     .feature-divider {
         height: 2px;
@@ -344,6 +380,7 @@ canvas {
         margin: 20px 0;
         border-radius: 10px;
     }
+
     //Floating circle card
     .ball {
         width: 120px;
@@ -353,15 +390,18 @@ canvas {
         display: flex;
         justify-content: center;
         align-items: center;
-        box-shadow: -1px 3px 10px 0 rgba(0,0,0,.06);
+        box-shadow: -1px 3px 10px 0 rgba(0, 0, 0, 0.06);
         margin: 0 auto;
+
         img {
             height: 50px;
             width: 50px;
         }
+
         //indicator
         &.has-version {
             position: relative;
+
             .v-indicator {
                 position: absolute;
                 top: 3px;
@@ -378,9 +418,11 @@ canvas {
                 align-items: center;
             }
         }
+
         &.has-delay-1 {
             animation-delay: 1s;
         }
+
         &.has-delay-2 {
             animation-delay: 2s;
         }
@@ -394,19 +436,24 @@ canvas {
 .footer {
     padding: 3rem 1.5rem !important;
     background: $sidebar;
+
     .footer-flex {
         display: flex;
         flex-direction: column;
         align-items: center;
+
         .nephos {
             padding: 5px 0;
+
             .logo, .logo-text {
                 display: block;
             }
+
             .logo {
                 height: 45px;
                 margin: 10px auto;
             }
+
             .logo-text {
                 display: block;
                 font-family: 'Raleway', sans-serif;
@@ -417,26 +464,32 @@ canvas {
                 font-size: .9rem;
             }
         }
+
         .ninja {
             color: $white;
             font-family: 'Raleway', sans-serif;
             font-size: .75rem;
+
             div {
                 margin: 5px 0;
             }
+
             .made-by {
                 display: flex;
                 align-items: center;
             }
+
             svg {
                 width: 14px;
                 height: 14px;
                 fill: $red;
                 stroke: $red;
             }
+
             .love {
                 margin: 0 5px;
             }
+
             a {
                 font-size: .85rem;
                 color: $secondary;
@@ -454,6 +507,7 @@ canvas {
 
                 &:hover {
                     opacity: 0.7;
+
                     svg {
                         stroke: #be84f9;
                         fill: #be84f9;
@@ -463,7 +517,6 @@ canvas {
         }
     }
 }
-
 
 /* ==========================================================================
 9. View demo links
@@ -476,7 +529,7 @@ canvas {
 }
 
 //Svg wrapper
-.stroke-wrapper { 
+.stroke-wrapper {
     width: 100%;
     overflow: hidden;
     position: absolute;
@@ -484,6 +537,7 @@ canvas {
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
+
     //Button
     .animated-button {
         margin: 30px auto 0;
@@ -491,6 +545,7 @@ canvas {
         height: 40px;
         display: block;
         text-transform: uppercase;
+
         //Shape
         .shape {
             stroke-dasharray: 100 310;
@@ -502,7 +557,8 @@ canvas {
             -ms-transition: stroke-width .7s, stroke-dashoffset .7s, stroke-dasharray .7s;
             transition: stroke-width .7s, stroke-dashoffset .7s, stroke-dasharray .7s;
         }
-        .text { 
+
+        .text {
             top: -37px;
             position: relative;
             color: $dark-text;
@@ -510,6 +566,7 @@ canvas {
             letter-spacing: 3px;
             margin-right: -4px;
         }
+
         &:hover {
             .shape {
                 stroke-width: 2px;
@@ -518,6 +575,7 @@ canvas {
             }
         }
     }
+
     .no-svg .animated-buttone {
         color: $dark-text;
         font-size: 1.7em;
@@ -536,33 +594,42 @@ canvas {
     .typed-hero {
         font-size: 2rem !important;
     }
+
     .title {
         &.is-2 {
             font-size: 2.2rem !important;
+
             //min-height: 80px;
+       
         }
     }
+
     .navbar {
         &.is-light {
             .navbar-menu {
                 background-color: $sidebar;
+
                 .feather-button {
                     width: 100%;
                 }
+
                 .is-centered-responsive {
                     width: 100%;
                     text-align: center;
                     display: block;
                 }
             }
+
             &.is-dark-mobile {
                 background: $sidebar !important;
             }
         }
+
         &.is-fixed {
             .feather-button {
                 width: 100%;
             }
+
             .is-centered-responsive {
                 width: 100%;
                 text-align: center;
@@ -570,8 +637,10 @@ canvas {
             }
         }
     }
+
     .is-responsive-centered {
         text-align: center;
+
         &.feature-divider {
             margin: 20px auto !important;
         }
@@ -582,31 +651,36 @@ canvas {
 11. Tablet portrait orientation media queries
 ========================================================================== */
 
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
     //Navbar
     .navbar {
         //Light navbar
         &.is-light {
             .navbar-menu {
                 background-color: $sidebar;
+
                 .feather-button {
                     width: 100%;
                 }
+
                 .is-centered-responsive {
                     width: 100%;
                     text-align: center;
                     display: block;
                 }
             }
+
             &.is-dark-mobile {
                 background: $sidebar !important;
             }
         }
+
         //Fixed navbar
         &.is-fixed {
             .feather-button {
                 width: 100%;
             }
+
             .is-centered-responsive {
                 width: 100%;
                 text-align: center;
@@ -614,11 +688,139 @@ canvas {
             }
         }
     }
+
     //Spacing responsive helper classes
     .is-responsive-centered, .is-centered-tablet-portrait {
         text-align: center;
+
         &.feature-divider {
             margin: 20px auto !important;
+        }
+    }
+}
+
+/* ==========================================================================
+12. Info modal
+========================================================================== */
+
+.info-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba($dark-text, 0.5);
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: all .3s;
+
+    &.is-active {
+        opacity: 1;
+        pointer-events: all;
+
+        .info-card {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+    }
+
+    .info-card {
+        position: relative;
+        overflow: hidden;
+        width: calc(100% - 80px);
+        max-width: 1040px;
+        margin: 40px auto;
+        background: $white;
+        border-radius: 2px;
+        box-shadow: $primary-box-shadow;
+        display: flex;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(20px);
+        transition: all .4s ease-in-out;
+        transition-delay: .3s;
+
+        .close-link {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            height: 36px;
+            width: 36px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 3;
+
+            svg {
+                height: 26px;
+                width: 26px;
+                stroke: $dark-text;
+                stroke-width: 1.4px;
+            }
+        }
+
+        .video-wrap {
+            width: 60%;
+        }
+
+        .video-meta {
+            width: 40%;
+        }
+
+        .video-wrap {
+            position: relative;
+            padding: 40px 20px 40px 40px;
+
+            iframe {
+                width: 800px;
+                height: 360px;
+                margin: 0 auto;
+                display: block;
+                border-radius: 4px;
+                box-shadow: 0 12px 22px rgba(0, 0, 0, 0.12), 0 15px 12px rgba(0, 0, 0, 0.06);
+            }
+        }
+
+        .video-meta {
+            position: relative;
+            padding: 40px 40px 40px 20px;
+
+            .nephos-bg {
+                position: absolute;
+                bottom: -90px;
+                right: -100px;
+                max-width: 80%;
+                opacity: .3;
+                z-index: 0;
+            }
+
+            h3 {
+                font-family: 'Montserrat';
+                font-size: 1.4rem;
+                color: $dark-text;
+                margin-top: 0;
+            }
+
+            p, ul {
+                font-size: .9rem;
+                font-family: 'Montserrat';
+                color: lighten($dark-text, 8%);
+
+                b {
+                    color: $muted-grey;
+                    font-weight: 500;
+                }
+            }
+
+            small {
+                position: relative;
+                top: 1px;
+            }
         }
     }
 }

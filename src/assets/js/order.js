@@ -1,7 +1,9 @@
 "use strict";
 
+//Get order Id parameter from query string
 var orderId = parseInt($.urlParam('orderId'));
 
+//Get order json details, passing the Id as parameter
 function getOrder(orderId) {
     var userData = JSON.parse(localStorage.getItem('user'));
 

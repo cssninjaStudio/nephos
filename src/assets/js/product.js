@@ -1,8 +1,7 @@
 "use strict";
 
+//Get product Id parameter from query string
 var productId = parseInt($.urlParam('productId'));
-//var productId = 20;
-console.log(productId);
 
 //Init Product details spinner
 function initProductSpinner() {
@@ -99,6 +98,7 @@ function getProductPage(productId){
     });
 }
 
+//Add to cart from product details
 function addToCartDetails(trigger) {
     var data = JSON.parse(localStorage.getItem('cart'));
     console.log(data);
@@ -139,6 +139,7 @@ function addToCartDetails(trigger) {
     }
 }
 
+//Handle various UI interactions
 function initProductPageUI(){
     //Product panel
     $('.product-action').on('click', function () {
@@ -162,12 +163,6 @@ function initProductPageUI(){
     $('#show-ratings').on('click', function () {
         $('#meta-view, #product-view').addClass('is-hidden');
         $('#ratings-view').removeClass('is-hidden');
-    })
-
-    //Add to wishlist
-    $('.sidebar-whishlist').on('click', function () {
-        //$(this).toggleClass('is-active');
-        //$('.product-panel .panel-header .likes svg').toggleClass('is-liked gelatine');
     })
 
 }

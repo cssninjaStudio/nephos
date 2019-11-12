@@ -7,49 +7,15 @@ Cart page styles
 /***
 TABLE OF CONTENTS
 =============================================================================
-0. Cart Summary
+1. Wrapper
 1. Cart Card
 2. Empty Cart Card
 =============================================================================
 ***/
 
 /* ==========================================================================
-0. Cart Summary
+1. Wrapper
 ========================================================================== */
-
-/*.cart-summary {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-
-    //Total amount
-    .cart-total {
-        font-size: 1.6rem;
-        font-weight: 500;
-
-        &:before {
-            content: '$';
-            font-size: 60%;
-            position: relative;
-            left: 8px;
-        }
-
-        small {
-            display: block;
-            font-size: .8rem;
-            color: $primary;
-            text-align: right;
-
-            span {
-                text-transform: uppercase;
-                font-weight: 600;
-                font-family: 'Raleway', sans-serif;
-                font-size: .7rem;
-            }
-        }
-    }
-}*/
 
 .cart-page-wrap {
     position: relative;
@@ -171,25 +137,6 @@ TABLE OF CONTENTS
                     }
                 }
             }
-
-            /*.product-quantity {
-                margin: 0 30px;
-
-                span {
-                    font-weight: 600;
-                    font-size: .75rem;
-                    text-transform: uppercase;
-                    color: $dark-text;
-                }
-
-                .control {
-                    max-width: 70px;
-
-                    input {
-                        max-height: 28px;
-                    }
-                }
-            }*/
 
             //Actions
             .action {

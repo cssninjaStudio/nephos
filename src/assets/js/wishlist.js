@@ -1,5 +1,6 @@
 "use strict";
 
+//Init left menu tabs
 function initWishlistTabs() {
     $('.is-account-grid .wishlists li').on('click', function(){
         var targetWishlist = $(this).attr('data-target-wishlist');
@@ -10,6 +11,7 @@ function initWishlistTabs() {
     })
 }
 
+//Get user wishlists
 function getWishlists() {
     const cartIcon = feather.icons['shopping-cart'].toSvg();
     const trashIcon = feather.icons['trash-2'].toSvg();
@@ -142,6 +144,7 @@ function getWishlists() {
     }
 }
 
+//Add a new wishlist
 function addWishlist(){
 
     $('.add-wishlist-action').on('click', function () {
@@ -176,6 +179,7 @@ function addWishlist(){
 
 }
 
+//Delete an existing wishlist
 function removeWishlist() {
     $('.remove-wishlist-action').on('click', function () {
         var $this = $(this);
@@ -202,6 +206,7 @@ function removeWishlist() {
     })
 }
 
+//Add to cart from a wishlist item
 function addToCartFromWishlist() {
     $('.whishlist-cart-button').on('click', function(){
         var $this = $(this);
@@ -214,6 +219,7 @@ function addToCartFromWishlist() {
     })
 }
 
+//Remove a wishlist item from its wishlist
 function removeWishlistItem() {
     $('.remove-wishlist-item-action').on('click', function () {
         var $this = $(this);
@@ -241,10 +247,13 @@ function removeWishlistItem() {
     })
 }
 
+//Init wishlist selection in wishlist modal
 function initWishlistSelect() {
 
+    //Execution flag
     var onceWishlist = true;
 
+    //Pop the wishlist modal when needed, and populate its data
     $('.flat-card.product-container .actions .like, .sidebar-whishlist').on('click', function(){
         if ($('#product-page').length) {
             var productId = $('.product-container').attr('data-product-id');
@@ -259,11 +268,6 @@ function initWishlistSelect() {
             var productImg = $(this).closest('.product-container').find('img').attr('src');
             var productCategory = $(this).closest('.category-header').find('.category-title h2').text();
         }
-        /*var productId = $(this).closest('.product-container').attr('data-product-id');
-        var productName = $(this).closest('.product-container').find('.product-name').text();
-        var productPrice = $(this).closest('.product-container').find('.product-price span:first-child').text();
-        var productImg = $(this).closest('.product-container').find('img').attr('src');
-        var productCategory = $(this).closest('.category-header').find('.category-title h2').text();*/
         $('#add-to-wishlist-modal').attr('data-product-id', productId);
         $('#add-to-wishlist-modal').attr('data-product-name', productName);
         $('#add-to-wishlist-modal').attr('data-product-price', productPrice);
@@ -272,11 +276,13 @@ function initWishlistSelect() {
         $('#existing-product-message').addClass('is-hidden');
     })
 
+    //select a wishlist in the modal on click
     $('#wishlist-modal-list .list-item').on('click', function(){
         $(this).siblings('.list-item').removeClass('is-active');
         $(this).addClass('is-active');
     })
 
+    //Add the previously clicked product to the selected wishlist
     $('.add-to-wishlist-action').on('click', function(){
         var $this = $(this);
         var userData = JSON.parse(localStorage.getItem('user'));
@@ -289,10 +295,11 @@ function initWishlistSelect() {
 
         $this.addClass('is-loading');
 
+        //Logic to look for an item inside a given wishlist
         const found = userData.wishlists[targetWishlist].products.some(el => el.id === productId);
-        if (!found) {
 
-            //console.log('This product doesn\'t exist in the list');
+        //If item not found in the selected wishlist, add it
+        if (!found) {
             userData.wishlists[targetWishlist].products.push({
                 id: productId,
                 name: productName,
@@ -316,8 +323,8 @@ function initWishlistSelect() {
                 }
             }, 1200)
         }
+        //Else, tell the user that it alrady exists in the wishlist
         else {
-            //console.log('This product already exists in the list');
             setTimeout(function () {
                 $this.removeClass('is-loading');
                 if (onceWishlist) {
@@ -329,6 +336,7 @@ function initWishlistSelect() {
     })
 }
 
+//Get wishlists and display them in the add to wishlist modal
 function loadWishlistsInModal() {
     const checkIcon = feather.icons.check.toSvg();
 
