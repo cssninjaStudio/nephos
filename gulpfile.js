@@ -1,5 +1,3 @@
-// The require statement tells Node to look into the node_modules folder for a package
-// Importing specific gulp API functions lets us write them below as series() instead of gulp.series()
 'use strict';
 const {src, dest, watch, series, parallel } = require('gulp');
 const log = require('fancy-log');
@@ -82,10 +80,10 @@ function compileHTML() {
     .pipe(panini({
       root: 'src/pages/',
       layouts: 'src/layouts/',
-      // pageLayouts: {
-      //     // All pages inside src/pages/blog will use the blog.html layout
-      //     'blog': 'blog'
-      // }
+          /*pageLayouts: {
+            //All pages inside src/pages/blog will use the blog.html layout
+            'blog': 'blog'
+          }*/
       partials: 'src/partials/',
       helpers: 'src/helpers/',
       data: 'src/data/'
@@ -96,7 +94,7 @@ function compileHTML() {
 
 // COPY CUSTOM JS
 function compileJS() {
-  console.log('---------------COMPILE CUSTOM.JS---------------');
+  console.log('---------------COMPILE CUSTOM JS---------------');
   return src([
       'src/assets/js/_data-wishlist.js',
       'src/assets/js/_data-addresses.js',
@@ -304,16 +302,6 @@ function cleanDist(done) {
   return done();
 }
 
-// CREATE DOCS FOLDER FOR DEMO
-function generateDocs() {
-  console.log('---------------CREATING DOCS---------------');
-  return src([
-      'dist/**/*',
-    ])
-    .pipe(dest('docs'))
-    .pipe(browserSync.stream());
-}
-
 // ACCESSIBILITY CHECK
 function HTMLAccessibility() {
   return src('dist/*.html')
@@ -330,62 +318,6 @@ function HTMLAccessibility() {
     .pipe(dest('accessibility-reports'));
 }
 
-// ------------ PRODUCTION TASKS -------------
-
-// CHANGE TO MINIFIED VERSIONS OF JS AND CSS
-function renameSources() {
-  console.log('---------------RENAMING SOURCES---------------');
-  return src('dist/*.html')
-    .pipe(htmlreplace({
-      'js': 'assets/js/main.min.js',
-      'css': 'assets/css/main.min.css'
-    }))
-    .pipe(dest('dist/'));
-}
-
-// CONCATENATE JS SCRIPTS
-function concatScripts() {
-  console.log('---------------CONCATENATE SCRIPTS---------------');
-  return src([
-      'src/assets/vendor/js/jquery.js',
-      //'src/assets/vendor/js/popper.js',
-      //'src/assets/vendor/js/bootstrap.js',
-      'src/assets/js/*'
-    ])
-    .pipe(sourcemaps.init())
-    .pipe(concat('main.js'))
-    .pipe(sourcemaps.write('./'))
-    .pipe(dest('dist/assets/js'))
-    .pipe(browserSync.stream());
-}
-
-// MINIFY SCRIPTS
-function minifyScripts() {
-  console.log('---------------MINIFY SCRIPTS---------------');
-  return src('dist/assets/js/main.js')
-    .pipe(removeLog())
-    .pipe(removeCode({
-      production: true
-    }))
-    .pipe(uglify().on('error', console.error))
-    .pipe(rename('main.min.js'))
-    .pipe(dest('dist/assets/js'));
-}
-
-// MINIFY CSS
-function minifyCss() {
-  console.log('---------------MINIFY CSS---------------');
-  return src([
-      'src/assets/vendor/css/**/*',
-      'dist/assets/css/main.css'
-    ])
-    .pipe(sourcemaps.init())
-    .pipe(concat('main.css'))
-    .pipe(sourcemaps.write('./'))
-    .pipe(rename('main.min.css'))
-    .pipe(dest('dist/assets/css'));
-}
-
 // RUN ALL LINTERS
 exports.linters = series(htmlLint, scssLint, jsLint);
 
@@ -398,5 +330,3 @@ exports.setup = series(setupBulma);
 // DEV
 exports.dev = series(cleanDist, copyFont, copyData, jsVendor, cssVendor, copyImages, compileHTML, concatPlugins, concatCssPlugins, compileJS, resetPages, prettyHTML, compileSASS, compileSCSS, browserSyncInit, watchFiles);
 
-// PROD
-exports.prod = series(cleanDist, compileSASS, compileSCSS, copyFont, copyImages, compileHTML, concatScripts, minifyScripts, minifyCss, renameSources, prettyHTML, generateDocs, browserSyncInit);

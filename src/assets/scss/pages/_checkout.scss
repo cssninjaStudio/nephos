@@ -1402,6 +1402,83 @@ $bullet-size: 3em;
         width: calc(100% - 80px) !important;
     }
 
+    .flex-table {
+        .flex-table-header {
+            display: none;
+        }
+
+        .flex-table-item {
+            flex-direction: column;
+            justify-content: center;
+            width: 100% !important;
+            padding: 20px;
+            margin-bottom: 16px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            > div {
+                border: none !important;
+            }
+        }
+
+        .product {
+            width: 100% !important;
+            padding-bottom: 10px;
+        }
+
+        .quantity, .price, .discount, .total {
+            position: relative;
+            justify-content: flex-end !important;
+            width: 100% !important;
+            border: none;
+
+            &:before {
+                text-transform: uppercase;
+                font-size: .7rem;
+                font-weight: 500;
+                color: $muted-grey;
+            }
+        }
+
+        .quantity {
+            &:before {
+                content: 'Quantity';
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        }
+
+        .price {
+            &:before {
+                content: 'Price';
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        }
+
+        .discount {
+            &:before {
+                content: 'Discount';
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        }
+
+        .total {
+            &:before {
+                content: 'Total';
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        }
+    }
+
     .checkout-wrapper {
         padding-top: 51px !important;
 
@@ -1418,79 +1495,6 @@ $bullet-size: 3em;
                                 border-radius: 100px;
                                 width: 100%;
                             }
-                        }
-                    }
-                }
-
-                .flex-table {
-                    .flex-table-header {
-                        display: none;
-                    }
-
-                    .flex-table-item {
-                        flex-direction: column;
-                        justify-content: center;
-                        width: 100%;
-                        padding: 20px;
-                        margin-bottom: 16px;
-
-                        &:last-child {
-                            margin-bottom: 0;
-                        }
-                    }
-
-                    .product {
-                        width: 100%;
-                        padding-bottom: 10px;
-                    }
-
-                    .quantity, .price, .discount, .total {
-                        position: relative;
-                        justify-content: flex-end;
-                        width: 100%;
-                        border: none;
-
-                        &:before {
-                            text-transform: uppercase;
-                            font-size: .7rem;
-                            font-weight: 500;
-                            color: $muted-grey;
-                        }
-                    }
-
-                    .quantity {
-                        &:before {
-                            content: 'Quantity';
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                        }
-                    }
-
-                    .price {
-                        &:before {
-                            content: 'Price';
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                        }
-                    }
-
-                    .discount {
-                        &:before {
-                            content: 'Discount';
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                        }
-                    }
-
-                    .total {
-                        &:before {
-                            content: 'Total';
-                            position: absolute;
-                            top: 0;
-                            left: 0;
                         }
                     }
                 }

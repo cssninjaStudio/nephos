@@ -418,6 +418,11 @@ function initPopovers() {
     }
 }
 
+//Destroy popovers
+function destroyPopovers(){
+    $('.popover-removed').webuiPopover('destroy');
+}
+
 //Init animated checkboxes
 function initAnimatedCheckboxes(){
     $('.animated-checkbox input').on('change', function () {
@@ -436,6 +441,15 @@ function initAnimatedCheckboxes(){
             }, 600);
         }
     })
+}
+
+//Check viewport size
+function mobileTrue(){
+    if (window.matchMedia('(max-width: 767px)').matches) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 //Optimize popovers based on screen width

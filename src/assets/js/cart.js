@@ -151,7 +151,7 @@ function getCart() {
                         </div>
                     </span>
 
-                    <span class="remove-item remove-from-cart-action has-simple-popover" data-content="Remove from Cart" data-placement="top">
+                    <span class="remove-item remove-from-cart-action has-simple-popover" data-content="Remove from Cart" data-placement="top" onclick="return false">
                         ${closeIcon}
                     </span>
                 </li>
@@ -166,8 +166,10 @@ function getCart() {
                 $('.cart-quickview .cart-total').html(parseFloat(cartTotal).toFixed(2));
                 initSpinners();
                 changeDemoImages();
-                initPopovers();
-                opitimizePopovers();
+                //Check viewport size
+                if (!mobileTrue) {
+                    initPopovers();
+                }
                 removeFromCart();
             }
         }
@@ -277,7 +279,7 @@ function getCartPage() {
 
                             <span class="action">
                                 <span class="action-link is-remove remove-from-cartpage-action has-simple-popover" data-content="Remove from Cart"
-                                    data-placement="top" onclick="return true">
+                                    data-placement="top" onclick="return false">
                                     <a href="#">${removeIcon}</a>
                                 </span>
                             </span>
@@ -297,8 +299,10 @@ function getCartPage() {
                 $('#cart-summary-total').html(parseFloat((cartSubtotal * taxRate) + cartSubtotal).toFixed(2));
                 initCartSpinners();
                 changeDemoImages();
-                initPopovers();
-                opitimizePopovers();
+                //Check viewport size
+                if (!mobileTrue) {
+                    initPopovers();
+                }
                 removeFromCartPage();
             }
         }

@@ -208,8 +208,14 @@ $(document).ready(function() {
 
     launchInterval();
 
-    setTimeout(function(){
+    setInterval(function(){
         clearInterval(canvasInterval);
+        canvas.destroy();
+        canvas = oCanvas.create({
+            canvas: '#canvas',
+            background: 'transparent',
+            fps: 60
+        });
         launchInterval();
     }, 25000)
 

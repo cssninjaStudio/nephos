@@ -40,9 +40,10 @@ $(document).ready(function(){
 
     initFileInputs();
 
-    initPopovers();
-
-    opitimizePopovers();
+    //Check viewport size
+    if (!mobileTrue) {
+        initPopovers();
+    }
 
     initCardActions();
 

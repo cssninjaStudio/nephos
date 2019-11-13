@@ -30,17 +30,20 @@ title: Modern Bulma Ecommerce App and Dashboard
     {{> search-overlay}}
 
     <!-- Main section -->
-    <div class="section">
+    <div id="invoice-page" class="section">
         <!-- Container -->
         <div class="container">
 
             <!-- Invoice Layout -->
             <div class="columns account-header">
-                <div class="column is-8 is-offset-2 invoice-wrap is-invoice-landscape-padded">
+                <div class="column invoice-column invoice-wrap is-invoice-landscape-padded">
                     <!-- Invoice controls -->
                     <div class="invoice-controls">
+                        <div class="invoice-top-actions">
+                            <a><i data-feather="download"></i> Download PDF</a>
+                            <a><i data-feather="printer"></i> Print invoice</a>
+                        </div>
                         <a href="orders.html" class="button feather-button is-bold primary-button raised">Back</a>
-                        <a href="javascript:void(0);" class="button feather-button is-bold secondary-button raised">Download</a>
                     </div>
                     <!-- Invoice -->
                     <div class="invoice">
@@ -75,8 +78,8 @@ title: Modern Bulma Ecommerce App and Dashboard
                             <!-- Customer Info -->
                             <div class="column is-5">
                                 <p class="buyer has-text-right">
-                                    <span>Elie Daniels</span><br>
-                                    eliedaniels@gmail.com<br>
+                                    <span>John Doe</span><br>
+                                    johndoe@gmail.com<br>
                                     12, Armory Street<br>
                                     54250 Seattle
                                 </p>

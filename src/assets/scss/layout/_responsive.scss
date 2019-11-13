@@ -59,6 +59,10 @@ TABLE OF CONTENTS
         }
     }
 
+    .shop-quickview {
+        left: 79px;
+    }
+
     //product page
     .product-panel {
         width: 35%;
@@ -142,6 +146,8 @@ TABLE OF CONTENTS
     //Shop main wrapper
     .shop-wrapper {
         margin-top: 20px !important;
+        width: 100%;
+        margin-left: 0;
     }
 
     //FAB
@@ -341,6 +347,45 @@ TABLE OF CONTENTS
     .is-auth {
         padding: 100px 0 !important;
     }
+
+    //checkout
+    .checkout-wrapper {
+        padding-top: 40px !important;
+
+        .checkout-container {
+            padding-bottom: 40px !important;
+
+            .checkout-success {
+                display: block !important;
+                min-height: 356px !important;
+
+                .success-card {
+                    top: 0 !important;
+                    margin: 40px auto 0 auto !important;
+                }
+            }
+        }
+
+        .card-wrapper {
+            margin-bottom: 20px;
+        }
+    }
+
+    .shipping-methods-grid, .payment-methods-grid, .order-summary-grid {
+        .columns {
+            display: flex;
+
+            .column {
+                width: 50% !important;
+                min-width: 50%;
+                max-width: 50%;
+            }
+        }
+    }
+
+    .payment-disclaimer {
+        margin-left: 0 !important;
+    }
 }
 
 /* ==========================================================================
@@ -364,7 +409,6 @@ TABLE OF CONTENTS
 
     //Main Sidebar
     .main-sidebar {
-
         .sidebar-inner {
             .icon-menu, .bottom-menu {
                 .fold-link {
@@ -374,28 +418,10 @@ TABLE OF CONTENTS
         }
     }
 
-    //sidebar
-    /*.main-sidebar {
-        width: 80px;
-
-        //Brand
-        .sidebar-brand {
-            width: 60px;
-        }
-
-        .icon-menu, .bottom-menu {
-            li {
-                width: 60px !important;
-            }
-        }
-    }*/
-
     //Navbar
     .navbar-link {
         padding: 0.5rem 1.5rem !important;
     }
-
-    .navbar-dropdown {}
 
     //FAB
     .menu-fab {
@@ -498,6 +524,10 @@ TABLE OF CONTENTS
         }
     }
 
+    .category-header {
+        padding-top: 12px;
+    }
+
     //Category title
     .category-title {
         border-bottom: none !important;
@@ -560,6 +590,26 @@ TABLE OF CONTENTS
         left: 80px !important;
         width: calc(100% - 80px);
         transform: translateX(calc(-100% - 80px));
+
+        .inner {
+            .cart-body {
+                .shopping-cart-items {
+                    li {
+                        .quantity {
+                            position: relative;
+                            z-index: 2;
+                            left: -22px;
+                            padding: 0 !important;
+
+                            .sidebar-spinner {
+                                margin: 12px 0 !important;
+                                transform: scale(0.85);
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     //filters quickview
@@ -586,6 +636,7 @@ TABLE OF CONTENTS
 
         .panel-header {
             justify-content: flex-start;
+            padding-top: 60px;
 
             .likes {
                 margin: 0 30px;
@@ -735,6 +786,10 @@ TABLE OF CONTENTS
             left: -25px !important;
             height: 60px !important;
         }
+
+        .ml-auto {
+            display: none;
+        }
     }
 
     //Profile
@@ -767,6 +822,10 @@ TABLE OF CONTENTS
                 }
             }
         }
+    }
+
+    .menu-card {
+        margin-bottom: 0;
     }
 
     .wishlist-item {
@@ -841,6 +900,10 @@ TABLE OF CONTENTS
 
     //Cart page
     .cart-card {
+        &:last-child {
+            margin-bottom: 0;
+        }
+
         li {
             justify-content: center;
             flex-direction: column;
@@ -868,6 +931,8 @@ TABLE OF CONTENTS
     .order-list-card {
         padding: 20px !important;
     }
+
+    //Order details
 
     //Checkout
     .checkout-title {
@@ -902,9 +967,6 @@ TABLE OF CONTENTS
     }
 
     //Js Credit Card
-    .jp-card {
-        //left: -18px !important;
-    }
 
     //Order complete card
     .thanks-card {
@@ -925,5 +987,12 @@ TABLE OF CONTENTS
     //Authentication form padding
     .is-auth-form .column.is-mobile-padded {
         padding: 40px 20px !important;
+    }
+
+    //Modals
+    .modal {
+        .modal-content {
+            max-width: calc(100% - 20px);
+        }
     }
 }

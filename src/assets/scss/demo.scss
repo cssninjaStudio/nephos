@@ -824,3 +824,28 @@ canvas {
         }
     }
 }
+
+@media (max-width: 767px) {
+    //Demo info modal
+    .info-modal {
+        .info-card {
+            flex-direction: column;
+            width: calc(100% - 20px) !important;
+            margin: 10px !important;
+
+            .video-wrap {
+                width: 100%;
+                padding: 60px 20px 20px 20px;
+
+                iframe {
+                    height: 200px;
+                }
+            }
+
+            .video-meta {
+                width: 100%;
+                padding: 0 20px 20px 20px;
+            }
+        }
+    }
+}

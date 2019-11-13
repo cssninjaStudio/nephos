@@ -28,6 +28,32 @@ TABLE OF CONTENTS
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    .invoice-top-actions {
+        display: flex;
+        align-items: center;
+        flex-grow: 2;
+
+        a {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+            color: $dark-text;
+
+            &:hover {
+                text-decoration: underline;
+                color: $primary;
+            }
+
+            svg {
+                height: 18px;
+                width: 18px;
+                stroke-width: 1.2px;
+                stroke: $muted-grey;
+                margin-right: 4px;
+            }
+        }
+    }
 }
 
 /* ==========================================================================

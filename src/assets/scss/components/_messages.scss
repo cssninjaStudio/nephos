@@ -17,21 +17,47 @@ TABLE OF CONTENTS
 1. Toasts
 ========================================================================== */
 
-.iziToast {
-    .iziToast-body {
-        //max-width: 80%;
-        max-width: 250px;
+@media (min-width: 768px) {
+    .iziToast {
+        .iziToast-body {
+            //max-width: 80%;
+            max-width: 250px;
 
-        .iziToast-icon {
-            height: 24px;
-            width: 24px;
-            margin-right: 4px;
-            font-size: 1rem;
+            .iziToast-icon {
+                height: 24px;
+                width: 24px;
+                margin-right: 4px;
+                font-size: 1rem;
+            }
+
+            .iziToast-texts {
+                p, strong {
+                    display: block !important;
+                }
+            }
         }
+    }
+}
 
-        .iziToast-texts {
-            p, strong {
-                display: block !important;
+@media (max-width: 767px) {
+    .iziToast-wrapper {
+        align-items: center;
+    }
+
+    .iziToast {
+        .iziToast-body {
+            .iziToast-icon {
+                height: 24px;
+                width: 24px;
+                margin-right: 4px;
+                font-size: 1rem;
+            }
+
+            .iziToast-texts {
+                p, strong {
+                    display: block !important;
+                    font-weight: 500;
+                }
             }
         }
     }
