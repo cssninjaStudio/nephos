@@ -159,7 +159,7 @@ function addWishlist(){
         setTimeout(function () {
 
             var newWishlist = {
-                id: data.wishlists.length + 1,
+                id: data.wishlists.length,
                 name: newWishlistName,
                 products: []
             }
