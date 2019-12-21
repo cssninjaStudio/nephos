@@ -13,6 +13,7 @@ function initInfoModal(){
             localStorage.setItem('update', true);
         }
         $(this).closest('#info-modal').removeClass('is-active');
+        $(this).closest('#info-modal').find('iframe').remove();
     })
 }
 
