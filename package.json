@@ -47,7 +47,7 @@
     "zoom-vanilla.js": "^2.0.6"
   },
   "dependencies": {
-    "bulma": "^0.7.5",
+    "bulma": "^0.8.0",
     "alertifyjs": "^1.11.2",
     "clean-css": "^4.1.11",
     "feather-icons": "^4.24.0",

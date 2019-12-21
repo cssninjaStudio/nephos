@@ -1,4 +1,4 @@
-# BULMA + GULP STARTER TEMPLATE
+# NEPHOS 2
 
 ### Note
 
@@ -28,10 +28,9 @@ To use this template, your computer needs:
 
 ### Installing:
 
-- Install all node packages: `npm ci` (because npm install will generate security vulnerabilities)
+- Install all node packages: `npm install`
 - Run `gulp dev`
 - Your site is now viewable at this URL: http://localhost:3000
-- To create compressed, production-ready assets run `gulp prod`. This will delete everything in the dist folder and recreate all of your complied files. Never make updates directly into the dist folder as these files get overridden each time. Note: The dist folder is not kept in source control.
 
 
 ### Folder Structure:
@@ -83,3 +82,13 @@ To use this template, your computer needs:
 - [Handlebars](http://handlebarsjs.com/)
 - [Panini](https://github.com/zurb/panini)
 - [Gulp](https://gulpjs.org/getting-started)
+
+
+# Bulma source modifications
+
+1. Revert new variables from Bulma 8.0 to:
+$control-height: 2.25em !default
+$control-padding-vertical: calc(0.375em - #{$control-border-width}) !default
+$control-padding-horizontal: calc(0.625em - #{$control-border-width}) !default
+$button-padding-vertical: calc(0.375em - #{$button-border-width}) !default
+$button-padding-horizontal: 0.75em !default
