@@ -1,9 +1,11 @@
 {
   "name": "nephos-2",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Ecommerce App template",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "preinstall": "npx npm-force-resolutions"
+  },
   "author": "Css Ninja",
   "license": "MIT",
   "repository": {
@@ -44,10 +46,15 @@
     "node-bourbon": "^4.2.8",
     "panini": "^1.6.3",
     "run-sequence": "^2.2.1",
-    "zoom-vanilla.js": "^2.0.6"
+    "zoom-vanilla.js": "^2.0.6",
+    "npm-force-resolutions": "0.0.3",
+    "minimist": "^1.2.5",
+    "braces": "^2.3.1",
+    "marked": "^0.7.0",
+    "acorn": "^7.1.1"
   },
   "dependencies": {
-    "bulma": "^0.8.0",
+    "bulma": "^0.8.2",
     "alertifyjs": "^1.11.2",
     "clean-css": "^4.1.11",
     "feather-icons": "^4.24.0",
@@ -63,5 +70,11 @@
     "scrollreveal": "^3.4.0",
     "typed.js": "^2.0.6",
     "webui-popover": "^1.2.18"
+  },
+  "resolutions": {
+    "minimist": "^1.2.5",
+    "braces": "^2.3.1",
+    "marked": "^0.7.0",
+    "acorn": "^7.1.1"
   }
 }
