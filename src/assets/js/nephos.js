@@ -1,10 +1,20 @@
+"use strict";
+
+//Set environment variable (Used for development and demo)
+/* 
+    Possible values:
+    1. development
+    2. customization
+*/
+var env = 'development';
+
+initPageloader();
+
 $(document).ready(function(){
 
-    "use strict";
-
-    changeDemoImages();
-
-    initPageloader();
+    if (env === 'development') {
+		changeDemoImages();
+	}
 
     initNavbarBurger();
 

@@ -50,7 +50,9 @@ function getAccountInfo() {
         }
 
         //DEMO
-        changeDemoImages();
+        if (env === 'development') {
+            changeDemoImages();
+        }
         //Hide Loader
         $('.account-loader').addClass('is-hidden');
     }
@@ -108,7 +110,9 @@ function getEditAccountInfo(){
         }
 
         //DEMO
-        changeDemoImages();
+        if (env === 'development') {
+            changeDemoImages();
+        }
         //Hide Loader
         $('.account-loader').addClass('is-hidden');
     }

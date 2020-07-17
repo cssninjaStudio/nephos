@@ -89,7 +89,9 @@ function getProductPage(productId){
                             initProductSpinner();
                             getRelatedProducts();
                             //DEMO
-                            changeDemoImages();
+                            if (env === 'development') {
+                                changeDemoImages();
+                            }
                         })
                     }
                 }

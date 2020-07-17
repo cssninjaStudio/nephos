@@ -110,7 +110,9 @@ function getWishlists() {
             }
 
             if (w == userData.wishlists.length - 1) {
-                changeDemoImages();
+                if (env === 'development') {
+                    changeDemoImages();
+                }
                 initWishlistTabs();
                 removeWishlist();
                 addToCartFromWishlist();

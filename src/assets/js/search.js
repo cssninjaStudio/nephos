@@ -91,7 +91,9 @@ function getSearchResults(){
                     initAddFromSearchAction();
                     initPopovers();
                     //DEMO
-                    changeDemoImages();
+                    if (env === 'development') {
+                        changeDemoImages();
+                    }
                 }
             }
         }

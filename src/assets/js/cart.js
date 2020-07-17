@@ -165,7 +165,9 @@ function getCart() {
                 localStorage.setItem('cart', JSON.stringify(data));
                 $('.cart-quickview .cart-total').html(parseFloat(cartTotal).toFixed(2));
                 initSpinners();
-                changeDemoImages();
+                if (env === 'development') {
+                    changeDemoImages();
+                }
                 //Check viewport size
                 if (!mobileTrue) {
                     initPopovers();
@@ -298,7 +300,9 @@ function getCartPage() {
                 $('#cart-summary-taxes').html(parseFloat(cartSubtotal * taxRate).toFixed(2));
                 $('#cart-summary-total').html(parseFloat((cartSubtotal * taxRate) + cartSubtotal).toFixed(2));
                 initCartSpinners();
-                changeDemoImages();
+                if (env === 'development') {
+                    changeDemoImages();
+                }
                 //Check viewport size
                 if (!mobileTrue) {
                     initPopovers();

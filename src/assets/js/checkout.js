@@ -9,7 +9,9 @@ function getCheckoutSidebar(){
     $('#checkout-avatar').attr('src', 'http://via.placeholder.com/250x250');
     $('#checkout-avatar').attr('data-demo-src', checkout.avatar);
     //DEMO
-    changeDemoImages();
+    if (env === 'development') {
+		changeDemoImages();
+	}
     $('#checkout-username').html(checkout.username);
     //Shipping address
     if (!userData.addresses[1].disabled){
@@ -65,7 +67,9 @@ function getCheckoutStep1(){
 
         $.when($('.flex-table').append(template)).done(function () {
             //DEMO
-            changeDemoImages();
+            if (env === 'development') {
+                changeDemoImages();
+            }
         })
     }
 }

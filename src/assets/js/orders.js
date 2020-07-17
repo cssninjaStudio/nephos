@@ -129,7 +129,9 @@ function getOrdersGrid() {
             $.when($('#orders-main').append(template)).done(function(){
                 initPopovers();
                 //DEMO
-                changeDemoImages();
+                if (env === 'development') {
+                    changeDemoImages();
+                }
                 //Hide Loader
                 $('.account-loader').addClass('is-hidden');
                 //Init Order details
@@ -280,7 +282,9 @@ function loadOrdersListProducts() {
 
             $.when($container.append(template)).done(function () {
                 //DEMO
-                changeDemoImages();
+                if (env === 'development') {
+                    changeDemoImages();
+                }
                 $this.find('.products-loader').removeClass('is-active');
             })
         }

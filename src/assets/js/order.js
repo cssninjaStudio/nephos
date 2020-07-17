@@ -113,7 +113,9 @@ function getOrder(orderId) {
                             //Make product links clickable
                             initOrderDetailsLinks();
                             //DEMO
-                            changeDemoImages();
+                            if (env === 'development') {
+                                changeDemoImages();
+                            }
                         })
                     }
                 }
