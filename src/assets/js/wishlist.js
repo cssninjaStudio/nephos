@@ -24,7 +24,7 @@ function getWishlists() {
     }
 
     //Load wishlists
-    else if (userData.wishlists.length === 0) {
+    else if (userData.wishlists === undefined) {
         $('#wishlist-main, #wishlist-empty-placeholder').toggleClass('is-hidden');
     }
     else {
