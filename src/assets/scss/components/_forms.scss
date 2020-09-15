@@ -205,52 +205,6 @@ textarea.textarea {
             }
         }
     }
-
-    .control {
-        &.has-icon {
-            position: relative;
-
-            .input {
-                padding-left: 36px;
-
-                &:focus + .form-icon svg {
-                    stroke: $primary;
-                }
-            }
-
-            .form-icon {
-                position: absolute;
-                top: 0;
-                left: 0;
-                height: 36px;
-                width: 36px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-
-                svg {
-                    height: 18px;
-                    width: 18px;
-                    stroke: $placeholder;
-                    transition: stroke .3s;
-                }
-            }
-        }
-
-        &.is-bigger {
-            .input {
-                height: 44px;
-                padding-left: 44px;
-            }
-
-            &.has-icon {
-                .form-icon {
-                    height: 44px;
-                    width: 44px;
-                }
-            }
-        }
-    }
 }
 
 .control {
@@ -261,6 +215,50 @@ textarea.textarea {
     &.is-input-wrapper {
         margin: 10px 0;
         background: #f7f7f7;
+    }
+
+    &.has-icon {
+        position: relative;
+
+        .input {
+            padding-left: 40px;
+
+            &:focus + .form-icon svg {
+                stroke: $primary;
+            }
+        }
+
+        .form-icon {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 40px;
+            width: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            svg {
+                height: 18px;
+                width: 18px;
+                stroke: $placeholder;
+                transition: stroke .3s;
+            }
+        }
+    }
+
+    &.is-bigger {
+        .input {
+            height: 44px;
+            padding-left: 44px;
+        }
+
+        &.has-icon {
+            .form-icon {
+                height: 44px;
+                width: 44px;
+            }
+        }
     }
 }
 

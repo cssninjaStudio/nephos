@@ -49,7 +49,7 @@ $(document).ready(function () {
         $this.addClass('s-hidden');
 
         // Wrap the select element in a div
-        $this.wrap('<div class="select"></div>');
+        $this.wrap('<div class="select-wrap"></div>');
 
         // Insert a styled div to sit over the top of the hidden select element
         $this.after('<div class="styledSelect"></div>');

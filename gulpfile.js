@@ -1,5 +1,5 @@
 'use strict';
-const {src, dest, watch, series, parallel } = require('gulp');
+const { src, dest, watch, series, parallel } = require('gulp');
 const log = require('fancy-log');
 const colors = require('ansi-colors');
 const browserSync = require('browser-sync').create();
@@ -80,10 +80,10 @@ function compileHTML() {
     .pipe(panini({
       root: 'src/pages/',
       layouts: 'src/layouts/',
-          /*pageLayouts: {
-            //All pages inside src/pages/blog will use the blog.html layout
-            'blog': 'blog'
-          }*/
+      /*pageLayouts: {
+        //All pages inside src/pages/blog will use the blog.html layout
+        'blog': 'blog'
+      }*/
       partials: 'src/partials/',
       helpers: 'src/helpers/',
       data: 'src/data/'
@@ -96,24 +96,26 @@ function compileHTML() {
 function compileJS() {
   console.log('---------------COMPILE CUSTOM JS---------------');
   return src([
-      'src/assets/js/_data-wishlist.js',
-      'src/assets/js/_data-addresses.js',
-      'src/assets/js/_data-orders.js',
-      'src/assets/js/functions.js',
-      'src/assets/js/nephos.js',
-      'src/assets/js/authentication.js',
-      'src/assets/js/cart.js',
-      'src/assets/js/account.js',
-      'src/assets/js/wishlist.js',
-      'src/assets/js/product.js',
-      'src/assets/js/orders.js',
-      'src/assets/js/order.js',
-      'src/assets/js/checkout.js',
-      'src/assets/js/search.js',
-      'src/assets/js/demo.js',
-      'src/assets/js/elements.js',
-    ])
-    .pipe(babel())
+    'src/assets/js/_data-wishlist.js',
+    'src/assets/js/_data-addresses.js',
+    'src/assets/js/_data-orders.js',
+    'src/assets/js/functions.js',
+    'src/assets/js/nephos.js',
+    'src/assets/js/authentication.js',
+    'src/assets/js/cart.js',
+    'src/assets/js/account.js',
+    'src/assets/js/wishlist.js',
+    'src/assets/js/product.js',
+    'src/assets/js/orders.js',
+    'src/assets/js/order.js',
+    'src/assets/js/checkout.js',
+    'src/assets/js/search.js',
+    'src/assets/js/demo.js',
+    'src/assets/js/elements.js',
+  ])
+    .pipe(babel({
+      presets: [['@babel/preset-env']]
+    }))
     .pipe(dest('dist/assets/js/'))
     .pipe(browserSync.stream());
 }
@@ -164,7 +166,7 @@ function jsLint() {
 // WATCH FILES
 function watchFiles() {
   watch('src/**/*.html', compileHTML);
-  watch(['src/assets/scss/**/*', 'src/assets/scss/*'] , compileSCSS);
+  watch(['src/assets/scss/**/*', 'src/assets/scss/*'], compileSCSS);
   watch('src/assets/js/*.js', compileJS);
   watch('src/assets/img/**/*', copyImages);
 }
@@ -196,8 +198,8 @@ function copyImages() {
 function copyFont() {
   console.log('---------------COPYING FONTS INTO DIST FOLDER---------------');
   return src([
-      'src/assets/font/*',
-    ])
+    'src/assets/font/*',
+  ])
     .pipe(dest('dist/assets/fonts'))
     .pipe(browserSync.stream());
 }
@@ -266,8 +268,8 @@ function concatCssPlugins() {
 function jsVendor() {
   console.log('---------------COPY JAVASCRIPT VENDOR FILES INTO DIST---------------');
   return src([
-      'src/assets/vendor/js/*',
-    ])
+    'src/assets/vendor/js/*',
+  ])
     .pipe(dest('dist/assets/vendor/js'))
     .pipe(browserSync.stream());
 }
@@ -276,9 +278,9 @@ function jsVendor() {
 function cssVendor() {
   console.log('---------------COPY CSS VENDOR FILES INTO DIST---------------');
   return src([
-      'src/assets/vendor/css/*',
+    'src/assets/vendor/css/*',
 
-    ])
+  ])
     .pipe(dest('dist/assets/vendor/css'))
     .pipe(browserSync.stream());
 }
