@@ -293,6 +293,7 @@ TABLE OF CONTENTS
 
                     .product-quantity {
                         margin-left: 0 !important;
+                        margin-right: 10px;
                     }
 
                     .add-to-cart {
@@ -701,6 +702,32 @@ TABLE OF CONTENTS
                 .product-controls {
                     display: block;
 
+                    .size-box-wrap {
+                        margin-right: 0;
+
+                        .heading {
+                            text-align: center;
+                        }
+
+                        .size-box {
+                            max-width: 100%;
+
+                            .chosen-container {
+                                width: 100%;
+
+                                .chosen-single {
+                                    > div {
+                                        float: right;
+                                    }
+                                }
+
+                                .chosen-drop {
+                                    width: 100%;
+                                }
+                            }
+                        }
+                    }
+
                     .product-price {
                         margin-bottom: 10px;
                         width: 100%;
@@ -715,6 +742,7 @@ TABLE OF CONTENTS
                         margin-left: 0 !important;
                         width: 100%;
                         text-align: center !important;
+                        margin-right: 0;
 
                         .heading {
                             margin-left: 0 !important;

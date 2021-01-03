@@ -457,15 +457,29 @@ TABLE OF CONTENTS
                     }
                 }
 
-                //quantity input
-                .product-quantity {
+                //Size control
+                .size-box-wrap {
                     margin-left: auto;
+                    margin-right: 10px;
 
                     .heading {
                         font-family: 'Raleway', sans-serif;
                         font-weight: 600;
                         margin: 5px 0;
-                        text-align: center;
+                        text-align: left;
+                        padding-left: 8px;
+                    }
+                }
+
+                //quantity input
+                .product-quantity {
+
+                    .heading {
+                        font-family: 'Raleway', sans-serif;
+                        font-weight: 600;
+                        margin: 5px 0;
+                        text-align: left;
+                        padding-left: 8px;
                     }
 
                     .details-spinner {
