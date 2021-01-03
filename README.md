@@ -1,4 +1,4 @@
-# NEPHOS 2
+# NEPHOS 2.0
 
 ### Note
 
