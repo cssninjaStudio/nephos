@@ -1,9 +1,11 @@
 {
   "name": "nephos-2",
-  "version": "2.2.0",
+  "version": "2.1.0",
   "description": "Ecommerce App template",
   "main": "index.js",
   "scripts": {
+    "dev": "gulp dev",
+    "build": "gulp build",
     "preinstall": "npx npm-force-resolutions"
   },
   "author": "Css Ninja",
