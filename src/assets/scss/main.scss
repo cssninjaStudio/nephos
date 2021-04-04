@@ -19,6 +19,10 @@ TABLE OF CONTENTS
 @import "base/base";
 @import "base/colors";
 @import "base/fonts";
+
+//Bulma source import
+@import "../sass/bulma.sass";
+
 @import "base/helpers";
 @import "base/utils";
 @import "abstracts/animations";

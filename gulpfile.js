@@ -11,7 +11,6 @@ const del = require('del');
 const panini = require('panini');
 const uglify = require('gulp-uglify-es').default;
 const sourcemaps = require('gulp-sourcemaps');
-const imagemin = require('gulp-imagemin');
 const removeCode = require('gulp-remove-code');
 const removeLog = require('gulp-remove-logging');
 const prettyHtml = require('gulp-pretty-html');
@@ -25,6 +24,8 @@ const accessibility = require('gulp-accessibility');
 const babel = require('gulp-babel');
 const nodepath = 'node_modules/';
 const assetspath = 'assets/';
+
+sass.compiler = require('sass');
 
 // File paths
 const files = {
@@ -188,7 +189,6 @@ function copyImages() {
   console.log('---------------OPTIMIZING IMAGES---------------');
   return src('src/assets/img/**/*.+(png|jpg|jpeg|gif|svg)')
     .pipe(newer('dist/assets/img/'))
-    //.pipe(imagemin())
     .pipe(dest('dist/assets/img/'))
     .pipe(browserSync.stream());
 }
@@ -330,8 +330,8 @@ exports.accessibility = HTMLAccessibility;
 exports.setup = series(setupBulma);
 
 // DEV
-exports.dev = series(cleanDist, copyFont, copyData, jsVendor, cssVendor, copyImages, compileHTML, concatPlugins, concatCssPlugins, compileJS, resetPages, prettyHTML, compileSASS, compileSCSS, browserSyncInit, watchFiles);
+exports.dev = series(cleanDist, copyFont, copyData, jsVendor, cssVendor, copyImages, compileHTML, concatPlugins, concatCssPlugins, compileJS, resetPages, prettyHTML, compileSCSS, browserSyncInit, watchFiles);
 
 // BUILD
-exports.build = series(cleanDist, copyFont, copyData, jsVendor, cssVendor, copyImages, compileHTML, concatPlugins, concatCssPlugins, compileJS, resetPages, prettyHTML, compileSASS, compileSCSS);
+exports.build = series(cleanDist, copyFont, copyData, jsVendor, cssVendor, copyImages, compileHTML, concatPlugins, concatCssPlugins, compileJS, resetPages, prettyHTML, compileSCSS);
 

@@ -30,6 +30,10 @@ TABLE OF CONTENTS
 @import "base/theme-default";
 @import "base/colors";
 @import "base/utils";
+
+//Bulma source import
+@import "../sass/bulma.sass";
+
 @import "abstracts/animations";
 @import "components/buttons";
 @import "components/checkboxes";
@@ -737,7 +741,7 @@ canvas {
         margin: 40px auto;
         background: $white;
         border-radius: 2px;
-        box-shadow: $primary-box-shadow;
+        box-shadow: $light-box-shadow;
         display: flex;
         opacity: 0;
         pointer-events: none;
