@@ -15,6 +15,8 @@ TABLE OF CONTENTS
 =============================================================================
 ***/
 
+@use 'sass:math';
+
 /* ==========================================================================
 0. Steps indicator
 ========================================================================== */
@@ -37,7 +39,7 @@ $bullet-size: 3em;
         li {
             position: relative;
             float: left;
-            width: 100% / $number-of-steps;
+            width: math.div(100%, $number-of-steps);
             text-align: center;
         }
 

@@ -3,7 +3,7 @@ const { src, dest, watch, series, parallel } = require('gulp');
 const log = require('fancy-log');
 const colors = require('ansi-colors');
 const browserSync = require('browser-sync').create();
-const sass = require('gulp-sass');
+const sass = require('gulp-sass')(require('sass'));
 const bourbon = require('node-bourbon').includePaths;
 const rename = require('gulp-rename');
 const concat = require('gulp-concat');
@@ -25,7 +25,6 @@ const babel = require('gulp-babel');
 const nodepath = 'node_modules/';
 const assetspath = 'assets/';
 
-sass.compiler = require('sass');
 
 // File paths
 const files = {
