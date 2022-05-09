@@ -64,7 +64,7 @@
   "dependencies": {
     "@fengyuanchen/datepicker": "^0.6.5",
     "alertifyjs": "^1.11.2",
-    "bulma": "^0.9.3",
+    "bulma": "^0.9.4",
     "card": "^2.4.0",
     "chosen-js": "^1.8.3",
     "clean-css": "^4.1.11",
