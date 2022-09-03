@@ -50,6 +50,8 @@ $(document).ready(function(){
 
     initFileInputs();
 
+    initProductCarousel();
+
     //Check viewport size
     if (!mobileTrue) {
         initPopovers();
