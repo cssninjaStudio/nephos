@@ -9,21 +9,19 @@ const rename = require('gulp-rename');
 const concat = require('gulp-concat');
 const del = require('del');
 const panini = require('panini');
-const uglify = require('gulp-uglify-es').default;
 const sourcemaps = require('gulp-sourcemaps');
-const removeCode = require('gulp-remove-code');
-const removeLog = require('gulp-remove-logging');
+const replace = require('gulp-replace');
 const prettyHtml = require('gulp-pretty-html');
 const sassLint = require('gulp-sass-lint');
 const htmllint = require('gulp-htmllint');
 const jshint = require('gulp-jshint');
-const htmlreplace = require('gulp-html-replace');
 const newer = require('gulp-newer');
 const autoprefixer = require('gulp-autoprefixer');
 const accessibility = require('gulp-accessibility');
 const babel = require('gulp-babel');
 const nodepath = 'node_modules/';
 const assetspath = 'assets/';
+const packageJson = require('./package.json')
 
 
 // File paths
@@ -77,6 +75,7 @@ function compileHTML() {
   console.log('---------------COMPILING HTML WITH PANINI---------------');
   panini.refresh();
   return src('src/pages/**/*.html')
+    .pipe(replace('{{PACKAGE_VERSION}}', packageJson.version))
     .pipe(panini({
       root: 'src/pages/',
       layouts: 'src/layouts/',
