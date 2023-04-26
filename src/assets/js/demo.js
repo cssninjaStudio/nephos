@@ -20,7 +20,7 @@ function initInfoModal(){
 $(document).ready(function() {
 
     //Info modal
-    initInfoModal();
+    // initInfoModal();
 
     //Page loader
     if ($('.pageloader').length) {

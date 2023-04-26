@@ -225,7 +225,7 @@ function concatPlugins() {
     nodepath + 'ocanvas/build/dist/latest/ocanvas.min.js',
     nodepath + 'slick-carousel/slick/slick.min.js',
     nodepath + 'croppie/croppie.min.js',
-    nodepath + '@fengyuanchen/datepicker/dist/datepicker.min.js',
+    nodepath + '@chenfengyuan/datepicker/dist/datepicker.min.js',
     nodepath + 'chosen-js/chosen.jquery.min.js',
     nodepath + 'izitoast/dist/js/iziToast.min.js',
     nodepath + 'webui-popover/dist/jquery.webui-popover.min.js',
