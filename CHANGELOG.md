@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.7.3](https://github.com/cssninjaStudio/nephos/compare/v2.7.2...v2.7.3) (2023-04-26)
+
 ### [2.7.2](https://github.com/cssninjaStudio/nephos/compare/v2.7.1...v2.7.2) (2023-04-26)
 
 ### [2.7.1](https://github.com/cssninjaStudio/nephos/compare/v2.7.0...v2.7.1) (2022-10-27)
