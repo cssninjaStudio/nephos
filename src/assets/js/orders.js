@@ -2,65 +2,58 @@
 
 //Get and populate orders grid
 function getOrdersGrid() {
-    var userData = JSON.parse(localStorage.getItem('user'));
-    var primaryColor;
-    var modifierClass;
-    var icon;
-    const truckIcon = feather.icons.truck.toSvg();
-    const clockIcon = feather.icons.clock.toSvg();
-    const checkIcon = feather.icons.check.toSvg();
-    const packageIcon = feather.icons.package.toSvg();
-    const ccIcon = feather.icons['credit-card'].toSvg();
-    const blockedIcon = feather.icons['alert-octagon'].toSvg();
+  var userData = JSON.parse(localStorage.getItem("user"));
+  var primaryColor;
+  var modifierClass;
+  var icon;
+  const truckIcon = feather.icons.truck.toSvg();
+  const clockIcon = feather.icons.clock.toSvg();
+  const checkIcon = feather.icons.check.toSvg();
+  const packageIcon = feather.icons.package.toSvg();
+  const ccIcon = feather.icons["credit-card"].toSvg();
+  const blockedIcon = feather.icons["alert-octagon"].toSvg();
 
-    //If not logged in, hide account
-    if (!userData.isLoggedIn) {
-        $('#orders-main, #orders-main-placeholder').toggleClass('is-hidden');
-    }
-    else if (userData.orders.length === 0) {
-        $('#orders-main, #orders-empty-placeholder').toggleClass('is-hidden');
-    }
-    //Load orders
-    else {
-        //Remove orders
-        $('#orders-main .column').remove();
+  //If not logged in, hide account
+  if (!userData.isLoggedIn) {
+    $("#orders-main, #orders-main-placeholder").toggleClass("is-hidden");
+  } else if (userData.orders.length === 0) {
+    $("#orders-main, #orders-empty-placeholder").toggleClass("is-hidden");
+  }
+  //Load orders
+  else {
+    //Remove orders
+    $("#orders-main .column").remove();
 
-        //Loop orders
-        for (var i = 0; i < userData.orders.length; i++) {
+    //Loop orders
+    for (var i = 0; i < userData.orders.length; i++) {
+      //Apply status color
+      if (userData.orders[i].status === "New") {
+        primaryColor = "#00b289";
+        modifierClass = "is-success";
+        icon = packageIcon;
+      } else if (userData.orders[i].status === "Shipping") {
+        primaryColor = "#0023ff";
+        modifierClass = "is-primary";
+        icon = truckIcon;
+      } else if (userData.orders[i].status === "Complete") {
+        primaryColor = "#0023ff";
+        modifierClass = "is-primary";
+        icon = checkIcon;
+      } else if (userData.orders[i].status === "Preparing") {
+        primaryColor = "#00b289";
+        modifierClass = "is-success";
+        icon = packageIcon;
+      } else if (userData.orders[i].status === "Processing") {
+        primaryColor = "#eda514";
+        modifierClass = "is-warning";
+        icon = ccIcon;
+      } else if (userData.orders[i].status === "Blocked") {
+        primaryColor = "#FF7273";
+        modifierClass = "is-danger";
+        icon = blockedIcon;
+      }
 
-            //Apply status color
-            if (userData.orders[i].status === 'New') {
-                primaryColor = '#00b289';
-                modifierClass = 'is-success';
-                icon = packageIcon;
-            }
-            else if (userData.orders[i].status === 'Shipping') {
-                primaryColor = '#0023ff';
-                modifierClass = 'is-primary';
-                icon = truckIcon;
-            }
-            else if (userData.orders[i].status === 'Complete') {
-                primaryColor = '#0023ff';
-                modifierClass = 'is-primary';
-                icon = checkIcon;
-            }
-            else if (userData.orders[i].status === 'Preparing') {
-                primaryColor = '#00b289';
-                modifierClass = 'is-success';
-                icon = packageIcon;
-            }
-            else if (userData.orders[i].status === 'Processing') {
-                primaryColor = '#eda514';
-                modifierClass = 'is-warning';
-                icon = ccIcon;
-            }
-            else if (userData.orders[i].status === 'Blocked') {
-                primaryColor = '#FF7273';
-                modifierClass = 'is-danger';
-                icon = blockedIcon;
-            }
-
-            var template = `
+      var template = `
                 <div class="column is-4">
                     <div class="flat-card order-card has-popover-top" data-order-id="${userData.orders[i].id}">
                         <div class="order-info">
@@ -125,79 +118,73 @@ function getOrdersGrid() {
                         </div>
                     </div>
                 </div>
-            `
-            $.when($('#orders-main').append(template)).done(function(){
-                initPopovers();
-                //DEMO
-                if (env === 'development') {
-                    changeDemoImages();
-                }
-                //Hide Loader
-                $('.account-loader').addClass('is-hidden');
-                //Init Order details
-                initOrderDetailsLinks();
-            })
+            `;
+      $.when($("#orders-main").append(template)).done(function () {
+        initPopovers();
+        //DEMO
+        if (env === "development") {
+          changeDemoImages();
         }
+        //Hide Loader
+        $(".account-loader").addClass("is-hidden");
+        //Init Order details
+        initOrderDetailsLinks();
+      });
     }
+  }
 }
 
 //Get and populate orders List
 function getOrdersList() {
-    var userData = JSON.parse(localStorage.getItem('user'));
-    var primaryColor;
-    var modifierClass;
-    var icon;
-    const truckIcon = feather.icons.truck.toSvg();
-    const clockIcon = feather.icons.clock.toSvg();
-    const checkIcon = feather.icons.check.toSvg();
-    const packageIcon = feather.icons.package.toSvg();
-    const ccIcon = feather.icons['credit-card'].toSvg();
-    const blockedIcon = feather.icons['alert-octagon'].toSvg();
-    const supportIcon = feather.icons['life-buoy'].toSvg();
+  var userData = JSON.parse(localStorage.getItem("user"));
+  var primaryColor;
+  var modifierClass;
+  var icon;
+  const truckIcon = feather.icons.truck.toSvg();
+  const clockIcon = feather.icons.clock.toSvg();
+  const checkIcon = feather.icons.check.toSvg();
+  const packageIcon = feather.icons.package.toSvg();
+  const ccIcon = feather.icons["credit-card"].toSvg();
+  const blockedIcon = feather.icons["alert-octagon"].toSvg();
+  const supportIcon = feather.icons["life-buoy"].toSvg();
 
-    //If not logged in, hide account
-    if (!userData.isLoggedIn) {
-        $('#orders-main, #orders-main-placeholder').toggleClass('is-hidden');
-    }
-    else if (userData.orders.length === 0) {
-        $('#orders-main, #orders-empty-placeholder').toggleClass('is-hidden');
-    }
-    //Load orders
-    else {
-        //Remove orders
-        $('#orders-main .order-long-card').remove();
+  //If not logged in, hide account
+  if (!userData.isLoggedIn) {
+    $("#orders-main, #orders-main-placeholder").toggleClass("is-hidden");
+  } else if (userData.orders.length === 0) {
+    $("#orders-main, #orders-empty-placeholder").toggleClass("is-hidden");
+  }
+  //Load orders
+  else {
+    //Remove orders
+    $("#orders-main .order-long-card").remove();
 
-        //Loop orders
-        for (var i = 0; i < userData.orders.length; i++) {
+    //Loop orders
+    for (var i = 0; i < userData.orders.length; i++) {
+      //Apply status color
+      if (userData.orders[i].status === "Shipping") {
+        primaryColor = "#0023ff";
+        modifierClass = "is-primary";
+        icon = truckIcon;
+      } else if (userData.orders[i].status === "Complete") {
+        primaryColor = "#0023ff";
+        modifierClass = "is-primary";
+        icon = checkIcon;
+      } else if (userData.orders[i].status === "Preparing") {
+        primaryColor = "#00b289";
+        modifierClass = "is-success";
+        icon = packageIcon;
+      } else if (userData.orders[i].status === "Processing") {
+        primaryColor = "#eda514";
+        modifierClass = "is-warning";
+        icon = ccIcon;
+      } else if (userData.orders[i].status === "Blocked") {
+        primaryColor = "#FF7273";
+        modifierClass = "is-danger";
+        icon = blockedIcon;
+      }
 
-            //Apply status color
-            if (userData.orders[i].status === 'Shipping') {
-                primaryColor = '#0023ff';
-                modifierClass = 'is-primary';
-                icon = truckIcon;
-            }
-            else if (userData.orders[i].status === 'Complete') {
-                primaryColor = '#0023ff';
-                modifierClass = 'is-primary';
-                icon = checkIcon;
-            }
-            else if (userData.orders[i].status === 'Preparing') {
-                primaryColor = '#00b289';
-                modifierClass = 'is-success';
-                icon = packageIcon;
-            }
-            else if (userData.orders[i].status === 'Processing') {
-                primaryColor = '#eda514';
-                modifierClass = 'is-warning';
-                icon = ccIcon;
-            }
-            else if (userData.orders[i].status === 'Blocked') {
-                primaryColor = '#FF7273';
-                modifierClass = 'is-danger';
-                icon = blockedIcon;
-            }
-
-            var template = `
+      var template = `
                 <div class="order-long-card" data-order-id="${userData.orders[i].id}">
                     <div class="left-side">
                         <div class="order-header">
@@ -232,75 +219,83 @@ function getOrdersList() {
                         </div>
                     </div>
                 </div>
-            `
-            $.when($('#orders-main .column.is-12').append(template)).done(function () {
-                //Hide Loader
-                $('.account-loader').addClass('is-hidden');
-            })
-        }
-        //Load products for each order
-        loadOrdersListProducts();
-        //Init Order details
-        initOrderDetailsLinks();
+            `;
+      $.when($("#orders-main .column.is-12").append(template)).done(
+        function () {
+          //Hide Loader
+          $(".account-loader").addClass("is-hidden");
+        },
+      );
     }
+    //Load products for each order
+    loadOrdersListProducts();
+    //Init Order details
+    initOrderDetailsLinks();
+  }
 }
 
 //Populate inner product lists in order lists
 function loadOrdersListProducts() {
-    var userData = JSON.parse(localStorage.getItem('user'));
+  var userData = JSON.parse(localStorage.getItem("user"));
 
-    $('.order-long-card').each(function(){
-        var $this = $(this);
-        var orderId = parseInt($this.attr('data-order-id'));
-        var $container = $this.find('.ordered-products');
-        var products;
+  $(".order-long-card").each(function () {
+    var $this = $(this);
+    var orderId = parseInt($this.attr("data-order-id"));
+    var $container = $this.find(".ordered-products");
+    var products;
 
-        for (var i = 0; i < userData.orders.length; i++) {
-            if (userData.orders[i].id == orderId){
-                products = userData.orders[i].products;
-            }
-        }
+    for (var i = 0; i < userData.orders.length; i++) {
+      if (userData.orders[i].id == orderId) {
+        products = userData.orders[i].products;
+      }
+    }
 
-        for (var p = 0; p < products.length; p++) {
-
-            var template = `
+    for (var p = 0; p < products.length; p++) {
+      var template = `
                         <div class="ordered-product">
-                            <img src="http://via.placeholder.com/250x250" data-demo-src="${products[p].photoUrl}" alt="">
+                            <img src="http://via.placeholder.com/250x250" data-demo-src="${
+                              products[p].photoUrl
+                            }" alt="">
                             <div class="product-meta">
                                 <span class="name">${products[p].name}</span>
                                 <span class="price">
-                                    <span>${parseFloat(products[p].price).toFixed(2)}</span>
-                                    <span>x <var>${products[p].quantity}</var></span>
+                                    <span>${parseFloat(
+                                      products[p].price,
+                                    ).toFixed(2)}</span>
+                                    <span>x <var>${
+                                      products[p].quantity
+                                    }</var></span>
                                 </span>
                             </div>
                             <div class="product-subtotal">
                                 <span>Total</span>
-                                <span>${(parseFloat(products[p].price) * parseFloat(products[p].quantity)).toFixed(2)}</span>
+                                <span>${(
+                                  parseFloat(products[p].price) *
+                                  parseFloat(products[p].quantity)
+                                ).toFixed(2)}</span>
                             </div>
                         </div>
-                    `
+                    `;
 
-            $.when($container.append(template)).done(function () {
-                //DEMO
-                if (env === 'development') {
-                    changeDemoImages();
-                }
-                $this.find('.products-loader').removeClass('is-active');
-            })
+      $.when($container.append(template)).done(function () {
+        //DEMO
+        if (env === "development") {
+          changeDemoImages();
         }
-    })
+        $this.find(".products-loader").removeClass("is-active");
+      });
+    }
+  });
 }
 
 $(document).ready(function () {
+  //If orders grid page
+  if ($("#orders-grid").length) {
+    getOrdersGrid();
+  }
 
-    //If orders grid page
-    if ($('#orders-grid').length) {
-        getOrdersGrid();
-    }
-
-    //If orders list page
-    if ($('#orders-list').length) {
-        getOrdersList();
-    }
-
-})
+  //If orders list page
+  if ($("#orders-list").length) {
+    getOrdersList();
+  }
+});

@@ -6,62 +6,61 @@
     1. development
     2. customization
 */
-var env = 'development';
+var env = "development";
 
 initPageloader();
 
-$(document).ready(function(){
+$(document).ready(function () {
+  if (env === "development") {
+    changeDemoImages();
+  }
 
-    if (env === 'development') {
-		changeDemoImages();
-	}
+  initNavbarBurger();
 
-    initNavbarBurger();
+  initFullscreenSlider();
 
-    initFullscreenSlider();
+  initShopSidebar();
 
-    initShopSidebar();
+  initProductDetailsLinks();
 
-    initProductDetailsLinks();
+  initOrderDetailsLinks();
 
-    initOrderDetailsLinks();
+  initCartSidebar();
 
-    initCartSidebar();
+  initGlobalSearch();
 
-    initGlobalSearch();
+  initFilterSidebar();
 
-    initFilterSidebar();
+  initCategoriesSidebar();
 
-    initCategoriesSidebar();
+  feather.replace();
 
-    feather.replace();
+  initTabs();
 
-    initTabs();
+  initDropdowns();
 
-    initDropdowns();
+  initModals();
 
-    initModals();
+  initClosableMessage();
 
-    initClosableMessage();
+  initChosenSelects();
 
-    initChosenSelects();
+  initBackgroundImages();
 
-    initBackgroundImages();
+  initFileInputs();
 
-    initFileInputs();
+  initProductCarousel();
 
-    initProductCarousel();
+  //Check viewport size
+  if (!mobileTrue) {
+    initPopovers();
+  }
 
-    //Check viewport size
-    if (!mobileTrue) {
-        initPopovers();
-    }
+  initCardActions();
 
-    initCardActions();
+  initAnimatedCheckboxes();
 
-    initAnimatedCheckboxes();
+  initMobileMode();
 
-    initMobileMode();
-
-    getCart();
-})
+  getCart();
+});

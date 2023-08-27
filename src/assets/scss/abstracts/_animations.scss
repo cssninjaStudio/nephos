@@ -25,30 +25,32 @@ TABLE OF CONTENTS
 
 //Keyframes
 @-webkit-keyframes fadeIn {
-    from {}
+  from {
+  }
 
-    to {
-        opacity: 1;
-    }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeIn {
-    from {}
+  from {
+  }
 
-    to {
-        opacity: 1;
-    }
+  to {
+    opacity: 1;
+  }
 }
 
 //Settings
 .preFadeIn {
-    opacity: 0;
+  opacity: 0;
 }
 
 .fadeIn {
-    opacity: 0;
-    -webkit-animation-name: fadeInUp;
-    animation-name: fadeInUp;
+  opacity: 0;
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
 }
 
 /* ==========================================================================
@@ -56,48 +58,48 @@ TABLE OF CONTENTS
 ========================================================================== */
 
 .animated {
-    animation-duration: 0.5s;
-    animation-fill-mode: both;
-    -webkit-animation-duration: 0.5s;
-    -webkit-animation-fill-mode: both;
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 0.5s;
+  -webkit-animation-fill-mode: both;
 }
 
 //Keyframes
 @-webkit-keyframes fadeInUp {
-    from {
-        -webkit-transform: translate3d(0, 20px, 0);
-        transform: translate3d(0, 20px, 0);
-    }
+  from {
+    -webkit-transform: translate3d(0, 20px, 0);
+    transform: translate3d(0, 20px, 0);
+  }
 
-    to {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-        opacity: 1;
-    }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
 }
 
 @keyframes fadeInUp {
-    from {
-        -webkit-transform: translate3d(0, 20px, 0);
-        transform: translate3d(0, 20px, 0);
-    }
+  from {
+    -webkit-transform: translate3d(0, 20px, 0);
+    transform: translate3d(0, 20px, 0);
+  }
 
-    to {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-        opacity: 1;
-    }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
 }
 
 //Settings
 .preFadeInUp {
-    opacity: 0;
+  opacity: 0;
 }
 
 .fadeInUp {
-    opacity: 0;
-    -webkit-animation-name: fadeInUp;
-    animation-name: fadeInUp;
+  opacity: 0;
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
 }
 
 /* ==========================================================================
@@ -106,37 +108,37 @@ TABLE OF CONTENTS
 
 //Keyframes
 @-webkit-keyframes translateLeft {
-    from {
-        -webkit-transform: translate3d(100%, 0, 0);
-        transform: translate3d(100%, 0, 0);
-    }
+  from {
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+  }
 
-    to {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-    }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 @keyframes translateLeft {
-    from {
-        -webkit-transform: translate3d(100%, 0, 0);
-        transform: translate3d(100%, 0, 0);
-    }
+  from {
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+  }
 
-    to {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-    }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 //Settings
 .translateLeft {
-    -webkit-animation-name: translateLeft;
-    animation-name: translateLeft;
-    -webkit-animation-duration: 0.3s;
-    animation-duration: 0.3s;
-    -webkit-transition: all 500ms cubic-bezier(0.755, 0.05, 0.855, 0.06);
-    transition: all 500ms cubic-bezier(0.755, 0.05, 0.855, 0.06);
+  -webkit-animation-name: translateLeft;
+  animation-name: translateLeft;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -webkit-transition: all 500ms cubic-bezier(0.755, 0.05, 0.855, 0.06);
+  transition: all 500ms cubic-bezier(0.755, 0.05, 0.855, 0.06);
 }
 
 /* ==========================================================================
@@ -145,42 +147,42 @@ TABLE OF CONTENTS
 
 //Keyframes
 @-webkit-keyframes fadeInLeft {
-    from {
-        -webkit-transform: translate3d(20px, 0, 0);
-        transform: translate3d(20px, 0, 0);
-        opacity: 0;
-    }
+  from {
+    -webkit-transform: translate3d(20px, 0, 0);
+    transform: translate3d(20px, 0, 0);
+    opacity: 0;
+  }
 
-    to {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-        opacity: 1;
-    }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
 }
 
 @keyframes fadeInLeft {
-    from {
-        -webkit-transform: translate3d(20px, 0, 0);
-        transform: translate3d(20px, 0, 0);
-        opacity: 0;
-    }
+  from {
+    -webkit-transform: translate3d(20px, 0, 0);
+    transform: translate3d(20px, 0, 0);
+    opacity: 0;
+  }
 
-    to {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-        opacity: 1;
-    }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
 }
 
 //Settings
 .preFadeInLeft {
-    opacity: 0;
+  opacity: 0;
 }
 
 .fadeInLeft {
-    opacity: 0;
-    -webkit-animation-name: fadeInLeft;
-    animation-name: fadeInLeft;
+  opacity: 0;
+  -webkit-animation-name: fadeInLeft;
+  animation-name: fadeInLeft;
 }
 
 /* ==========================================================================
@@ -188,49 +190,51 @@ TABLE OF CONTENTS
 ========================================================================== */
 
 @-webkit-keyframes gelatine {
-    from, to {
-        -webkit-transform: scale(1, 1);
-    }
+  from,
+  to {
+    -webkit-transform: scale(1, 1);
+  }
 
-    25% {
-        -webkit-transform: scale(0.9, 1.1);
-    }
+  25% {
+    -webkit-transform: scale(0.9, 1.1);
+  }
 
-    50% {
-        -webkit-transform: scale(1.1, 0.9);
-    }
+  50% {
+    -webkit-transform: scale(1.1, 0.9);
+  }
 
-    75% {
-        -webkit-transform: scale(0.95, 1.05);
-    }
+  75% {
+    -webkit-transform: scale(0.95, 1.05);
+  }
 }
 
 @keyframes gelatine {
-    from, to {
-        transform: scale(1, 1);
-    }
+  from,
+  to {
+    transform: scale(1, 1);
+  }
 
-    25% {
-        transform: scale(0.9, 1.1);
-    }
+  25% {
+    transform: scale(0.9, 1.1);
+  }
 
-    50% {
-        transform: scale(1.1, 0.9);
-    }
+  50% {
+    transform: scale(1.1, 0.9);
+  }
 
-    75% {
-        transform: scale(0.95, 1.05);
-    }
+  75% {
+    transform: scale(0.95, 1.05);
+  }
 }
 
 //Settings
 .gelatine {
-    -webkit-animation: gelatine 0.6s;
-    animation: gelatine 0.6s;
-    -webkit-animation-duration: 0.6s;
-    animation-duration: 0.6s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
+  -webkit-animation: gelatine 0.6s;
+  animation: gelatine 0.6s;
+  -webkit-animation-duration: 0.6s;
+  animation-duration: 0.6s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
 }
 
 /* ==========================================================================
@@ -239,32 +243,32 @@ TABLE OF CONTENTS
 
 //Keyframes
 @-webkit-keyframes scaleIn {
-    from {
-        -webkit-transform: scale(0);
-    }
+  from {
+    -webkit-transform: scale(0);
+  }
 
-    to {
-        -webkit-transform: scale(1);
-    }
+  to {
+    -webkit-transform: scale(1);
+  }
 }
 
 @keyframes scaleIn {
-    from {
-        transform: scale(0);
-    }
+  from {
+    transform: scale(0);
+  }
 
-    to {
-        transform: scale(1);
-    }
+  to {
+    transform: scale(1);
+  }
 }
 
 //Settings
 .scaleIn {
-    /* ... */
-    -webkit-animation: scaleIn 0.5s;
-    animation: scaleIn 0.5s;
-    -webkit-animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
-    animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+  /* ... */
+  -webkit-animation: scaleIn 0.5s;
+  animation: scaleIn 0.5s;
+  -webkit-animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+  animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
 /* ==========================================================================
@@ -273,29 +277,29 @@ TABLE OF CONTENTS
 
 //Keyframes
 @-webkit-keyframes scaleOut {
-    from {
-        -webkit-transform: scale(1);
-    }
+  from {
+    -webkit-transform: scale(1);
+  }
 
-    to {
-        -webkit-transform: scale(0);
-    }
+  to {
+    -webkit-transform: scale(0);
+  }
 }
 
 @keyframes scaleOut {
-    from {
-        transform: scale(1);
-    }
+  from {
+    transform: scale(1);
+  }
 
-    to {
-        transform: scale(0);
-    }
+  to {
+    transform: scale(0);
+  }
 }
 
 //Settings
 .scaleOut {
-    -webkit-animation: scaleOut 0.6s;
-    animation: scaleOut 0.6s;
+  -webkit-animation: scaleOut 0.6s;
+  animation: scaleOut 0.6s;
 }
 
 /* ==========================================================================
@@ -304,52 +308,50 @@ TABLE OF CONTENTS
 
 //Keyframes
 @-webkit-keyframes levitate {
-    from {
-        -webkit-transform: translate(0, 0);
-        transform: translate(0, 0);
-    }
+  from {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
 
-    50% {
-        -webkit-transform: translate(0, 10px);
-        transform: translate(0, 10px);
-    }
+  50% {
+    -webkit-transform: translate(0, 10px);
+    transform: translate(0, 10px);
+  }
 
-    to {
-        -webkit-transform: translate(0, 0);
-        transform: translate(0, 0);
-    }
+  to {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
 }
 
 @keyframes levitate {
-    from {
-        -webkit-transform: translate(0, 0);
-        transform: translate(0, 0);
-    }
+  from {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
 
-    50% {
-        -webkit-transform: translate(0, 10px);
-        transform: translate(0, 10px);
-    }
+  50% {
+    -webkit-transform: translate(0, 10px);
+    transform: translate(0, 10px);
+  }
 
-    to {
-        -webkit-transform: translate(0, 0);
-        transform: translate(0, 0);
-    }
+  to {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
 }
 
 //Settings
 .levitate {
-    -webkit-animation-name: levitate;
-    animation-name: levitate;
-    -webkit-animation-duration: 3s;
-    animation-duration: 3s;
-    -webkit-animation-iteration-count: infinite;
-    animation-iteration-count: infinite;
-    -webkit-animation-timing-function: ease-in-out;
-    animation-timing-function: ease-in-out;
+  -webkit-animation-name: levitate;
+  animation-name: levitate;
+  -webkit-animation-duration: 3s;
+  animation-duration: 3s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
 }
-
-
 
 /* ==========================================================================
 9. Success checkmark
@@ -359,120 +361,126 @@ $circle-length: 151px;
 $check-length: 36px;
 
 @keyframes scaleAnimation {
-    0% {
-        opacity: 0;
-        transform: scale(1.5);
-    }
+  0% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
 
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 @keyframes drawCircle {
-    0% {
-        stroke-dashoffset: $circle-length;
-    }
+  0% {
+    stroke-dashoffset: $circle-length;
+  }
 
-    100% {
-        stroke-dashoffset: 0;
-    }
+  100% {
+    stroke-dashoffset: 0;
+  }
 }
 
 @keyframes drawCheck {
-    0% {
-        stroke-dashoffset: $check-length;
-    }
+  0% {
+    stroke-dashoffset: $check-length;
+  }
 
-    100% {
-        stroke-dashoffset: 0;
-    }
+  100% {
+    stroke-dashoffset: 0;
+  }
 }
 
 @keyframes fadeOut {
-    0% {
-        opacity: 1;
-    }
+  0% {
+    opacity: 1;
+  }
 
-    100% {
-        opacity: 0;
-    }
+  100% {
+    opacity: 0;
+  }
 }
 
 @keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
+  0% {
+    opacity: 0;
+  }
 
-    100% {
-        opacity: 1;
-    }
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeInUp {
-    from {
-        -webkit-transform: translate3d(0, 10px, 0);
-        transform: translate3d(0, 10px, 0);
-        opacity: 0;
-    }
+  from {
+    -webkit-transform: translate3d(0, 10px, 0);
+    transform: translate3d(0, 10px, 0);
+    opacity: 0;
+  }
 
-    to {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-        opacity: 1;
-    }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
 }
 
 .SuccessAnimation {
-    &.is-primary {
-        .SuccessAnimationCircle, .SuccessAnimationCheck {
-            stroke: $primary;
-        }
-
-        .SuccessAnimationResult {
-            fill: $primary;
-        }
-    }
-
-    &.is-success {
-        .SuccessAnimationCircle, .SuccessAnimationCheck {
-            stroke: $secondary;
-        }
-
-        .SuccessAnimationResult {
-            fill: $secondary;
-        }
-    }
-
-    .SuccessAnimationCircle {
-        stroke-dasharray: $circle-length $circle-length;
-        stroke: $accent;
-    }
-
+  &.is-primary {
+    .SuccessAnimationCircle,
     .SuccessAnimationCheck {
-        stroke-dasharray: $check-length $check-length;
-        stroke: $accent;
+      stroke: $primary;
     }
 
     .SuccessAnimationResult {
-        fill: $accent;
-        opacity: 0;
+      fill: $primary;
     }
+  }
+
+  &.is-success {
+    .SuccessAnimationCircle,
+    .SuccessAnimationCheck {
+      stroke: $secondary;
+    }
+
+    .SuccessAnimationResult {
+      fill: $secondary;
+    }
+  }
+
+  .SuccessAnimationCircle {
+    stroke-dasharray: $circle-length $circle-length;
+    stroke: $accent;
+  }
+
+  .SuccessAnimationCheck {
+    stroke-dasharray: $check-length $check-length;
+    stroke: $accent;
+  }
+
+  .SuccessAnimationResult {
+    fill: $accent;
+    opacity: 0;
+  }
 }
 
 .SuccessAnimation.animated {
-    animation: 1s ease-out 0s 1 both scaleAnimation;
+  animation: 1s ease-out 0s 1 both scaleAnimation;
 
-    .SuccessAnimationCircle {
-        animation: 1s cubic-bezier(0.77, 0, 0.175, 1) 0s 1 both drawCircle, 0.3s linear 0.9s 1 both fadeOut;
-    }
+  .SuccessAnimationCircle {
+    animation:
+      1s cubic-bezier(0.77, 0, 0.175, 1) 0s 1 both drawCircle,
+      0.3s linear 0.9s 1 both fadeOut;
+  }
 
-    .SuccessAnimationCheck {
-        animation: 1s cubic-bezier(0.77, 0, 0.175, 1) 0s 1 both drawCheck, 0.3s linear 0.9s 1 both fadeOut;
-    }
+  .SuccessAnimationCheck {
+    animation:
+      1s cubic-bezier(0.77, 0, 0.175, 1) 0s 1 both drawCheck,
+      0.3s linear 0.9s 1 both fadeOut;
+  }
 
-    .SuccessAnimationResult {
-        animation: 0.3s linear 0.9s both fadeIn;
-    }
+  .SuccessAnimationResult {
+    animation: 0.3s linear 0.9s both fadeIn;
+  }
 }
