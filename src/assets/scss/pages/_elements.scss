@@ -43,7 +43,7 @@ TABLE OF CONTENTS
 
   //button
   .view-element {
-    font-family: "Raleway", sans-serif;
+    font-family: 'Raleway', sans-serif;
     text-transform: uppercase;
 
     a {
@@ -103,7 +103,7 @@ TABLE OF CONTENTS
     }
 
     p {
-      font-family: "Raleway", sans-serif;
+      font-family: 'Raleway', sans-serif;
       font-size: 0.85rem;
       margin-bottom: 10px;
     }
@@ -160,7 +160,7 @@ TABLE OF CONTENTS
     .status-text {
       span {
         font-size: 60%;
-        font-family: "Raleway", sans-serif;
+        font-family: 'Raleway', sans-serif;
         display: none;
 
         &.success-text {
@@ -351,7 +351,7 @@ TABLE OF CONTENTS
   background-color: $white;
   color: $muted-grey;
   padding: 0 10px;
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-weight: 500;
   display: flex;
   align-items: center;
@@ -414,7 +414,7 @@ TABLE OF CONTENTS
 }
 
 //Styles for select multiple
-.chosen-container-multi .chosen-choices li.search-field input[type="text"] {
+.chosen-container-multi .chosen-choices li.search-field input[type='text'] {
   height: 40px !important;
 }
 
@@ -587,7 +587,7 @@ TABLE OF CONTENTS
   }
 
   .navtab-content {
-    font-family: "Raleway", sans-serif;
+    font-family: 'Raleway', sans-serif;
     font-size: 0.9rem;
   }
 }

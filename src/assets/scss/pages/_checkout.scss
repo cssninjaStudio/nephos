@@ -15,7 +15,7 @@ TABLE OF CONTENTS
 =============================================================================
 ***/
 
-@use "sass:math";
+@use 'sass:math';
 
 /* ==========================================================================
 0. Steps indicator
@@ -79,7 +79,7 @@ $bullet-size: 3em;
 
     li + li {
       &:after {
-        content: "";
+        content: '';
         display: block;
         width: 100%;
         background-color: $placeholder;
@@ -141,7 +141,7 @@ $bullet-size: 3em;
             margin: 0 auto;
 
             h3 {
-              font-family: "Montserrat", sans-serif;
+              font-family: 'Montserrat', sans-serif;
               font-size: 1rem;
               color: $dark-text;
               font-weight: 600;
@@ -203,7 +203,7 @@ $bullet-size: 3em;
         }
 
         h2 {
-          font-family: "Raleway", sans-serif;
+          font-family: 'Raleway', sans-serif;
           font-size: 1.2rem;
           font-weight: 400 !important;
           text-transform: uppercase;
@@ -220,7 +220,7 @@ $bullet-size: 3em;
 
           .summary-label {
             display: block;
-            font-family: "Montserrat", sans-serif;
+            font-family: 'Montserrat', sans-serif;
             font-size: 0.7rem;
             font-weight: 600;
             color: $muted-grey;
@@ -250,7 +250,7 @@ $bullet-size: 3em;
               right: 14px;
               font-size: 0.65rem;
               color: $placeholder;
-              font-family: "Montserrat", sans-serif;
+              font-family: 'Montserrat', sans-serif;
               font-weight: 600;
               text-transform: uppercase;
               transition: color 0.3s;
@@ -406,7 +406,7 @@ $bullet-size: 3em;
             }
 
             h3 {
-              font-family: "Montserrat", sans-serif;
+              font-family: 'Montserrat', sans-serif;
               font-size: 0.7rem;
               font-weight: 600;
               color: $dark-text;
@@ -458,7 +458,7 @@ $bullet-size: 3em;
         margin-top: 30px;
 
         h3 {
-          font-family: "Montserrat", sans-serif;
+          font-family: 'Montserrat', sans-serif;
           font-size: 0.9rem;
           font-weight: 600;
           color: $dark-text;
@@ -494,7 +494,7 @@ $bullet-size: 3em;
         margin-top: 30px;
 
         h3 {
-          font-family: "Montserrat", sans-serif;
+          font-family: 'Montserrat', sans-serif;
           font-size: 0.9rem;
           font-weight: 600;
           color: $dark-text;
@@ -535,7 +535,7 @@ $bullet-size: 3em;
       background: darken($white, 2%);
 
       .side-title {
-        font-family: "Raleway", sans-serif;
+        font-family: 'Raleway', sans-serif;
         font-size: 1.3rem;
         font-weight: 400 !important;
         text-transform: uppercase;
@@ -627,7 +627,7 @@ $bullet-size: 3em;
               }
 
               &:nth-child(2) {
-                font-family: "Montserrat", sans-serif;
+                font-family: 'Montserrat', sans-serif;
                 font-weight: 600;
                 color: $dark-text;
                 font-size: 0.9rem;
@@ -646,7 +646,7 @@ $bullet-size: 3em;
           }
 
           .address-title {
-            font-family: "Montserrat", sans-serif;
+            font-family: 'Montserrat', sans-serif;
             font-size: 0.7rem;
             font-weight: 600;
             color: $muted-grey;
@@ -656,7 +656,7 @@ $bullet-size: 3em;
 
           .address {
             font-size: 0.82rem;
-            font-family: "Montserrat", sans-serif;
+            font-family: 'Montserrat', sans-serif;
             font-weight: 500;
             color: $dark-text;
             line-height: 1.8;
@@ -681,12 +681,12 @@ $bullet-size: 3em;
 
             span {
               display: block;
-              font-family: "Montserrat", sans-serif;
+              font-family: 'Montserrat', sans-serif;
               font-size: 0.9rem;
 
               &:nth-child(2) {
                 &:before {
-                  content: "$";
+                  content: '$';
                 }
               }
 
@@ -701,7 +701,7 @@ $bullet-size: 3em;
           position: relative;
 
           .method-title {
-            font-family: "Montserrat", sans-serif;
+            font-family: 'Montserrat', sans-serif;
             font-size: 0.7rem;
             font-weight: 600;
             color: $muted-grey;
@@ -729,7 +729,7 @@ $bullet-size: 3em;
 
           .method {
             font-size: 0.82rem;
-            font-family: "Montserrat", sans-serif;
+            font-family: 'Montserrat', sans-serif;
             font-weight: 600;
             color: $dark-text;
             line-height: 1.8;
@@ -1003,7 +1003,7 @@ $bullet-size: 3em;
           display: block;
 
           &:nth-child(2) {
-            font-family: "Raleway", sans-serif;
+            font-family: 'Raleway', sans-serif;
             font-size: 0.85rem;
             font-weight: 600;
             text-transform: uppercase;
@@ -1014,7 +1014,7 @@ $bullet-size: 3em;
             font-weight: 600;
 
             &:before {
-              content: "$";
+              content: '$';
               position: relative;
               top: -10px;
               font-size: 50%;
@@ -1022,7 +1022,7 @@ $bullet-size: 3em;
           }
 
           &:nth-child(4) {
-            font-family: "Raleway", sans-serif;
+            font-family: 'Raleway', sans-serif;
             font-weight: 600;
             color: $primary;
             margin: 5px 0;
@@ -1061,7 +1061,7 @@ $bullet-size: 3em;
             display: block;
 
             &:first-child {
-              font-family: "Raleway", sans-serif;
+              font-family: 'Raleway', sans-serif;
               font-weight: 600;
               text-transform: uppercase;
               font-size: 80%;
@@ -1106,7 +1106,7 @@ $bullet-size: 3em;
         .partial-value,
         .vat-value {
           &:before {
-            content: "$";
+            content: '$';
             font-size: 60%;
             position: relative;
             top: -6px;
@@ -1138,7 +1138,7 @@ $bullet-size: 3em;
           color: $dark-text;
 
           &:before {
-            content: "$";
+            content: '$';
             font-size: 60%;
             position: relative;
             top: -10px;
@@ -1465,7 +1465,7 @@ $bullet-size: 3em;
 
     .quantity {
       &:before {
-        content: "Quantity";
+        content: 'Quantity';
         position: absolute;
         top: 0;
         left: 0;
@@ -1474,7 +1474,7 @@ $bullet-size: 3em;
 
     .price {
       &:before {
-        content: "Price";
+        content: 'Price';
         position: absolute;
         top: 0;
         left: 0;
@@ -1483,7 +1483,7 @@ $bullet-size: 3em;
 
     .discount {
       &:before {
-        content: "Discount";
+        content: 'Discount';
         position: absolute;
         top: 0;
         left: 0;
@@ -1492,7 +1492,7 @@ $bullet-size: 3em;
 
     .total {
       &:before {
-        content: "Total";
+        content: 'Total';
         position: absolute;
         top: 0;
         left: 0;

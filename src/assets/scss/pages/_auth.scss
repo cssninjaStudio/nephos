@@ -24,7 +24,7 @@ TABLE OF CONTENTS
   margin: 20px 0;
 
   h2 {
-    font-family: "Raleway", sans-serif;
+    font-family: 'Raleway', sans-serif;
     font-size: 1.6rem;
     font-weight: 400 !important;
     text-transform: uppercase;
@@ -139,7 +139,7 @@ TABLE OF CONTENTS
 
       .hexagon:before,
       .hexagon:after {
-        content: "";
+        content: '';
         position: absolute;
         width: 0;
         border-left: 19px solid transparent;
@@ -182,7 +182,7 @@ TABLE OF CONTENTS
       animation: fadeInLeft 0.5s;
 
       .form-description {
-        font-family: "Montserrat", sans-serif;
+        font-family: 'Montserrat', sans-serif;
         font-size: 0.9rem;
         color: $muted-grey;
         margin-bottom: 20px;
@@ -191,7 +191,7 @@ TABLE OF CONTENTS
 
       .field {
         label {
-          font-family: "Montserrat", sans-serif;
+          font-family: 'Montserrat', sans-serif;
           text-transform: uppercase;
           font-size: 0.85rem;
           font-weight: 500;
@@ -223,7 +223,7 @@ TABLE OF CONTENTS
           height: 42px;
           font-weight: 600;
           font-size: 0.85rem;
-          font-family: "Montserrat", sans-serif;
+          font-family: 'Montserrat', sans-serif;
         }
       }
 

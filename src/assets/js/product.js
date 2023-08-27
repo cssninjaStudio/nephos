@@ -1,141 +1,139 @@
-"use strict";
+'use strict'
 
 //Get product Id parameter from query string
-const productId = parseInt($.urlParam("productId"));
+const productId = parseInt($.urlParam('productId'))
 
 //Init Product details spinner
 function initProductSpinner() {
-  $(".details-spinner").spinner("changing", function (e, newVal, oldVal) {
-    const $this = $(this);
+  $('.details-spinner').spinner('changing', function (e, newVal, oldVal) {
+    const $this = $(this)
 
-    $this.closest(".product-quantity").find(".spinner-value").html(newVal);
-  });
+    $this.closest('.product-quantity').find('.spinner-value').html(newVal)
+  })
 }
 
 //Get related products
 function getRelatedProducts() {
-  $(".featured-product").each(function () {
-    const $this = $(this);
-    const productId = parseInt($this.attr("data-product-id"));
+  $('.featured-product').each(function () {
+    const $this = $(this)
+    const productId = parseInt($this.attr('data-product-id'))
     $.ajax({
-      url: "assets/data/products.json",
+      url: 'assets/data/products.json',
       async: true,
-      dataType: "json",
+      dataType: 'json',
       success: function (products) {
         for (let i = 0; i < products.length; i++) {
           if (products[i].id === productId) {
             $this
-              .closest(".product-container")
-              .attr("data-product-id", products[i].id);
-            $this.find("img").attr("src", products[i].pic);
-            $this.find("img").attr("data-demo-src", products[i].pic);
-            $this.find(".product-name").html(products[i].name);
-            $this.find(".product-description").html(products[i].tagline);
+              .closest('.product-container')
+              .attr('data-product-id', products[i].id)
+            $this.find('img').attr('src', products[i].pic)
+            $this.find('img').attr('data-demo-src', products[i].pic)
+            $this.find('.product-name').html(products[i].name)
+            $this.find('.product-description').html(products[i].tagline)
           }
         }
       },
-    });
-  });
+    })
+  })
 }
 
 //Get product page
 function getProductPage(productId) {
   $.ajax({
-    url: "assets/data/products.json",
+    url: 'assets/data/products.json',
     async: true,
-    dataType: "json",
+    dataType: 'json',
     success: function (products) {
       for (let i = 0; i < products.length; i++) {
         if (products[i].id === productId) {
           //Populate basic info
-          $(".product-container").attr("data-product-id", products[i].id);
-          $("#details-add-to-cart").attr("data-product-id", products[i].id);
-          $("#product-category").html(products[i].category);
-          $(".category-icon").addClass("is-hidden");
-          $("#product-details-name, #panel-product-name").html(
-            products[i].name,
-          );
-          $("#product-details-shortDesc").html(products[i].shortDesc);
-          $("#product-details-sku, #panel-product-sku").html(products[i].sku);
+          $('.product-container').attr('data-product-id', products[i].id)
+          $('#details-add-to-cart').attr('data-product-id', products[i].id)
+          $('#product-category').html(products[i].category)
+          $('.category-icon').addClass('is-hidden')
+          $('#product-details-name, #panel-product-name').html(products[i].name)
+          $('#product-details-shortDesc').html(products[i].shortDesc)
+          $('#product-details-sku, #panel-product-sku').html(products[i].sku)
           $(
-            "#" +
-              products[i].category.toLowerCase().split(" ").join("") +
-              "-icon",
-          ).removeClass("is-hidden");
+            '#' +
+              products[i].category.toLowerCase().split(' ').join('') +
+              '-icon',
+          ).removeClass('is-hidden')
           if (products[i].discounted === true) {
-            $("#new-price").html(products[i].price.toFixed(2));
-            $("#old-price")
-              .removeClass("is-hidden")
-              .html(products[i].oldPrice.toFixed(2));
+            $('#new-price').html(products[i].price.toFixed(2))
+            $('#old-price')
+              .removeClass('is-hidden')
+              .html(products[i].oldPrice.toFixed(2))
           } else {
-            $("#old-price").addClass("is-hidden");
-            $("#new-price").html(products[i].price.toFixed(2));
+            $('#old-price').addClass('is-hidden')
+            $('#new-price').html(products[i].price.toFixed(2))
           }
           if (products[i].inventoryQty > 0) {
-            $("#panel-product-availability").html("Available");
+            $('#panel-product-availability').html('Available')
           } else {
-            $("#panel-product-availability").html("Sold Out");
+            $('#panel-product-availability').html('Sold Out')
           }
-          $("#panel-product-vendor").html(products[i].vendor);
-          $("#panel-product-dimensions").html(products[i].dimensions);
-          $("#panel-product-weight").html(products[i].weight);
-          $("#panel-product-shipping-delay").html(products[i].shippingTime);
+          $('#panel-product-vendor').html(products[i].vendor)
+          $('#panel-product-dimensions').html(products[i].dimensions)
+          $('#panel-product-weight').html(products[i].weight)
+          $('#panel-product-shipping-delay').html(products[i].shippingTime)
           //Related products
-          $("#related-product-0").attr(
-            "data-product-id",
+          $('#related-product-0').attr(
+            'data-product-id',
             products[i].related[0].id,
-          );
-          $("#related-product-1").attr(
-            "data-product-id",
+          )
+          $('#related-product-1').attr(
+            'data-product-id',
             products[i].related[1].id,
-          );
-          $("#related-product-2").attr(
-            "data-product-id",
+          )
+          $('#related-product-2').attr(
+            'data-product-id',
             products[i].related[2].id,
-          );
+          )
           //Empty carousel before loading images
-          $("#product-view .is-carousel").empty();
+          $('#product-view .is-carousel').empty()
           //Images
           for (let p = 0; p < products[i].images.length; p++) {
             const template = `
                             <div>
                                 <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="${products[i].images[p].url}" data-action="zoom" alt="">
                             </div>
-                        `;
+                        `
 
-            $.when($("#product-view .is-carousel").append(template)).done(
+            $.when($('#product-view .is-carousel').append(template)).done(
               function () {
-                initProductCarousel();
-                initProductSpinner();
-                getRelatedProducts();
+                initProductCarousel()
+                initProductSpinner()
+                getRelatedProducts()
                 //DEMO
-                if (env === "development") {
-                  changeDemoImages();
+                if (env === 'development') {
+                  changeDemoImages()
                 }
               },
-            );
+            )
           }
         }
       }
     },
-  });
+  })
 }
 
 //Add to cart from product details
 function addToCartDetails(trigger) {
-  const data = JSON.parse(localStorage.getItem("cart"));
-  const $container = trigger.closest(".product-container");
-  const productId = parseInt(trigger.attr("data-product-id"));
-  const productName = $("#product-details-name").text();
-  const productCategory = $("#product-category").text();
-  const productPrice = parseFloat($("#new-price").text());
-  const productImage = $(".is-carousel > div:first-child img").attr("src");
-  const productQuantity = parseInt($(".details-spinner input").val());
+  const data = JSON.parse(localStorage.getItem('cart'))
+  const $container = trigger.closest('.product-container')
+  const productId = parseInt(trigger.attr('data-product-id'))
+  const productName = $('#product-details-name').text()
+  const productCategory = $('#product-category').text()
+  const productPrice = parseFloat($('#new-price').text())
+  const productImage = $('.is-carousel > div:first-child img').attr('src')
+  const productQuantity = parseInt($('.details-spinner input').val())
 
-  const found = data.products.some((el) => el.id === productId);
+  const found = data.products.some((el) => el.id === productId)
   if (!found) {
-    console.log("Product does not exist in cart");
-    data.items = data.items + 1;
+    console.log('Product does not exist in cart')
+    data.items = data.items + 1
     data.products.push({
       id: productId,
       name: productName,
@@ -147,16 +145,16 @@ function addToCartDetails(trigger) {
           url: productImage,
         },
       ],
-    });
-    localStorage.setItem("cart", JSON.stringify(data));
+    })
+    localStorage.setItem('cart', JSON.stringify(data))
   } else {
-    console.log("Product exists in cart");
+    console.log('Product exists in cart')
     for (let i = 0; i < data.products.length; i++) {
       if (parseInt(data.products[i].id) === productId) {
         data.products[i].quantity = parseInt(
           data.products[i].quantity + productQuantity,
-        );
-        localStorage.setItem("cart", JSON.stringify(data));
+        )
+        localStorage.setItem('cart', JSON.stringify(data))
       }
     }
   }
@@ -165,67 +163,67 @@ function addToCartDetails(trigger) {
 //Handle various UI interactions
 function initProductPageUI() {
   //Product panel
-  $(".product-action").on("click", function () {
-    $(".product-action.is-active").removeClass("is-active");
-    $(this).addClass("is-active");
-  });
+  $('.product-action').on('click', function () {
+    $('.product-action.is-active').removeClass('is-active')
+    $(this).addClass('is-active')
+  })
 
   //show product
-  $("#show-product").on("click", function () {
-    $("#meta-view, #ratings-view").addClass("is-hidden");
-    $("#product-view").removeClass("is-hidden");
-  });
+  $('#show-product').on('click', function () {
+    $('#meta-view, #ratings-view').addClass('is-hidden')
+    $('#product-view').removeClass('is-hidden')
+  })
 
   //show meta
-  $("#show-meta").on("click", function () {
-    $("#product-view, #ratings-view").addClass("is-hidden");
-    $("#meta-view").removeClass("is-hidden");
-  });
+  $('#show-meta').on('click', function () {
+    $('#product-view, #ratings-view').addClass('is-hidden')
+    $('#meta-view').removeClass('is-hidden')
+  })
 
   //show ratings
-  $("#show-ratings").on("click", function () {
-    $("#meta-view, #product-view").addClass("is-hidden");
-    $("#ratings-view").removeClass("is-hidden");
-  });
+  $('#show-ratings').on('click', function () {
+    $('#meta-view, #product-view').addClass('is-hidden')
+    $('#ratings-view').removeClass('is-hidden')
+  })
 }
 
 $(function () {
   //If Product page
-  if ($("#product-page").length) {
+  if ($('#product-page').length) {
     //Init page UI
-    initProductPageUI();
+    initProductPageUI()
 
     //Get product details
-    getProductPage(productId);
+    getProductPage(productId)
 
     //Add to cart
-    $("#details-add-to-cart").on("click", function () {
-      const $this = $(this);
-      $this.addClass("is-loading");
-      if ($(".cart-quickview").hasClass("is-active")) {
-        $(".cart-loader").addClass("is-active");
+    $('#details-add-to-cart').on('click', function () {
+      const $this = $(this)
+      $this.addClass('is-loading')
+      if ($('.cart-quickview').hasClass('is-active')) {
+        $('.cart-loader').addClass('is-active')
       }
       setTimeout(function () {
         $.when(addToCartDetails($this)).done(function () {
-          getCart();
-        });
-      }, 300);
+          getCart()
+        })
+      }, 300)
       setTimeout(function () {
-        if ($(".cart-quickview").hasClass("is-active")) {
-          $(".cart-loader").removeClass("is-active");
+        if ($('.cart-quickview').hasClass('is-active')) {
+          $('.cart-loader').removeClass('is-active')
         }
         toasts.service.success(
-          "",
-          "fas fa-plus",
-          "Product successfully added to cart",
-          "bottomRight",
+          '',
+          'fas fa-plus',
+          'Product successfully added to cart',
+          'bottomRight',
           2500,
-        );
-        $this.removeClass("is-loading");
-      }, 800);
-    });
+        )
+        $this.removeClass('is-loading')
+      }, 800)
+    })
 
     //Show sidebar wishlist button
-    $("#sidebar-wishlist-button").removeClass("is-hidden");
+    $('#sidebar-wishlist-button').removeClass('is-hidden')
   }
-});
+})

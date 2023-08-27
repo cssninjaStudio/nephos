@@ -190,7 +190,7 @@ TABLE OF CONTENTS
         font-size: 1.2rem;
 
         &:before {
-          content: "$";
+          content: '$';
         }
       }
     }
@@ -263,7 +263,7 @@ TABLE OF CONTENTS
                   color: $primary;
 
                   &:before {
-                    content: "$";
+                    content: '$';
                   }
                 }
 
@@ -285,7 +285,7 @@ TABLE OF CONTENTS
             &:first-child {
               text-align: right;
               text-transform: uppercase;
-              font-family: "Raleway", sans-serif;
+              font-family: 'Raleway', sans-serif;
               font-size: 0.7rem;
               line-height: 1;
               color: $muted-grey;
@@ -293,7 +293,7 @@ TABLE OF CONTENTS
 
             &:nth-child(2) {
               &:before {
-                content: "$";
+                content: '$';
               }
             }
           }
@@ -337,7 +337,7 @@ TABLE OF CONTENTS
 
           &:first-child {
             text-transform: uppercase;
-            font-family: "Raleway", sans-serif;
+            font-family: 'Raleway', sans-serif;
             font-size: 0.7rem;
             line-height: 1;
             color: $muted-grey;
@@ -430,7 +430,7 @@ TABLE OF CONTENTS
         display: block;
 
         &:first-child {
-          font-family: "Montserrat", sans-serif;
+          font-family: 'Montserrat', sans-serif;
           font-size: 1rem;
           font-weight: 600;
           color: $dark-text;
@@ -462,7 +462,7 @@ TABLE OF CONTENTS
 
           &:first-child {
             text-transform: uppercase;
-            font-family: "Raleway", sans-serif;
+            font-family: 'Raleway', sans-serif;
             font-size: 0.7rem;
             line-height: 1;
             color: $muted-grey;
@@ -487,7 +487,7 @@ TABLE OF CONTENTS
 
       > h3 {
         text-transform: uppercase;
-        font-family: "Raleway", sans-serif;
+        font-family: 'Raleway', sans-serif;
         font-weight: 500;
         color: $muted-grey;
         font-size: 0.9rem;
@@ -603,7 +603,7 @@ TABLE OF CONTENTS
             display: block;
 
             &:first-child {
-              font-family: "Montserrat", sans-serif;
+              font-family: 'Montserrat', sans-serif;
               font-weight: 600;
               color: $dark-text;
               font-size: 1rem;
@@ -662,12 +662,12 @@ TABLE OF CONTENTS
 
       span {
         display: block;
-        font-family: "Montserrat", sans-serif;
+        font-family: 'Montserrat', sans-serif;
         font-size: 0.9rem;
 
         &:nth-child(2) {
           &:before {
-            content: "$";
+            content: '$';
           }
         }
 
@@ -692,7 +692,7 @@ TABLE OF CONTENTS
 
     .widget-title {
       font-size: 0.9rem;
-      font-family: "Montserrat", sans-serif;
+      font-family: 'Montserrat', sans-serif;
       font-weight: 600;
       color: $muted-grey;
       padding-bottom: 20px;
@@ -700,7 +700,7 @@ TABLE OF CONTENTS
 
     .address {
       font-size: 0.82rem;
-      font-family: "Montserrat", sans-serif;
+      font-family: 'Montserrat', sans-serif;
       font-weight: 500;
       color: $dark-text;
       line-height: 1.8;
@@ -823,7 +823,7 @@ TABLE OF CONTENTS
 
       span {
         &:before {
-          content: "$";
+          content: '$';
         }
       }
     }
@@ -845,7 +845,7 @@ TABLE OF CONTENTS
 
       span {
         &:before {
-          content: "$";
+          content: '$';
         }
       }
     }

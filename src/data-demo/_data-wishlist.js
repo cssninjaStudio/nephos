@@ -1,49 +1,49 @@
 const myWishlists = [
   {
     id: 0,
-    name: "Nice Couches",
+    name: 'Nice Couches',
     products: [
       {
         id: 9,
-        name: "Imperator",
-        category: "Office",
+        name: 'Imperator',
+        category: 'Office',
         price: 699.99,
         images: [
           {
-            url: "http://via.placeholder.com/500x500/ffffff/999999",
+            url: 'http://via.placeholder.com/500x500/ffffff/999999',
           },
         ],
       },
       {
         id: 13,
-        name: "Ambassador",
-        category: "Office",
+        name: 'Ambassador',
+        category: 'Office',
         price: 480.0,
         images: [
           {
-            url: "http://via.placeholder.com/500x500/ffffff/999999",
+            url: 'http://via.placeholder.com/500x500/ffffff/999999',
           },
         ],
       },
       {
         id: 14,
-        name: "Conqueror",
-        category: "Office",
+        name: 'Conqueror',
+        category: 'Office',
         price: 590.0,
         images: [
           {
-            url: "http://via.placeholder.com/500x500/ffffff/999999",
+            url: 'http://via.placeholder.com/500x500/ffffff/999999',
           },
         ],
       },
       {
         id: 15,
-        name: "Gentleman",
-        category: "Office",
+        name: 'Gentleman',
+        category: 'Office',
         price: 375.0,
         images: [
           {
-            url: "http://via.placeholder.com/500x500/ffffff/999999",
+            url: 'http://via.placeholder.com/500x500/ffffff/999999',
           },
         ],
       },
@@ -55,34 +55,34 @@ const myWishlists = [
     products: [
       {
         id: 20,
-        name: "Treasure Chest",
-        category: "For Kids",
+        name: 'Treasure Chest',
+        category: 'For Kids',
         price: 185.0,
         images: [
           {
-            url: "http://via.placeholder.com/500x500/ffffff/999999",
+            url: 'http://via.placeholder.com/500x500/ffffff/999999',
           },
         ],
       },
       {
         id: 21,
-        name: "Child desk",
-        category: "For Kids",
+        name: 'Child desk',
+        category: 'For Kids',
         price: 190.0,
         images: [
           {
-            url: "http://via.placeholder.com/500x500/ffffff/999999",
+            url: 'http://via.placeholder.com/500x500/ffffff/999999',
           },
         ],
       },
       {
         id: 17,
-        name: "Rabbit lamp",
-        category: "For Kids",
+        name: 'Rabbit lamp',
+        category: 'For Kids',
         price: 14.49,
         images: [
           {
-            url: "http://via.placeholder.com/500x500/ffffff/999999",
+            url: 'http://via.placeholder.com/500x500/ffffff/999999',
           },
         ],
       },
@@ -90,7 +90,7 @@ const myWishlists = [
   },
   {
     id: 2,
-    name: "My Next Purchases",
+    name: 'My Next Purchases',
     products: [],
   },
-];
+]

@@ -1,43 +1,43 @@
-"use strict";
+'use strict'
 
 //Init search results page filter input
 function initSearchFilter() {
-  $(".nephos-search-filter")
+  $('.nephos-search-filter')
     .on('focus', function (e) {
-      if ($(this).val() === defaultText) $(this).val("");
+      if ($(this).val() === defaultText) $(this).val('')
     })
     .on('blur', function (e) {
-      if ($(this).val() === "") $(this).val(defaultText);
+      if ($(this).val() === '') $(this).val(defaultText)
     })
     .on('keyup', function (e) {
-      const patterns = $(this).val().toLowerCase().split(" ");
-      if (!patterns.length) return;
-      $(".search-filter-target")
+      const patterns = $(this).val().toLowerCase().split(' ')
+      if (!patterns.length) return
+      $('.search-filter-target')
         .hide()
         .filter(function () {
           const matchText = $(this)
-            .find(".search-filter-match")
+            .find('.search-filter-match')
             .text()
-            .toLowerCase();
+            .toLowerCase()
           for (let i = 0; i < patterns.length; i++)
-            if (matchText.indexOf(patterns[i]) === -1) return false;
-          return true;
+            if (matchText.indexOf(patterns[i]) === -1) return false
+          return true
         })
-        .show();
-    });
+        .show()
+    })
 }
 
 //Get and build search results page
 function getSearchResults() {
-  const plusIcon = feather.icons.plus.toSvg();
-  const minusIcon = feather.icons.minus.toSvg();
-  const cartIcon = feather.icons["shopping-cart"].toSvg();
-  $("#search-results-list .flat-card").remove();
+  const plusIcon = feather.icons.plus.toSvg()
+  const minusIcon = feather.icons.minus.toSvg()
+  const cartIcon = feather.icons['shopping-cart'].toSvg()
+  $('#search-results-list .flat-card').remove()
 
   $.ajax({
-    url: "assets/data/search.json",
+    url: 'assets/data/search.json',
     async: true,
-    dataType: "json",
+    dataType: 'json',
     success: function (data) {
       for (let i = 0; i < data.length; i++) {
         const template = `
@@ -86,41 +86,41 @@ function getSearchResults() {
                             </li>
                         </ul>
                     </div>
-                `;
+                `
 
-        $("#search-results-list").append(template);
+        $('#search-results-list').append(template)
 
         if (i == data.length - 1) {
-          initCartSpinners();
-          initAddFromSearchAction();
-          initPopovers();
+          initCartSpinners()
+          initAddFromSearchAction()
+          initPopovers()
           //DEMO
-          if (env === "development") {
-            changeDemoImages();
+          if (env === 'development') {
+            changeDemoImages()
           }
         }
       }
     },
-  });
+  })
 }
 
 //Add to cart from search results page
 function addToCartFromSearch(trigger) {
-  const data = JSON.parse(localStorage.getItem("cart"));
-  const $container = trigger.closest(".product-container");
-  const productId = parseInt($container.attr("data-product-id"));
-  const productName = $container.find(".product-name").text();
-  const productCategory = $container.find(".product-category").text();
+  const data = JSON.parse(localStorage.getItem('cart'))
+  const $container = trigger.closest('.product-container')
+  const productId = parseInt($container.attr('data-product-id'))
+  const productName = $container.find('.product-name').text()
+  const productCategory = $container.find('.product-category').text()
   const productPrice = parseFloat(
-    $container.find(".product-price span:nth-child(2)").text(),
-  );
-  const productImage = $container.find("img").attr("src");
-  const productQuantity = parseInt($container.find(".hidden-spinner").val());
+    $container.find('.product-price span:nth-child(2)').text(),
+  )
+  const productImage = $container.find('img').attr('src')
+  const productQuantity = parseInt($container.find('.hidden-spinner').val())
 
-  const found = data.products.some((el) => parseInt(el.id) === productId);
+  const found = data.products.some((el) => parseInt(el.id) === productId)
   if (!found) {
-    console.log("Product does not exist in cart");
-    data.items = parseInt(data.items) + 1;
+    console.log('Product does not exist in cart')
+    data.items = parseInt(data.items) + 1
     data.products.push({
       id: productId,
       name: productName,
@@ -132,15 +132,15 @@ function addToCartFromSearch(trigger) {
           url: productImage,
         },
       ],
-    });
-    localStorage.setItem("cart", JSON.stringify(data));
+    })
+    localStorage.setItem('cart', JSON.stringify(data))
   } else {
-    console.log("Product exists in cart");
+    console.log('Product exists in cart')
 
     for (let i = 0; i < data.products.length; i++) {
       if (parseInt(data.products[i].id) === productId) {
-        data.products[i].quantity = parseInt(data.products[i].quantity + 1);
-        localStorage.setItem("cart", JSON.stringify(data));
+        data.products[i].quantity = parseInt(data.products[i].quantity + 1)
+        localStorage.setItem('cart', JSON.stringify(data))
       }
     }
   }
@@ -148,60 +148,60 @@ function addToCartFromSearch(trigger) {
 
 //Add to cart user action
 function initAddFromSearchAction() {
-  $(".product-container .action .add-from-search-action").on(
-    "click",
+  $('.product-container .action .add-from-search-action').on(
+    'click',
     function () {
-      const $this = $(this);
-      if ($(".cart-quickview").hasClass("is-active")) {
-        $(".cart-loader").addClass("is-active");
+      const $this = $(this)
+      if ($('.cart-quickview').hasClass('is-active')) {
+        $('.cart-loader').addClass('is-active')
       }
       setTimeout(function () {
         $.when(addToCartFromSearch($this)).done(function () {
-          getCart();
-        });
-      }, 300);
+          getCart()
+        })
+      }, 300)
       setTimeout(function () {
-        if ($(".cart-quickview").hasClass("is-active")) {
-          $(".cart-loader").removeClass("is-active");
+        if ($('.cart-quickview').hasClass('is-active')) {
+          $('.cart-loader').removeClass('is-active')
         }
         toasts.service.success(
-          "",
-          "fas fa-plus",
-          "Product successfully added to cart",
-          "bottomRight",
+          '',
+          'fas fa-plus',
+          'Product successfully added to cart',
+          'bottomRight',
           2500,
-        );
-      }, 800);
+        )
+      }, 800)
     },
-  );
+  )
 }
 
 $(function () {
   //Search results page
-  if ($("#search-results").length) {
-    getSearchResults();
-    initSearchFilter();
+  if ($('#search-results').length) {
+    getSearchResults()
+    initSearchFilter()
   }
 
   //Append link to search result in search overlay
   function initFullSearch() {
-    $("#full-search").on("click", function () {
-      $("#clear-search").removeClass("is-active");
-      $("#nephos-search").closest(".control").addClass("is-loading");
+    $('#full-search').on('click', function () {
+      $('#clear-search').removeClass('is-active')
+      $('#nephos-search').closest('.control').addClass('is-loading')
       setTimeout(function () {
-        window.location.href = "/search-results.html";
-      }, 2200);
-    });
+        window.location.href = '/search-results.html'
+      }, 2200)
+    })
   }
 
   //Init search overlay autocomplete
-  const searchIcon = feather.icons.search.toSvg();
+  const searchIcon = feather.icons.search.toSvg()
 
   const searchOptions = {
-    url: "assets/data/products.json",
-    getValue: "name",
+    url: 'assets/data/products.json',
+    getValue: 'name',
     template: {
-      type: "custom",
+      type: 'custom',
       method: function (value, item) {
         return `
                     <div class="nephos-search-template">
@@ -211,14 +211,14 @@ $(function () {
                             <span>${parseFloat(item.price).toFixed(2)}</span>
                         </div>
                     </div>
-                `;
+                `
       },
     },
     highlightPhrase: false,
     list: {
       maxNumberOfElements: 5,
       showAnimation: {
-        type: "fade", //normal|slide|fade
+        type: 'fade', //normal|slide|fade
         time: 400,
         callback: function () {},
       },
@@ -226,7 +226,7 @@ $(function () {
         enabled: true,
       },
       onShowListEvent: function () {
-        if (!$("#full-search").length) {
+        if (!$('#full-search').length) {
           const searchLink = `
                         <li id="full-search" class="full-search">
                             <div class="eac-item">
@@ -241,24 +241,24 @@ $(function () {
                                 </div>
                             </div>
                         </li>
-                    `;
-          $(".search-input-wrapper .easy-autocomplete-container ul").append(
+                    `
+          $('.search-input-wrapper .easy-autocomplete-container ul').append(
             searchLink,
-          );
-          initFullSearch();
+          )
+          initFullSearch()
         }
-        $(".search-input-wrapper .easy-autocomplete-container ul").addClass(
-          "opened",
-        );
+        $('.search-input-wrapper .easy-autocomplete-container ul').addClass(
+          'opened',
+        )
       },
       onHideListEvent: function () {
-        $(".search-input-wrapper .easy-autocomplete-container ul").removeClass(
-          "opened",
-        );
-        $("#full-search").remove();
+        $('.search-input-wrapper .easy-autocomplete-container ul').removeClass(
+          'opened',
+        )
+        $('#full-search').remove()
       },
     },
-  };
+  }
 
-  $("#nephos-search").easyAutocomplete(searchOptions);
-});
+  $('#nephos-search').easyAutocomplete(searchOptions)
+})

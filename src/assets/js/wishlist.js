@@ -1,37 +1,36 @@
-"use strict";
+'use strict'
 
 //Init left menu tabs
 function initWishlistTabs() {
-  $(".is-account-grid .wishlists li").on("click", function () {
-    const targetWishlist = $(this).attr("data-target-wishlist");
-    $(this).siblings("li").removeClass("is-active");
-    $(this).addClass("is-active");
-    $("ul.wishlist").addClass("is-hidden");
-    $("#" + targetWishlist).removeClass("is-hidden");
-  });
+  $('.is-account-grid .wishlists li').on('click', function () {
+    const targetWishlist = $(this).attr('data-target-wishlist')
+    $(this).siblings('li').removeClass('is-active')
+    $(this).addClass('is-active')
+    $('ul.wishlist').addClass('is-hidden')
+    $('#' + targetWishlist).removeClass('is-hidden')
+  })
 }
 
 //Get user wishlists
 function getWishlists() {
-  const cartIcon = feather.icons["shopping-cart"].toSvg();
-  const trashIcon = feather.icons["trash-2"].toSvg();
+  const cartIcon = feather.icons['shopping-cart'].toSvg()
+  const trashIcon = feather.icons['trash-2'].toSvg()
 
-  const userData = JSON.parse(localStorage.getItem("user")) || {};
+  const userData = JSON.parse(localStorage.getItem('user')) || {}
 
   //If not logged in, hide wishlist
   if (!userData.isLoggedIn) {
-    $("#wishlist-main, #wishlist-main-placeholder").toggleClass("is-hidden");
+    $('#wishlist-main, #wishlist-main-placeholder').toggleClass('is-hidden')
   }
 
   //Load wishlists
   else if (userData.wishlists === undefined) {
-    $("#wishlist-main, #wishlist-empty-placeholder").toggleClass("is-hidden");
+    $('#wishlist-main, #wishlist-empty-placeholder').toggleClass('is-hidden')
   } else {
     //Empty wishlists menu and Grid
     $(
-      ".is-account-grid .menu-card li, #wishlists-container .wishlist-card .wishlist",
-    ).remove();
-
+      '.is-account-grid .menu-card li, #wishlists-container .wishlist-card .wishlist',
+    ).remove()
 
     for (let i = 0; i < userData.wishlists.length; i++) {
       let template
@@ -48,10 +47,10 @@ function getWishlists() {
                   </button>
               </div>
           </li>
-        `;
+        `
         listContainer = `
           <ul id="wishlist-${userData.wishlists[i].id}" class="wishlist"></ul>
-        `;
+        `
       } else {
         template = `
           <li data-target-wishlist="wishlist-${userData.wishlists[i].id}" data-wishlist-id="${userData.wishlists[i].id}">
@@ -63,15 +62,15 @@ function getWishlists() {
                   </button>
               </div>
           </li>
-       `;
+       `
 
         listContainer = `
           <ul id="wishlist-${userData.wishlists[i].id}" class="wishlist is-hidden"></ul>
-        `;
+        `
       }
 
-      $(".is-account-grid .wishlists").append(template);
-      $("#wishlists-container .wishlist-card").append(listContainer);
+      $('.is-account-grid .wishlists').append(template)
+      $('#wishlists-container .wishlist-card').append(listContainer)
     }
 
     for (let w = 0; w < userData.wishlists.length; w++) {
@@ -103,23 +102,23 @@ function getWishlists() {
                   </div>
               </div>
           </li>
-        `;
+        `
 
-        $("#wishlist-" + userData.wishlists[w].id).append(template);
+        $('#wishlist-' + userData.wishlists[w].id).append(template)
       }
 
       if (w == userData.wishlists.length - 1) {
-        if (env === "development") {
-          changeDemoImages();
+        if (env === 'development') {
+          changeDemoImages()
         }
-        initWishlistTabs();
-        removeWishlist();
-        addToCartFromWishlist();
-        initPopButtons();
-        removeWishlistItem();
+        initWishlistTabs()
+        removeWishlist()
+        addToCartFromWishlist()
+        initPopButtons()
+        removeWishlistItem()
 
-        $("#wishlists-container .wishlist-card .wishlist").each(function () {
-          if (!$(this).children("li").length) {
+        $('#wishlists-container .wishlist-card .wishlist').each(function () {
+          if (!$(this).children('li').length) {
             const placeholder = `
               <li class="placeholder-wrap">
                   <div class="placeholder-content">
@@ -128,12 +127,12 @@ function getWishlists() {
                       <p>This wishlist is still empty. Items will be shown as soon as you add some to it.</p>
                   </div>
               </li>
-            `;
-            $(this).append(placeholder);
+            `
+            $(this).append(placeholder)
           }
-        });
+        })
 
-        $(".account-loader").removeClass("is-active");
+        $('.account-loader').removeClass('is-active')
       }
     }
   }
@@ -141,13 +140,13 @@ function getWishlists() {
 
 //Add a new wishlist
 function addWishlist() {
-  $(".add-wishlist-action").on("click", function () {
-    const $this = $(this);
-    const data = JSON.parse(localStorage.getItem("user"));
-    const newWishlistName = $this.closest(".modal").find("input").val();
+  $('.add-wishlist-action').on('click', function () {
+    const $this = $(this)
+    const data = JSON.parse(localStorage.getItem('user'))
+    const newWishlistName = $this.closest('.modal').find('input').val()
 
-    $this.addClass("is-loading");
-    $(".account-loader").addClass("is-active");
+    $this.addClass('is-loading')
+    $('.account-loader').addClass('is-active')
 
     //Update wishlist Data
     setTimeout(function () {
@@ -155,207 +154,206 @@ function addWishlist() {
         id: data.wishlists.length,
         name: newWishlistName,
         products: [],
-      };
+      }
 
-      data.wishlists.push(newWishlist);
-      localStorage.setItem("user", JSON.stringify(data));
-      getWishlists();
-      $this.closest(".modal").removeClass("is-active");
-    }, 1000);
+      data.wishlists.push(newWishlist)
+      localStorage.setItem('user', JSON.stringify(data))
+      getWishlists()
+      $this.closest('.modal').removeClass('is-active')
+    }, 1000)
     //Simulate loading
     setTimeout(function () {
-      $this.removeClass("is-loading");
-      $(".account-loader").removeClass("is-active");
+      $this.removeClass('is-loading')
+      $('.account-loader').removeClass('is-active')
       toasts.service.success(
-        "",
-        "fas fa-check",
-        "New wishlist successfully added",
-        "bottomRight",
+        '',
+        'fas fa-check',
+        'New wishlist successfully added',
+        'bottomRight',
         2500,
-      );
-    }, 1500);
-  });
+      )
+    }, 1500)
+  })
 }
 
 //Delete an existing wishlist
 function removeWishlist() {
-  $(".remove-wishlist-action").on("click", function () {
-    const $this = $(this);
-    const wishlistId = parseInt($this.closest("li").attr("data-wishlist-id"));
-    const data = JSON.parse(localStorage.getItem("user"));
+  $('.remove-wishlist-action').on('click', function () {
+    const $this = $(this)
+    const wishlistId = parseInt($this.closest('li').attr('data-wishlist-id'))
+    const data = JSON.parse(localStorage.getItem('user'))
 
     launchAlert(
-      "Delete Wishlist?",
-      "Are you sure you want to delete this wishlist? All items will be removed and this cannot be undone.",
-      "Delete",
-      "Cancel",
+      'Delete Wishlist?',
+      'Are you sure you want to delete this wishlist? All items will be removed and this cannot be undone.',
+      'Delete',
+      'Cancel',
       function () {
-        $(".account-loader").addClass("is-active");
+        $('.account-loader').addClass('is-active')
 
         //Update wishlist Data
         setTimeout(function () {
           data.wishlists = $.grep(data.wishlists, function (e) {
-            return e.id != wishlistId;
-          });
-          localStorage.setItem("user", JSON.stringify(data));
-          getWishlists();
-        }, 1000);
+            return e.id != wishlistId
+          })
+          localStorage.setItem('user', JSON.stringify(data))
+          getWishlists()
+        }, 1000)
         //Simulate loading
         setTimeout(function () {
-          $(".cart-loader").removeClass("is-active");
+          $('.cart-loader').removeClass('is-active')
           toasts.service.success(
-            "",
-            "fas fa-check",
-            "Wishlist successfully deleted",
-            "bottomRight",
+            '',
+            'fas fa-check',
+            'Wishlist successfully deleted',
+            'bottomRight',
             2500,
-          );
-        }, 1500);
+          )
+        }, 1500)
       },
-    );
-  });
+    )
+  })
 }
 
 //Add to cart from a wishlist item
 function addToCartFromWishlist() {
-  $(".whishlist-cart-button").on("click", function () {
-    const $this = $(this);
-    $(".cart-loader").addClass("is-active");
-    addToCart($this);
+  $('.whishlist-cart-button').on('click', function () {
+    const $this = $(this)
+    $('.cart-loader').addClass('is-active')
+    addToCart($this)
     setTimeout(function () {
       toasts.service.success(
-        "",
-        "fas fa-plus",
-        "Product successfully added to cart",
-        "bottomRight",
+        '',
+        'fas fa-plus',
+        'Product successfully added to cart',
+        'bottomRight',
         2500,
-      );
-      getCart();
-    }, 800);
-  });
+      )
+      getCart()
+    }, 800)
+  })
 }
 
 //Remove a wishlist item from its wishlist
 function removeWishlistItem() {
-  $(".remove-wishlist-item-action").on("click", function () {
-    const $this = $(this);
-    const productId = parseInt($this.closest("li").attr("data-product-id"));
-    const wishlistId = parseInt($this.closest("li").attr("data-wishlist-id"));
-    const data = JSON.parse(localStorage.getItem("user"));
+  $('.remove-wishlist-item-action').on('click', function () {
+    const $this = $(this)
+    const productId = parseInt($this.closest('li').attr('data-product-id'))
+    const wishlistId = parseInt($this.closest('li').attr('data-wishlist-id'))
+    const data = JSON.parse(localStorage.getItem('user'))
 
     launchAlert(
-      "Remove From Wishlist?",
-      "Are you sure you want to remove this product from the current wishlist? This cannot be undone.",
-      "Delete",
-      "Cancel",
+      'Remove From Wishlist?',
+      'Are you sure you want to remove this product from the current wishlist? This cannot be undone.',
+      'Delete',
+      'Cancel',
       function () {
-        $(".account-loader").addClass("is-active");
+        $('.account-loader').addClass('is-active')
 
         //Update wishlist Data
         setTimeout(function () {
           data.wishlists[wishlistId].products = $.grep(
             data.wishlists[wishlistId].products,
             function (e) {
-              return e.id != productId;
+              return e.id != productId
             },
-          );
-          localStorage.setItem("user", JSON.stringify(data));
-          getWishlists();
-        }, 1000);
+          )
+          localStorage.setItem('user', JSON.stringify(data))
+          getWishlists()
+        }, 1000)
         //Simulate loading
         setTimeout(function () {
-          $(".cart-loader").removeClass("is-active");
+          $('.cart-loader').removeClass('is-active')
           toasts.service.success(
-            "",
-            "fas fa-check",
-            "Product successfully removed",
-            "bottomRight",
+            '',
+            'fas fa-check',
+            'Product successfully removed',
+            'bottomRight',
             2500,
-          );
-        }, 1500);
+          )
+        }, 1500)
       },
-    );
-  });
+    )
+  })
 }
 
 //Init wishlist selection in wishlist modal
 function initWishlistSelect() {
   //Execution flag
-  const onceWishlist = true;
+  const onceWishlist = true
 
   //Pop the wishlist modal when needed, and populate its data
-  $(".flat-card.product-container .actions .like, .sidebar-whishlist").on(
-    "click",
+  $('.flat-card.product-container .actions .like, .sidebar-whishlist').on(
+    'click',
     function () {
       let productId
       let productName
       let productPrice
       let productImg
       let productCategory
-      if ($("#product-page").length) {
-        productId = $(".product-container").attr("data-product-id");
-        productName = $("#product-details-name").text();
-        productPrice = $("#new-price").text();
-        productImg = $(".is-carousel > div:first-child img").attr("src");
-        productCategory = $("#product-category").text();
+      if ($('#product-page').length) {
+        productId = $('.product-container').attr('data-product-id')
+        productName = $('#product-details-name').text()
+        productPrice = $('#new-price').text()
+        productImg = $('.is-carousel > div:first-child img').attr('src')
+        productCategory = $('#product-category').text()
       } else {
         productId = $(this)
-          .closest(".product-container")
-          .attr("data-product-id");
+          .closest('.product-container')
+          .attr('data-product-id')
         productName = $(this)
-          .closest(".product-container")
-          .find(".product-name")
-          .text();
+          .closest('.product-container')
+          .find('.product-name')
+          .text()
         productPrice = $(this)
-          .closest(".product-container")
-          .find(".product-price span:first-child")
-          .text();
+          .closest('.product-container')
+          .find('.product-price span:first-child')
+          .text()
         productImg = $(this)
-          .closest(".product-container")
-          .find("img")
-          .attr("src");
+          .closest('.product-container')
+          .find('img')
+          .attr('src')
         productCategory = $(this)
-          .closest(".category-header")
-          .find(".category-title h2")
-          .text();
+          .closest('.category-header')
+          .find('.category-title h2')
+          .text()
       }
-      $("#add-to-wishlist-modal").attr("data-product-id", productId);
-      $("#add-to-wishlist-modal").attr("data-product-name", productName);
-      $("#add-to-wishlist-modal").attr("data-product-price", productPrice);
-      $("#add-to-wishlist-modal").attr("data-product-image", productImg);
-      $("#add-to-wishlist-modal").attr(
-        "data-product-category",
-        productCategory,
-      );
-      $("#existing-product-message").addClass("is-hidden");
+      $('#add-to-wishlist-modal').attr('data-product-id', productId)
+      $('#add-to-wishlist-modal').attr('data-product-name', productName)
+      $('#add-to-wishlist-modal').attr('data-product-price', productPrice)
+      $('#add-to-wishlist-modal').attr('data-product-image', productImg)
+      $('#add-to-wishlist-modal').attr('data-product-category', productCategory)
+      $('#existing-product-message').addClass('is-hidden')
     },
-  );
+  )
 
   //select a wishlist in the modal on click
-  $("#wishlist-modal-list .list-item").on("click", function () {
-    $(this).siblings(".list-item").removeClass("is-active");
-    $(this).addClass("is-active");
-  });
+  $('#wishlist-modal-list .list-item').on('click', function () {
+    $(this).siblings('.list-item').removeClass('is-active')
+    $(this).addClass('is-active')
+  })
 
   //Add the previously clicked product to the selected wishlist
-  $(".add-to-wishlist-action").on("click", function () {
-    const $this = $(this);
-    const userData = JSON.parse(localStorage.getItem("user"));
+  $('.add-to-wishlist-action').on('click', function () {
+    const $this = $(this)
+    const userData = JSON.parse(localStorage.getItem('user'))
     const targetWishlist = parseInt(
-      $("#wishlist-modal-list .list-item.is-active").attr("data-wishlist-id"),
-    );
-    const productId = parseInt($this.closest(".modal").attr("data-product-id"));
-    const productName = $this.closest(".modal").attr("data-product-name");
-    const productPrice = $this.closest(".modal").attr("data-product-price");
-    const productImage = $this.closest(".modal").attr("data-product-image");
-    const productCategory = $this.closest(".modal").attr("data-product-category");
+      $('#wishlist-modal-list .list-item.is-active').attr('data-wishlist-id'),
+    )
+    const productId = parseInt($this.closest('.modal').attr('data-product-id'))
+    const productName = $this.closest('.modal').attr('data-product-name')
+    const productPrice = $this.closest('.modal').attr('data-product-price')
+    const productImage = $this.closest('.modal').attr('data-product-image')
+    const productCategory = $this
+      .closest('.modal')
+      .attr('data-product-category')
 
-    $this.addClass("is-loading");
+    $this.addClass('is-loading')
 
     //Logic to look for an item inside a given wishlist
     const found = userData.wishlists[targetWishlist].products.some(
       (el) => el.id === productId,
-    );
+    )
 
     //If item not found in the selected wishlist, add it
     if (!found) {
@@ -369,55 +367,55 @@ function initWishlistSelect() {
             url: productImage,
           },
         ],
-      });
-      localStorage.setItem("user", JSON.stringify(userData));
+      })
+      localStorage.setItem('user', JSON.stringify(userData))
       setTimeout(function () {
-        $this.closest(".modal").removeClass("is-active");
-        $this.removeClass("is-loading");
-        loadWishlistsInModal();
+        $this.closest('.modal').removeClass('is-active')
+        $this.removeClass('is-loading')
+        loadWishlistsInModal()
         if (onceWishlist) {
           toasts.service.success(
-            "",
-            "fas fa-check",
-            "Product successfully added to wishlist",
-            "bottomRight",
+            '',
+            'fas fa-check',
+            'Product successfully added to wishlist',
+            'bottomRight',
             2500,
-          );
-          $("#existing-product-message").addClass("is-hidden");
-          onceWishlist = true;
+          )
+          $('#existing-product-message').addClass('is-hidden')
+          onceWishlist = true
         }
-      }, 1200);
+      }, 1200)
     }
     //Else, tell the user that it alrady exists in the wishlist
     else {
       setTimeout(function () {
-        $this.removeClass("is-loading");
+        $this.removeClass('is-loading')
         if (onceWishlist) {
-          $("#existing-product-message").removeClass("is-hidden");
-          onceWishlist = false;
+          $('#existing-product-message').removeClass('is-hidden')
+          onceWishlist = false
         }
-      }, 1200);
+      }, 1200)
     }
-  });
+  })
 }
 
 //Get wishlists and display them in the add to wishlist modal
 function loadWishlistsInModal() {
-  const checkIcon = feather.icons.check.toSvg();
+  const checkIcon = feather.icons.check.toSvg()
 
-  const userData = JSON.parse(localStorage.getItem("user")) || {};
+  const userData = JSON.parse(localStorage.getItem('user')) || {}
 
   //If not logged in, hide wishlist
   if (userData.wishlists?.length === 0) {
-    $("#wishlist-modal-list, #wishlist-modal-list-placeholder").toggleClass(
-      "is-hidden",
-    );
+    $('#wishlist-modal-list, #wishlist-modal-list-placeholder').toggleClass(
+      'is-hidden',
+    )
   }
 
   //Load wishlists
   else {
     //Empty wishlists in modal
-    $("#wishlist-modal-list ul li").remove();
+    $('#wishlist-modal-list ul li').remove()
 
     for (let i = 0; i < userData.wishlists?.length; i++) {
       let template
@@ -432,7 +430,7 @@ function loadWishlistsInModal() {
                   ${checkIcon}
               </div>
           </li>
-        `;
+        `
       } else {
         template = `
           <li class="list-item" data-wishlist-id="${userData.wishlists[i].id}">
@@ -444,30 +442,30 @@ function loadWishlistsInModal() {
                   ${checkIcon}
               </div>
           </li>
-        `;
+        `
       }
 
-      $.when($("#wishlist-modal-list ul").append(template)).done(function () {
-        initWishlistSelect();
-      });
+      $.when($('#wishlist-modal-list ul').append(template)).done(function () {
+        initWishlistSelect()
+      })
     }
   }
 }
 
 $(function () {
-  if ($("#shop-wishlist").length) {
-    getWishlists();
+  if ($('#shop-wishlist').length) {
+    getWishlists()
 
-    removeWishlistItem();
+    removeWishlistItem()
   }
 
   //Init add wishlist modal if any
-  if ($("#new-wishlist").length) {
-    addWishlist();
+  if ($('#new-wishlist').length) {
+    addWishlist()
   }
 
   //Init add to wishlist modal if any
-  if ($("#add-to-wishlist-modal").length) {
-    loadWishlistsInModal();
+  if ($('#add-to-wishlist-modal').length) {
+    loadWishlistsInModal()
   }
-});
+})

@@ -71,7 +71,7 @@ TABLE OF CONTENTS
       }
       //Shop category title
       .shop-category {
-        font-family: "Raleway", sans-serif;
+        font-family: 'Raleway', sans-serif;
         font-weight: 400;
         font-size: 1.2rem;
         color: $white;
@@ -93,7 +93,7 @@ TABLE OF CONTENTS
       //Paragraph
       p {
         color: $white;
-        font-family: "Raleway", sans-serif;
+        font-family: 'Raleway', sans-serif;
         font-size: 1rem;
         font-weight: 400;
         opacity: 0;
@@ -104,7 +104,7 @@ TABLE OF CONTENTS
         &.is-italic {
           font-weight: 300;
           font-size: 0.7rem;
-          font-family: "Raleway", sans-serif;
+          font-family: 'Raleway', sans-serif;
         }
       }
       //Products count
@@ -120,7 +120,7 @@ TABLE OF CONTENTS
         transition-delay: 0.1s;
         span {
           text-transform: uppercase;
-          font-family: "Raleway", sans-serif;
+          font-family: 'Raleway', sans-serif;
           font-size: 50%;
           font-weight: 300;
         }
@@ -139,7 +139,7 @@ TABLE OF CONTENTS
         transition: all 0.3s;
         transition-delay: 0.15s;
         span {
-          font-family: "Raleway", sans-serif;
+          font-family: 'Raleway', sans-serif;
           font-size: 0.75rem;
           font-weight: 400;
           text-transform: uppercase;
@@ -184,7 +184,7 @@ TABLE OF CONTENTS
   &.no-padding {
     padding-top: 0 !important;
     h2 {
-      font-family: "Raleway", sans-serif;
+      font-family: 'Raleway', sans-serif;
       font-weight: 300;
       font-size: 1.8rem;
       line-height: 1.2;
@@ -192,7 +192,7 @@ TABLE OF CONTENTS
   }
   h2 {
     font-size: 1.8rem;
-    font-family: "Raleway", sans-serif;
+    font-family: 'Raleway', sans-serif;
     font-weight: 400 !important;
     line-height: 1.2;
     text-transform: uppercase;

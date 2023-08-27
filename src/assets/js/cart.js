@@ -1,55 +1,55 @@
-"use strict";
+'use strict'
 
 //Empty cart object initialization
-const cart = {};
+const cart = {}
 
 //Populate default cart object
-cart.items = 0;
-cart.total = 0.0;
-cart.products = [];
+cart.items = 0
+cart.total = 0.0
+cart.products = []
 
 //If user cart is null
-if (JSON.parse(localStorage.getItem("cart")) === null) {
-  localStorage.setItem("cart", JSON.stringify(cart));
+if (JSON.parse(localStorage.getItem('cart')) === null) {
+  localStorage.setItem('cart', JSON.stringify(cart))
 }
 
 //Init cart sidebar spinners
 function initSpinners() {
-  $(".sidebar-spinner").spinner("changing", function (e, newVal, oldVal) {
-    const $this = $(this);
+  $('.sidebar-spinner').spinner('changing', function (e, newVal, oldVal) {
+    const $this = $(this)
 
-    $this.closest(".quantity").find(".spinner-value").html(newVal);
-    $this.closest("li").find(".item-price span").html(newVal);
-    $(".cart-quickview .view-cart-button").addClass("is-hidden");
-    $(".cart-quickview .update-cart-button").removeClass("is-hidden");
-  });
+    $this.closest('.quantity').find('.spinner-value').html(newVal)
+    $this.closest('li').find('.item-price span').html(newVal)
+    $('.cart-quickview .view-cart-button').addClass('is-hidden')
+    $('.cart-quickview .update-cart-button').removeClass('is-hidden')
+  })
 }
 
 //Init cart page spinners
 function initCartSpinners() {
-  $(".main-cart-spinner").spinner("changing", function (e, newVal, oldVal) {
-    const $this = $(this);
+  $('.main-cart-spinner').spinner('changing', function (e, newVal, oldVal) {
+    const $this = $(this)
 
-    $this.closest("li").find(".spinner-value").html(newVal);
-    $("#init-checkout").addClass("is-hidden");
-    $("#update-cart-page").removeClass("is-hidden");
-  });
+    $this.closest('li').find('.spinner-value').html(newVal)
+    $('#init-checkout').addClass('is-hidden')
+    $('#update-cart-page').removeClass('is-hidden')
+  })
 }
 
 //Update cart sidebar (when products are added, updated or removed)
 function updateCartSidebar() {
-  const cartObject = {};
-  const productsCount = $(".cart-quickview .product-container").length;
+  const cartObject = {}
+  const productsCount = $('.cart-quickview .product-container').length
 
-  cartObject.products = [];
-  cartObject.items = productsCount;
-  $(".cart-quickview .product-container").each(function () {
-    const $this = $(this);
-    const productId = parseInt($this.attr("data-product-id"));
-    const productName = $this.find(".item-name").text();
-    const productPrice = parseFloat($this.find(".item-price").text());
-    const productQuantity = parseInt($this.find(".quantity input").val());
-    const productImage = $this.find("img").attr("src");
+  cartObject.products = []
+  cartObject.items = productsCount
+  $('.cart-quickview .product-container').each(function () {
+    const $this = $(this)
+    const productId = parseInt($this.attr('data-product-id'))
+    const productName = $this.find('.item-name').text()
+    const productPrice = parseFloat($this.find('.item-price').text())
+    const productQuantity = parseInt($this.find('.quantity input').val())
+    const productImage = $this.find('img').attr('src')
 
     cartObject.products.push({
       id: productId,
@@ -61,28 +61,28 @@ function updateCartSidebar() {
           url: productImage,
         },
       ],
-    });
-  });
-  localStorage.setItem("cart", JSON.stringify(cartObject));
+    })
+  })
+  localStorage.setItem('cart', JSON.stringify(cartObject))
 }
 
 //Reusable add to cart function
 function addToCart(trigger) {
-  const data = JSON.parse(localStorage.getItem("cart"));
-  const $container = trigger.closest(".product-container");
-  const productId = parseInt($container.attr("data-product-id"));
-  const productName = $container.find(".product-name").text();
-  const productCategory = $container.attr("data-product-category");
+  const data = JSON.parse(localStorage.getItem('cart'))
+  const $container = trigger.closest('.product-container')
+  const productId = parseInt($container.attr('data-product-id'))
+  const productName = $container.find('.product-name').text()
+  const productCategory = $container.attr('data-product-category')
   const productPrice = parseFloat(
-    $container.find(".product-price span:first-child").text(),
-  );
-  const productImage = $container.find("img").attr("src");
-  const productQuantity = 1;
+    $container.find('.product-price span:first-child').text(),
+  )
+  const productImage = $container.find('img').attr('src')
+  const productQuantity = 1
 
-  const found = data.products.some((el) => parseInt(el.id) === productId);
+  const found = data.products.some((el) => parseInt(el.id) === productId)
   if (!found) {
-    console.log("Product does not exist in cart");
-    data.items = parseInt(data.items) + 1;
+    console.log('Product does not exist in cart')
+    data.items = parseInt(data.items) + 1
     data.products.push({
       id: productId,
       name: productName,
@@ -94,15 +94,15 @@ function addToCart(trigger) {
           url: productImage,
         },
       ],
-    });
-    localStorage.setItem("cart", JSON.stringify(data));
+    })
+    localStorage.setItem('cart', JSON.stringify(data))
   } else {
-    console.log("Product exists in cart");
+    console.log('Product exists in cart')
 
     for (let i = 0; i < data.products.length; i++) {
       if (parseInt(data.products[i].id) === productId) {
-        data.products[i].quantity = parseInt(data.products[i].quantity + 1);
-        localStorage.setItem("cart", JSON.stringify(data));
+        data.products[i].quantity = parseInt(data.products[i].quantity + 1)
+        localStorage.setItem('cart', JSON.stringify(data))
       }
     }
   }
@@ -110,26 +110,25 @@ function addToCart(trigger) {
 
 //Get shopping cart sidebar
 function getCart() {
-  const plusIcon = feather.icons.plus.toSvg();
-  const minusIcon = feather.icons.minus.toSvg();
-  const closeIcon = feather.icons.x.toSvg();
-  const data = JSON.parse(localStorage.getItem("cart"));
+  const plusIcon = feather.icons.plus.toSvg()
+  const minusIcon = feather.icons.minus.toSvg()
+  const closeIcon = feather.icons.x.toSvg()
+  const data = JSON.parse(localStorage.getItem('cart'))
 
-  let cartTotal = 0.0;
+  let cartTotal = 0.0
 
   //Populate cart sidebar
-  $(".cart-loader").addClass("is-active");
+  $('.cart-loader').addClass('is-active')
 
-  $(".cart-quickview .cart-body ul").empty();
+  $('.cart-quickview .cart-body ul').empty()
 
   if (data.products.length > 0) {
-    $(".cart-quickview .empty-cart").addClass("is-hidden");
+    $('.cart-quickview .empty-cart').addClass('is-hidden')
 
     for (let i = 0; i < data.products.length; i++) {
       cartTotal =
         parseFloat(cartTotal) +
-        parseFloat(data.products[i].price) *
-          parseInt(data.products[i].quantity);
+        parseFloat(data.products[i].price) * parseInt(data.products[i].quantity)
 
       const template = `
                 <li class="clearfix product-container" data-product-id="${
@@ -170,125 +169,124 @@ function getCart() {
                         ${closeIcon}
                     </span>
                 </li>
-            `;
+            `
 
-      $(".cart-quickview .cart-body ul").append(template);
+      $('.cart-quickview .cart-body ul').append(template)
 
       if (i == data.products.length - 1) {
-        data.total = cartTotal;
-        $("#quickview-cart-count var").html(data.items);
-        localStorage.setItem("cart", JSON.stringify(data));
-        $(".cart-quickview .cart-total").html(parseFloat(cartTotal).toFixed(2));
-        initSpinners();
-        if (env === "development") {
-          changeDemoImages();
+        data.total = cartTotal
+        $('#quickview-cart-count var').html(data.items)
+        localStorage.setItem('cart', JSON.stringify(data))
+        $('.cart-quickview .cart-total').html(parseFloat(cartTotal).toFixed(2))
+        initSpinners()
+        if (env === 'development') {
+          changeDemoImages()
         }
         //Check viewport size
         if (!mobileTrue) {
-          initPopovers();
+          initPopovers()
         }
-        removeFromCart();
+        removeFromCart()
       }
     }
-    $("#cart-dot").removeClass("is-hidden");
-    $("#mobile-cart-count").html(data.items);
+    $('#cart-dot').removeClass('is-hidden')
+    $('#mobile-cart-count').html(data.items)
     setTimeout(function () {
-      $(".cart-loader").removeClass("is-active");
-    }, 800);
+      $('.cart-loader').removeClass('is-active')
+    }, 800)
   } else {
-    $("#cart-dot").addClass("is-hidden");
-    $(".cart-quickview .empty-cart").removeClass("is-hidden");
-    cartTotal = 0.0;
-    data.total = cartTotal;
-    $("#mobile-cart-count").html("0");
-    localStorage.setItem("cart", JSON.stringify(data));
-    $(".cart-quickview .cart-total").html(parseFloat(cartTotal).toFixed(2));
+    $('#cart-dot').addClass('is-hidden')
+    $('.cart-quickview .empty-cart').removeClass('is-hidden')
+    cartTotal = 0.0
+    data.total = cartTotal
+    $('#mobile-cart-count').html('0')
+    localStorage.setItem('cart', JSON.stringify(data))
+    $('.cart-quickview .cart-total').html(parseFloat(cartTotal).toFixed(2))
   }
 }
 
 //Reusable remove from cart function
 function removeFromCart() {
-  $(".remove-from-cart-action").on("click", function () {
-    const $this = $(this);
+  $('.remove-from-cart-action').on('click', function () {
+    const $this = $(this)
     const productId = parseInt(
-      $this.closest(".product-container").attr("data-product-id"),
-    );
-    const data = JSON.parse(localStorage.getItem("cart"));
+      $this.closest('.product-container').attr('data-product-id'),
+    )
+    const data = JSON.parse(localStorage.getItem('cart'))
 
-    $(".cart-loader").addClass("is-active");
+    $('.cart-loader').addClass('is-active')
 
     //Update cart Data
     setTimeout(function () {
       data.products = $.grep(data.products, function (e) {
-        return e.id != productId;
-      });
-      data.items = data.products.length;
-      localStorage.setItem("cart", JSON.stringify(data));
-      $(".webui-popover").removeClass("in").addClass("pop-out");
-      getCart();
-    }, 300);
+        return e.id != productId
+      })
+      data.items = data.products.length
+      localStorage.setItem('cart', JSON.stringify(data))
+      $('.webui-popover').removeClass('in').addClass('pop-out')
+      getCart()
+    }, 300)
     //Simulate loading
     setTimeout(function () {
-      $(".cart-loader").removeClass("is-active");
+      $('.cart-loader').removeClass('is-active')
       toasts.service.success(
-        "",
-        "fas fa-check",
-        "Product successfully removed from cart",
-        "bottomRight",
+        '',
+        'fas fa-check',
+        'Product successfully removed from cart',
+        'bottomRight',
         2500,
-      );
-    }, 800);
-  });
+      )
+    }, 800)
+  })
 }
 
 //Disable cart sidebar (when on cart page or checkout)
 function disableCartSidebar() {
-  $("#open-cart").off();
-  $("#open-cart").on("click", function () {
-    if ($(".checkout-wrapper").length) {
+  $('#open-cart').off()
+  $('#open-cart').on('click', function () {
+    if ($('.checkout-wrapper').length) {
       toasts.service.error(
-        "",
-        "fas fa-comment-alt",
-        "Cart sidebar is disabled during checkout",
-        "bottomRight",
+        '',
+        'fas fa-comment-alt',
+        'Cart sidebar is disabled during checkout',
+        'bottomRight',
         2500,
-      );
+      )
     } else {
       toasts.service.error(
-        "",
-        "fas fa-comment-alt",
-        "Cart sidebar is disabled on cart page",
-        "bottomRight",
+        '',
+        'fas fa-comment-alt',
+        'Cart sidebar is disabled on cart page',
+        'bottomRight',
         2500,
-      );
+      )
     }
-  });
+  })
 }
 
 //Get cart data for cart page
 function getCartPage() {
-  const plusIcon = feather.icons.plus.toSvg();
-  const minusIcon = feather.icons.minus.toSvg();
-  const removeIcon = feather.icons["trash-2"].toSvg();
-  const data = JSON.parse(localStorage.getItem("cart"));
+  const plusIcon = feather.icons.plus.toSvg()
+  const minusIcon = feather.icons.minus.toSvg()
+  const removeIcon = feather.icons['trash-2'].toSvg()
+  const data = JSON.parse(localStorage.getItem('cart'))
 
-  let cartSubtotal = 0.0;
-  const taxRate = 0.06; // 6% tax rate
+  let cartSubtotal = 0.0
+  const taxRate = 0.06 // 6% tax rate
 
   //Populate cart page
-  $(".account-loader").addClass("is-active");
+  $('.account-loader').addClass('is-active')
 
-  $("#cart-page-products").empty();
+  $('#cart-page-products').empty()
 
   if (data.products.length > 0) {
-    $("#cart-main-placeholder").addClass("is-hidden");
-    $(".is-account-grid").removeClass("is-hidden");
+    $('#cart-main-placeholder').addClass('is-hidden')
+    $('.is-account-grid').removeClass('is-hidden')
 
     for (let i = 0; i < data.products.length; i++) {
       cartSubtotal =
         parseFloat(cartSubtotal) +
-        parseFloat(data.products[i].price) *
-          parseInt(data.products[i].quantity);
+        parseFloat(data.products[i].price) * parseInt(data.products[i].quantity)
 
       const template = `
         <div class="flat-card is-auto cart-card product-container" data-product-id="${
@@ -306,9 +304,9 @@ function getCartPage() {
                     </span>
                     <span class="product-price">
                         <span>Price</span>
-                        <span>${parseFloat(
-                          data.products[i].price,
-                        ).toFixed(2)}</span>
+                        <span>${parseFloat(data.products[i].price).toFixed(
+                          2,
+                        )}</span>
                     </span>
 
                     <div data-trigger="spinner" class="main-cart-spinner">
@@ -336,72 +334,70 @@ function getCartPage() {
                 </li>
             </ul>
         </div>
-      `;
+      `
 
-      $("#cart-page-products").append(template);
+      $('#cart-page-products').append(template)
 
       if (i == data.products.length - 1) {
-        data.total = cartSubtotal;
-        $("#cart-page-count").html(data.items);
-        localStorage.setItem("cart", JSON.stringify(data));
-        $("#cart-summary-subtotal").html(parseFloat(cartSubtotal).toFixed(2));
-        $("#cart-summary-taxes").html(
+        data.total = cartSubtotal
+        $('#cart-page-count').html(data.items)
+        localStorage.setItem('cart', JSON.stringify(data))
+        $('#cart-summary-subtotal').html(parseFloat(cartSubtotal).toFixed(2))
+        $('#cart-summary-taxes').html(
           parseFloat(cartSubtotal * taxRate).toFixed(2),
-        );
-        $("#cart-summary-total").html(
+        )
+        $('#cart-summary-total').html(
           parseFloat(cartSubtotal * taxRate + cartSubtotal).toFixed(2),
-        );
-        initCartSpinners();
-        if (env === "development") {
-          changeDemoImages();
+        )
+        initCartSpinners()
+        if (env === 'development') {
+          changeDemoImages()
         }
         //Check viewport size
         if (!mobileTrue) {
-          initPopovers();
+          initPopovers()
         }
-        removeFromCartPage();
+        removeFromCartPage()
       }
     }
-    $("#cart-dot").removeClass("is-hidden");
+    $('#cart-dot').removeClass('is-hidden')
     setTimeout(function () {
-      $(".cart-loader").removeClass("is-active");
-    }, 800);
+      $('.cart-loader').removeClass('is-active')
+    }, 800)
   } else {
-    $(".is-account-grid").addClass("is-hidden");
-    $("#cart-main-placeholder").removeClass("is-hidden");
-    cartSubtotal = 0.0;
-    data.total = cartSubtotal;
-    localStorage.setItem("cart", JSON.stringify(data));
-    $("#cart-page-count").html("0");
-    $("#cart-summary-subtotal").html(parseFloat(cartSubtotal).toFixed(2));
-    $("#cart-summary-taxes").html(
-      parseFloat(cartSubtotal * taxRate).toFixed(2),
-    );
-    $("#cart-summary-total").html(
+    $('.is-account-grid').addClass('is-hidden')
+    $('#cart-main-placeholder').removeClass('is-hidden')
+    cartSubtotal = 0.0
+    data.total = cartSubtotal
+    localStorage.setItem('cart', JSON.stringify(data))
+    $('#cart-page-count').html('0')
+    $('#cart-summary-subtotal').html(parseFloat(cartSubtotal).toFixed(2))
+    $('#cart-summary-taxes').html(parseFloat(cartSubtotal * taxRate).toFixed(2))
+    $('#cart-summary-total').html(
       parseFloat(cartSubtotal * taxRate + cartSubtotal).toFixed(2),
-    );
+    )
   }
 }
 
 //Update cart page when update button is clicked
 function updateCartPage() {
-  const cartObject = {};
-  const productsCount = $("#cart-page-products .product-container").length;
+  const cartObject = {}
+  const productsCount = $('#cart-page-products .product-container').length
 
-  cartObject.products = [];
-  cartObject.items = productsCount;
-  $("#cart-page-products .product-container").each(function () {
-    const $this = $(this);
-    const productId = parseInt($this.attr("data-product-id"));
-    const productName = $this.find(".product-info span:first-child").text();
-    const productCategory = $this.find(".product-info span:nth-child(2)").text();
+  cartObject.products = []
+  cartObject.items = productsCount
+  $('#cart-page-products .product-container').each(function () {
+    const $this = $(this)
+    const productId = parseInt($this.attr('data-product-id'))
+    const productName = $this.find('.product-info span:first-child').text()
+    const productCategory = $this.find('.product-info span:nth-child(2)').text()
     const productPrice = parseFloat(
-      $this.find(".product-price span:nth-child(2)").text(),
-    );
+      $this.find('.product-price span:nth-child(2)').text(),
+    )
     const productQuantity = parseInt(
-      $this.find(".main-cart-spinner input").val(),
-    );
-    const productImage = $this.find("img").attr("src");
+      $this.find('.main-cart-spinner input').val(),
+    )
+    const productImage = $this.find('img').attr('src')
 
     cartObject.products.push({
       id: productId,
@@ -414,222 +410,222 @@ function updateCartPage() {
           url: productImage,
         },
       ],
-    });
-  });
-  localStorage.setItem("cart", JSON.stringify(cartObject));
+    })
+  })
+  localStorage.setItem('cart', JSON.stringify(cartObject))
 }
 
 //Remove product from cart page
 function removeFromCartPage() {
-  $(".remove-from-cartpage-action").on("click", function () {
-    const $this = $(this);
+  $('.remove-from-cartpage-action').on('click', function () {
+    const $this = $(this)
     const productId = parseInt(
-      $this.closest(".product-container").attr("data-product-id"),
-    );
-    const data = JSON.parse(localStorage.getItem("cart"));
+      $this.closest('.product-container').attr('data-product-id'),
+    )
+    const data = JSON.parse(localStorage.getItem('cart'))
 
-    $(".account-loader").addClass("is-active");
+    $('.account-loader').addClass('is-active')
 
     //Update cart Data
     setTimeout(function () {
       data.products = $.grep(data.products, function (e) {
-        return e.id != productId;
-      });
-      data.items = data.products.length;
-      localStorage.setItem("cart", JSON.stringify(data));
-      $(".webui-popover").removeClass("in").addClass("pop-out");
-      getCartPage();
-      getCart();
-    }, 300);
+        return e.id != productId
+      })
+      data.items = data.products.length
+      localStorage.setItem('cart', JSON.stringify(data))
+      $('.webui-popover').removeClass('in').addClass('pop-out')
+      getCartPage()
+      getCart()
+    }, 300)
     //Simulate loading
     setTimeout(function () {
-      $(".account-loader").removeClass("is-active");
+      $('.account-loader').removeClass('is-active')
       toasts.service.success(
-        "",
-        "fas fa-check",
-        "Product successfully removed from cart",
-        "bottomRight",
+        '',
+        'fas fa-check',
+        'Product successfully removed from cart',
+        'bottomRight',
         2500,
-      );
-    }, 800);
-  });
+      )
+    }, 800)
+  })
 }
 
 //Build proto checkout object and pass it to checkout
 function initCheckout() {
-  $("#init-checkout").on("click", function () {
-    if (JSON.parse(localStorage.getItem("cart")) !== null) {
-      localStorage.removeItem("checkout");
+  $('#init-checkout').on('click', function () {
+    if (JSON.parse(localStorage.getItem('cart')) !== null) {
+      localStorage.removeItem('checkout')
     }
-    const cartData = JSON.parse(localStorage.getItem("cart"));
-    const userData = JSON.parse(localStorage.getItem("user"));
-    const $this = $(this);
-    const checkoutObject = {};
+    const cartData = JSON.parse(localStorage.getItem('cart'))
+    const userData = JSON.parse(localStorage.getItem('user'))
+    const $this = $(this)
+    const checkoutObject = {}
 
-    $this.addClass("is-loading");
+    $this.addClass('is-loading')
 
-    checkoutObject.items = cartData.products;
-    checkoutObject.count = cartData.items;
-    checkoutObject.subtotal = parseFloat($("#cart-summary-subtotal").text());
-    checkoutObject.taxes = parseFloat($("#cart-summary-taxes").text());
-    checkoutObject.shipping = 0.0;
-    checkoutObject.total = parseFloat($("#cart-summary-total").text());
-    checkoutObject.step = 1;
-    checkoutObject.username = userData.firstName + " " + userData.lastName;
-    checkoutObject.avatar = userData.photoUrl;
-    checkoutObject.orderNotes = "";
+    checkoutObject.items = cartData.products
+    checkoutObject.count = cartData.items
+    checkoutObject.subtotal = parseFloat($('#cart-summary-subtotal').text())
+    checkoutObject.taxes = parseFloat($('#cart-summary-taxes').text())
+    checkoutObject.shipping = 0.0
+    checkoutObject.total = parseFloat($('#cart-summary-total').text())
+    checkoutObject.step = 1
+    checkoutObject.username = userData.firstName + ' ' + userData.lastName
+    checkoutObject.avatar = userData.photoUrl
+    checkoutObject.orderNotes = ''
 
-    localStorage.setItem("checkout", JSON.stringify(checkoutObject));
+    localStorage.setItem('checkout', JSON.stringify(checkoutObject))
 
     if (!userData.isLoggedIn) {
       setTimeout(function () {
-        window.location.href = "/authentication.html?origin=checkout";
-      }, 1200);
+        window.location.href = '/authentication.html?origin=checkout'
+      }, 1200)
     } else {
       setTimeout(function () {
-        window.location.href = "/checkout-step1.html";
-      }, 1200);
+        window.location.href = '/checkout-step1.html'
+      }, 1200)
     }
-  });
+  })
 }
 
 $(function () {
   //Update cart button
-  $(".update-cart-button").on("click", function () {
-    const $this = $(this);
-    $this.addClass("is-loading");
-    $(".cart-loader").addClass("is-active");
+  $('.update-cart-button').on('click', function () {
+    const $this = $(this)
+    $this.addClass('is-loading')
+    $('.cart-loader').addClass('is-active')
     setTimeout(function () {
-      updateCartSidebar();
-      getCart();
-    }, 300);
+      updateCartSidebar()
+      getCart()
+    }, 300)
     setTimeout(function () {
-      $this.removeClass("is-loading").addClass("is-hidden");
-      $(".cart-quickview .view-cart-button").removeClass("is-hidden");
-      $(".cart-loader").removeClass("is-active");
+      $this.removeClass('is-loading').addClass('is-hidden')
+      $('.cart-quickview .view-cart-button').removeClass('is-hidden')
+      $('.cart-loader').removeClass('is-active')
       toasts.service.success(
-        "",
-        "fas fa-check",
-        "cart updated successfully",
-        "bottomRight",
+        '',
+        'fas fa-check',
+        'cart updated successfully',
+        'bottomRight',
         2500,
-      );
-    }, 800);
-  });
+      )
+    }, 800)
+  })
 
   //Products Grid implementation
-  if ($("#shop-grid").length) {
+  if ($('#shop-grid').length) {
     //Add to cart
-    $(".product-container .actions .add")
+    $('.product-container .actions .add')
       .off()
-      .on("click", function () {
-        const $this = $(this);
-        if ($(".cart-quickview").hasClass("is-active")) {
-          $(".cart-loader").addClass("is-active");
+      .on('click', function () {
+        const $this = $(this)
+        if ($('.cart-quickview').hasClass('is-active')) {
+          $('.cart-loader').addClass('is-active')
         }
         setTimeout(function () {
           $.when(addToCart($this)).done(function () {
-            getCart();
-          });
-        }, 300);
+            getCart()
+          })
+        }, 300)
         setTimeout(function () {
-          if ($(".cart-quickview").hasClass("is-active")) {
-            $(".cart-loader").removeClass("is-active");
+          if ($('.cart-quickview').hasClass('is-active')) {
+            $('.cart-loader').removeClass('is-active')
           }
           toasts.service.success(
-            "",
-            "fas fa-plus",
-            "Product successfully added to cart",
-            "bottomRight",
+            '',
+            'fas fa-plus',
+            'Product successfully added to cart',
+            'bottomRight',
             2500,
-          );
-        }, 800);
-      });
+          )
+        }, 800)
+      })
   }
 
   //Products List implementation
-  if ($("#shop-list").length) {
+  if ($('#shop-list').length) {
     //Add to cart
-    $(".product-container .actions .add").on("click", function () {
-      const $this = $(this);
-      if ($(".cart-quickview").hasClass("is-active")) {
-        $(".cart-loader").addClass("is-active");
+    $('.product-container .actions .add').on('click', function () {
+      const $this = $(this)
+      if ($('.cart-quickview').hasClass('is-active')) {
+        $('.cart-loader').addClass('is-active')
       }
       setTimeout(function () {
         $.when(addToCart($this)).done(function () {
-          getCart();
-        });
-      }, 300);
+          getCart()
+        })
+      }, 300)
       setTimeout(function () {
-        if ($(".cart-quickview").hasClass("is-active")) {
-          $(".cart-loader").removeClass("is-active");
+        if ($('.cart-quickview').hasClass('is-active')) {
+          $('.cart-loader').removeClass('is-active')
         }
         toasts.service.success(
-          "",
-          "fas fa-plus",
-          "Product successfully added to cart",
-          "bottomRight",
+          '',
+          'fas fa-plus',
+          'Product successfully added to cart',
+          'bottomRight',
           2500,
-        );
-      }, 800);
-    });
+        )
+      }, 800)
+    })
   }
 
   //If cart page
-  if ($("#cart-page").length) {
-    disableCartSidebar();
-    getCartPage();
+  if ($('#cart-page').length) {
+    disableCartSidebar()
+    getCartPage()
 
     setTimeout(function () {
-      $(".account-loader").removeClass("is-active");
-    }, 1200);
+      $('.account-loader').removeClass('is-active')
+    }, 1200)
 
     //Init checkout button
-    initCheckout();
+    initCheckout()
 
     //Update cart page
-    $("#update-cart-page").on("click", function () {
-      const $this = $(this);
-      $this.addClass("is-loading");
-      $(".account-loader").addClass("is-active");
+    $('#update-cart-page').on('click', function () {
+      const $this = $(this)
+      $this.addClass('is-loading')
+      $('.account-loader').addClass('is-active')
       setTimeout(function () {
-        updateCartPage();
-        getCartPage();
-      }, 300);
+        updateCartPage()
+        getCartPage()
+      }, 300)
       setTimeout(function () {
-        $this.removeClass("is-loading").addClass("is-hidden");
-        $("#init-checkout").removeClass("is-hidden");
-        $(".account-loader").removeClass("is-active");
+        $this.removeClass('is-loading').addClass('is-hidden')
+        $('#init-checkout').removeClass('is-hidden')
+        $('.account-loader').removeClass('is-active')
         toasts.service.success(
-          "",
-          "fas fa-check",
-          "cart updated successfully",
-          "bottomRight",
+          '',
+          'fas fa-check',
+          'cart updated successfully',
+          'bottomRight',
           2500,
-        );
-      }, 800);
-    });
+        )
+      }, 800)
+    })
 
     //Add to cart from recently viewed
-    $(".product-container .actions .add").on("click", function () {
-      const $this = $(this);
-      $(".account-loader").addClass("is-active");
+    $('.product-container .actions .add').on('click', function () {
+      const $this = $(this)
+      $('.account-loader').addClass('is-active')
       setTimeout(function () {
         $.when(addToCart($this)).done(function () {
-          getCartPage();
-          getCart();
-        });
-      }, 300);
+          getCartPage()
+          getCart()
+        })
+      }, 300)
       setTimeout(function () {
-        $(".account-loader").removeClass("is-active");
+        $('.account-loader').removeClass('is-active')
         toasts.service.success(
-          "",
-          "fas fa-plus",
-          "Product successfully added to cart",
-          "bottomRight",
+          '',
+          'fas fa-plus',
+          'Product successfully added to cart',
+          'bottomRight',
           2500,
-        );
-      }, 800);
-    });
+        )
+      }, 800)
+    })
   }
-});
+})

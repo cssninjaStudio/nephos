@@ -115,7 +115,7 @@ TABLE OF CONTENTS
       background: transparent;
       font-size: 5rem;
       font-weight: 200;
-      font-family: "Alegreya Sans SC", sans-serif;
+      font-family: 'Alegreya Sans SC', sans-serif;
       text-transform: uppercase;
       padding-bottom: 10px;
 
@@ -308,7 +308,7 @@ TABLE OF CONTENTS
 
       &:first-child {
         font-size: 1rem;
-        font-family: "Raleway", sans-serif;
+        font-family: 'Raleway', sans-serif;
         font-weight: 500;
         color: $dark-text;
       }
@@ -319,7 +319,7 @@ TABLE OF CONTENTS
         transition: color 0.3s;
 
         &:before {
-          content: "$";
+          content: '$';
         }
       }
     }
@@ -339,7 +339,7 @@ TABLE OF CONTENTS
   margin-bottom: 20px;
 
   .block-title {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 0.7rem;
     font-weight: 600;
     color: $muted-grey;
@@ -390,7 +390,7 @@ TABLE OF CONTENTS
 
   .address {
     font-size: 0.82rem;
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     color: $dark-text;
     line-height: 1.8;

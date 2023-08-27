@@ -24,7 +24,7 @@ TABLE OF CONTENTS
 //Page title
 .account-header {
   h2 {
-    font-family: "Raleway", sans-serif;
+    font-family: 'Raleway', sans-serif;
     font-size: 1.8rem;
     font-weight: 400 !important;
     text-transform: uppercase;
@@ -188,7 +188,7 @@ TABLE OF CONTENTS
     }
 
     h3 {
-      font-family: "Montserrat", sans-serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 1.1rem;
       font-weight: 600;
       color: $dark-text;
@@ -267,7 +267,7 @@ TABLE OF CONTENTS
     background: #fcfcfc;
 
     .achievement-title {
-      font-family: "Raleway", sans-serif;
+      font-family: 'Raleway', sans-serif;
       text-transform: uppercase;
       font-weight: 500;
       font-size: 0.75rem;
@@ -464,13 +464,13 @@ TABLE OF CONTENTS
 
           span {
             display: block;
-            font-family: "Raleway", sans-serif;
+            font-family: 'Raleway', sans-serif;
             font-weight: 500;
 
             &:first-child {
               text-transform: uppercase;
               font-size: 0.8rem;
-              font-family: "Raleway", sans-serif;
+              font-family: 'Raleway', sans-serif;
             }
 
             &.is-gold {
@@ -641,7 +641,7 @@ TABLE OF CONTENTS
         }
 
         h3 {
-          font-family: "Montserrat", sans-serif;
+          font-family: 'Montserrat', sans-serif;
           font-size: 1.1rem;
           font-weight: 600;
           color: $dark-text;
@@ -690,7 +690,7 @@ TABLE OF CONTENTS
         .product-info span,
         .product-info a {
           &:first-child {
-            font-family: "Raleway", sans-serif;
+            font-family: 'Raleway', sans-serif;
             font-weight: 600;
             font-size: 0.9rem;
           }

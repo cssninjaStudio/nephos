@@ -27,7 +27,7 @@ TABLE OF CONTENTS
   input.d-checkbox + span,
   input.b-radio + span {
     background: $white;
-    content: "";
+    content: '';
     display: inline-block;
     margin: 0 0.5em 0 0;
     padding: 0;
@@ -36,7 +36,7 @@ TABLE OF CONTENTS
     width: 2em;
     height: 2em;
     &::after {
-      content: "";
+      content: '';
       display: block;
       transform: scale(0);
       transition: transform 0.2s;

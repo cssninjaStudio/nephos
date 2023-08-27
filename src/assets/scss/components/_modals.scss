@@ -121,11 +121,11 @@ TABLE OF CONTENTS
       font-size: 1.25em;
       font-family: FontAwesome;
       display: inline-block;
-      content: "\f005";
+      content: '\f005';
     }
 
     .rating > .half:before {
-      content: "\f089";
+      content: '\f089';
       position: absolute;
     }
 
@@ -355,7 +355,7 @@ TABLE OF CONTENTS
               }
 
               h3 {
-                font-family: "Montserrat", sans-serif;
+                font-family: 'Montserrat', sans-serif;
                 font-size: 1rem;
                 font-weight: 600;
                 color: $dark-text;
@@ -737,7 +737,7 @@ TABLE OF CONTENTS
             }
 
             h3 {
-              font-family: "Montserrat", sans-serif;
+              font-family: 'Montserrat', sans-serif;
               font-size: 1rem;
               font-weight: 600;
               color: $dark-text;

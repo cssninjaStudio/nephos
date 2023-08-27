@@ -201,7 +201,7 @@ TABLE OF CONTENTS
         padding: 0 34px;
 
         a {
-          font-family: "Raleway", sans-serif;
+          font-family: 'Raleway', sans-serif;
           display: flex;
           justify-content: flex-end;
           align-items: center;
@@ -315,7 +315,7 @@ TABLE OF CONTENTS
 
       h2 {
         position: relative;
-        font-family: "Raleway", sans-serif;
+        font-family: 'Raleway', sans-serif;
         font-size: 0.95rem;
         font-weight: 500;
         color: $white;
@@ -363,7 +363,7 @@ TABLE OF CONTENTS
       a {
         width: 100%;
         padding: 0 20px;
-        font-family: "Raleway", sans-serif;
+        font-family: 'Raleway', sans-serif;
         font-weight: 500 !important;
         text-transform: uppercase;
         letter-spacing: 3px;
@@ -413,7 +413,7 @@ TABLE OF CONTENTS
 
             span {
               display: block;
-              font-family: "Raleway", sans-serif;
+              font-family: 'Raleway', sans-serif;
 
               &:first-child {
                 text-transform: uppercase;
@@ -491,7 +491,7 @@ TABLE OF CONTENTS
       h2 {
         position: relative;
         font-size: 0.95rem;
-        font-family: "Raleway", sans-serif;
+        font-family: 'Raleway', sans-serif;
         font-weight: 500;
         color: $dark-text;
         text-transform: uppercase;
@@ -551,7 +551,7 @@ TABLE OF CONTENTS
     .checkbox-wrap {
       padding: 0;
       color: $dark-text !important;
-      font-family: "Raleway", sans-serif;
+      font-family: 'Raleway', sans-serif;
       font-size: 0.9rem;
 
       span {
@@ -608,7 +608,7 @@ TABLE OF CONTENTS
 
       h2 {
         position: relative;
-        font-family: "Raleway", sans-serif;
+        font-family: 'Raleway', sans-serif;
         font-size: 0.95rem;
         font-weight: 500;
         color: $dark-text;
@@ -646,7 +646,7 @@ TABLE OF CONTENTS
         font-weight: 600;
 
         &:before {
-          content: "$";
+          content: '$';
           font-size: 90%;
         }
 
@@ -721,7 +721,7 @@ TABLE OF CONTENTS
         }
 
         h3 {
-          font-family: "Raleway", sans-serif;
+          font-family: 'Raleway', sans-serif;
           font-size: 1.1rem;
           font-weight: 600;
           padding: 10px 0 0 0;
@@ -831,7 +831,7 @@ TABLE OF CONTENTS
             font-weight: 500;
 
             &:before {
-              content: "$";
+              content: '$';
             }
           }
 

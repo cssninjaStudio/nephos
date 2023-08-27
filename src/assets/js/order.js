@@ -1,120 +1,114 @@
-"use strict";
+'use strict'
 
 //Get order Id parameter from query string
-const orderId = parseInt($.urlParam("orderId"));
+const orderId = parseInt($.urlParam('orderId'))
 
 //Get order json details, passing the Id as parameter
 function getOrder(orderId) {
-  const userData = JSON.parse(localStorage.getItem("user"));
+  const userData = JSON.parse(localStorage.getItem('user'))
 
   $.ajax({
-    url: "assets/data/orders.json",
+    url: 'assets/data/orders.json',
     async: true,
-    dataType: "json",
+    dataType: 'json',
     success: function (data) {
       for (let i = 0; i < data.length; i++) {
         if (data[i].id === orderId) {
           //Populate basic data
-          $("#order-details-id var").html(data[i].id);
-          $("#order-details-date var").html(data[i].date);
-          $("#order-details-avatar").attr(
-            "src",
-            "http://via.placeholder.com/250x250",
-          );
-          $("#order-details-avatar").attr(
-            "data-demo-src",
+          $('#order-details-id var').html(data[i].id)
+          $('#order-details-date var').html(data[i].date)
+          $('#order-details-avatar').attr(
+            'src',
+            'http://via.placeholder.com/250x250',
+          )
+          $('#order-details-avatar').attr(
+            'data-demo-src',
             data[i].contact.photoUrl,
-          );
-          $("#order-details-contact").html(data[i].contact.name);
+          )
+          $('#order-details-contact').html(data[i].contact.name)
 
           //Payment tile
-          if (data[i].paymentStatus === "Paid") {
-            $("#payment-tile").addClass("is-done");
-          } else if (data[i].paymentStatus === "Pending") {
-            $("#payment-tile").addClass("has-warning");
+          if (data[i].paymentStatus === 'Paid') {
+            $('#payment-tile').addClass('is-done')
+          } else if (data[i].paymentStatus === 'Pending') {
+            $('#payment-tile').addClass('has-warning')
           }
 
-          $("#payment-tile span:nth-child(3)").html(data[i].paymentMethod);
-          $("#payment-tile span:nth-child(2)").html(data[i].paymentStatus);
+          $('#payment-tile span:nth-child(3)').html(data[i].paymentMethod)
+          $('#payment-tile span:nth-child(2)').html(data[i].paymentStatus)
 
           //Shipping tile
           if (data[i].shippingTrackingId === null) {
-            $("#shipping-tile span:nth-child(3)").html("Not shipped yet");
+            $('#shipping-tile span:nth-child(3)').html('Not shipped yet')
           } else {
-            $("#shipping-tile").addClass("is-done");
-            $("#shipping-tile span:nth-child(3) a").html(
+            $('#shipping-tile').addClass('is-done')
+            $('#shipping-tile span:nth-child(3) a').html(
               data[i].shippingTrackingId,
-            );
+            )
           }
 
-          $("#shipping-tile span:nth-child(2)").html(data[i].shippingMethod);
+          $('#shipping-tile span:nth-child(2)').html(data[i].shippingMethod)
 
           //Status tile
-          if (data[i].status === "Complete") {
-            $("#status-tile").addClass("is-done");
+          if (data[i].status === 'Complete') {
+            $('#status-tile').addClass('is-done')
           }
 
-          $("#status-tile span:nth-child(2)").html(data[i].status);
+          $('#status-tile span:nth-child(2)').html(data[i].status)
 
           //Shipping Address
-          let shippingAddressCode;
+          let shippingAddressCode
           if (userData.addresses[1].disabled === true) {
-            shippingAddressCode = 0;
+            shippingAddressCode = 0
           } else {
-            shippingAddressCode = data[i].shippingAddressId;
+            shippingAddressCode = data[i].shippingAddressId
           }
-          $("#shipping-address1").html(
+          $('#shipping-address1').html(
             userData.addresses[shippingAddressCode].address1,
-          );
-          $("#shipping-address2").html(
+          )
+          $('#shipping-address2').html(
             userData.addresses[shippingAddressCode].address2,
-          );
-          $("#shipping-city").html(
-            userData.addresses[shippingAddressCode].city,
-          );
-          $("#shipping-state").html(
+          )
+          $('#shipping-city').html(userData.addresses[shippingAddressCode].city)
+          $('#shipping-state').html(
             userData.addresses[shippingAddressCode].state,
-          );
-          $("#shipping-postalCode").html(
+          )
+          $('#shipping-postalCode').html(
             userData.addresses[shippingAddressCode].postalCode,
-          );
-          $("#shipping-country").html(
+          )
+          $('#shipping-country').html(
             userData.addresses[shippingAddressCode].country,
-          );
+          )
 
           //Billing Address
-          const billingAddressCode = data[i].billingAddressId;
-          $("#billing-address1").html(
+          const billingAddressCode = data[i].billingAddressId
+          $('#billing-address1').html(
             userData.addresses[billingAddressCode].address1,
-          );
-          $("#billing-address2").html(
+          )
+          $('#billing-address2').html(
             userData.addresses[billingAddressCode].address2,
-          );
-          $("#billing-city").html(userData.addresses[billingAddressCode].city);
-          $("#billing-state").html(
-            userData.addresses[billingAddressCode].state,
-          );
-          $("#billing-postalCode").html(
+          )
+          $('#billing-city').html(userData.addresses[billingAddressCode].city)
+          $('#billing-state').html(userData.addresses[billingAddressCode].state)
+          $('#billing-postalCode').html(
             userData.addresses[billingAddressCode].postalCode,
-          );
-          $("#billing-country").html(
+          )
+          $('#billing-country').html(
             userData.addresses[billingAddressCode].country,
-          );
+          )
 
           //Totals
-          $("#order-subtotal-value").html(
+          $('#order-subtotal-value').html(
             data[i].orderModel.subtotal.toFixed(2),
-          );
-          $("#order-shipping-value").html(
+          )
+          $('#order-shipping-value').html(
             data[i].orderModel.shipping.toFixed(2),
-          );
-          $("#order-tax-value").html(data[i].orderModel.taxes.toFixed(2));
-          $("#order-grandtotal-value").html(
-            data[i].orderModel.total.toFixed(2),
-          );
+          )
+          $('#order-tax-value').html(data[i].orderModel.taxes.toFixed(2))
+          $('#order-grandtotal-value').html(data[i].orderModel.total.toFixed(2))
 
           //Products
-          $(".flex-table .flex-table-item").remove();
+          $('.flex-table .flex-table-item').remove()
 
           for (let p = 0; p < data[i].products.length; p++) {
             const template = `
@@ -147,26 +141,26 @@ function getOrder(orderId) {
                                     ).toFixed(2)}</span>
                                 </div>
                             </div>
-                        `;
+                        `
 
-            $.when($(".flex-table").append(template)).done(function () {
+            $.when($('.flex-table').append(template)).done(function () {
               //Make product links clickable
-              initOrderDetailsLinks();
+              initOrderDetailsLinks()
               //DEMO
-              if (env === "development") {
-                changeDemoImages();
+              if (env === 'development') {
+                changeDemoImages()
               }
-            });
+            })
           }
         }
       }
     },
-  });
+  })
 }
 
 $(function () {
-  if ($("#order-details").length) {
+  if ($('#order-details').length) {
     //Get product details
-    getOrder(orderId);
+    getOrder(orderId)
   }
-});
+})

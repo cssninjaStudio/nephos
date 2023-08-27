@@ -1,4 +1,4 @@
-"use strict";
+'use strict'
 
 //Set environment variable (Used for development and demo)
 /* 
@@ -6,61 +6,61 @@
     1. development
     2. customization
 */
-const env = "development";
+const env = 'development'
 
-initPageloader();
+initPageloader()
 
 $(function () {
-  if (env === "development") {
-    changeDemoImages();
+  if (env === 'development') {
+    changeDemoImages()
   }
 
-  initNavbarBurger();
+  initNavbarBurger()
 
-  initFullscreenSlider();
+  initFullscreenSlider()
 
-  initShopSidebar();
+  initShopSidebar()
 
-  initProductDetailsLinks();
+  initProductDetailsLinks()
 
-  initOrderDetailsLinks();
+  initOrderDetailsLinks()
 
-  initCartSidebar();
+  initCartSidebar()
 
-  initGlobalSearch();
+  initGlobalSearch()
 
-  initFilterSidebar();
+  initFilterSidebar()
 
-  initCategoriesSidebar();
+  initCategoriesSidebar()
 
-  feather.replace();
+  feather.replace()
 
-  initTabs();
+  initTabs()
 
-  initDropdowns();
+  initDropdowns()
 
-  initModals();
+  initModals()
 
-  initClosableMessage();
+  initClosableMessage()
 
-  initChosenSelects();
+  initChosenSelects()
 
-  initBackgroundImages();
+  initBackgroundImages()
 
-  initFileInputs();
+  initFileInputs()
 
-  initProductCarousel();
+  initProductCarousel()
 
   //Check viewport size
   if (!mobileTrue) {
-    initPopovers();
+    initPopovers()
   }
 
-  initCardActions();
+  initCardActions()
 
-  initAnimatedCheckboxes();
+  initAnimatedCheckboxes()
 
-  initMobileMode();
+  initMobileMode()
 
-  getCart();
-});
+  getCart()
+})

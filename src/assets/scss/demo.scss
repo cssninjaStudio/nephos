@@ -27,17 +27,17 @@ TABLE OF CONTENTS
 0. CSS Imports
 ========================================================================== */
 
-@import "base/theme-default";
-@import "base/colors";
-@import "base/utils";
+@import 'base/theme-default';
+@import 'base/colors';
+@import 'base/utils';
 
 //Bulma source import
-@import "../sass/bulma.sass";
+@import '../sass/bulma.sass';
 
-@import "abstracts/animations";
-@import "components/buttons";
-@import "components/checkboxes";
-@import "components/pageloader";
+@import 'abstracts/animations';
+@import 'components/buttons';
+@import 'components/checkboxes';
+@import 'components/pageloader';
 
 /* ==========================================================================
 1. Index Hero
@@ -81,7 +81,7 @@ canvas {
 
       //brand text
       .brand-name {
-        font-family: "Raleway", sans-serif;
+        font-family: 'Raleway', sans-serif;
         font-size: 1.2rem;
         font-weight: 500;
         padding: 0 5px;
@@ -98,7 +98,7 @@ canvas {
 
     .navbar-item {
       a {
-        font-family: "Raleway", sans-serif;
+        font-family: 'Raleway', sans-serif;
       }
     }
 
@@ -192,7 +192,7 @@ canvas {
 //Colors and font
 .title,
 .subtitle {
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
 
   &.is-light {
     color: $white;
@@ -284,7 +284,7 @@ canvas {
 }
 
 .is-base-font {
-  font-family: "Raleway", sans-serif !important;
+  font-family: 'Raleway', sans-serif !important;
 }
 
 /* ==========================================================================
@@ -314,13 +314,13 @@ canvas {
 
   .box-content {
     .box-title {
-      font-family: "Raleway", sans-serif;
+      font-family: 'Raleway', sans-serif;
       font-weight: 600;
       font-size: 1rem;
     }
 
     .box-text {
-      font-family: "Raleway", sans-serif;
+      font-family: 'Raleway', sans-serif;
       font-size: 0.9rem;
       color: $muted-grey;
     }
@@ -463,7 +463,7 @@ canvas {
 
       .logo-text {
         display: block;
-        font-family: "Raleway", sans-serif;
+        font-family: 'Raleway', sans-serif;
         font-weight: 300;
         text-transform: uppercase;
         color: $white;
@@ -474,7 +474,7 @@ canvas {
 
     .ninja {
       color: $white;
-      font-family: "Raleway", sans-serif;
+      font-family: 'Raleway', sans-serif;
       font-size: 0.75rem;
 
       div {
@@ -818,7 +818,7 @@ canvas {
       }
 
       h3 {
-        font-family: "Montserrat";
+        font-family: 'Montserrat';
         font-size: 1.4rem;
         color: $dark-text;
         margin-top: 0;
@@ -827,7 +827,7 @@ canvas {
       p,
       ul {
         font-size: 0.9rem;
-        font-family: "Montserrat";
+        font-family: 'Montserrat';
         color: lighten($dark-text, 8%);
 
         b {
