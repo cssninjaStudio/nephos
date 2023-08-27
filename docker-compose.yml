@@ -17,6 +17,8 @@ services:
       traefik.http.routers.nephos-demo-https.tls: true
       traefik.http.routers.nephos-demo-https.entrypoints: "https"
       traefik.http.routers.nephos-demo-https.tls.certresolver: "http"
+      traefik.http.routers.nephos-demo-https.middlewares: nephos-demo-middleware@docker
+      traefik.http.middlewares.nephos-demo-middleware.compress: true
 
 networks:
   cssninja-services:
