@@ -3,8 +3,14 @@
   "version": "2.7.4",
   "description": "Ecommerce App template",
   "private": true,
+  "license": "See license in LICENSE.md",
   "author": {
     "name": "cssninjaStudio <hello@cssninja.io> (https://cssninja.io)"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=16.0.0",
+    "pnpm": ">=8.0.0"
   },
   "scripts": {
     "dev": "gulp dev",
@@ -13,8 +19,6 @@
     "lint": "prettier --write \"./src/**/*.(js|html|scss|md)\"",
     "test:lint": "prettier --check \"./src/**/*.(js|html|scss|md)\""
   },
-  "type": "module",
-  "license": "See license in LICENSE.md",
   "devDependencies": {
     "@babel/core": "7.22.11",
     "@babel/preset-env": "7.22.10",
