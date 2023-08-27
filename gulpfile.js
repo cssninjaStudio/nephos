@@ -141,7 +141,9 @@ function watchFiles() {
 function browserSyncInit(done) {
   console.log('---------------BROWSER SYNC---------------');
   browserSync.init({
-    server: './dist'
+    server: './dist',
+    ui: false,
+    open: false,
   });
   return done();
 }
