@@ -16,7 +16,7 @@ function getWishlists() {
     const cartIcon = feather.icons['shopping-cart'].toSvg();
     const trashIcon = feather.icons['trash-2'].toSvg();
 
-    var userData = JSON.parse(localStorage.getItem('user'));
+    var userData = JSON.parse(localStorage.getItem('user')) || {};
 
     //If not logged in, hide wishlist
     if (!userData.isLoggedIn) {
@@ -342,10 +342,10 @@ function initWishlistSelect() {
 function loadWishlistsInModal() {
     const checkIcon = feather.icons.check.toSvg();
 
-    var userData = JSON.parse(localStorage.getItem('user'));
+    var userData = JSON.parse(localStorage.getItem('user')) || {};
 
     //If not logged in, hide wishlist
-    if (userData.wishlists.length === 0) {
+    if (userData.wishlists?.length === 0) {
         $('#wishlist-modal-list, #wishlist-modal-list-placeholder').toggleClass('is-hidden');
     }
 
@@ -354,7 +354,7 @@ function loadWishlistsInModal() {
         //Empty wishlists in modal
         $('#wishlist-modal-list ul li').remove();
 
-        for (var i = 0; i < userData.wishlists.length; i++) {
+        for (var i = 0; i < userData.wishlists?.length; i++) {
 
             if (i == 0) {
                 var template = `

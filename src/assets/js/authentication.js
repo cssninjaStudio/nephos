@@ -283,8 +283,6 @@ $(window).on('load', function(){
         if (userData.isLoggedIn) {
             window.location.href = '/shop.html';
         }
-    } else {
-        console.log('something');
     }
 })
 

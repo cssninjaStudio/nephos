@@ -246,7 +246,7 @@ function initCategoriesSidebar(){
 
 //Init Product details carousel
 function initProductCarousel() {
-    if ($('.is-carousel').length) {
+    if ($('.is-carousel')?.length) {
         $('.is-carousel').slick({
             dots: true,
             infinite: true,

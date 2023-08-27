@@ -1,28 +1,28 @@
-'use strict';
-const { src, dest, watch, series, parallel } = require('gulp');
-const log = require('fancy-log');
-const colors = require('ansi-colors');
-const browserSync = require('browser-sync').create();
-const sass = require('gulp-sass')(require('sass'));
-const bourbon = require('node-bourbon').includePaths;
-const rename = require('gulp-rename');
-const concat = require('gulp-concat');
-const del = require('del');
-const panini = require('panini');
-const sourcemaps = require('gulp-sourcemaps');
-const replace = require('gulp-replace');
-const prettyHtml = require('gulp-pretty-html');
-const sassLint = require('gulp-sass-lint');
-const htmllint = require('gulp-htmllint');
-const jshint = require('gulp-jshint');
-const newer = require('gulp-newer');
-const autoprefixer = require('gulp-autoprefixer');
-const accessibility = require('gulp-accessibility');
-const babel = require('gulp-babel');
+import gulp from 'gulp'
+import bc from 'browser-sync'
+import sassCompiler from 'sass'
+import gulpSass from 'gulp-sass'
+import bourbon from 'node-bourbon'
+import rename from 'gulp-rename'
+import concat from 'gulp-concat'
+import { deleteSync } from 'del'
+import panini from 'panini'
+import sourcemaps from 'gulp-sourcemaps'
+import replace from 'gulp-replace'
+import newer from 'gulp-newer'
+import autoprefixer from 'gulp-autoprefixer'
+import gulpAccessibility from 'gulp-accessibility'
+import babel from 'gulp-babel'
+import packageJson from './package.json' assert { type: 'json' }
+
+
+const { src, dest, watch, series } = gulp
+const browserSync = bc.create()
+const sass = gulpSass(sassCompiler)
+sass.compiler = sassCompiler
+
 const nodepath = 'node_modules/';
 const assetspath = 'assets/';
-const packageJson = require('./package.json')
-
 
 // File paths
 const files = {
@@ -48,7 +48,7 @@ function compileSASS() {
       outputStyle: 'compressed',
       sourceComments: 'map',
       sourceMap: 'sass',
-      includePaths: bourbon
+      includePaths: bourbon.includePaths
     }).on('error', sass.logError))
     .pipe(autoprefixer('last 2 versions'))
     .pipe(dest('dist/assets/css'))
@@ -63,7 +63,7 @@ function compileSCSS() {
       outputStyle: 'compressed',
       sourceComments: 'map',
       sourceMap: 'scss',
-      includePaths: bourbon
+      includePaths: bourbon.includePaths
     }).on('error', sass.logError))
     .pipe(autoprefixer('last 2 versions'))
     .pipe(dest('dist/assets/css'))
@@ -126,42 +126,6 @@ function resetPages(done) {
   done();
 }
 
-// SASS LINT
-function scssLint() {
-  console.log('---------------SASS LINTING---------------');
-  return src('src/assets/scss/**/*.scss')
-    .pipe(sassLint({
-      configFile: '.scss-lint.yml'
-    }))
-    .pipe(sassLint.format())
-    .pipe(sassLint.failOnError());
-}
-
-// HTML LINTER
-function htmlLint() {
-  console.log('---------------HTML LINTING---------------');
-  return src('dist/*.html')
-    .pipe(htmllint({}, htmllintReporter));
-}
-
-function htmllintReporter(filepath, issues) {
-  if (issues.length > 0) {
-    issues.forEach(function (issue) {
-      log(colors.cyan('[gulp-htmllint] ') + colors.white(filepath + ' [' + issue.line + ']: ') + colors.red('(' + issue.code + ') ' + issue.msg));
-    });
-    process.exitCode = 1;
-  } else {
-    console.log('---------------NO HTML LINT ERROR---------------');
-  }
-}
-
-// JS LINTER
-function jsLint() {
-  return src('src/assets/js/*.js')
-    .pipe(jshint())
-    .pipe(jshint.reporter('default'));
-}
-
 // WATCH FILES
 function watchFiles() {
   watch('src/**/*.html', compileHTML);
@@ -218,7 +182,7 @@ function concatPlugins() {
   return src([
     nodepath + 'jquery/dist/jquery.min.js',
     nodepath + 'feather-icons/dist/feather.min.js',
-    nodepath + 'typed.js/lib/typed.min.js',
+    nodepath + 'typed.js/dist/typed.umd.js',
     nodepath + 'easy-autocomplete/dist/jquery.easy-autocomplete.min.js',
     nodepath + 'alertifyjs/build/alertify.min.js',
     nodepath + 'scrollreveal/dist/scrollreveal.min.js',
@@ -283,33 +247,21 @@ function cssVendor() {
     .pipe(browserSync.stream());
 }
 
-// PRETTIFY HTML FILES
-function prettyHTML() {
-  console.log('---------------HTML PRETTIFY---------------');
-  return src('dist/*.html')
-    .pipe(prettyHtml({
-      indent_size: 4,
-      indent_char: ' ',
-      unformatted: ['code', 'pre', 'em', 'strong', 'span', 'i', 'b', 'br']
-    }))
-    .pipe(dest('dist'));
-}
-
 // DELETE DIST FOLDER
 function cleanDist(done) {
   console.log('---------------REMOVING OLD FILES FROM DIST---------------');
-  del.sync('dist');
+  deleteSync('dist');
   return done();
 }
 
 // ACCESSIBILITY CHECK
 function HTMLAccessibility() {
   return src('dist/*.html')
-    .pipe(accessibility({
+    .pipe(gulpAccessibility({
       force: true
     }))
     .on('error', console.log)
-    .pipe(accessibility.report({
+    .pipe(gulpAccessibility.report({
       reportType: 'txt'
     }))
     .pipe(rename({
@@ -318,18 +270,15 @@ function HTMLAccessibility() {
     .pipe(dest('accessibility-reports'));
 }
 
-// RUN ALL LINTERS
-exports.linters = series(htmlLint, scssLint, jsLint);
-
 // RUN ACCESSIILITY CHECK
-exports.accessibility = HTMLAccessibility;
+export const accessibility = HTMLAccessibility;
 
 //SETUP
-exports.setup = series(setupBulma);
+export const setup = series(setupBulma);
 
 // DEV
-exports.dev = series(cleanDist, copyFont, copyData, jsVendor, cssVendor, copyImages, compileHTML, concatPlugins, concatCssPlugins, compileJS, resetPages, prettyHTML, compileSCSS, browserSyncInit, watchFiles);
+export const dev = series(cleanDist, copyFont, copyData, jsVendor, cssVendor, copyImages, compileHTML, concatPlugins, concatCssPlugins, compileJS, resetPages, compileSCSS, browserSyncInit, watchFiles);
 
 // BUILD
-exports.build = series(cleanDist, copyFont, copyData, jsVendor, cssVendor, copyImages, compileHTML, concatPlugins, concatCssPlugins, compileJS, resetPages, prettyHTML, compileSCSS);
+export const build = series(cleanDist, copyFont, copyData, jsVendor, cssVendor, copyImages, compileHTML, concatPlugins, concatCssPlugins, compileJS, resetPages, compileSCSS);
 
