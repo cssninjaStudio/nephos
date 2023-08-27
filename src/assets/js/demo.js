@@ -20,7 +20,7 @@ function initInfoModal() {
   });
 }
 
-$(document).ready(function () {
+$(function () {
   //Info modal
   // initInfoModal();
 
@@ -38,8 +38,8 @@ $(document).ready(function () {
 
   //Navbar Clone
   if ($("#navbar-clone").length) {
-    $(window).scroll(function () {
-      var height = $(window).scrollTop();
+    $(window).on('scroll', function () {
+      const height = $(window).scrollTop();
       if (height > 50) {
         $("#navbar-clone").addClass("is-active");
       } else {
@@ -63,7 +63,7 @@ $(document).ready(function () {
   }
 
   //Typed js
-  var typed = new Typed(".typed-hero", {
+  const typed = new Typed(".typed-hero", {
     strings: [
       "Hello, Iam Nephos ^2000",
       "Premium UI Kit ^2000",
@@ -91,7 +91,7 @@ $(document).ready(function () {
         location.hostname == this.hostname
       ) {
         // Figure out element to scroll to
-        var target = $(this.hash);
+        let target = $(this.hash);
         target = target.length
           ? target
           : $("[name=" + this.hash.slice(1) + "]");
@@ -107,14 +107,14 @@ $(document).ready(function () {
             function () {
               // Callback after animation
               // Must change focus!
-              var $target = $(target);
-              $target.focus();
+              const $target = $(target);
+              $target.trigger('focus');
               if ($target.is(":focus")) {
                 // Checking if the target was focused
                 return false;
               } else {
                 $target.attr("tabindex", "-1"); // Adding tabindex for elements not focusable
-                $target.focus(); // Set focus again
+                $target.trigger('focus'); // Set focus again
               }
             },
           );
@@ -166,34 +166,34 @@ $(document).ready(function () {
   }
 
   //Canvas Hero animation
-  var windowXArray = [],
+  const windowXArray = [],
     windowYArray = [];
 
-  for (var i = 0; i < $(window).innerWidth(); i++) {
+  for (let i = 0; i < $(window).innerWidth(); i++) {
     windowXArray.push(i);
   }
 
-  for (var i = 0; i < $(window).innerHeight(); i++) {
+  for (let i = 0; i < $(window).innerHeight(); i++) {
     windowYArray.push(i);
   }
 
   function randomPlacement(array) {
-    var placement = array[Math.floor(Math.random() * array.length)];
+    const placement = array[Math.floor(Math.random() * array.length)];
     return placement;
   }
 
-  var canvas = oCanvas.create({
+  let canvas = oCanvas.create({
     canvas: "#canvas",
     background: "transparent",
     fps: 60,
   });
 
-  var canvasInterval;
+  let canvasInterval;
 
   //Changes to avoid memory leak and screen freeze
   function launchInterval() {
     canvasInterval = setInterval(function () {
-      var rectangle = canvas.display.ellipse({
+      const rectangle = canvas.display.ellipse({
         x: randomPlacement(windowXArray),
         y: randomPlacement(windowYArray),
         origin: { x: "center", y: "center" },
@@ -233,10 +233,10 @@ $(document).ready(function () {
     launchInterval();
   }, 25000);
 
-  $(window).resize(function () {
+  $(window).on('resize', function () {
     canvas.width = $(window).innerWidth();
     canvas.height = $(window).innerHeight();
   });
 
-  $(window).resize();
+  $(window).trigger('resize');
 });

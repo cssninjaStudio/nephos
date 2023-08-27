@@ -3,19 +3,19 @@
 //Change demo images
 function changeDemoImages() {
   $("*[data-demo-src]").each(function () {
-    var newSrc = $(this).attr("data-demo-src");
+    const newSrc = $(this).attr("data-demo-src");
     $(this).attr("src", newSrc);
   });
 
   $("*[data-demo-background]").each(function () {
-    var newBg = $(this).attr("data-demo-background");
+    const newBg = $(this).attr("data-demo-background");
     $(this).attr("data-background", newBg);
   });
 }
 
 //Helper to get query string parameters from Url
 $.urlParam = function (name) {
-  var results = new RegExp("[?&]" + name + "=([^&#]*)").exec(
+  const results = new RegExp("[?&]" + name + "=([^&#]*)").exec(
     window.location.href,
   );
   if (results == null) {
@@ -91,13 +91,12 @@ function initShopSidebar() {
 function initProductDetailsLinks() {
   $(".product-details-link").on("click", function (e) {
     e.preventDefault();
-    var $this = $(this);
-    var productId = $this
+    const $this = $(this);
+    const productId = $this
       .closest(".product-container, .featured-product")
       .attr("data-product-id");
-    var baseUrl = "/product.html";
-    var productUrl = baseUrl + `?productId=` + productId;
-    console.log(productUrl);
+    const baseUrl = "/product.html";
+    const productUrl = baseUrl + `?productId=` + productId;
     window.location.href = productUrl;
   });
 }
@@ -106,13 +105,12 @@ function initProductDetailsLinks() {
 function initOrderDetailsLinks() {
   $(".order-details-link").on("click", function (e) {
     e.preventDefault();
-    var $this = $(this);
-    var orderId = $this
+    const $this = $(this);
+    const orderId = $this
       .closest(".order-card, .order-long-card")
       .attr("data-order-id");
-    var baseUrl = "/order.html";
-    var orderUrl = baseUrl + `?orderId=` + orderId;
-    console.log(orderUrl);
+    const baseUrl = "/order.html";
+    const orderUrl = baseUrl + `?orderId=` + orderId;
     window.location.href = orderUrl;
   });
 }
@@ -173,7 +171,7 @@ function initFilterSidebar() {
 
   //Range slider filter
   if ($(".price-range-wrapper").length) {
-    var range = $(".input-range"),
+    const range = $(".input-range"),
       value = $(".range-value");
 
     value.html("$0" + " " + "-" + " " + "$" + range.attr("value"));
@@ -267,7 +265,7 @@ function initCardActions() {}
 //Init JS injected background images
 function initBackgroundImages() {
   $(".has-background-image").each(function () {
-    var bgImage = $(this).attr("data-background");
+    const bgImage = $(this).attr("data-background");
     if (bgImage !== undefined) {
       $(this).css("background-image", "url(" + bgImage + ")");
     }
@@ -292,7 +290,7 @@ function initDropdowns() {
 //Init Tabs
 function initTabs() {
   $(".tabs li").on("click", function () {
-    var tab_id = $(this).attr("data-tab");
+    const tab_id = $(this).attr("data-tab");
 
     $(this).siblings("li").removeClass("is-active");
     $(this)
@@ -308,7 +306,7 @@ function initTabs() {
 //Init modals
 function initModals() {
   $(".modal-trigger").on("click", function () {
-    var modalID = $(this).attr("data-modal");
+    const modalID = $(this).attr("data-modal");
     $("#" + modalID)
       .toggleClass("is-active")
       .find(".box")
@@ -324,7 +322,7 @@ function initModals() {
 function initChosenSelects() {
   if ($(".chosen-select-no-single").length) {
     //Chosen
-    var config = {
+    const config = {
       ".chosen-select": {
         disable_search_threshold: 10,
         width: "100%",
@@ -348,7 +346,7 @@ function initChosenSelects() {
         width: "95%",
       },
     };
-    for (var selector in config) {
+    for (const selector in config) {
       if (config.hasOwnProperty(selector)) {
         $(selector).chosen(config[selector]);
       }
@@ -366,14 +364,14 @@ function initChosenSelects() {
 
 //Init file inputs
 function initFileInputs() {
-  var inputs = document.querySelectorAll(".inputfile");
+  const inputs = document.querySelectorAll(".inputfile");
   Array.prototype.forEach.call(inputs, function (input) {
-    var label = input.nextElementSibling,
+    const label = input.nextElementSibling,
       labelVal = label.innerHTML;
 
     //listen to changes
     input.addEventListener("change", function (e) {
-      var fileName = "";
+      const fileName = "";
       if (this.files && this.files.length > 1)
         fileName = (this.getAttribute("data-multiple-caption") || "").replace(
           "{count}",
@@ -386,9 +384,9 @@ function initFileInputs() {
     });
   });
 
-  var inputField = document.querySelectorAll(".field-input");
+  const inputField = document.querySelectorAll(".field-input");
 
-  for (var i = 0, len = inputField.length; i < len; i++) {
+  for (let i = 0, len = inputField.length; i < len; i++) {
     customInput(inputField[i]);
   }
   //Create custom input
@@ -399,7 +397,7 @@ function initFileInputs() {
     fileInput.onchange = fileInput.onmouseout = function () {
       if (!fileInput.value) return;
 
-      var value = fileInput.value.replace(/^.*[\\\/]/, "");
+      const value = fileInput.value.replace(/^.*[\\\/]/, "");
       el.className += " -chosen";
       label.innerText = value;
     };
@@ -433,7 +431,7 @@ function destroyPopovers() {
 //Init animated checkboxes
 function initAnimatedCheckboxes() {
   $(".animated-checkbox input").on("change", function () {
-    var $this = $(this);
+    const $this = $(this);
     if ($this.closest(".animated-checkbox").hasClass("is-checked")) {
       $this
         .closest(".animated-checkbox")
@@ -592,8 +590,8 @@ function initPopButtons() {
     Math.floor(Math.random() * (max - min + 1) + min).toString();
 
   $(".pop-button").each(function () {
-    var $this = $(this);
-    var template = `
+    const $this = $(this);
+    const template = `
             <div class="p1"></div>
             <div class="p2"></div>
             <div class="p3"></div>
@@ -605,7 +603,7 @@ function initPopButtons() {
     $this.append(template);
 
     $this.on("mousedown", function () {
-      var $this = $(this);
+      const $this = $(this);
 
       let p1 = $this.find(".p1");
       let p2 = $this.find(".p2");
@@ -701,7 +699,7 @@ function launchAlert(title, message, okLabel, cancelLabel, callback) {
 }
 
 //Toast Service
-var toasts = {};
+const toasts = {};
 
 toasts.service = {
   info: function (title, icon, message, position, t) {
@@ -761,7 +759,7 @@ toasts.service = {
 };
 
 function once(fn, context) {
-  var result;
+  let result;
 
   return function () {
     if (fn) {

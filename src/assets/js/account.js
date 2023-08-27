@@ -1,11 +1,11 @@
 "use strict";
 
 //Shipping address state global variable
-var enableShippingAddress = false;
+const enableShippingAddress = false;
 
 //Get account information
 function getAccountInfo() {
-  var userData = JSON.parse(localStorage.getItem("user"));
+  const userData = JSON.parse(localStorage.getItem("user"));
 
   //If not logged in, hide account
   if (!userData.isLoggedIn) {
@@ -16,7 +16,7 @@ function getAccountInfo() {
   else {
     //Photo
     $(".profile-image").empty();
-    var avatar = `
+    const avatar = `
         <img src="http://via.placeholder.com/250x250" data-demo-src="${userData.photoUrl}" alt="">
     `;
     $(".profile-image").append(avatar);
@@ -74,7 +74,7 @@ function getAccountInfo() {
 
 //Get account edit data
 function getEditAccountInfo() {
-  var userData = JSON.parse(localStorage.getItem("user"));
+  const userData = JSON.parse(localStorage.getItem("user"));
 
   //If not logged in, hide account
   if (!userData.isLoggedIn) {
@@ -87,7 +87,7 @@ function getEditAccountInfo() {
   else {
     //Photo
     $(".avatar-wrapper .profile-pic").remove();
-    var avatar = `
+    const avatar = `
         <img class="profile-pic" src="http://via.placeholder.com/250x250" data-demo-src="${userData.photoUrl}" alt="">
     `;
     $(".avatar-wrapper").prepend(avatar);
@@ -136,10 +136,10 @@ function getEditAccountInfo() {
 
 //Save user info
 function saveAccountInfo() {
-  var userData = JSON.parse(localStorage.getItem("user"));
+  const userData = JSON.parse(localStorage.getItem("user"));
 
   $("#save-account-button").on("click", function () {
-    var $this = $(this);
+    const $this = $(this);
     $this.addClass("is-loading");
 
     userData.photoUrl = $(".profile-pic").attr("src");
@@ -187,7 +187,7 @@ function saveAccountInfo() {
 //Fake field validation
 function fakeValidation() {
   $(".fake-validation").on("change", function () {
-    var $this = $(this);
+    const $this = $(this);
     if ($this.val().length < 2) {
       $this.closest(".field").addClass("has-error");
       $("#save-account-button").addClass("no-click");
@@ -198,7 +198,7 @@ function fakeValidation() {
   });
 
   $(".fake-email-validation").on("change", function () {
-    var $this = $(this);
+    const $this = $(this);
     if (!ValidateEmail($this.val())) {
       $this.closest(".field").addClass("has-error");
       $("#save-account-button").addClass("no-click");
@@ -211,11 +211,11 @@ function fakeValidation() {
 
 //Upload profile picture
 function uploadProfilePicture() {
-  var imgSrc = "";
+  const imgSrc = "";
 
   function readFile(input) {
     if (input.files && input.files[0]) {
-      var reader = new FileReader();
+      const reader = new FileReader();
 
       reader.onload = function (e) {
         $uploadCrop
@@ -224,7 +224,6 @@ function uploadProfilePicture() {
           })
           .then(function () {
             imgSrc = e.target.result;
-            console.log("jQuery bind complete");
           });
       };
 
@@ -235,7 +234,7 @@ function uploadProfilePicture() {
   }
 
   //Use croppie plugin
-  var $uploadCrop = $("#upload-profile").croppie({
+  const $uploadCrop = $("#upload-profile").croppie({
     enableExif: true,
     url: "assets/img/avatars/altvatar.png",
     viewport: {
@@ -251,7 +250,7 @@ function uploadProfilePicture() {
 
   //Show preview
   function popupResult(result) {
-    var html;
+    let html;
     if (result.html) {
       html = result.html;
     }
@@ -274,7 +273,7 @@ function uploadProfilePicture() {
 
   //Submit
   $("#submit-profile-picture").on("click", function (ev) {
-    var $this = $(this);
+    const $this = $(this);
     $this.addClass("is-loading");
     $uploadCrop
       .croppie("result", {
@@ -299,7 +298,7 @@ function uploadProfilePicture() {
 
 //Countries autocomplete
 function initCountryAutocomplete() {
-  var accountCountriesOptions = {
+  const accountCountriesOptions = {
     url: "https://restcountries.eu/rest/v2/all",
     getValue: "name",
     template: {
@@ -339,7 +338,7 @@ function initCountryAutocomplete() {
   $(".country-autocpl").easyAutocomplete(accountCountriesOptions);
 }
 
-$(document).ready(function () {
+$(function () {
   //If account page
   if ($("#account-page").length) {
     getAccountInfo();
@@ -356,13 +355,12 @@ $(document).ready(function () {
 
     //Address switch
     $("#shipping-switch").on("change", function () {
-      var userData = JSON.parse(localStorage.getItem("user"));
+      const userData = JSON.parse(localStorage.getItem("user"));
       $(this)
         .closest(".flat-card")
         .find(".card-body")
         .toggleClass("is-disabled");
       enableShippingAddress = !enableShippingAddress;
-      console.log(enableShippingAddress);
 
       if (enableShippingAddress) {
         $("#shipping-edit-address1").val(userData.addresses[0].address1);

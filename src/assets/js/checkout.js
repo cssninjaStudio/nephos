@@ -2,8 +2,8 @@
 
 //Get checkout summary for checkout sidebar
 function getCheckoutSidebar() {
-  var userData = JSON.parse(localStorage.getItem("user"));
-  var checkout = JSON.parse(localStorage.getItem("checkout"));
+  const userData = JSON.parse(localStorage.getItem("user"));
+  const checkout = JSON.parse(localStorage.getItem("checkout"));
 
   //Populate data
   $("#checkout-avatar").attr("src", "http://via.placeholder.com/250x250");
@@ -38,40 +38,40 @@ function getCheckoutSidebar() {
 
 //Get step 1 info
 function getCheckoutStep1() {
-  var checkout = JSON.parse(localStorage.getItem("checkout"));
+  const checkout = JSON.parse(localStorage.getItem("checkout"));
 
   //Remove existing
   $(".flex-table .flex-table-item").remove();
   //Loop products
-  for (var p = 0; p < checkout.items.length; p++) {
-    var template = `
-            <div class="flex-table-item product-container" data-product-id="${
-              checkout.items[p].id
-            }">
-                <div class="product">
-                    <img src="http://via.placeholder.com/250x250" data-demo-src="${
-                      checkout.items[p].images[0].url
-                    }" alt="">
-                    <a class="product-name">${checkout.items[p].name}</a>
-                </div>
-                <div class="quantity">
-                    <span>${checkout.items[p].quantity}</span>
-                </div>
-                <div class="price">
-                    <span class="has-price">${checkout.items[p].price.toFixed(
-                      2,
-                    )}</span>
-                </div>
-                <div class="discount">
-                    <span class="has-price">0</span>
-                </div>
-                <div class="total">
-                    <span class="has-price">${(
-                      checkout.items[p].price * checkout.items[p].quantity
-                    ).toFixed(2)}</span>
-                </div>
-            </div>
-        `;
+  for (let p = 0; p < checkout.items.length; p++) {
+    const template = `
+      <div class="flex-table-item product-container" data-product-id="${
+        checkout.items[p].id
+      }">
+          <div class="product">
+              <img src="http://via.placeholder.com/250x250" data-demo-src="${
+                checkout.items[p].images[0].url
+              }" alt="">
+              <a class="product-name">${checkout.items[p].name}</a>
+          </div>
+          <div class="quantity">
+              <span>${checkout.items[p].quantity}</span>
+          </div>
+          <div class="price">
+              <span class="has-price">${checkout.items[p].price.toFixed(
+                2,
+              )}</span>
+          </div>
+          <div class="discount">
+              <span class="has-price">0</span>
+          </div>
+          <div class="total">
+              <span class="has-price">${(
+                checkout.items[p].price * checkout.items[p].quantity
+              ).toFixed(2)}</span>
+          </div>
+      </div>
+    `;
 
     $.when($(".flex-table").append(template)).done(function () {
       //DEMO
@@ -84,7 +84,7 @@ function getCheckoutStep1() {
 
 //Get step 2 info
 function getCheckoutStep2() {
-  var userData = JSON.parse(localStorage.getItem("user"));
+  const userData = JSON.parse(localStorage.getItem("user"));
 
   //Disable address toggle if no shipping address is configured
   if (userData.addresses[1].disabled === true) {
@@ -94,7 +94,7 @@ function getCheckoutStep2() {
 
 //Get step 4 info
 function getCheckoutStep4() {
-  var checkout = JSON.parse(localStorage.getItem("checkout"));
+  const checkout = JSON.parse(localStorage.getItem("checkout"));
 
   //Shipping
   $("#summary-shipping-icon").attr("src", checkout.shippingMethod.icon);
@@ -109,12 +109,12 @@ function getCheckoutStep4() {
 
 //Finalize checkout and convert to order
 function convertCheckoutToOrder() {
-  var userData = JSON.parse(localStorage.getItem("user"));
-  var checkout = JSON.parse(localStorage.getItem("checkout"));
-  var orderProducts = [];
+  const userData = JSON.parse(localStorage.getItem("user"));
+  const checkout = JSON.parse(localStorage.getItem("checkout"));
+  const orderProducts = [];
 
   function formatDate(date) {
-    var monthsList = [
+    const monthsList = [
       "Jan",
       "Feb",
       "Mar",
@@ -137,10 +137,10 @@ function convertCheckoutToOrder() {
     );
   }
 
-  var orderDate = formatDate(new Date());
+  const orderDate = formatDate(new Date());
 
-  for (var p = 0; p < checkout.items.length; p++) {
-    var orderItem = {
+  for (let p = 0; p < checkout.items.length; p++) {
+    const orderItem = {
       id: checkout.items[p].id,
       name: checkout.items[p].name,
       price: checkout.items[p].price,
@@ -151,7 +151,7 @@ function convertCheckoutToOrder() {
     orderProducts.push(orderItem);
   }
 
-  var newOrder = {
+  const newOrder = {
     id: parseInt(userData.orders[0].id) + 1,
     total: checkout.total,
     date: orderDate,
@@ -177,17 +177,17 @@ function convertCheckoutToOrder() {
   localStorage.removeItem("checkout");
 }
 
-$(document).ready(function () {
+$(function () {
   //Shipping methods
   $(".shipping-methods-grid input").on("change", function () {
-    var $this = $(this);
-    var checkout = JSON.parse(localStorage.getItem("checkout"));
-    var rate = parseFloat(
+    const $this = $(this);
+    const checkout = JSON.parse(localStorage.getItem("checkout"));
+    const rate = parseFloat(
       $this.closest(".method-card").attr("data-shipping-rate"),
     ).toFixed(2);
-    var items = parseInt(checkout.count);
-    var shippingRate = (rate * items).toFixed(2);
-    var newTotal = (
+    const items = parseInt(checkout.count);
+    const shippingRate = (rate * items).toFixed(2);
+    const newTotal = (
       parseFloat(checkout.total) + parseFloat(shippingRate)
     ).toFixed(2);
     $("#checkout-shipping-value").html(shippingRate);
@@ -198,7 +198,7 @@ $(document).ready(function () {
 
   //Payment methods
   $("#payment-methods-main input").on("change", function () {
-    var targetMethod = $(this).attr("data-value-id");
+    const targetMethod = $(this).attr("data-value-id");
     $(this).closest(".method-card").addClass("is-selected");
     setTimeout(function () {
       $(".checkout-payment-methods").addClass("is-hidden");
@@ -227,7 +227,6 @@ $(document).ready(function () {
   });
 
   $(".payment-disclaimer input").on("change", function () {
-    console.log("changed");
     if (!$(this).prop("checked")) {
       $("#checkout-next").addClass("no-click");
     } else {
@@ -237,11 +236,11 @@ $(document).ready(function () {
 
   //If checkout
   if ($(".checkout-wrapper").length) {
-    var currentStep = parseInt(
+    const currentStep = parseInt(
       $(".checkout-wrapper").attr("data-checkout-step"),
     );
-    var checkout = JSON.parse(localStorage.getItem("checkout"));
-    var userData = JSON.parse(localStorage.getItem("user"));
+    const checkout = JSON.parse(localStorage.getItem("checkout"));
+    const userData = JSON.parse(localStorage.getItem("user"));
     disableCartSidebar();
 
     //If a user is logged
@@ -277,7 +276,7 @@ $(document).ready(function () {
           getCheckoutStep4();
         } else if ($("#checkout-5").length) {
           getCheckoutSidebar();
-          var cart = JSON.parse(localStorage.getItem("cart"));
+          const cart = JSON.parse(localStorage.getItem("cart"));
           cart.products = [];
           cart.items = 0;
           cart.total = 0.0;
@@ -302,8 +301,8 @@ $(document).ready(function () {
 
   //Checkout button
   $("#checkout-next").on("click", function () {
-    var checkout = JSON.parse(localStorage.getItem("checkout"));
-    var $this = $(this);
+    const checkout = JSON.parse(localStorage.getItem("checkout"));
+    const $this = $(this);
     $this.addClass("is-loading");
 
     //Handle step 1
@@ -318,7 +317,7 @@ $(document).ready(function () {
 
     //Handle step 2
     else if ($("#checkout-2").length) {
-      var shippingMethod = {};
+      const shippingMethod = {};
 
       if ($(".method-card.is-selected").length === 0) {
         toasts.service.error(
@@ -360,7 +359,7 @@ $(document).ready(function () {
 
     //Handle step 3
     else if ($("#checkout-3").length) {
-      var paymentMethod = {};
+      const paymentMethod = {};
 
       if ($(".method-card.is-selected").length === 0) {
         toasts.service.error(
@@ -398,8 +397,8 @@ $(document).ready(function () {
     else if ($("#checkout-4").length) {
       checkout.step = parseInt(checkout.step) + 1;
       localStorage.setItem("checkout", JSON.stringify(checkout));
-      var checkout = JSON.parse(localStorage.getItem("checkout"));
-      var orderNotes = $("#checkout-notes").val();
+      const checkout = JSON.parse(localStorage.getItem("checkout"));
+      const orderNotes = $("#checkout-notes").val();
       checkout.orderNotes = orderNotes;
       localStorage.setItem("checkout", JSON.stringify(checkout));
       setTimeout(function () {
@@ -411,8 +410,8 @@ $(document).ready(function () {
 
   //Checkout back button
   $(".checkout-back").on("click", function (e) {
-    var checkout = JSON.parse(localStorage.getItem("checkout"));
-    var $this = $(this);
+    const checkout = JSON.parse(localStorage.getItem("checkout"));
+    const $this = $(this);
     $this.addClass("is-loading");
 
     if ($this.attr("data-checkout-step") !== undefined) {
@@ -454,7 +453,7 @@ $(document).ready(function () {
 
   //End Checkout
   $("#end-checkout-button").on("click", function () {
-    var $this = $(this);
+    const $this = $(this);
     $this.addClass("is-loading");
     convertCheckoutToOrder();
     setTimeout(function () {
@@ -464,7 +463,7 @@ $(document).ready(function () {
 
   //Credit card
   if ($("#credit-card").length) {
-    var card = new Card({
+    const card = new Card({
       form: ".active form",
       container: ".card-wrapper",
     });

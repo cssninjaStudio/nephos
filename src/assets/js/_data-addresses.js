@@ -1,4 +1,4 @@
-var elieAddresses = [
+const elieAddresses = [
   {
     type: "Billing Address",
     address1: "23, Block C2",
@@ -20,7 +20,7 @@ var elieAddresses = [
   },
 ];
 
-var johnAddresses = [
+const johnAddresses = [
   {
     type: "Billing Address",
     address1: "47 St John Limits",
@@ -42,7 +42,7 @@ var johnAddresses = [
   },
 ];
 
-var samanthaAddresses = [
+const samanthaAddresses = [
   {
     type: "Billing Address",
     address1: "14 Gregor Street",
@@ -64,7 +64,7 @@ var samanthaAddresses = [
   },
 ];
 
-var arthurAddresses = [
+const arthurAddresses = [
   {
     type: "Billing Address",
     address1: "150 Gordon Ave",

@@ -6,11 +6,11 @@
     1. development
     2. customization
 */
-var env = "development";
+const env = "development";
 
 initPageloader();
 
-$(document).ready(function () {
+$(function () {
   if (env === "development") {
     changeDemoImages();
   }

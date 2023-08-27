@@ -1,12 +1,12 @@
 "use strict";
 
 //Get product Id parameter from query string
-var productId = parseInt($.urlParam("productId"));
+const productId = parseInt($.urlParam("productId"));
 
 //Init Product details spinner
 function initProductSpinner() {
   $(".details-spinner").spinner("changing", function (e, newVal, oldVal) {
-    var $this = $(this);
+    const $this = $(this);
 
     $this.closest(".product-quantity").find(".spinner-value").html(newVal);
   });
@@ -15,14 +15,14 @@ function initProductSpinner() {
 //Get related products
 function getRelatedProducts() {
   $(".featured-product").each(function () {
-    var $this = $(this);
-    var productId = parseInt($this.attr("data-product-id"));
+    const $this = $(this);
+    const productId = parseInt($this.attr("data-product-id"));
     $.ajax({
       url: "assets/data/products.json",
       async: true,
       dataType: "json",
       success: function (products) {
-        for (var i = 0; i < products.length; i++) {
+        for (let i = 0; i < products.length; i++) {
           if (products[i].id === productId) {
             $this
               .closest(".product-container")
@@ -45,7 +45,7 @@ function getProductPage(productId) {
     async: true,
     dataType: "json",
     success: function (products) {
-      for (var i = 0; i < products.length; i++) {
+      for (let i = 0; i < products.length; i++) {
         if (products[i].id === productId) {
           //Populate basic info
           $(".product-container").attr("data-product-id", products[i].id);
@@ -96,8 +96,8 @@ function getProductPage(productId) {
           //Empty carousel before loading images
           $("#product-view .is-carousel").empty();
           //Images
-          for (var p = 0; p < products[i].images.length; p++) {
-            var template = `
+          for (let p = 0; p < products[i].images.length; p++) {
+            const template = `
                             <div>
                                 <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="${products[i].images[p].url}" data-action="zoom" alt="">
                             </div>
@@ -123,15 +123,14 @@ function getProductPage(productId) {
 
 //Add to cart from product details
 function addToCartDetails(trigger) {
-  var data = JSON.parse(localStorage.getItem("cart"));
-  console.log(data);
-  var $container = trigger.closest(".product-container");
-  var productId = parseInt(trigger.attr("data-product-id"));
-  var productName = $("#product-details-name").text();
-  var productCategory = $("#product-category").text();
-  var productPrice = parseFloat($("#new-price").text());
-  var productImage = $(".is-carousel > div:first-child img").attr("src");
-  var productQuantity = parseInt($(".details-spinner input").val());
+  const data = JSON.parse(localStorage.getItem("cart"));
+  const $container = trigger.closest(".product-container");
+  const productId = parseInt(trigger.attr("data-product-id"));
+  const productName = $("#product-details-name").text();
+  const productCategory = $("#product-category").text();
+  const productPrice = parseFloat($("#new-price").text());
+  const productImage = $(".is-carousel > div:first-child img").attr("src");
+  const productQuantity = parseInt($(".details-spinner input").val());
 
   const found = data.products.some((el) => el.id === productId);
   if (!found) {
@@ -152,7 +151,7 @@ function addToCartDetails(trigger) {
     localStorage.setItem("cart", JSON.stringify(data));
   } else {
     console.log("Product exists in cart");
-    for (var i = 0; i < data.products.length; i++) {
+    for (let i = 0; i < data.products.length; i++) {
       if (parseInt(data.products[i].id) === productId) {
         data.products[i].quantity = parseInt(
           data.products[i].quantity + productQuantity,
@@ -190,7 +189,7 @@ function initProductPageUI() {
   });
 }
 
-$(document).ready(function () {
+$(function () {
   //If Product page
   if ($("#product-page").length) {
     //Init page UI
@@ -201,7 +200,7 @@ $(document).ready(function () {
 
     //Add to cart
     $("#details-add-to-cart").on("click", function () {
-      var $this = $(this);
+      const $this = $(this);
       $this.addClass("is-loading");
       if ($(".cart-quickview").hasClass("is-active")) {
         $(".cart-loader").addClass("is-active");

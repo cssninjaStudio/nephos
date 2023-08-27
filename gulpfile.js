@@ -3,6 +3,7 @@ import bc from 'browser-sync'
 import sassCompiler from 'sass'
 import gulpSass from 'gulp-sass'
 import bourbon from 'node-bourbon'
+import uglify from 'gulp-uglify-es'
 import rename from 'gulp-rename'
 import concat from 'gulp-concat'
 import { deleteSync } from 'del'
@@ -115,6 +116,7 @@ function compileJS() {
     .pipe(babel({
       presets: [['@babel/preset-env']]
     }))
+    .pipe(uglify.default())
     .pipe(dest('dist/assets/js/'))
     .pipe(browserSync.stream());
 }
@@ -199,6 +201,7 @@ function concatPlugins() {
     'src/assets/vendor/js/*',
   ])
     .pipe(sourcemaps.init())
+    .pipe(uglify.default())
     .pipe(concat('app.js'))
     .pipe(sourcemaps.write('./'))
     .pipe(dest('dist/assets/js'))

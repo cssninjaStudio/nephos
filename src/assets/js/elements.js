@@ -1,11 +1,11 @@
-$(document).ready(function () {
+$(function () {
   "use strict";
 
   //Elements selection
   $(".is-element-card .view-element a").on("click", function () {
-    var scrollSpeed = 500;
+    const scrollSpeed = 500;
 
-    var element_id = $(this).attr("data-element");
+    const element_id = $(this).attr("data-element");
     $("#elements-title, #elements-selection").addClass("is-hidden");
     $(".elements-back").removeClass("is-hidden");
     $("#" + element_id).removeClass("is-hidden");
@@ -46,7 +46,7 @@ $(document).ready(function () {
   // Iterate over each native select tot turn it into a custom select
   $("select.native").each(function () {
     // Cache the number of options
-    var $this = $(this),
+    const $this = $(this),
       numberOfOptions = $(this).children("option").length;
 
     // Hides the select element
@@ -59,18 +59,18 @@ $(document).ready(function () {
     $this.after('<div class="styledSelect"></div>');
 
     // Cache the styled div
-    var $styledSelect = $this.next("div.styledSelect");
+    const $styledSelect = $this.next("div.styledSelect");
 
     // Show the first select option in the styled div
     $styledSelect.text($this.children("option").eq(0).text());
 
     // Insert an unordered list after the styled div and also cache the list
-    var $list = $("<ul />", {
+    const $list = $("<ul />", {
       class: "options",
     }).insertAfter($styledSelect);
 
     // Insert a list item into the unordered list for each select option
-    for (var i = 0; i < numberOfOptions; i++) {
+    for (let i = 0; i < numberOfOptions; i++) {
       $("<li />", {
         text: $this.children("option").eq(i).text(),
         rel: $this.children("option").eq(i).val(),
@@ -78,7 +78,7 @@ $(document).ready(function () {
     }
 
     // Cache the list items
-    var $listItems = $list.children("li");
+    const $listItems = $list.children("li");
 
     // Show the unordered list when the styled div is clicked (also hides it if the div is clicked again)
     $styledSelect.on("click", function (e) {
@@ -108,7 +108,7 @@ $(document).ready(function () {
 
   //Basic autocomplete
   if ($("#basic-autocpl, #icon-autocpl").length) {
-    var options = {
+    const options = {
       url: "assets/data/persons.json",
       getValue: function (element) {
         return element.name;
@@ -132,7 +132,7 @@ $(document).ready(function () {
 
   //Description autocomplete
   if ($("#desc-autocpl").length) {
-    var options = {
+    const options = {
       url: "assets/data/persons.json",
       getValue: function (element) {
         return element.name;
@@ -162,7 +162,7 @@ $(document).ready(function () {
 
   //Users autocomplete
   if ($("#users-autocpl").length) {
-    var usersOptions = {
+    const usersOptions = {
       url: "assets/data/persons.json",
       getValue: "name",
       template: {
@@ -204,7 +204,7 @@ $(document).ready(function () {
 
   //Products autocomplete
   if ($("#products-autocpl").length) {
-    var productsOptions = {
+    const productsOptions = {
       url: "assets/data/products.json",
       getValue: "name",
       template: {
@@ -246,7 +246,7 @@ $(document).ready(function () {
 
   //Orders autocomplete
   if ($("#orders-autocpl").length) {
-    var ordersOptions = {
+    const ordersOptions = {
       url: "assets/data/orders.json",
       getValue: "status",
       template: {

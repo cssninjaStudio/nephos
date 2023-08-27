@@ -1,4 +1,4 @@
-var myWishlists = [
+const myWishlists = [
   {
     id: 0,
     name: "Nice Couches",

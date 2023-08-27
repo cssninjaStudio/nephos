@@ -3,23 +3,23 @@
 //Init search results page filter input
 function initSearchFilter() {
   $(".nephos-search-filter")
-    .focus(function (e) {
+    .on('focus', function (e) {
       if ($(this).val() === defaultText) $(this).val("");
     })
-    .blur(function (e) {
+    .on('blur', function (e) {
       if ($(this).val() === "") $(this).val(defaultText);
     })
-    .keyup(function (e) {
-      var patterns = $(this).val().toLowerCase().split(" ");
+    .on('keyup', function (e) {
+      const patterns = $(this).val().toLowerCase().split(" ");
       if (!patterns.length) return;
       $(".search-filter-target")
         .hide()
         .filter(function () {
-          var matchText = $(this)
+          const matchText = $(this)
             .find(".search-filter-match")
             .text()
             .toLowerCase();
-          for (var i = 0; i < patterns.length; i++)
+          for (let i = 0; i < patterns.length; i++)
             if (matchText.indexOf(patterns[i]) === -1) return false;
           return true;
         })
@@ -39,9 +39,8 @@ function getSearchResults() {
     async: true,
     dataType: "json",
     success: function (data) {
-      console.log(data);
-      for (var i = 0; i < data.length; i++) {
-        var template = `
+      for (let i = 0; i < data.length; i++) {
+        const template = `
                     <div class="flat-card is-auto cart-card search-card search-filter-target product-container" data-product-id="${
                       data[i].id
                     }">
@@ -107,16 +106,16 @@ function getSearchResults() {
 
 //Add to cart from search results page
 function addToCartFromSearch(trigger) {
-  var data = JSON.parse(localStorage.getItem("cart"));
-  var $container = trigger.closest(".product-container");
-  var productId = parseInt($container.attr("data-product-id"));
-  var productName = $container.find(".product-name").text();
-  var productCategory = $container.find(".product-category").text();
-  var productPrice = parseFloat(
+  const data = JSON.parse(localStorage.getItem("cart"));
+  const $container = trigger.closest(".product-container");
+  const productId = parseInt($container.attr("data-product-id"));
+  const productName = $container.find(".product-name").text();
+  const productCategory = $container.find(".product-category").text();
+  const productPrice = parseFloat(
     $container.find(".product-price span:nth-child(2)").text(),
   );
-  var productImage = $container.find("img").attr("src");
-  var productQuantity = parseInt($container.find(".hidden-spinner").val());
+  const productImage = $container.find("img").attr("src");
+  const productQuantity = parseInt($container.find(".hidden-spinner").val());
 
   const found = data.products.some((el) => parseInt(el.id) === productId);
   if (!found) {
@@ -138,7 +137,7 @@ function addToCartFromSearch(trigger) {
   } else {
     console.log("Product exists in cart");
 
-    for (var i = 0; i < data.products.length; i++) {
+    for (let i = 0; i < data.products.length; i++) {
       if (parseInt(data.products[i].id) === productId) {
         data.products[i].quantity = parseInt(data.products[i].quantity + 1);
         localStorage.setItem("cart", JSON.stringify(data));
@@ -152,7 +151,7 @@ function initAddFromSearchAction() {
   $(".product-container .action .add-from-search-action").on(
     "click",
     function () {
-      var $this = $(this);
+      const $this = $(this);
       if ($(".cart-quickview").hasClass("is-active")) {
         $(".cart-loader").addClass("is-active");
       }
@@ -177,7 +176,7 @@ function initAddFromSearchAction() {
   );
 }
 
-$(document).ready(function () {
+$(function () {
   //Search results page
   if ($("#search-results").length) {
     getSearchResults();
@@ -198,7 +197,7 @@ $(document).ready(function () {
   //Init search overlay autocomplete
   const searchIcon = feather.icons.search.toSvg();
 
-  var searchOptions = {
+  const searchOptions = {
     url: "assets/data/products.json",
     getValue: "name",
     template: {
@@ -228,7 +227,7 @@ $(document).ready(function () {
       },
       onShowListEvent: function () {
         if (!$("#full-search").length) {
-          var searchLink = `
+          const searchLink = `
                         <li id="full-search" class="full-search">
                             <div class="eac-item">
                                 <div class="nephos-search-template">

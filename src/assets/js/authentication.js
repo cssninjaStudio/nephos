@@ -1,7 +1,7 @@
 "use strict";
 
 //Guest user object
-var user = {
+const user = {
   isLoggedIn: false,
   firstName: null,
   lastName: null,
@@ -10,7 +10,7 @@ var user = {
 };
 
 //Fake account objects
-var elie = {
+const elie = {
   isLoggedIn: true,
   firstName: "Elie",
   lastName: "Daniels",
@@ -22,7 +22,7 @@ var elie = {
   addresses: elieAddresses,
 };
 
-var john = {
+const john = {
   isLoggedIn: true,
   firstName: "John",
   lastName: "Cambell",
@@ -34,7 +34,7 @@ var john = {
   addresses: johnAddresses,
 };
 
-var samantha = {
+const samantha = {
   isLoggedIn: true,
   firstName: "Samantha",
   lastName: "Rogers",
@@ -46,7 +46,7 @@ var samantha = {
   addresses: samanthaAddresses,
 };
 
-var arthur = {
+const arthur = {
   isLoggedIn: true,
   firstName: "Arthur",
   lastName: "Baxter",
@@ -65,7 +65,7 @@ if (JSON.parse(localStorage.getItem("user")) === null) {
 
 //Get logged user info
 function getUser() {
-  var data = JSON.parse(localStorage.getItem("user"));
+  const data = JSON.parse(localStorage.getItem("user"));
   //Populate user areas
   $("#quickview-avatar").attr("src", data.photoUrl);
   $("#quickview-avatar").attr("data-demo-src", data.photoUrl);
@@ -151,8 +151,8 @@ function ValidateLength(value, length) {
 function fakeLogin() {
   //Email validation example
   $("#login-email").on("change", function () {
-    var $this = $(this);
-    var email = $this.val().trim();
+    const $this = $(this);
+    const email = $this.val().trim();
     if (!ValidateEmail(email)) {
       $this.closest(".field").addClass("has-error");
     } else {
@@ -161,8 +161,8 @@ function fakeLogin() {
   });
   //Password Length validation example
   $("#login-password").on("change", function () {
-    var $this = $(this);
-    var password = $this.val().trim();
+    const $this = $(this);
+    const password = $this.val().trim();
     if (!ValidateLength(password, 8)) {
       $this.closest(".field").addClass("has-error");
     } else {
@@ -171,17 +171,17 @@ function fakeLogin() {
   });
   //Login with one of the fake accounts
   $("#login-submit").on("click", function () {
-    var redirectOrigin = $.urlParam("origin");
-    var $this = $(this);
-    var emailValue = $("#login-email").val();
-    var passwordValue = $("#login-password").val();
+    const redirectOrigin = $.urlParam("origin");
+    const $this = $(this);
+    const emailValue = $("#login-email").val();
+    const passwordValue = $("#login-password").val();
     $this.addClass("is-loading");
     $(".small-auth-loader").addClass("is-active");
 
     if (emailValue === "elie@mail.com" && passwordValue === "testpassword") {
       setTimeout(function () {
         $this.removeClass("is-loading");
-        var data = elie;
+        const data = elie;
         localStorage.setItem("user", JSON.stringify(data));
         toasts.service.success(
           "",
@@ -204,7 +204,7 @@ function fakeLogin() {
     ) {
       setTimeout(function () {
         $this.removeClass("is-loading");
-        var data = john;
+        const data = john;
         localStorage.setItem("user", JSON.stringify(data));
         toasts.service.success(
           "",
@@ -227,7 +227,7 @@ function fakeLogin() {
     ) {
       setTimeout(function () {
         $this.removeClass("is-loading");
-        var data = samantha;
+        const data = samantha;
         localStorage.setItem("user", JSON.stringify(data));
         toasts.service.success(
           "",
@@ -250,7 +250,7 @@ function fakeLogin() {
     ) {
       setTimeout(function () {
         $this.removeClass("is-loading");
-        var data = arthur;
+        const data = arthur;
         localStorage.setItem("user", JSON.stringify(data));
         toasts.service.success(
           "",
@@ -316,8 +316,8 @@ function fakeAccountsPanel() {
 
   //Prepopulate login form on click
   $(".login-accounts-panel .login-block").on("click", function () {
-    var email = $(this).find(".fake-email").text();
-    var password = $(this).find(".fake-password").text();
+    const email = $(this).find(".fake-email").text();
+    const password = $(this).find(".fake-password").text();
     $("#login-email").val(email);
     $("#login-password").val(password);
   });
@@ -330,8 +330,8 @@ function fakeAccountsPanel() {
 
 //Redirect logged use to shop if tries to view login or registration
 $(window).on("load", function () {
-  var url = window.location.href;
-  var userData = JSON.parse(localStorage.getItem("user"));
+  const url = window.location.href;
+  const userData = JSON.parse(localStorage.getItem("user"));
   if (url.indexOf("/authentication.html") > -1) {
     //If logged in, redirect
     if (userData.isLoggedIn) {
@@ -340,7 +340,7 @@ $(window).on("load", function () {
   }
 });
 
-$(document).ready(function () {
+$(function () {
   initAuthenticationForms();
 
   getUser();

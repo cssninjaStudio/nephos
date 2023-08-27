@@ -3,7 +3,7 @@
 //Init left menu tabs
 function initWishlistTabs() {
   $(".is-account-grid .wishlists li").on("click", function () {
-    var targetWishlist = $(this).attr("data-target-wishlist");
+    const targetWishlist = $(this).attr("data-target-wishlist");
     $(this).siblings("li").removeClass("is-active");
     $(this).addClass("is-active");
     $("ul.wishlist").addClass("is-hidden");
@@ -16,7 +16,7 @@ function getWishlists() {
   const cartIcon = feather.icons["shopping-cart"].toSvg();
   const trashIcon = feather.icons["trash-2"].toSvg();
 
-  var userData = JSON.parse(localStorage.getItem("user")) || {};
+  const userData = JSON.parse(localStorage.getItem("user")) || {};
 
   //If not logged in, hide wishlist
   if (!userData.isLoggedIn) {
@@ -32,74 +32,78 @@ function getWishlists() {
       ".is-account-grid .menu-card li, #wishlists-container .wishlist-card .wishlist",
     ).remove();
 
-    for (var i = 0; i < userData.wishlists.length; i++) {
-      if (i == 0) {
-        var template = `
-                        <li class="is-active" data-target-wishlist="wishlist-${userData.wishlists[i].id}" data-wishlist-id="${userData.wishlists[i].id}">
-                            <a>${userData.wishlists[i].name}</a>
-                            <div class="action-block">
-                                <span>${userData.wishlists[i].products.length} items</span>
-                                <button class="remove-button remove-wishlist-action">
-                                    ${trashIcon}
-                                </button>
-                            </div>
-                        </li>
-                    `;
-        var listContainer = `
-                        <ul id="wishlist-${userData.wishlists[i].id}" class="wishlist"></ul>
-                    `;
-      } else {
-        var template = `
-                        <li data-target-wishlist="wishlist-${userData.wishlists[i].id}" data-wishlist-id="${userData.wishlists[i].id}">
-                            <a>${userData.wishlists[i].name}</a>
-                            <div class="action-block">
-                                <span>${userData.wishlists[i].products.length} items</span>
-                                <button class="remove-button remove-wishlist-action">
-                                    ${trashIcon}
-                                </button>
-                            </div>
-                        </li>
-                    `;
 
-        var listContainer = `
-                        <ul id="wishlist-${userData.wishlists[i].id}" class="wishlist is-hidden"></ul>
-                    `;
+    for (let i = 0; i < userData.wishlists.length; i++) {
+      let template
+      let listContainer
+
+      if (i == 0) {
+        template = `
+          <li class="is-active" data-target-wishlist="wishlist-${userData.wishlists[i].id}" data-wishlist-id="${userData.wishlists[i].id}">
+              <a>${userData.wishlists[i].name}</a>
+              <div class="action-block">
+                  <span>${userData.wishlists[i].products.length} items</span>
+                  <button class="remove-button remove-wishlist-action">
+                      ${trashIcon}
+                  </button>
+              </div>
+          </li>
+        `;
+        listContainer = `
+          <ul id="wishlist-${userData.wishlists[i].id}" class="wishlist"></ul>
+        `;
+      } else {
+        template = `
+          <li data-target-wishlist="wishlist-${userData.wishlists[i].id}" data-wishlist-id="${userData.wishlists[i].id}">
+              <a>${userData.wishlists[i].name}</a>
+              <div class="action-block">
+                  <span>${userData.wishlists[i].products.length} items</span>
+                  <button class="remove-button remove-wishlist-action">
+                      ${trashIcon}
+                  </button>
+              </div>
+          </li>
+       `;
+
+        listContainer = `
+          <ul id="wishlist-${userData.wishlists[i].id}" class="wishlist is-hidden"></ul>
+        `;
       }
 
       $(".is-account-grid .wishlists").append(template);
       $("#wishlists-container .wishlist-card").append(listContainer);
     }
 
-    for (var w = 0; w < userData.wishlists.length; w++) {
-      for (var t = 0; t < userData.wishlists[w].products.length; t++) {
-        var template = `
-                        <li class="wishlist-item product-container" onclick="return true" data-wishlist-id="${userData.wishlists[w].id}"
-                            data-product-id="${userData.wishlists[w].products[t].id}">
-                            <div class="item-wrapper">
-                                <!-- Product Image -->
-                                <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="${userData.wishlists[w].products[t].images[0].url}" alt="">
-                                <!-- Product meta -->
-                                <span class="product-info">
-                                    <a class="product-name">${userData.wishlists[w].products[t].name}</a>
-                                    <span>${userData.wishlists[w].products[t].category}</span>
-                                    <span class="product-price is-hidden"><span>${userData.wishlists[w].products[t].price}</span></span>
-                                </span>
-                                <div class="action">
-                                    <!-- actions -->
-                                    <a class="add-button whishlist-cart-button pop-button">
-                                        <div class="add-button-inner">
-                                            ${cartIcon}
-                                        </div>
-                                    </a>
-                                    <a class="remove-button remove-wishlist-item-action">
-                                        <div class="remove-button-inner">
-                                            ${trashIcon}
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </li>
-                    `;
+    for (let w = 0; w < userData.wishlists.length; w++) {
+      for (let t = 0; t < userData.wishlists[w].products.length; t++) {
+        const template = `
+          <li class="wishlist-item product-container" onclick="return true" data-wishlist-id="${userData.wishlists[w].id}"
+              data-product-id="${userData.wishlists[w].products[t].id}">
+              <div class="item-wrapper">
+                  <!-- Product Image -->
+                  <img src="http://via.placeholder.com/500x500/ffffff/999999" data-demo-src="${userData.wishlists[w].products[t].images[0].url}" alt="">
+                  <!-- Product meta -->
+                  <span class="product-info">
+                      <a class="product-name">${userData.wishlists[w].products[t].name}</a>
+                      <span>${userData.wishlists[w].products[t].category}</span>
+                      <span class="product-price is-hidden"><span>${userData.wishlists[w].products[t].price}</span></span>
+                  </span>
+                  <div class="action">
+                      <!-- actions -->
+                      <a class="add-button whishlist-cart-button pop-button">
+                          <div class="add-button-inner">
+                              ${cartIcon}
+                          </div>
+                      </a>
+                      <a class="remove-button remove-wishlist-item-action">
+                          <div class="remove-button-inner">
+                              ${trashIcon}
+                          </div>
+                      </a>
+                  </div>
+              </div>
+          </li>
+        `;
 
         $("#wishlist-" + userData.wishlists[w].id).append(template);
       }
@@ -115,19 +119,16 @@ function getWishlists() {
         removeWishlistItem();
 
         $("#wishlists-container .wishlist-card .wishlist").each(function () {
-          if ($(this).children("li").length) {
-            console.log("full array");
-          } else {
-            console.log("empty array");
-            var placeholder = `
-                                <li class="placeholder-wrap">
-                                    <div class="placeholder-content">
-                                        <img src="assets/img/illustrations/couch.svg" alt="">
-                                        <h3>Empty Wishlist</h3>
-                                        <p>This wishlist is still empty. Items will be shown as soon as you add some to it.</p>
-                                    </div>
-                                </li>
-                            `;
+          if (!$(this).children("li").length) {
+            const placeholder = `
+              <li class="placeholder-wrap">
+                  <div class="placeholder-content">
+                      <img src="assets/img/illustrations/couch.svg" alt="">
+                      <h3>Empty Wishlist</h3>
+                      <p>This wishlist is still empty. Items will be shown as soon as you add some to it.</p>
+                  </div>
+              </li>
+            `;
             $(this).append(placeholder);
           }
         });
@@ -141,16 +142,16 @@ function getWishlists() {
 //Add a new wishlist
 function addWishlist() {
   $(".add-wishlist-action").on("click", function () {
-    var $this = $(this);
-    var data = JSON.parse(localStorage.getItem("user"));
-    var newWishlistName = $this.closest(".modal").find("input").val();
+    const $this = $(this);
+    const data = JSON.parse(localStorage.getItem("user"));
+    const newWishlistName = $this.closest(".modal").find("input").val();
 
     $this.addClass("is-loading");
     $(".account-loader").addClass("is-active");
 
     //Update wishlist Data
     setTimeout(function () {
-      var newWishlist = {
+      const newWishlist = {
         id: data.wishlists.length,
         name: newWishlistName,
         products: [],
@@ -179,9 +180,9 @@ function addWishlist() {
 //Delete an existing wishlist
 function removeWishlist() {
   $(".remove-wishlist-action").on("click", function () {
-    var $this = $(this);
-    var wishlistId = parseInt($this.closest("li").attr("data-wishlist-id"));
-    var data = JSON.parse(localStorage.getItem("user"));
+    const $this = $(this);
+    const wishlistId = parseInt($this.closest("li").attr("data-wishlist-id"));
+    const data = JSON.parse(localStorage.getItem("user"));
 
     launchAlert(
       "Delete Wishlist?",
@@ -218,7 +219,7 @@ function removeWishlist() {
 //Add to cart from a wishlist item
 function addToCartFromWishlist() {
   $(".whishlist-cart-button").on("click", function () {
-    var $this = $(this);
+    const $this = $(this);
     $(".cart-loader").addClass("is-active");
     addToCart($this);
     setTimeout(function () {
@@ -237,10 +238,10 @@ function addToCartFromWishlist() {
 //Remove a wishlist item from its wishlist
 function removeWishlistItem() {
   $(".remove-wishlist-item-action").on("click", function () {
-    var $this = $(this);
-    var productId = parseInt($this.closest("li").attr("data-product-id"));
-    var wishlistId = parseInt($this.closest("li").attr("data-wishlist-id"));
-    var data = JSON.parse(localStorage.getItem("user"));
+    const $this = $(this);
+    const productId = parseInt($this.closest("li").attr("data-product-id"));
+    const wishlistId = parseInt($this.closest("li").attr("data-wishlist-id"));
+    const data = JSON.parse(localStorage.getItem("user"));
 
     launchAlert(
       "Remove From Wishlist?",
@@ -280,35 +281,40 @@ function removeWishlistItem() {
 //Init wishlist selection in wishlist modal
 function initWishlistSelect() {
   //Execution flag
-  var onceWishlist = true;
+  const onceWishlist = true;
 
   //Pop the wishlist modal when needed, and populate its data
   $(".flat-card.product-container .actions .like, .sidebar-whishlist").on(
     "click",
     function () {
+      let productId
+      let productName
+      let productPrice
+      let productImg
+      let productCategory
       if ($("#product-page").length) {
-        var productId = $(".product-container").attr("data-product-id");
-        var productName = $("#product-details-name").text();
-        var productPrice = $("#new-price").text();
-        var productImg = $(".is-carousel > div:first-child img").attr("src");
-        var productCategory = $("#product-category").text();
+        productId = $(".product-container").attr("data-product-id");
+        productName = $("#product-details-name").text();
+        productPrice = $("#new-price").text();
+        productImg = $(".is-carousel > div:first-child img").attr("src");
+        productCategory = $("#product-category").text();
       } else {
-        var productId = $(this)
+        productId = $(this)
           .closest(".product-container")
           .attr("data-product-id");
-        var productName = $(this)
+        productName = $(this)
           .closest(".product-container")
           .find(".product-name")
           .text();
-        var productPrice = $(this)
+        productPrice = $(this)
           .closest(".product-container")
           .find(".product-price span:first-child")
           .text();
-        var productImg = $(this)
+        productImg = $(this)
           .closest(".product-container")
           .find("img")
           .attr("src");
-        var productCategory = $(this)
+        productCategory = $(this)
           .closest(".category-header")
           .find(".category-title h2")
           .text();
@@ -333,16 +339,16 @@ function initWishlistSelect() {
 
   //Add the previously clicked product to the selected wishlist
   $(".add-to-wishlist-action").on("click", function () {
-    var $this = $(this);
-    var userData = JSON.parse(localStorage.getItem("user"));
-    var targetWishlist = parseInt(
+    const $this = $(this);
+    const userData = JSON.parse(localStorage.getItem("user"));
+    const targetWishlist = parseInt(
       $("#wishlist-modal-list .list-item.is-active").attr("data-wishlist-id"),
     );
-    var productId = parseInt($this.closest(".modal").attr("data-product-id"));
-    var productName = $this.closest(".modal").attr("data-product-name");
-    var productPrice = $this.closest(".modal").attr("data-product-price");
-    var productImage = $this.closest(".modal").attr("data-product-image");
-    var productCategory = $this.closest(".modal").attr("data-product-category");
+    const productId = parseInt($this.closest(".modal").attr("data-product-id"));
+    const productName = $this.closest(".modal").attr("data-product-name");
+    const productPrice = $this.closest(".modal").attr("data-product-price");
+    const productImage = $this.closest(".modal").attr("data-product-image");
+    const productCategory = $this.closest(".modal").attr("data-product-category");
 
     $this.addClass("is-loading");
 
@@ -399,7 +405,7 @@ function initWishlistSelect() {
 function loadWishlistsInModal() {
   const checkIcon = feather.icons.check.toSvg();
 
-  var userData = JSON.parse(localStorage.getItem("user")) || {};
+  const userData = JSON.parse(localStorage.getItem("user")) || {};
 
   //If not logged in, hide wishlist
   if (userData.wishlists?.length === 0) {
@@ -413,31 +419,32 @@ function loadWishlistsInModal() {
     //Empty wishlists in modal
     $("#wishlist-modal-list ul li").remove();
 
-    for (var i = 0; i < userData.wishlists?.length; i++) {
+    for (let i = 0; i < userData.wishlists?.length; i++) {
+      let template
       if (i == 0) {
-        var template = `
-                    <li class="list-item is-active" data-wishlist-id="${userData.wishlists[i].id}">
-                        <div class="meta">
-                            <span class="name">${userData.wishlists[i].name}</span>
-                            <span class="count"><var>${userData.wishlists[i].products.length}</var> Items</span>
-                        </div>
-                        <div class="selected-indicator">
-                            ${checkIcon}
-                        </div>
-                    </li>
-                `;
+        template = `
+          <li class="list-item is-active" data-wishlist-id="${userData.wishlists[i].id}">
+              <div class="meta">
+                  <span class="name">${userData.wishlists[i].name}</span>
+                  <span class="count"><var>${userData.wishlists[i].products.length}</var> Items</span>
+              </div>
+              <div class="selected-indicator">
+                  ${checkIcon}
+              </div>
+          </li>
+        `;
       } else {
-        var template = `
-                    <li class="list-item" data-wishlist-id="${userData.wishlists[i].id}">
-                        <div class="meta">
-                            <span class="name">${userData.wishlists[i].name}</span>
-                            <span class="count"><var>${userData.wishlists[i].products.length}</var> Items</span>
-                        </div>
-                        <div class="selected-indicator">
-                            ${checkIcon}
-                        </div>
-                    </li>
-                `;
+        template = `
+          <li class="list-item" data-wishlist-id="${userData.wishlists[i].id}">
+              <div class="meta">
+                  <span class="name">${userData.wishlists[i].name}</span>
+                  <span class="count"><var>${userData.wishlists[i].products.length}</var> Items</span>
+              </div>
+              <div class="selected-indicator">
+                  ${checkIcon}
+              </div>
+          </li>
+        `;
       }
 
       $.when($("#wishlist-modal-list ul").append(template)).done(function () {
@@ -447,7 +454,7 @@ function loadWishlistsInModal() {
   }
 }
 
-$(document).ready(function () {
+$(function () {
   if ($("#shop-wishlist").length) {
     getWishlists();
 

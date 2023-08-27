@@ -1,21 +1,19 @@
 "use strict";
 
 //Get order Id parameter from query string
-var orderId = parseInt($.urlParam("orderId"));
+const orderId = parseInt($.urlParam("orderId"));
 
 //Get order json details, passing the Id as parameter
 function getOrder(orderId) {
-  var userData = JSON.parse(localStorage.getItem("user"));
+  const userData = JSON.parse(localStorage.getItem("user"));
 
   $.ajax({
     url: "assets/data/orders.json",
     async: true,
     dataType: "json",
     success: function (data) {
-      for (var i = 0; i < data.length; i++) {
+      for (let i = 0; i < data.length; i++) {
         if (data[i].id === orderId) {
-          console.log("DATA", data[i]);
-
           //Populate basic data
           $("#order-details-id var").html(data[i].id);
           $("#order-details-date var").html(data[i].date);
@@ -59,7 +57,7 @@ function getOrder(orderId) {
           $("#status-tile span:nth-child(2)").html(data[i].status);
 
           //Shipping Address
-          var shippingAddressCode;
+          let shippingAddressCode;
           if (userData.addresses[1].disabled === true) {
             shippingAddressCode = 0;
           } else {
@@ -85,7 +83,7 @@ function getOrder(orderId) {
           );
 
           //Billing Address
-          var billingAddressCode = data[i].billingAddressId;
+          const billingAddressCode = data[i].billingAddressId;
           $("#billing-address1").html(
             userData.addresses[billingAddressCode].address1,
           );
@@ -118,8 +116,8 @@ function getOrder(orderId) {
           //Products
           $(".flex-table .flex-table-item").remove();
 
-          for (var p = 0; p < data[i].products.length; p++) {
-            var template = `
+          for (let p = 0; p < data[i].products.length; p++) {
+            const template = `
                             <div class="flex-table-item product-container" data-product-id="${
                               data[i].products[p].id
                             }">
@@ -166,7 +164,7 @@ function getOrder(orderId) {
   });
 }
 
-$(document).ready(function () {
+$(function () {
   if ($("#order-details").length) {
     //Get product details
     getOrder(orderId);
