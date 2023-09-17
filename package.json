@@ -9,8 +9,8 @@
   },
   "type": "module",
   "engines": {
-    "node": ">=16.0.0",
-    "pnpm": ">=8.0.0"
+    "node": ">=18",
+    "pnpm": ">=8"
   },
   "scripts": {
     "dev": "gulp dev",
