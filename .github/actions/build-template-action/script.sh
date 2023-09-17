@@ -24,7 +24,7 @@ echo "::group::building ${ARCHIVE}"
 echo "::debug::${ARCHIVE}"
 
 # remove "development" in nephos.js
-sed -i 's/env = 'development'/env = ""/g' src/assets/js/nephos.js
+sed -i "s/env = 'development'/env = ''/g" src/assets/js/nephos.js
 
 # move demo data
 rm -rf ./src/data

@@ -1,6 +1,6 @@
 import gulp from 'gulp'
 import bc from 'browser-sync'
-import sassCompiler from 'sass'
+import * as sassCompiler from 'sass'
 import gulpSass from 'gulp-sass'
 import bourbon from 'node-bourbon'
 import uglify from 'gulp-uglify-es'
