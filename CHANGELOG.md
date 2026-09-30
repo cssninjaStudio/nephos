@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.9.0](https://github.com/cssninjaStudio/nephos/compare/v2.8.0...v2.9.0) (2026-09-30)
+
+
+### ⚖️ License
+
+* relicense under MIT ([87b673c](https://github.com/cssninjaStudio/nephos/commit/87b673cba1dc04556922b3ae1cb6758468ace6ce))
+
 ## [2.8.0](https://github.com/cssninjaStudio/nephos/compare/v2.7.4...v2.8.0) (2023-08-27)
 
 
