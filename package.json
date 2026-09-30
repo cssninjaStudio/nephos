@@ -3,7 +3,7 @@
   "version": "2.8.0",
   "description": "Ecommerce App template",
   "private": true,
-  "license": "See license in LICENSE.md",
+  "license": "MIT",
   "author": {
     "name": "cssninjaStudio <hello@cssninja.io> (https://cssninja.io)"
   },
